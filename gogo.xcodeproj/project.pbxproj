@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		C58EEBC53BCADD2B05F513F8 /* libPods-gogo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D175D84B34404FAC68D418 /* libPods-gogo.a */; };
+		CF0BEDB31F9A3636005275EE /* LoginPage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0BEDB21F9A3636005275EE /* LoginPage.m */; };
+		CF0BEDB61F9A3759005275EE /* ColorUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0BEDB51F9A3759005275EE /* ColorUtil.m */; };
+		CF0BEDB91F9B2F78005275EE /* PUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0BEDB81F9B2F78005275EE /* PUtil.m */; };
+		CF0BEDBC1F9B4378005275EE /* AccountManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0BEDBB1F9B4378005275EE /* AccountManager.m */; };
+		CF0BEDC21F9B4780005275EE /* Account.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0BEDC11F9B4780005275EE /* Account.m */; };
 		CF7214E31F6678E4002F3634 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7214E21F6678E4002F3634 /* main.m */; };
 		CF7214E61F6678E4002F3634 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7214E51F6678E4002F3634 /* AppDelegate.m */; };
 		CF7214EE1F6678E4002F3634 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF7214ED1F6678E4002F3634 /* Assets.xcassets */; };
@@ -39,6 +44,17 @@
 		23FAAD1760727AC930FAF7F8 /* libPods-qingliu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-qingliu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C28CEC5C40CD549BF302F04 /* Pods-gogo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gogo.release.xcconfig"; path = "Pods/Target Support Files/Pods-gogo/Pods-gogo.release.xcconfig"; sourceTree = "<group>"; };
 		B2D175D84B34404FAC68D418 /* libPods-gogo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-gogo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF0BEDB11F9A3636005275EE /* LoginPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginPage.h; sourceTree = "<group>"; };
+		CF0BEDB21F9A3636005275EE /* LoginPage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginPage.m; sourceTree = "<group>"; };
+		CF0BEDB41F9A3759005275EE /* ColorUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorUtil.h; sourceTree = "<group>"; };
+		CF0BEDB51F9A3759005275EE /* ColorUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorUtil.m; sourceTree = "<group>"; };
+		CF0BEDB71F9B2F77005275EE /* PUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PUtil.h; sourceTree = "<group>"; };
+		CF0BEDB81F9B2F78005275EE /* PUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PUtil.m; sourceTree = "<group>"; };
+		CF0BEDBA1F9B4378005275EE /* AccountManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountManager.h; sourceTree = "<group>"; };
+		CF0BEDBB1F9B4378005275EE /* AccountManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountManager.m; sourceTree = "<group>"; };
+		CF0BEDBD1F9B43F5005275EE /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
+		CF0BEDBE1F9B4484005275EE /* Account.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Account.h; sourceTree = "<group>"; };
+		CF0BEDC11F9B4780005275EE /* Account.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Account.m; sourceTree = "<group>"; };
 		CF7214DE1F6678E4002F3634 /* gogo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gogo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF7214E21F6678E4002F3634 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CF7214E41F6678E4002F3634 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -118,6 +134,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		CF0BEDB01F9A361F005275EE /* login */ = {
+			isa = PBXGroup;
+			children = (
+				CF0BEDB11F9A3636005275EE /* LoginPage.h */,
+				CF0BEDB21F9A3636005275EE /* LoginPage.m */,
+			);
+			name = login;
+			sourceTree = "<group>";
+		};
 		CF7214D51F6678E4002F3634 = {
 			isa = PBXGroup;
 			children = (
@@ -179,6 +204,10 @@
 		CFCB0F041F7105360087ACC7 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				CF0BEDBA1F9B4378005275EE /* AccountManager.h */,
+				CF0BEDBB1F9B4378005275EE /* AccountManager.m */,
+				CF0BEDBE1F9B4484005275EE /* Account.h */,
+				CF0BEDC11F9B4780005275EE /* Account.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -186,6 +215,7 @@
 		CFCB0F051F7105360087ACC7 /* page */ = {
 			isa = PBXGroup;
 			children = (
+				CF0BEDB01F9A361F005275EE /* login */,
 				CFCB0F071F7105360087ACC7 /* QLMainPage.m */,
 				CFCB0F061F7105360087ACC7 /* QLMainPage.h */,
 				CFCB0F5B1F72579B0087ACC7 /* home */,
@@ -204,8 +234,13 @@
 		CFCB0F081F7105360087ACC7 /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				CF0BEDBD1F9B43F5005275EE /* Singleton.h */,
+				CF0BEDB41F9A3759005275EE /* ColorUtil.h */,
+				CF0BEDB51F9A3759005275EE /* ColorUtil.m */,
 				CFCB0F091F7105360087ACC7 /* ByNetUtil.h */,
 				CFCB0F0A1F7105360087ACC7 /* ByNetUtil.m */,
+				CF0BEDB71F9B2F77005275EE /* PUtil.h */,
+				CF0BEDB81F9B2F78005275EE /* PUtil.m */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -378,11 +413,15 @@
 				CFCB0F4B1F711E6F0087ACC7 /* TAAbstractDotView.m in Sources */,
 				CFCB0F4A1F711E6F0087ACC7 /* SDCycleScrollView.m in Sources */,
 				CF7214E61F6678E4002F3634 /* AppDelegate.m in Sources */,
+				CF0BEDB31F9A3636005275EE /* LoginPage.m in Sources */,
 				CFCB0F1E1F7108C80087ACC7 /* ThreePage.m in Sources */,
 				CFCB0F0F1F7105360087ACC7 /* ByNetUtil.m in Sources */,
 				CFCB0F241F711BB00087ACC7 /* FivePage.m in Sources */,
 				CFCB0F0E1F7105360087ACC7 /* QLMainPage.m in Sources */,
+				CF0BEDC21F9B4780005275EE /* Account.m in Sources */,
+				CF0BEDBC1F9B4378005275EE /* AccountManager.m in Sources */,
 				CFCB0F4C1F711E6F0087ACC7 /* TAAnimatedDotView.m in Sources */,
+				CF0BEDB91F9B2F78005275EE /* PUtil.m in Sources */,
 				CFCB0F491F711E6F0087ACC7 /* SDCollectionViewCell.m in Sources */,
 				CFCB0F181F71088F0087ACC7 /* HomePage.m in Sources */,
 				CFCB0F0C1F7105360087ACC7 /* BaseViewController.m in Sources */,
@@ -393,6 +432,7 @@
 				CFCB0F0D1F7105360087ACC7 /* Constant.m in Sources */,
 				CFCB0F4E1F711E6F0087ACC7 /* TAPageControl.m in Sources */,
 				CFCB0F4F1F711E6F0087ACC7 /* UIView+SDExtension.m in Sources */,
+				CF0BEDB61F9A3759005275EE /* ColorUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -501,6 +541,7 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/gogo/PrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/gogo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.scrat.gogo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -516,6 +557,7 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/gogo/PrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/gogo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.scrat.gogo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

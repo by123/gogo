@@ -17,12 +17,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setBackgroud];
-    [self setStatuBarBackgroud];
+//    [self setStatuBarBackgroud];
 }
 
 
 -(void)setBackgroud{
-    self.view.backgroundColor = BACKGROUND_COLOR;
+    self.view.backgroundColor = c06_backgroud;
 }
 
 
@@ -30,14 +30,16 @@
     self.navigationController.navigationBarHidden = hidden;
 }
 
-
--(void)setStatuBarBackgroud{
-    UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
-    if ([statusBar respondsToSelector:@selector(setBackgroundColor:)]) {
-        statusBar.backgroundColor = [UIColor whiteColor];
-    }
-    
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
 }
+
+//-(void)setStatuBarBackgroud{
+//    UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
+//    if ([statusBar respondsToSelector:@selector(setBackgroundColor:)]) {
+//        statusBar.backgroundColor = [UIColor clearColor];
+//    }
+//}
 
 
 

@@ -12,6 +12,9 @@
 #import <UIImageView+WebCache.h>
 #import <MJRefresh.h>
 #import <AFNetworking.h>
+#import "ColorUtil.h"
+#import "PUtil.h"
+#import "Singleton.h"
 
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
@@ -39,9 +42,23 @@
 
 
 //颜色
-#define BACKGROUND_COLOR [UIColor colorWithRed:234.0/255.0 green:235.0/255.0 blue:236.0/255.0 alpha:1.0]
-#define MAIN_COLOR  [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1.0]
-#define LINE_COLOR  [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.1]
+#define c01_blue      [ColorUtil colorWithHexString:@"#495AFF"]
+#define c02_red       [ColorUtil colorWithHexString:@"#F43B47"]
+#define c03_yellow    [ColorUtil colorWithHexString:@"#FFAB13"]
+#define c04_green     [ColorUtil colorWithHexString:@"#4E9D58"]
+#define c05_divider   [ColorUtil colorWithHexString:@"#2E3259"]
+#define c06_backgroud [ColorUtil colorWithHexString:@"#252845"]
+#define c07_bar       [ColorUtil colorWithHexString:@"#1F2038"]
+#define c08_text      [ColorUtil colorWithHexString:@"#FFFFFF"]
+#define c09_tips      [ColorUtil colorWithHexString:@"#B1BAEE"]
+#define c10_icon      [ColorUtil colorWithHexString:@"#4B5B91"]
+
+
+#define c11_bg1       [ColorUtil colorWithHexString:@"#110E1F"]
+#define c12_bg2       [ColorUtil colorWithHexString:@"#1C1531"]
+#define c13_text1     [ColorUtil colorWithHexString:@"#495AFF"]
+#define c14_text2     [ColorUtil colorWithHexString:@"#B1BAEE"]
+
 
 
 //重写NSLog,Debug模式下打印日志和当前行数
@@ -50,6 +67,9 @@
 #else
 #define NSLog(FORMAT, ...) nil
 #endif
+
+
+
 
 
 
