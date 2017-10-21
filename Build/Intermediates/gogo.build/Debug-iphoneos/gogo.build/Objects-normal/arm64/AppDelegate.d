@@ -6,6 +6,5 @@ dependencies: \
   /Users/by.huang/Desktop/其他项目/gogo/gogo/utils/PUtil.h \
   /Users/by.huang/Desktop/其他项目/gogo/gogo/utils/Singleton.h \
   /Users/by.huang/Desktop/其他项目/gogo/gogo/AppDelegate.h \
-  /Users/by.huang/Desktop/其他项目/gogo/gogo/page/QLMainPage.h \
-  /Users/by.huang/Desktop/其他项目/gogo/gogo/global/BaseViewController.h \
-  /Users/by.huang/Desktop/其他项目/gogo/gogo/page/LoginPage.h
+  /Users/by.huang/Desktop/其他项目/gogo/gogo/page/LoginPage.h \
+  /Users/by.huang/Desktop/其他项目/gogo/gogo/global/BaseViewController.h

@@ -34,12 +34,12 @@
     return UIStatusBarStyleLightContent;
 }
 
-//-(void)setStatuBarBackgroud{
-//    UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
-//    if ([statusBar respondsToSelector:@selector(setBackgroundColor:)]) {
-//        statusBar.backgroundColor = [UIColor clearColor];
-//    }
-//}
+-(void)setStatuBarBackgroud : (UIColor *)color{
+    UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
+    if ([statusBar respondsToSelector:@selector(setBackgroundColor:)]) {
+        statusBar.backgroundColor = color;
+    }
+}
 
 
 

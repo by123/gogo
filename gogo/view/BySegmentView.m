@@ -7,10 +7,8 @@
 //
 
 
-#define HeaderBgCorlor [UIColor whiteColor]  //顶部视图颜色
-
-#define LabelNormalColor [UIColor blackColor] //未选中字体颜色
-#define LabelSelectedColor [UIColor redColor]//选中字体颜色
+#define LabelNormalColor c10_icon //未选中字体颜色
+#define LabelSelectedColor c01_blue//选中字体颜色
 
 #import "BySegmentView.h"
 
@@ -26,27 +24,28 @@
     
     NSInteger _countItem; //item总数
     int ItemWidth;
+    int TabHeight;
 }
 
 - (void)initializeData{
     _animation = YES;//过度动画
 }
 
--(instancetype)initWithFrame:(CGRect)frame andHeaderHeight:(CGFloat )headerHeight andTitleArray:(NSArray *)titleArray andShowControllerNameArray:(NSArray *)showControllerArray
+-(instancetype)initWithFrame:(CGRect)frame andTitleArray:(NSArray *)titleArray andShowControllerNameArray:(NSArray *)showControllerArray
 {
-   
+ 
+    TabHeight = [PUtil getActualHeight:100];
     ItemWidth = ([titleArray count] > 5) ? ScreenWidth / 5 : ScreenWidth / [titleArray count];
     self = [super initWithFrame:frame];
     if (self) {
         
-        [self setFrame:frame];
         [self initializeData];
         
         _countItem = [titleArray count];
         
-        _normalBgView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, headerHeight)];
+        _normalBgView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, frame.size.height - TabHeight, ScreenWidth, TabHeight)];
         _normalBgView.delegate = self;
-        [_normalBgView setBackgroundColor:HeaderBgCorlor];
+        [_normalBgView setBackgroundColor:c07_bar];
         [self createLabelWith:LabelNormalColor andTitle:titleArray addToView:_normalBgView];
         [self addSubview:_normalBgView];
         
@@ -56,7 +55,7 @@
 
         
         for (int i = 0; i < [titleArray count]; i++) {
-            UIButton * btn = [[UIButton alloc]initWithFrame:CGRectMake(i*ItemWidth, 0, ItemWidth, NavigationBarHeight)];
+            UIButton * btn = [[UIButton alloc]initWithFrame:CGRectMake(i*ItemWidth, 0, ItemWidth, TabHeight)];
             [btn setBackgroundColor:[UIColor clearColor]];
             [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
             [btn setTag:i];
@@ -64,17 +63,19 @@
         }
 
         
-        _showContentLabelView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ItemWidth, NavigationBarHeight)];
+        _showContentLabelView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ItemWidth, TabHeight)];
         [_showContentLabelView setClipsToBounds:YES];
         [_normalBgView addSubview:_showContentLabelView];
         
-        _selectedBgView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, headerHeight)];
+        _selectedBgView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, TabHeight)];
         [_selectedBgView setUserInteractionEnabled:NO];
-        [_selectedBgView setBackgroundColor:HeaderBgCorlor];
+//        [_selectedBgView setBackgroundColor:HeaderBgCorlor];
         [_showContentLabelView addSubview:_selectedBgView];
         [self createLabelWith:LabelSelectedColor andTitle:titleArray addToView:_selectedBgView];
         
-        _scrollViewMain = [[UIScrollView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_normalBgView.frame), ScreenWidth, ScreenHeight - CGRectGetMaxY(_normalBgView.frame))];
+        _scrollViewMain = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, frame.size.height-TabHeight)];
+        _scrollViewMain.showsVerticalScrollIndicator = NO;
+        _scrollViewMain.showsHorizontalScrollIndicator = NO;
         [_scrollViewMain setBackgroundColor:[UIColor clearColor]];
         _scrollViewMain.contentSize = CGSizeMake(ScreenWidth * [titleArray count], CGRectGetHeight(_scrollViewMain.frame));
         _scrollViewMain.pagingEnabled = YES;
@@ -106,7 +107,7 @@
 
     //添加label
     for (int i = 0; i < [titleArray count]; i++) {
-        UILabel * label = [[UILabel alloc]initWithFrame:CGRectMake(i*ItemWidth, 0, ItemWidth, NavigationBarHeight)];
+        UILabel * label = [[UILabel alloc]initWithFrame:CGRectMake(i*ItemWidth, 0, ItemWidth, TabHeight)];
         [label setTextAlignment:NSTextAlignmentCenter];
         [label setText:titleArray[i]];
         [label setTextColor:color];
@@ -127,6 +128,7 @@
     if(scrollView == _scrollViewMain){
         [_showContentLabelView setFrame:CGRectMake(scrollView.contentOffset.x*(ItemWidth/ScreenWidth), _showContentLabelView.frame.origin.y, _showContentLabelView.frame.size.width, _showContentLabelView.frame.size.height)];
         [_selectedBgView setContentOffset:CGPointMake(scrollView.contentOffset.x*(ItemWidth/ScreenWidth), 0)];
+        [self.delegate didSelectIndex:scrollView.contentOffset.x/ScreenWidth];
     }
     
 }

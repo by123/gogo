@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "QLMainPage.h"
 #import "LoginPage.h"
 
 @interface AppDelegate ()
@@ -19,12 +18,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    UIWindow *window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
-    LoginPage *page = [[LoginPage alloc]init];
-    UINavigationController *controller = [[UINavigationController alloc]initWithRootViewController:page];
-    window.backgroundColor = [UIColor whiteColor];
-    window.rootViewController = controller;
-    [window makeKeyAndVisible];
+//    UIWindow *window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
+//    LoginPage *page = [[LoginPage alloc]init];
+//    UINavigationController *controller = [[UINavigationController alloc]initWithRootViewController:page];
+//    window.backgroundColor = [UIColor whiteColor];
+//    window.rootViewController = controller;
+//    [window makeKeyAndVisible];
     return YES;
 }
 

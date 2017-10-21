@@ -13,4 +13,6 @@
 
 -(void)hideNavigationBar : (Boolean) hidden;
 
+-(void)setStatuBarBackgroud : (UIColor *)color;
+
 @end
