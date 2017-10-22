@@ -7,6 +7,7 @@
 //
 
 #import "BaseViewController.h"
+#import "SDCycleScrollView.h"
 
-@interface HomePage : BaseViewController
+@interface HomePage : BaseViewController<SDCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
 @end

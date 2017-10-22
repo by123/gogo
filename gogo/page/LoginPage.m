@@ -8,6 +8,7 @@
 
 #import "LoginPage.h"
 #import "AccountManager.h"
+#import "MainPage.h"
 
 @interface LoginPage ()<UITextFieldDelegate>
 
@@ -34,6 +35,7 @@
     [super viewDidLoad];
     [self initView];
 }
+
 
 -(void)initView{
     [ColorUtil setGradientColor:self.view startColor:c11_bg1 endColor:c12_bg2 director:Top];
@@ -192,6 +194,7 @@
 
 -(void)OnLogin{
     //todo 登录
+    [self.navigationController pushViewController:[[MainPage alloc]init] animated:YES];
 }
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{

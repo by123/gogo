@@ -69,7 +69,6 @@
         
         _selectedBgView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, TabHeight)];
         [_selectedBgView setUserInteractionEnabled:NO];
-//        [_selectedBgView setBackgroundColor:HeaderBgCorlor];
         [_showContentLabelView addSubview:_selectedBgView];
         [self createLabelWith:LabelSelectedColor andTitle:titleArray addToView:_selectedBgView];
         

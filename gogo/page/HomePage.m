@@ -7,14 +7,13 @@
 //
 
 #import "HomePage.h"
-#import "SDCycleScrollView.h"
 #import "NewsCell.h"
 
 
 #define AdViewHeight [PUtil getActualHeight:300]
 #define AdInterval 3.0f
 
-@interface HomePage ()<SDCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface HomePage ()
 
 @property (strong, nonatomic) UIScrollView *scrollerView;
 @property (strong, nonatomic) UITableView *tableView;
@@ -37,6 +36,7 @@
     _scrollerView.showsHorizontalScrollIndicator = NO;
     _scrollerView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(uploadMore)];
     
+    _scrollerView.contentSize = CGSizeMake(ScreenWidth, 3000);
     MJRefreshStateHeader *header = [MJRefreshStateHeader headerWithRefreshingTarget:self refreshingAction:@selector(uploadNew)];
     header.lastUpdatedTimeLabel.hidden = YES;
     _scrollerView.mj_header = header;
@@ -54,9 +54,11 @@
     [_scrollerView addSubview:cycleScrollView];
     
     _tableView = [[UITableView alloc]init];
-    _tableView.frame = CGRectMake(0, AdViewHeight, ScreenWidth, ScreenHeight - AdViewHeight);
+    _tableView.frame = CGRectMake(0, AdViewHeight, ScreenWidth, 500);
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    _tableView.backgroundColor = c06_backgroud;
+    _tableView.scrollEnabled = NO;
     [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [_scrollerView addSubview:_tableView];
 }
@@ -88,7 +90,10 @@
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NewsCell *cell = [[NewsCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NewsCell identify]];
+    NewsCell *cell =  [tableView dequeueReusableCellWithIdentifier:[NewsCell identify]];
+    if(cell == nil){
+        cell = [[NewsCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NewsCell identify]];
+    }
     NewsModel *model = [NewsModel getModel];
     [cell setData:model];
     return cell;
@@ -97,6 +102,7 @@
 
 -(void)uploadNew
 {
+    _tableView;
     [_scrollerView.mj_header endRefreshing];
     [_scrollerView.mj_footer endRefreshing];
 //    CURRENT = 0;

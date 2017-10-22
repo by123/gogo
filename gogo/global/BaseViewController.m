@@ -17,7 +17,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setBackgroud];
-//    [self setStatuBarBackgroud];
+    [self hideNavigationBar:YES];
+}
+
+
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
 }
 
 
@@ -30,9 +35,6 @@
     self.navigationController.navigationBarHidden = hidden;
 }
 
--(UIStatusBarStyle)preferredStatusBarStyle{
-    return UIStatusBarStyleLightContent;
-}
 
 -(void)setStatuBarBackgroud : (UIColor *)color{
     UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];

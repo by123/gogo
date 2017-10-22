@@ -19,10 +19,10 @@
 		CF0BEDD21F9BB8AF005275EE /* MinePage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0BEDD11F9BB8AF005275EE /* MinePage.m */; };
 		CF0BEDD51F9BB96E005275EE /* NewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0BEDD41F9BB96E005275EE /* NewsCell.m */; };
 		CF0BEDD81F9BB998005275EE /* NewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0BEDD71F9BB998005275EE /* NewsModel.m */; };
+		CF0BEDD91F9BC817005275EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF0BEDDB1F9BC817005275EE /* LaunchScreen.storyboard */; };
 		CF7214E31F6678E4002F3634 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7214E21F6678E4002F3634 /* main.m */; };
 		CF7214E61F6678E4002F3634 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7214E51F6678E4002F3634 /* AppDelegate.m */; };
 		CF7214EE1F6678E4002F3634 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF7214ED1F6678E4002F3634 /* Assets.xcassets */; };
-		CF8499211F6FB47900B853EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF8499201F6FB47900B853EC /* LaunchScreen.storyboard */; };
 		CFCB0F0C1F7105360087ACC7 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB0F011F7105360087ACC7 /* BaseViewController.m */; };
 		CFCB0F0D1F7105360087ACC7 /* Constant.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB0F031F7105360087ACC7 /* Constant.m */; };
 		CFCB0F0F1F7105360087ACC7 /* ByNetUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB0F0A1F7105360087ACC7 /* ByNetUtil.m */; };
@@ -40,9 +40,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0C9BEAC6459BE0273BFC1E2B /* Pods-qingliu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qingliu.release.xcconfig"; path = "Pods/Target Support Files/Pods-qingliu/Pods-qingliu.release.xcconfig"; sourceTree = "<group>"; };
-		1FD8C960429512AF84CCDC62 /* Pods-qingliu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-qingliu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-qingliu/Pods-qingliu.debug.xcconfig"; sourceTree = "<group>"; };
-		23FAAD1760727AC930FAF7F8 /* libPods-qingliu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-qingliu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C28CEC5C40CD549BF302F04 /* Pods-gogo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gogo.release.xcconfig"; path = "Pods/Target Support Files/Pods-gogo/Pods-gogo.release.xcconfig"; sourceTree = "<group>"; };
 		B2D175D84B34404FAC68D418 /* libPods-gogo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-gogo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF0BEDB11F9A3636005275EE /* LoginPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginPage.h; sourceTree = "<group>"; };
@@ -68,13 +65,13 @@
 		CF0BEDD41F9BB96E005275EE /* NewsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsCell.m; sourceTree = "<group>"; };
 		CF0BEDD61F9BB998005275EE /* NewsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsModel.h; sourceTree = "<group>"; };
 		CF0BEDD71F9BB998005275EE /* NewsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsModel.m; sourceTree = "<group>"; };
+		CF0BEDDA1F9BC817005275EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CF7214DE1F6678E4002F3634 /* gogo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gogo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF7214E21F6678E4002F3634 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CF7214E41F6678E4002F3634 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CF7214E51F6678E4002F3634 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		CF7214ED1F6678E4002F3634 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF7214F21F6678E4002F3634 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CF8499201F6FB47900B853EC /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CFCB0F001F7105360087ACC7 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		CFCB0F011F7105360087ACC7 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		CFCB0F021F7105360087ACC7 /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
@@ -120,7 +117,6 @@
 		0B3F5C946CD226272B2A24DA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				23FAAD1760727AC930FAF7F8 /* libPods-qingliu.a */,
 				B2D175D84B34404FAC68D418 /* libPods-gogo.a */,
 			);
 			name = Frameworks;
@@ -129,8 +125,6 @@
 		CEDCAA6EC12CA829DA87D351 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				1FD8C960429512AF84CCDC62 /* Pods-qingliu.debug.xcconfig */,
-				0C9BEAC6459BE0273BFC1E2B /* Pods-qingliu.release.xcconfig */,
 				FC91EBAA0A903D9AA36FDE62 /* Pods-gogo.debug.xcconfig */,
 				4C28CEC5C40CD549BF302F04 /* Pods-gogo.release.xcconfig */,
 			);
@@ -224,7 +218,7 @@
 				CF7214F21F6678E4002F3634 /* Info.plist */,
 				CF7214E21F6678E4002F3634 /* main.m */,
 				CFCBA8021F6FAD2100D7D8B4 /* PrefixHeader.pch */,
-				CF8499201F6FB47900B853EC /* LaunchScreen.storyboard */,
+				CF0BEDDB1F9BC817005275EE /* LaunchScreen.storyboard */,
 				CFCB0F561F7175940087ACC7 /* CombatTeams.plist */,
 				CFCB0F591F7249290087ACC7 /* News.plist */,
 			);
@@ -376,7 +370,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF8499211F6FB47900B853EC /* LaunchScreen.storyboard in Resources */,
+				CF0BEDD91F9BC817005275EE /* LaunchScreen.storyboard in Resources */,
 				CFCB0F5A1F7249290087ACC7 /* News.plist in Resources */,
 				CF7214EE1F6678E4002F3634 /* Assets.xcassets in Resources */,
 				CFCB0F571F7175940087ACC7 /* CombatTeams.plist in Resources */,
@@ -467,6 +461,17 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CF0BEDDB1F9BC817005275EE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CF0BEDDA1F9BC817005275EE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		CF7214F31F6678E4002F3634 /* Debug */ = {
@@ -566,6 +571,7 @@
 			baseConfigurationReference = FC91EBAA0A903D9AA36FDE62 /* Pods-gogo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = AB86U4DT8H;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/gogo/PrefixHeader.pch";
@@ -582,6 +588,7 @@
 			baseConfigurationReference = 4C28CEC5C40CD549BF302F04 /* Pods-gogo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = AB86U4DT8H;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/gogo/PrefixHeader.pch";

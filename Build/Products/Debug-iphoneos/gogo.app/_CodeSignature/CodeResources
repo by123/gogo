@@ -74,7 +74,19 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		qZ8lQRxUlhyG8VS5GErKE8nOFYo=
+		dQlzRcDTsgNe6yKI1AeuFgc8kgE=
+		</data>
+		<key>Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
+		<data>
+		pMtZFM7VD3spuN2LbVseyVE2OuA=
+		</data>
+		<key>Base.lproj/LaunchScreen.storyboardc/Info.plist</key>
+		<data>
+		n2t8gsDpfE6XkhG31p7IQJRxTxU=
+		</data>
+		<key>Base.lproj/LaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib</key>
+		<data>
+		/xRX9afUp8TEboO+1BAP1BD6jgA=
 		</data>
 		<key>CombatTeams.plist</key>
 		<data>
@@ -82,19 +94,35 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		dd6+o8BRGE2IZUNTBZuvF8SU76E=
+		rOeBfkJx5ldWbDbQFuwiSpxKadM=
 		</data>
-		<key>LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
+		<key>LaunchImage-568h@2x.png</key>
 		<data>
-		eRRdt7FoTVxAzbqbxxPO0i54KCU=
+		438dyuSTlw/wGm1gdBMpIxrSCyo=
 		</data>
-		<key>LaunchScreen.storyboardc/Info.plist</key>
+		<key>LaunchImage-700-568h@2x.png</key>
 		<data>
-		n2t8gsDpfE6XkhG31p7IQJRxTxU=
+		438dyuSTlw/wGm1gdBMpIxrSCyo=
 		</data>
-		<key>LaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib</key>
+		<key>LaunchImage-700@2x.png</key>
 		<data>
-		z3YRW0wwZZMRgpqbSweu+Ys/qSw=
+		aL9USMwWmLKfqq+DKXYk5XikMco=
+		</data>
+		<key>LaunchImage-800-667h@2x.png</key>
+		<data>
+		AMbU2YvzTAZNwzwhDYtKwg5xQfQ=
+		</data>
+		<key>LaunchImage-800-Portrait-736h@3x.png</key>
+		<data>
+		OSiVSjecHXCOGHAV0Fe5hL8acgs=
+		</data>
+		<key>LaunchImage.png</key>
+		<data>
+		rj6uztEKBsdhPG0PUZ8xU1eysqY=
+		</data>
+		<key>LaunchImage@2x.png</key>
+		<data>
+		aL9USMwWmLKfqq+DKXYk5XikMco=
 		</data>
 		<key>MJRefresh.bundle/arrow@2x.png</key>
 		<data>
@@ -333,11 +361,44 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			qZ8lQRxUlhyG8VS5GErKE8nOFYo=
+			dQlzRcDTsgNe6yKI1AeuFgc8kgE=
 			</data>
 			<key>hash2</key>
 			<data>
-			Cl2FVQ9hUTrYA/PEM5GkY2StcDzcGfbF8qGj4H98aW4=
+			rc/xiTVhTLkS4Ca2CYrt101fo5EKejV01JBNmUXLQG8=
+			</data>
+		</dict>
+		<key>Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			pMtZFM7VD3spuN2LbVseyVE2OuA=
+			</data>
+			<key>hash2</key>
+			<data>
+			Qjnqc6y670+KW+lfrYWyzZ/A0PqAz+yruV5ZhpT/RrM=
+			</data>
+		</dict>
+		<key>Base.lproj/LaunchScreen.storyboardc/Info.plist</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			n2t8gsDpfE6XkhG31p7IQJRxTxU=
+			</data>
+			<key>hash2</key>
+			<data>
+			HyVdXMU7Ux4/KalAao30mpWOK/lEPT4gvYN09wf31cg=
+			</data>
+		</dict>
+		<key>Base.lproj/LaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			/xRX9afUp8TEboO+1BAP1BD6jgA=
+			</data>
+			<key>hash2</key>
+			<data>
+			fmF5UCTxpiH82PO1VIduKMImAza+0+1Zpv8f+oYMXy4=
 			</data>
 		</dict>
 		<key>CombatTeams.plist</key>
@@ -351,37 +412,81 @@
 			4f8OlHZgu+BDBaHzoLSmFcq+Lj8GPcbkuzDFzzsMyHE=
 			</data>
 		</dict>
-		<key>LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
+		<key>LaunchImage-568h@2x.png</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			eRRdt7FoTVxAzbqbxxPO0i54KCU=
+			438dyuSTlw/wGm1gdBMpIxrSCyo=
 			</data>
 			<key>hash2</key>
 			<data>
-			v2puY3zSDWER7vQeqYd2du4UKx/Syf3k1SY6v60we7w=
+			kUuU4IdAkn0+DUcvQlI079+NjY3kJcnr/FmEfOMA870=
 			</data>
 		</dict>
-		<key>LaunchScreen.storyboardc/Info.plist</key>
+		<key>LaunchImage-700-568h@2x.png</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			n2t8gsDpfE6XkhG31p7IQJRxTxU=
+			438dyuSTlw/wGm1gdBMpIxrSCyo=
 			</data>
 			<key>hash2</key>
 			<data>
-			HyVdXMU7Ux4/KalAao30mpWOK/lEPT4gvYN09wf31cg=
+			kUuU4IdAkn0+DUcvQlI079+NjY3kJcnr/FmEfOMA870=
 			</data>
 		</dict>
-		<key>LaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib</key>
+		<key>LaunchImage-700@2x.png</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			z3YRW0wwZZMRgpqbSweu+Ys/qSw=
+			aL9USMwWmLKfqq+DKXYk5XikMco=
 			</data>
 			<key>hash2</key>
 			<data>
-			ixDye+tikDvblsLYTptyRchYItEtxyBAD/ujKXynjhc=
+			gDH8KKHp8C9wd0spdLlbzC71rx0ApRo3ynzcDNHeM/U=
+			</data>
+		</dict>
+		<key>LaunchImage-800-667h@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			AMbU2YvzTAZNwzwhDYtKwg5xQfQ=
+			</data>
+			<key>hash2</key>
+			<data>
+			1wCvMYfpyWeFCSg9mGef+nhcWs9iZK5r2PQV8r5u18w=
+			</data>
+		</dict>
+		<key>LaunchImage-800-Portrait-736h@3x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			OSiVSjecHXCOGHAV0Fe5hL8acgs=
+			</data>
+			<key>hash2</key>
+			<data>
+			gS+yIqxlAE47f64uaM/kekCNjStjWTXwDc/EUSR/Icw=
+			</data>
+		</dict>
+		<key>LaunchImage.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			rj6uztEKBsdhPG0PUZ8xU1eysqY=
+			</data>
+			<key>hash2</key>
+			<data>
+			EwGVArZOX5fJLfolwPVMM00KSU8M/tBoFLuaqizZ13o=
+			</data>
+		</dict>
+		<key>LaunchImage@2x.png</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			aL9USMwWmLKfqq+DKXYk5XikMco=
+			</data>
+			<key>hash2</key>
+			<data>
+			gDH8KKHp8C9wd0spdLlbzC71rx0ApRo3ynzcDNHeM/U=
 			</data>
 		</dict>
 		<key>MJRefresh.bundle/arrow@2x.png</key>
