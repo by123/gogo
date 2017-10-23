@@ -8,19 +8,25 @@
 
 #import "MainPage.h"
 #import "BySegmentView.h"
+#import "BottomView.h"
+#import "HomeView.h"
+#import "GamePage.h"
+#import "MallPage.h"
+#import "MinePage.h"
 
 
 #define TitleHeight [PUtil getActualHeight:88]
 
-@interface MainPage ()<BySegmentViewDelegate>
+@interface MainPage ()<BottomViewDelegate>
 
 @property (strong, nonatomic) UILabel *mTitleLabel;
+@property (strong, nonatomic) UIView  *mBodyView;
 
 @end
 
 @implementation MainPage
 {
-    NSArray * titleArr;
+    NSArray * titles;
 }
 
 - (void)viewDidLoad {
@@ -29,10 +35,11 @@
 }
 
 -(void)initView{
-    titleArr = @[@"首页",@"赛事",@"商城",@"我的"];
+    titles = @[@"首页",@"赛事",@"商城",@"我的"];
     [self initBar];
     [self initBody];
-
+    [self initBottom];
+    [self goHomePage];
 }
 
 -(void)initBar{
@@ -49,16 +56,66 @@
 }
 
 -(void)initBody{
-    NSArray * controllerNameArray = @[@"HomePage",@"GamePage",@"MallPage",@"MinePage"];
-    CGRect rect =  CGRectMake(0, StatuBarHeight + TitleHeight, ScreenWidth, ScreenHeight - (StatuBarHeight + TitleHeight));
-    BySegmentView * segmentView = [[BySegmentView alloc]initWithFrame:rect andTitleArray:titleArr andShowControllerNameArray:controllerNameArray];
-    segmentView.delegate = self;
-    [self.view addSubview:segmentView];
+    _mBodyView = [[UIView alloc]init];
+    _mBodyView.frame = CGRectMake(0, StatuBarHeight + TitleHeight, ScreenWidth, ScreenHeight - ( StatuBarHeight + TitleHeight + [PUtil getActualHeight:100]));
+    [self.view addSubview:_mBodyView];
+}
+
+-(void)initBottom{
+    BottomView *bottomView = [[BottomView alloc]initWithTitles:titles delegate:self];
+    [self.view addSubview:bottomView];
 }
 
 
--(void)didSelectIndex:(NSInteger)index{
-    _mTitleLabel.text = [titleArr objectAtIndex:index];
+-(void)OnTabSelected:(NSInteger)index{
+    _mTitleLabel.text = [titles objectAtIndex:index];
+    switch (index) {
+        case 0:
+            [self goHomePage];
+            break;
+        case 1:
+            [self goGamePage];
+            break;
+        case 2:
+            [self goMallPage];
+            break;
+        case 3:
+            [self goMinePage];
+            break;
+        default:
+            break;
+    }
+}
+
+
+-(void)removeBodySubView{
+    for(UIView *view in [_mBodyView subviews]){
+        [view removeFromSuperview];
+    }
+}
+
+-(void)goHomePage{
+    [self removeBodySubView];
+    HomeView *homeView = [[HomeView alloc]initWithFrame:CGRectMake(0, 0,ScreenWidth, _mBodyView.mj_h)];
+    [_mBodyView addSubview:homeView];
+}
+
+-(void)goGamePage{
+    [self removeBodySubView];
+    GamePage *gamepage = [[GamePage alloc]init];
+    [_mBodyView addSubview:gamepage.view];
+}
+
+-(void)goMallPage{
+    [self removeBodySubView];
+    MallPage *mallpage = [[MallPage alloc]init];
+    [_mBodyView addSubview:mallpage.view];
+}
+
+-(void)goMinePage{
+    [self removeBodySubView];
+    MinePage *minepage = [[MinePage alloc]init];
+    [_mBodyView addSubview:minepage.view];
 }
 
 

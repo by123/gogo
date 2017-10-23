@@ -20,6 +20,9 @@
 		CF0BEDD51F9BB96E005275EE /* NewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0BEDD41F9BB96E005275EE /* NewsCell.m */; };
 		CF0BEDD81F9BB998005275EE /* NewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0BEDD71F9BB998005275EE /* NewsModel.m */; };
 		CF0BEDD91F9BC817005275EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF0BEDDB1F9BC817005275EE /* LaunchScreen.storyboard */; };
+		CF2EAE551F9D0FC000F35974 /* BottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAE541F9D0FC000F35974 /* BottomView.m */; };
+		CF2EAE611F9E71A400F35974 /* SchedulePage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAE601F9E71A400F35974 /* SchedulePage.m */; };
+		CF2EAE651F9E71D800F35974 /* CorpsPage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAE641F9E71D800F35974 /* CorpsPage.m */; };
 		CF7214E31F6678E4002F3634 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7214E21F6678E4002F3634 /* main.m */; };
 		CF7214E61F6678E4002F3634 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7214E51F6678E4002F3634 /* AppDelegate.m */; };
 		CF7214EE1F6678E4002F3634 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF7214ED1F6678E4002F3634 /* Assets.xcassets */; };
@@ -27,7 +30,7 @@
 		CFCB0F0D1F7105360087ACC7 /* Constant.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB0F031F7105360087ACC7 /* Constant.m */; };
 		CFCB0F0F1F7105360087ACC7 /* ByNetUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB0F0A1F7105360087ACC7 /* ByNetUtil.m */; };
 		CFCB0F151F7106620087ACC7 /* BySegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB0F141F7106620087ACC7 /* BySegmentView.m */; };
-		CFCB0F181F71088F0087ACC7 /* HomePage.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB0F171F71088F0087ACC7 /* HomePage.m */; };
+		CFCB0F181F71088F0087ACC7 /* HomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB0F171F71088F0087ACC7 /* HomeView.m */; };
 		CFCB0F491F711E6F0087ACC7 /* SDCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB0F3C1F711E6F0087ACC7 /* SDCollectionViewCell.m */; };
 		CFCB0F4A1F711E6F0087ACC7 /* SDCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB0F3E1F711E6F0087ACC7 /* SDCycleScrollView.m */; };
 		CFCB0F4B1F711E6F0087ACC7 /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB0F401F711E6F0087ACC7 /* TAAbstractDotView.m */; };
@@ -66,6 +69,13 @@
 		CF0BEDD61F9BB998005275EE /* NewsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsModel.h; sourceTree = "<group>"; };
 		CF0BEDD71F9BB998005275EE /* NewsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsModel.m; sourceTree = "<group>"; };
 		CF0BEDDA1F9BC817005275EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CF2EAE531F9D0FC000F35974 /* BottomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BottomView.h; sourceTree = "<group>"; };
+		CF2EAE541F9D0FC000F35974 /* BottomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BottomView.m; sourceTree = "<group>"; };
+		CF2EAE5F1F9E71A400F35974 /* SchedulePage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SchedulePage.h; sourceTree = "<group>"; };
+		CF2EAE601F9E71A400F35974 /* SchedulePage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SchedulePage.m; sourceTree = "<group>"; };
+		CF2EAE631F9E71D800F35974 /* CorpsPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CorpsPage.h; sourceTree = "<group>"; };
+		CF2EAE641F9E71D800F35974 /* CorpsPage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CorpsPage.m; sourceTree = "<group>"; };
+		CF2EAE661F9E799C00F35974 /* gogo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = gogo.entitlements; sourceTree = "<group>"; };
 		CF7214DE1F6678E4002F3634 /* gogo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gogo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF7214E21F6678E4002F3634 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CF7214E41F6678E4002F3634 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -80,8 +90,8 @@
 		CFCB0F0A1F7105360087ACC7 /* ByNetUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ByNetUtil.m; sourceTree = "<group>"; };
 		CFCB0F131F7106620087ACC7 /* BySegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BySegmentView.h; sourceTree = "<group>"; };
 		CFCB0F141F7106620087ACC7 /* BySegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BySegmentView.m; sourceTree = "<group>"; };
-		CFCB0F161F71088F0087ACC7 /* HomePage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePage.h; sourceTree = "<group>"; };
-		CFCB0F171F71088F0087ACC7 /* HomePage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePage.m; sourceTree = "<group>"; };
+		CFCB0F161F71088F0087ACC7 /* HomeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeView.h; sourceTree = "<group>"; };
+		CFCB0F171F71088F0087ACC7 /* HomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeView.m; sourceTree = "<group>"; };
 		CFCB0F3B1F711E6F0087ACC7 /* SDCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCollectionViewCell.h; sourceTree = "<group>"; };
 		CFCB0F3C1F711E6F0087ACC7 /* SDCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCollectionViewCell.m; sourceTree = "<group>"; };
 		CFCB0F3D1F711E6F0087ACC7 /* SDCycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDCycleScrollView.h; sourceTree = "<group>"; };
@@ -143,8 +153,8 @@
 		CF0BEDC61F9BA8FD005275EE /* home */ = {
 			isa = PBXGroup;
 			children = (
-				CFCB0F161F71088F0087ACC7 /* HomePage.h */,
-				CFCB0F171F71088F0087ACC7 /* HomePage.m */,
+				CFCB0F161F71088F0087ACC7 /* HomeView.h */,
+				CFCB0F171F71088F0087ACC7 /* HomeView.m */,
 				CF0BEDD31F9BB96E005275EE /* NewsCell.h */,
 				CF0BEDD41F9BB96E005275EE /* NewsCell.m */,
 			);
@@ -154,6 +164,8 @@
 		CF0BEDC71F9BB856005275EE /* game */ = {
 			isa = PBXGroup;
 			children = (
+				CF2EAE621F9E71C100F35974 /* corps */,
+				CF2EAE5E1F9E719100F35974 /* schedule */,
 				CF0BEDC81F9BB862005275EE /* GamePage.h */,
 				CF0BEDC91F9BB862005275EE /* GamePage.m */,
 			);
@@ -178,6 +190,24 @@
 			name = mine;
 			sourceTree = "<group>";
 		};
+		CF2EAE5E1F9E719100F35974 /* schedule */ = {
+			isa = PBXGroup;
+			children = (
+				CF2EAE5F1F9E71A400F35974 /* SchedulePage.h */,
+				CF2EAE601F9E71A400F35974 /* SchedulePage.m */,
+			);
+			name = schedule;
+			sourceTree = "<group>";
+		};
+		CF2EAE621F9E71C100F35974 /* corps */ = {
+			isa = PBXGroup;
+			children = (
+				CF2EAE631F9E71D800F35974 /* CorpsPage.h */,
+				CF2EAE641F9E71D800F35974 /* CorpsPage.m */,
+			);
+			name = corps;
+			sourceTree = "<group>";
+		};
 		CF7214D51F6678E4002F3634 = {
 			isa = PBXGroup;
 			children = (
@@ -199,6 +229,7 @@
 		CF7214E01F6678E4002F3634 /* gogo */ = {
 			isa = PBXGroup;
 			children = (
+				CF2EAE661F9E799C00F35974 /* gogo.entitlements */,
 				CFCB0EFF1F7105360087ACC7 /* global */,
 				CFCB0F041F7105360087ACC7 /* model */,
 				CFCB0F051F7105360087ACC7 /* page */,
@@ -283,6 +314,8 @@
 				CFCB0F3A1F711E6F0087ACC7 /* SDCycleScrollView */,
 				CFCB0F131F7106620087ACC7 /* BySegmentView.h */,
 				CFCB0F141F7106620087ACC7 /* BySegmentView.m */,
+				CF2EAE531F9D0FC000F35974 /* BottomView.h */,
+				CF2EAE541F9D0FC000F35974 /* BottomView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -337,13 +370,18 @@
 		CF7214D61F6678E4002F3634 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = by.huang;
 				TargetAttributes = {
 					CF7214DD1F6678E4002F3634 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = AB86U4DT8H;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -441,13 +479,15 @@
 				CF0BEDD21F9BB8AF005275EE /* MinePage.m in Sources */,
 				CF0BEDB31F9A3636005275EE /* LoginPage.m in Sources */,
 				CF0BEDCA1F9BB862005275EE /* GamePage.m in Sources */,
+				CF2EAE611F9E71A400F35974 /* SchedulePage.m in Sources */,
+				CF2EAE651F9E71D800F35974 /* CorpsPage.m in Sources */,
 				CFCB0F0F1F7105360087ACC7 /* ByNetUtil.m in Sources */,
 				CF0BEDC21F9B4780005275EE /* Account.m in Sources */,
 				CF0BEDBC1F9B4378005275EE /* AccountManager.m in Sources */,
 				CFCB0F4C1F711E6F0087ACC7 /* TAAnimatedDotView.m in Sources */,
 				CF0BEDB91F9B2F78005275EE /* PUtil.m in Sources */,
 				CFCB0F491F711E6F0087ACC7 /* SDCollectionViewCell.m in Sources */,
-				CFCB0F181F71088F0087ACC7 /* HomePage.m in Sources */,
+				CFCB0F181F71088F0087ACC7 /* HomeView.m in Sources */,
 				CFCB0F0C1F7105360087ACC7 /* BaseViewController.m in Sources */,
 				CFCB0F151F7106620087ACC7 /* BySegmentView.m in Sources */,
 				CF7214E31F6678E4002F3634 /* main.m in Sources */,
@@ -455,6 +495,7 @@
 				CF0BEDC51F9BA8EE005275EE /* MainPage.m in Sources */,
 				CFCB0F0D1F7105360087ACC7 /* Constant.m in Sources */,
 				CFCB0F4E1F711E6F0087ACC7 /* TAPageControl.m in Sources */,
+				CF2EAE551F9D0FC000F35974 /* BottomView.m in Sources */,
 				CFCB0F4F1F711E6F0087ACC7 /* UIView+SDExtension.m in Sources */,
 				CF0BEDB61F9A3759005275EE /* ColorUtil.m in Sources */,
 			);
@@ -484,7 +525,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -492,7 +535,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -533,7 +580,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -541,7 +590,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -572,6 +625,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = gogo/gogo.entitlements;
 				DEVELOPMENT_TEAM = AB86U4DT8H;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/gogo/PrefixHeader.pch";
@@ -589,6 +643,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = gogo/gogo.entitlements;
 				DEVELOPMENT_TEAM = AB86U4DT8H;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/gogo/PrefixHeader.pch";

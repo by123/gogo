@@ -31,7 +31,6 @@
 
 -(void)initView{
     self.contentView.backgroundColor = c06_backgroud;
-    self.contentView.frame = CGRectMake(0, 0, ScreenWidth, [PUtil getActualHeight:172]);
     
     _mTitleLabel = [[UILabel alloc]init];
     _mTitleLabel.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualHeight:24], [PUtil getActualWidth:486], [PUtil getActualHeight:84]);

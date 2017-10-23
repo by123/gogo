@@ -7,6 +7,7 @@
 //
 
 #import "GamePage.h"
+#import "BySegmentView.h"
 
 @interface GamePage ()
 
@@ -16,22 +17,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self initView];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)initView{
+    [self initTab];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)initTab{
+    
+    BySegmentView *segmentView = [[BySegmentView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - (StatuBarHeight + [PUtil getActualHeight:188])) andTitleArray:@[@"赛事安排", @"战队介绍"] andShowControllerNameArray:@[@"SchedulePage",@"CorpsPage"]];
+    [self.view addSubview:segmentView];
 }
-*/
+
+
 
 @end

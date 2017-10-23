@@ -74,11 +74,11 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		dQlzRcDTsgNe6yKI1AeuFgc8kgE=
+		qPPDm8oop0fGU7J/ghGjni4AANY=
 		</data>
 		<key>Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<data>
-		pMtZFM7VD3spuN2LbVseyVE2OuA=
+		ftTZE94PMkaTAfbDaMCJQpKufYM=
 		</data>
 		<key>Base.lproj/LaunchScreen.storyboardc/Info.plist</key>
 		<data>
@@ -86,7 +86,7 @@
 		</data>
 		<key>Base.lproj/LaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib</key>
 		<data>
-		/xRX9afUp8TEboO+1BAP1BD6jgA=
+		v9+42W+fSqe17CR0RM/g6ZnZNmc=
 		</data>
 		<key>CombatTeams.plist</key>
 		<data>
@@ -361,22 +361,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			dQlzRcDTsgNe6yKI1AeuFgc8kgE=
+			qPPDm8oop0fGU7J/ghGjni4AANY=
 			</data>
 			<key>hash2</key>
 			<data>
-			rc/xiTVhTLkS4Ca2CYrt101fo5EKejV01JBNmUXLQG8=
+			eWte3yOaa7Vm6/deOXjD8SQRZrP7S3AC0Y7zJT3US/M=
 			</data>
 		</dict>
 		<key>Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			pMtZFM7VD3spuN2LbVseyVE2OuA=
+			ftTZE94PMkaTAfbDaMCJQpKufYM=
 			</data>
 			<key>hash2</key>
 			<data>
-			Qjnqc6y670+KW+lfrYWyzZ/A0PqAz+yruV5ZhpT/RrM=
+			+I3/6k+KRqEhD+Pbdr7UyxmNrO+gBZKVeLyAe6DScZY=
 			</data>
 		</dict>
 		<key>Base.lproj/LaunchScreen.storyboardc/Info.plist</key>
@@ -394,11 +394,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			/xRX9afUp8TEboO+1BAP1BD6jgA=
+			v9+42W+fSqe17CR0RM/g6ZnZNmc=
 			</data>
 			<key>hash2</key>
 			<data>
-			fmF5UCTxpiH82PO1VIduKMImAza+0+1Zpv8f+oYMXy4=
+			xDyrBR8gs9ThJmWTFnNlcdd2w5UIO5o/i0fbnm1gqZE=
 			</data>
 		</dict>
 		<key>CombatTeams.plist</key>

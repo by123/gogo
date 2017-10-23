@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 #import "LoginPage.h"
 #import "MainPage.h"
-#import "HomePage.h"
 
 @interface AppDelegate ()
 
@@ -22,7 +21,6 @@
     self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
     MainPage *page = [[MainPage alloc]init];
     UINavigationController *controller = [[UINavigationController alloc]initWithRootViewController:page];
-    self.window.backgroundColor = [UIColor whiteColor];
     self.window.rootViewController = controller;
     [self.window makeKeyAndVisible];
     return YES;

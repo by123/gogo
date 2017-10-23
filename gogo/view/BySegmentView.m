@@ -25,6 +25,7 @@
     NSInteger _countItem; //item总数
     int ItemWidth;
     int TabHeight;
+    UIView *_lineView;
 }
 
 - (void)initializeData{
@@ -34,7 +35,7 @@
 -(instancetype)initWithFrame:(CGRect)frame andTitleArray:(NSArray *)titleArray andShowControllerNameArray:(NSArray *)showControllerArray
 {
  
-    TabHeight = [PUtil getActualHeight:100];
+    TabHeight = [PUtil getActualHeight:88];
     ItemWidth = ([titleArray count] > 5) ? ScreenWidth / 5 : ScreenWidth / [titleArray count];
     self = [super initWithFrame:frame];
     if (self) {
@@ -43,7 +44,7 @@
         
         _countItem = [titleArray count];
         
-        _normalBgView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, frame.size.height - TabHeight, ScreenWidth, TabHeight)];
+        _normalBgView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, TabHeight)];
         _normalBgView.delegate = self;
         [_normalBgView setBackgroundColor:c07_bar];
         [self createLabelWith:LabelNormalColor andTitle:titleArray addToView:_normalBgView];
@@ -72,7 +73,7 @@
         [_showContentLabelView addSubview:_selectedBgView];
         [self createLabelWith:LabelSelectedColor andTitle:titleArray addToView:_selectedBgView];
         
-        _scrollViewMain = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, frame.size.height-TabHeight)];
+        _scrollViewMain = [[UIScrollView alloc]initWithFrame:CGRectMake(0, TabHeight, ScreenWidth, frame.size.height-TabHeight)];
         _scrollViewMain.showsVerticalScrollIndicator = NO;
         _scrollViewMain.showsHorizontalScrollIndicator = NO;
         [_scrollViewMain setBackgroundColor:[UIColor clearColor]];
@@ -81,6 +82,10 @@
         _scrollViewMain.delegate = self;
         [_scrollViewMain setBounces:NO];
         [self addSubview:_scrollViewMain];
+        
+        _lineView = [[UIView alloc]initWithFrame:CGRectMake((ScreenWidth/2 - [PUtil getActualWidth:120])/2, [PUtil getActualHeight:82], [PUtil getActualWidth:120], [PUtil getActualHeight:6])];
+        _lineView.backgroundColor = c01_blue;
+        [_showContentLabelView addSubview:_lineView];
         
         for (int i = 0; i < [showControllerArray count]; i++) {
             

@@ -6,41 +6,45 @@
 //  Copyright © 2017年 by.huang. All rights reserved.
 //
 
-#import "HomePage.h"
+#import "HomeView.h"
 #import "NewsCell.h"
 
 
 #define AdViewHeight [PUtil getActualHeight:300]
 #define AdInterval 3.0f
 
-@interface HomePage ()
+@interface HomeView ()
 
 @property (strong, nonatomic) UIScrollView *scrollerView;
 @property (strong, nonatomic) UITableView *tableView;
 
 @end
 
-@implementation HomePage
+@implementation HomeView
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    [self initView];
+
+
+-(instancetype)initWithFrame:(CGRect)frame{
+    if(self == [super initWithFrame:frame]){
+        [self initView];
+    }
+    return self;
 }
 
 
 -(void)initView{
    
     _scrollerView = [[UIScrollView alloc]init];
-    _scrollerView.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight - (StatuBarHeight + [PUtil getActualHeight:188]));
+    _scrollerView.frame = CGRectMake(0, 0, ScreenWidth, self.frame.size.height);
     _scrollerView.showsVerticalScrollIndicator = NO;
     _scrollerView.showsHorizontalScrollIndicator = NO;
     _scrollerView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(uploadMore)];
     
-    _scrollerView.contentSize = CGSizeMake(ScreenWidth, 3000);
+    _scrollerView.contentSize = CGSizeMake(ScreenWidth, [PUtil getActualHeight:172] * 10 + AdViewHeight);
     MJRefreshStateHeader *header = [MJRefreshStateHeader headerWithRefreshingTarget:self refreshingAction:@selector(uploadNew)];
     header.lastUpdatedTimeLabel.hidden = YES;
     _scrollerView.mj_header = header;
-    [self.view addSubview:_scrollerView];
+    [self addSubview:_scrollerView];
     
     NSArray *images = @[@"http://game.gtimg.cn/images/yxzj/match/img1.jpg",
                         @"http://game.gtimg.cn/images/yxzj/match/kcc/kcc.jpg",
@@ -54,7 +58,7 @@
     [_scrollerView addSubview:cycleScrollView];
     
     _tableView = [[UITableView alloc]init];
-    _tableView.frame = CGRectMake(0, AdViewHeight, ScreenWidth, 500);
+    _tableView.frame = CGRectMake(0, AdViewHeight, ScreenWidth, [PUtil getActualHeight:172] * 10);
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.backgroundColor = c06_backgroud;
@@ -88,6 +92,11 @@
 }
 
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    //todo
+}
+
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     NewsCell *cell =  [tableView dequeueReusableCellWithIdentifier:[NewsCell identify]];
@@ -102,7 +111,6 @@
 
 -(void)uploadNew
 {
-    _tableView;
     [_scrollerView.mj_header endRefreshing];
     [_scrollerView.mj_footer endRefreshing];
 //    CURRENT = 0;

@@ -8,6 +8,4 @@ dependencies: \
   /Users/by.huang/Desktop/其他项目/gogo/gogo/AppDelegate.h \
   /Users/by.huang/Desktop/其他项目/gogo/gogo/page/LoginPage.h \
   /Users/by.huang/Desktop/其他项目/gogo/gogo/global/BaseViewController.h \
-  /Users/by.huang/Desktop/其他项目/gogo/gogo/page/MainPage.h \
-  /Users/by.huang/Desktop/其他项目/gogo/gogo/page/HomePage.h \
-  /Users/by.huang/Desktop/其他项目/gogo/gogo/view/SDCycleScrollView/SDCycleScrollView.h
+  /Users/by.huang/Desktop/其他项目/gogo/gogo/page/MainPage.h
