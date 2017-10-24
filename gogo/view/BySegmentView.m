@@ -90,9 +90,9 @@
         for (int i = 0; i < [showControllerArray count]; i++) {
             
             Class someClass = NSClassFromString(showControllerArray[i]);
-            UIViewController * obj = [[someClass alloc] init];
-            [obj.view setFrame:CGRectMake(i * ScreenWidth, 0, ScreenWidth, CGRectGetHeight(_scrollViewMain.frame))];
-            [_scrollViewMain addSubview:obj.view];
+            UIView * obj = [[someClass alloc] init];
+            [obj setFrame:CGRectMake(i * ScreenWidth, 0, ScreenWidth, CGRectGetHeight(_scrollViewMain.frame))];
+            [_scrollViewMain addSubview:obj];
             
         }
         

@@ -26,7 +26,7 @@
 
 -(void)initTab{
     
-    BySegmentView *segmentView = [[BySegmentView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - (StatuBarHeight + [PUtil getActualHeight:188])) andTitleArray:@[@"赛事安排", @"战队介绍"] andShowControllerNameArray:@[@"SchedulePage",@"CorpsPage"]];
+    BySegmentView *segmentView = [[BySegmentView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - (StatuBarHeight + [PUtil getActualHeight:188])) andTitleArray:@[@"赛事安排", @"战队介绍"] andShowControllerNameArray:@[@"ScheduleView",@"CorpsView"]];
     [self.view addSubview:segmentView];
 }
 

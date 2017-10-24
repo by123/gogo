@@ -26,4 +26,5 @@
 
 -(instancetype)initWithFrame:(CGRect)frame andTitleArray:(NSArray *)titleArray andShowControllerNameArray:(NSArray *)showControllerArray;
 
+
 @end

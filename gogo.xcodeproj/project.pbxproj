@@ -21,8 +21,12 @@
 		CF0BEDD81F9BB998005275EE /* NewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0BEDD71F9BB998005275EE /* NewsModel.m */; };
 		CF0BEDD91F9BC817005275EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF0BEDDB1F9BC817005275EE /* LaunchScreen.storyboard */; };
 		CF2EAE551F9D0FC000F35974 /* BottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAE541F9D0FC000F35974 /* BottomView.m */; };
-		CF2EAE611F9E71A400F35974 /* SchedulePage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAE601F9E71A400F35974 /* SchedulePage.m */; };
-		CF2EAE651F9E71D800F35974 /* CorpsPage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAE641F9E71D800F35974 /* CorpsPage.m */; };
+		CF2EAE611F9E71A400F35974 /* ScheduleView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAE601F9E71A400F35974 /* ScheduleView.m */; };
+		CF2EAE651F9E71D800F35974 /* CorpsView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAE641F9E71D800F35974 /* CorpsView.m */; };
+		CF2EAE6D1F9FC44300F35974 /* ScheduleTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAE6C1F9FC44300F35974 /* ScheduleTitleCell.m */; };
+		CF2EAE701F9FC45300F35974 /* ScheduleContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAE6F1F9FC45300F35974 /* ScheduleContentCell.m */; };
+		CF2EAE731F9FC47600F35974 /* ScheduleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAE721F9FC47600F35974 /* ScheduleModel.m */; };
+		CF2EAE761F9FC7C800F35974 /* ContentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAE751F9FC7C800F35974 /* ContentModel.m */; };
 		CF7214E31F6678E4002F3634 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7214E21F6678E4002F3634 /* main.m */; };
 		CF7214E61F6678E4002F3634 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7214E51F6678E4002F3634 /* AppDelegate.m */; };
 		CF7214EE1F6678E4002F3634 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF7214ED1F6678E4002F3634 /* Assets.xcassets */; };
@@ -71,11 +75,19 @@
 		CF0BEDDA1F9BC817005275EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CF2EAE531F9D0FC000F35974 /* BottomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BottomView.h; sourceTree = "<group>"; };
 		CF2EAE541F9D0FC000F35974 /* BottomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BottomView.m; sourceTree = "<group>"; };
-		CF2EAE5F1F9E71A400F35974 /* SchedulePage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SchedulePage.h; sourceTree = "<group>"; };
-		CF2EAE601F9E71A400F35974 /* SchedulePage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SchedulePage.m; sourceTree = "<group>"; };
-		CF2EAE631F9E71D800F35974 /* CorpsPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CorpsPage.h; sourceTree = "<group>"; };
-		CF2EAE641F9E71D800F35974 /* CorpsPage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CorpsPage.m; sourceTree = "<group>"; };
+		CF2EAE5F1F9E71A400F35974 /* ScheduleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleView.h; sourceTree = "<group>"; };
+		CF2EAE601F9E71A400F35974 /* ScheduleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScheduleView.m; sourceTree = "<group>"; };
+		CF2EAE631F9E71D800F35974 /* CorpsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CorpsView.h; sourceTree = "<group>"; };
+		CF2EAE641F9E71D800F35974 /* CorpsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CorpsView.m; sourceTree = "<group>"; };
 		CF2EAE661F9E799C00F35974 /* gogo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = gogo.entitlements; sourceTree = "<group>"; };
+		CF2EAE6B1F9FC44300F35974 /* ScheduleTitleCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleTitleCell.h; sourceTree = "<group>"; };
+		CF2EAE6C1F9FC44300F35974 /* ScheduleTitleCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScheduleTitleCell.m; sourceTree = "<group>"; };
+		CF2EAE6E1F9FC45300F35974 /* ScheduleContentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleContentCell.h; sourceTree = "<group>"; };
+		CF2EAE6F1F9FC45300F35974 /* ScheduleContentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScheduleContentCell.m; sourceTree = "<group>"; };
+		CF2EAE711F9FC47600F35974 /* ScheduleModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleModel.h; sourceTree = "<group>"; };
+		CF2EAE721F9FC47600F35974 /* ScheduleModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScheduleModel.m; sourceTree = "<group>"; };
+		CF2EAE741F9FC7C800F35974 /* ContentModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContentModel.h; sourceTree = "<group>"; };
+		CF2EAE751F9FC7C800F35974 /* ContentModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContentModel.m; sourceTree = "<group>"; };
 		CF7214DE1F6678E4002F3634 /* gogo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gogo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF7214E21F6678E4002F3634 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CF7214E41F6678E4002F3634 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -193,8 +205,12 @@
 		CF2EAE5E1F9E719100F35974 /* schedule */ = {
 			isa = PBXGroup;
 			children = (
-				CF2EAE5F1F9E71A400F35974 /* SchedulePage.h */,
-				CF2EAE601F9E71A400F35974 /* SchedulePage.m */,
+				CF2EAE5F1F9E71A400F35974 /* ScheduleView.h */,
+				CF2EAE601F9E71A400F35974 /* ScheduleView.m */,
+				CF2EAE6B1F9FC44300F35974 /* ScheduleTitleCell.h */,
+				CF2EAE6C1F9FC44300F35974 /* ScheduleTitleCell.m */,
+				CF2EAE6E1F9FC45300F35974 /* ScheduleContentCell.h */,
+				CF2EAE6F1F9FC45300F35974 /* ScheduleContentCell.m */,
 			);
 			name = schedule;
 			sourceTree = "<group>";
@@ -202,8 +218,8 @@
 		CF2EAE621F9E71C100F35974 /* corps */ = {
 			isa = PBXGroup;
 			children = (
-				CF2EAE631F9E71D800F35974 /* CorpsPage.h */,
-				CF2EAE641F9E71D800F35974 /* CorpsPage.m */,
+				CF2EAE631F9E71D800F35974 /* CorpsView.h */,
+				CF2EAE641F9E71D800F35974 /* CorpsView.m */,
 			);
 			name = corps;
 			sourceTree = "<group>";
@@ -276,6 +292,10 @@
 				CF0BEDC11F9B4780005275EE /* Account.m */,
 				CF0BEDD61F9BB998005275EE /* NewsModel.h */,
 				CF0BEDD71F9BB998005275EE /* NewsModel.m */,
+				CF2EAE711F9FC47600F35974 /* ScheduleModel.h */,
+				CF2EAE721F9FC47600F35974 /* ScheduleModel.m */,
+				CF2EAE741F9FC7C800F35974 /* ContentModel.h */,
+				CF2EAE751F9FC7C800F35974 /* ContentModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -471,6 +491,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFCB0F4B1F711E6F0087ACC7 /* TAAbstractDotView.m in Sources */,
+				CF2EAE731F9FC47600F35974 /* ScheduleModel.m in Sources */,
 				CFCB0F4A1F711E6F0087ACC7 /* SDCycleScrollView.m in Sources */,
 				CF0BEDD51F9BB96E005275EE /* NewsCell.m in Sources */,
 				CF0BEDCE1F9BB880005275EE /* MallPage.m in Sources */,
@@ -479,15 +500,18 @@
 				CF0BEDD21F9BB8AF005275EE /* MinePage.m in Sources */,
 				CF0BEDB31F9A3636005275EE /* LoginPage.m in Sources */,
 				CF0BEDCA1F9BB862005275EE /* GamePage.m in Sources */,
-				CF2EAE611F9E71A400F35974 /* SchedulePage.m in Sources */,
-				CF2EAE651F9E71D800F35974 /* CorpsPage.m in Sources */,
+				CF2EAE611F9E71A400F35974 /* ScheduleView.m in Sources */,
+				CF2EAE651F9E71D800F35974 /* CorpsView.m in Sources */,
 				CFCB0F0F1F7105360087ACC7 /* ByNetUtil.m in Sources */,
 				CF0BEDC21F9B4780005275EE /* Account.m in Sources */,
 				CF0BEDBC1F9B4378005275EE /* AccountManager.m in Sources */,
 				CFCB0F4C1F711E6F0087ACC7 /* TAAnimatedDotView.m in Sources */,
 				CF0BEDB91F9B2F78005275EE /* PUtil.m in Sources */,
+				CF2EAE701F9FC45300F35974 /* ScheduleContentCell.m in Sources */,
 				CFCB0F491F711E6F0087ACC7 /* SDCollectionViewCell.m in Sources */,
+				CF2EAE6D1F9FC44300F35974 /* ScheduleTitleCell.m in Sources */,
 				CFCB0F181F71088F0087ACC7 /* HomeView.m in Sources */,
+				CF2EAE761F9FC7C800F35974 /* ContentModel.m in Sources */,
 				CFCB0F0C1F7105360087ACC7 /* BaseViewController.m in Sources */,
 				CFCB0F151F7106620087ACC7 /* BySegmentView.m in Sources */,
 				CF7214E31F6678E4002F3634 /* main.m in Sources */,

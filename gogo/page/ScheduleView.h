@@ -1,5 +1,5 @@
 //
-//  CorpsPage.h
+//  SchedulePage.h
 //  gogo
 //
 //  Created by by.huang on 2017/10/24.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CorpsPage : UIViewController
+@interface ScheduleView : UIView
 
 @end
