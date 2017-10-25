@@ -27,7 +27,7 @@
     
     self.contentView.backgroundColor = c06_backgroud;
     _mTitleLabel = [[UILabel alloc]init];
-    _mTitleLabel.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualHeight:24], ScreenWidth, [PUtil getActualHeight:84]);
+    _mTitleLabel.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualHeight:30], ScreenWidth, [PUtil getActualHeight:40]);
     _mTitleLabel.textColor = c09_tips;
     _mTitleLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:30]];
     _mTitleLabel.numberOfLines = 0;
