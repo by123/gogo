@@ -93,8 +93,9 @@
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-
-    //todo
+    if(_handleDelegate){
+        [_handleDelegate goNewsDetailPage:1L];
+    }
 }
 
 

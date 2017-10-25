@@ -43,6 +43,9 @@
     }
 }
 
+-(void)pushPage:(BaseViewController *)targetPage{
+    [self.navigationController pushViewController:targetPage animated:YES];
+}
 
 
 

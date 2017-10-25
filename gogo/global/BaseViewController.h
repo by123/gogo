@@ -15,4 +15,6 @@
 
 -(void)setStatuBarBackgroud : (UIColor *)color;
 
+-(void)pushPage : (BaseViewController *)targetPage;
+
 @end

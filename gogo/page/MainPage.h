@@ -8,6 +8,14 @@
 
 #import "BaseViewController.h"
 
+@protocol MainHandleDelegate <NSObject>
+
+@optional -(void)goNewsDetailPage : (long)nid;
+
+@end
+
 @interface MainPage : BaseViewController
+
+@property (strong, nonatomic) id<MainHandleDelegate> handleDelegate;
 
 @end

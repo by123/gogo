@@ -13,11 +13,12 @@
 #import "GamePage.h"
 #import "MallPage.h"
 #import "MinePage.h"
+#import "NewsDetailPage.h"
 
 
 #define TitleHeight [PUtil getActualHeight:88]
 
-@interface MainPage ()<BottomViewDelegate>
+@interface MainPage ()<BottomViewDelegate,MainHandleDelegate>
 
 @property (strong, nonatomic) UILabel *mTitleLabel;
 @property (strong, nonatomic) UIView  *mBodyView;
@@ -39,7 +40,7 @@
     [self initBar];
     [self initBody];
     [self initBottom];
-    [self goHomePage];
+    [self addHomePage];
 }
 
 -(void)initBar{
@@ -71,16 +72,16 @@
     _mTitleLabel.text = [titles objectAtIndex:index];
     switch (index) {
         case 0:
-            [self goHomePage];
+            [self addHomePage];
             break;
         case 1:
-            [self goGamePage];
+            [self addGamePage];
             break;
         case 2:
-            [self goMallPage];
+            [self addMallPage];
             break;
         case 3:
-            [self goMinePage];
+            [self addMinePage];
             break;
         default:
             break;
@@ -88,36 +89,48 @@
 }
 
 
+#pragma mark 移除所有UI
 -(void)removeBodySubView{
     for(UIView *view in [_mBodyView subviews]){
         [view removeFromSuperview];
     }
 }
 
--(void)goHomePage{
+#pragma mark 添加首页
+-(void)addHomePage{
     [self removeBodySubView];
     HomeView *homeView = [[HomeView alloc]initWithFrame:CGRectMake(0, 0,ScreenWidth, _mBodyView.mj_h)];
+    homeView.handleDelegate = self;
     [_mBodyView addSubview:homeView];
 }
 
--(void)goGamePage{
+#pragma mark 添加赛事
+-(void)addGamePage{
     [self removeBodySubView];
     GamePage *gamepage = [[GamePage alloc]init];
     [_mBodyView addSubview:gamepage.view];
 }
 
--(void)goMallPage{
+#pragma mark 添加商城
+-(void)addMallPage{
     [self removeBodySubView];
     MallPage *mallpage = [[MallPage alloc]init];
     [_mBodyView addSubview:mallpage.view];
 }
 
--(void)goMinePage{
+#pragma mark 添加我的
+-(void)addMinePage{
     [self removeBodySubView];
     MinePage *minepage = [[MinePage alloc]init];
     [_mBodyView addSubview:minepage.view];
 }
 
+
+#pragma mark 跳转到新闻详细页
+-(void)goNewsDetailPage:(long)nid{
+    NewsDetailPage *page = [[NewsDetailPage alloc]init];
+    [self pushPage:page];
+}
 
 
 @end
