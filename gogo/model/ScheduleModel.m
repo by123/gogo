@@ -23,6 +23,7 @@
     m1.time = @"19:30";
     m1.a = @"XQ";
     m1.b = @"GK";
+    m1.needLine = YES;
     s2.type = Content;
     s2.contentModel = m1;
     [resultModel addObject:s2];
@@ -32,6 +33,7 @@
     m2.time = @"21:30";
     m2.a = @"AS仙阁";
     m2.b = @"AG超会玩";
+    m2.needLine = NO;
     s3.type = Content;
     s3.contentModel = m2;
     [resultModel addObject:s3];

@@ -27,6 +27,8 @@
 		CF2EAE701F9FC45300F35974 /* ScheduleContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAE6F1F9FC45300F35974 /* ScheduleContentCell.m */; };
 		CF2EAE731F9FC47600F35974 /* ScheduleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAE721F9FC47600F35974 /* ScheduleModel.m */; };
 		CF2EAE761F9FC7C800F35974 /* ContentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAE751F9FC7C800F35974 /* ContentModel.m */; };
+		CF2EAE7A1FA0D8F500F35974 /* CorpsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAE791FA0D8F500F35974 /* CorpsModel.m */; };
+		CF2EAE7D1FA0DA4900F35974 /* CorpsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAE7C1FA0DA4900F35974 /* CorpsCell.m */; };
 		CF7214E31F6678E4002F3634 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7214E21F6678E4002F3634 /* main.m */; };
 		CF7214E61F6678E4002F3634 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7214E51F6678E4002F3634 /* AppDelegate.m */; };
 		CF7214EE1F6678E4002F3634 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF7214ED1F6678E4002F3634 /* Assets.xcassets */; };
@@ -88,6 +90,10 @@
 		CF2EAE721F9FC47600F35974 /* ScheduleModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScheduleModel.m; sourceTree = "<group>"; };
 		CF2EAE741F9FC7C800F35974 /* ContentModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContentModel.h; sourceTree = "<group>"; };
 		CF2EAE751F9FC7C800F35974 /* ContentModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContentModel.m; sourceTree = "<group>"; };
+		CF2EAE781FA0D8F500F35974 /* CorpsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CorpsModel.h; sourceTree = "<group>"; };
+		CF2EAE791FA0D8F500F35974 /* CorpsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CorpsModel.m; sourceTree = "<group>"; };
+		CF2EAE7B1FA0DA4900F35974 /* CorpsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CorpsCell.h; sourceTree = "<group>"; };
+		CF2EAE7C1FA0DA4900F35974 /* CorpsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CorpsCell.m; sourceTree = "<group>"; };
 		CF7214DE1F6678E4002F3634 /* gogo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gogo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF7214E21F6678E4002F3634 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CF7214E41F6678E4002F3634 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -220,6 +226,8 @@
 			children = (
 				CF2EAE631F9E71D800F35974 /* CorpsView.h */,
 				CF2EAE641F9E71D800F35974 /* CorpsView.m */,
+				CF2EAE7B1FA0DA4900F35974 /* CorpsCell.h */,
+				CF2EAE7C1FA0DA4900F35974 /* CorpsCell.m */,
 			);
 			name = corps;
 			sourceTree = "<group>";
@@ -296,6 +304,8 @@
 				CF2EAE721F9FC47600F35974 /* ScheduleModel.m */,
 				CF2EAE741F9FC7C800F35974 /* ContentModel.h */,
 				CF2EAE751F9FC7C800F35974 /* ContentModel.m */,
+				CF2EAE781FA0D8F500F35974 /* CorpsModel.h */,
+				CF2EAE791FA0D8F500F35974 /* CorpsModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -497,10 +507,12 @@
 				CF0BEDCE1F9BB880005275EE /* MallPage.m in Sources */,
 				CF7214E61F6678E4002F3634 /* AppDelegate.m in Sources */,
 				CF0BEDD81F9BB998005275EE /* NewsModel.m in Sources */,
+				CF2EAE7D1FA0DA4900F35974 /* CorpsCell.m in Sources */,
 				CF0BEDD21F9BB8AF005275EE /* MinePage.m in Sources */,
 				CF0BEDB31F9A3636005275EE /* LoginPage.m in Sources */,
 				CF0BEDCA1F9BB862005275EE /* GamePage.m in Sources */,
 				CF2EAE611F9E71A400F35974 /* ScheduleView.m in Sources */,
+				CF2EAE7A1FA0D8F500F35974 /* CorpsModel.m in Sources */,
 				CF2EAE651F9E71D800F35974 /* CorpsView.m in Sources */,
 				CFCB0F0F1F7105360087ACC7 /* ByNetUtil.m in Sources */,
 				CF0BEDC21F9B4780005275EE /* Account.m in Sources */,

@@ -16,4 +16,6 @@
 
 @property (copy , nonatomic) NSString *time;
 
+@property (assign, nonatomic) Boolean needLine;
+
 @end

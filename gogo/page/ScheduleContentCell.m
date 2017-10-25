@@ -20,6 +20,8 @@
 
 @property (strong, nonatomic) UIButton *guessBtn;
 
+@property (strong, nonatomic) UIView *lineView;
+
 @end
 
 @implementation ScheduleContentCell
@@ -76,10 +78,18 @@
     _guessBtn.titleLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:28]];
     [self.contentView addSubview:_guessBtn];
     
+    _lineView = [[UIView alloc]init];
+    _lineView.backgroundColor = c05_divider;
+    _lineView.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualHeight:164]-1, ScreenWidth - [PUtil getActualWidth:30], 1);
+    [self.contentView addSubview:_lineView];
+    
 }
 
 -(void)setData : (ContentModel *)model{
     _timeLabel.text = model.time;
+    if(!model.needLine){
+        [_lineView setHidden:YES];
+    }
 }
 
 +(NSString *)identify{
