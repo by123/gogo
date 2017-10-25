@@ -19,8 +19,12 @@
     return self;
 }
 
+- (CGRect)textRectForBounds:(CGRect)bounds {
+    return CGRectInset(bounds,edgeInsets.left,0);
+}
+
 - (CGRect)editingRectForBounds:(CGRect)bounds {
-    return CGRectInset(bounds, edgeInsets.left, 0);
+    return CGRectInset(bounds,edgeInsets.left,0);
 }
 
 @end

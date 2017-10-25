@@ -24,7 +24,7 @@
 @property (nonatomic, weak) id <BySegmentViewDelegate> delegate;
 
 
--(instancetype)initWithFrame:(CGRect)frame andTitleArray:(NSArray *)titleArray andShowControllerNameArray:(NSArray *)showControllerArray;
+-(instancetype)initWithFrame:(CGRect)frame andTitleArray:(NSArray *)titleArray andShowControllerNameArray:(NSMutableArray *)showControllerArray;
 
 
 @end

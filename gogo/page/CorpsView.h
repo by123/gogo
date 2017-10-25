@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MainPage.h"
 
 @interface CorpsView : UIView
+
+@property (weak, nonatomic) id<MainHandleDelegate> handleDelegate;
 
 @end

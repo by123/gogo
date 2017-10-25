@@ -87,6 +87,7 @@
     _tableView.dataSource = self;
     _tableView.backgroundColor = c06_backgroud;
     _tableView.scrollEnabled = NO;
+    _tableView.userInteractionEnabled = NO;
     [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [_scrollerView addSubview:_tableView];
     
@@ -133,6 +134,7 @@
     CommentCell *cell = [tableView dequeueReusableCellWithIdentifier:[CommentCell identify]];
     if(cell == nil){
         cell = [[CommentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[CommentCell identify]];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     CommentModel *model = [models objectAtIndex:indexPath.row];
     [cell setData:model];

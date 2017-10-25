@@ -8,6 +8,8 @@
 
 #import "GamePage.h"
 #import "BySegmentView.h"
+#import "ScheduleView.h"
+#import "CorpsView.h"
 
 @interface GamePage ()
 
@@ -25,10 +27,20 @@
 }
 
 -(void)initTab{
+    NSMutableArray *views = [[NSMutableArray alloc]init];
+    ScheduleView *scheduleView = [[ScheduleView alloc]init];
+    scheduleView.handleDelegate = _handleDelegate;
     
-    BySegmentView *segmentView = [[BySegmentView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - (StatuBarHeight + [PUtil getActualHeight:188])) andTitleArray:@[@"赛事安排", @"战队介绍"] andShowControllerNameArray:@[@"ScheduleView",@"CorpsView"]];
+    CorpsView *corpsView = [[CorpsView alloc]init];
+    corpsView.handleDelegate = _handleDelegate;
+    
+    [views addObject:scheduleView];
+    [views addObject:corpsView];
+
+    BySegmentView *segmentView = [[BySegmentView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - (StatuBarHeight + [PUtil getActualHeight:188])) andTitleArray:@[@"赛事安排", @"战队介绍"] andShowControllerNameArray:views];
     [self.view addSubview:segmentView];
 }
+
 
 
 

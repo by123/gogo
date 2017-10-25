@@ -82,6 +82,12 @@
     return [PUtil getActualHeight:164];
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(_handleDelegate){
+        [_handleDelegate goScheduleDetailPage:1L];
+    }
+}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSMutableArray *models = [ScheduleModel getModel];
     ScheduleModel *model = [models objectAtIndex:indexPath.row];
@@ -89,6 +95,7 @@
         ScheduleTitleCell *cell =  [tableView dequeueReusableCellWithIdentifier:[ScheduleTitleCell identify]];
         if(cell == nil){
             cell = [[ScheduleTitleCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[ScheduleTitleCell identify]];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
         [cell setData:model.title];
         return cell;
@@ -96,6 +103,7 @@
         ScheduleContentCell *cell =  [tableView dequeueReusableCellWithIdentifier:[ScheduleContentCell identify]];
         if(cell == nil){
             cell = [[ScheduleContentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[ScheduleContentCell identify]];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
         [cell setData:model.contentModel];
         return cell;

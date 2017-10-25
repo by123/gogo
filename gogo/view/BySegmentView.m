@@ -32,7 +32,7 @@
     _animation = YES;//过度动画
 }
 
--(instancetype)initWithFrame:(CGRect)frame andTitleArray:(NSArray *)titleArray andShowControllerNameArray:(NSArray *)showControllerArray
+-(instancetype)initWithFrame:(CGRect)frame andTitleArray:(NSArray *)titleArray andShowControllerNameArray:(NSMutableArray *)showControllerArray
 {
  
     TabHeight = [PUtil getActualHeight:88];
@@ -83,14 +83,13 @@
         [_scrollViewMain setBounces:NO];
         [self addSubview:_scrollViewMain];
         
-        _lineView = [[UIView alloc]initWithFrame:CGRectMake((ScreenWidth/2 - [PUtil getActualWidth:120])/2, [PUtil getActualHeight:82], [PUtil getActualWidth:120], [PUtil getActualHeight:6])];
+        _lineView = [[UIView alloc]initWithFrame:CGRectMake((ScreenWidth/[titleArray count] - [PUtil getActualWidth:120])/2, [PUtil getActualHeight:82], [PUtil getActualWidth:120], [PUtil getActualHeight:6])];
         _lineView.backgroundColor = c01_blue;
         [_showContentLabelView addSubview:_lineView];
         
         for (int i = 0; i < [showControllerArray count]; i++) {
             
-            Class someClass = NSClassFromString(showControllerArray[i]);
-            UIView * obj = [[someClass alloc] init];
+            UIView * obj = [showControllerArray objectAtIndex:i];
             [obj setFrame:CGRectMake(i * ScreenWidth, 0, ScreenWidth, CGRectGetHeight(_scrollViewMain.frame))];
             [_scrollViewMain addSubview:obj];
             

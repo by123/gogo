@@ -56,6 +56,7 @@
     CorpsCell *cell =  [tableView dequeueReusableCellWithIdentifier:[CorpsCell identify]];
     if(cell == nil){
         cell = [[CorpsCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[CorpsCell identify]];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     CorpsModel *model = [models objectAtIndex:indexPath.row];
     [cell setData:model.corpsName];

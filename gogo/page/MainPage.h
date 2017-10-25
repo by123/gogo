@@ -12,10 +12,12 @@
 
 @optional -(void)goNewsDetailPage : (long)nid;
 
+@optional -(void)goScheduleDetailPage : (long)nid;
+
 @end
 
 @interface MainPage : BaseViewController
 
-@property (strong, nonatomic) id<MainHandleDelegate> handleDelegate;
+@property (weak, nonatomic) id<MainHandleDelegate> handleDelegate;
 
 @end

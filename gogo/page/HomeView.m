@@ -73,8 +73,9 @@
 #pragma mark - SDCycleScrollViewDelegate
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index
 {
-    //todo
-    NSLog(@"---点击了第%ld张图片", index);
+    if(_handleDelegate){
+        [_handleDelegate goNewsDetailPage:1L];
+    }
 }
 
 
@@ -103,6 +104,7 @@
     NewsCell *cell =  [tableView dequeueReusableCellWithIdentifier:[NewsCell identify]];
     if(cell == nil){
         cell = [[NewsCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NewsCell identify]];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     NewsModel *model = [NewsModel getModel];
     [cell setData:model];

@@ -7,7 +7,10 @@
 //
 
 #import "BaseViewController.h"
+#import "MainPage.h"
 
 @interface GamePage : BaseViewController
+
+@property (weak, nonatomic) id<MainHandleDelegate> handleDelegate;
 
 @end

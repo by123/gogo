@@ -12,6 +12,6 @@
 
 @interface HomeView : UIView<SDCycleScrollViewDelegate,UITableViewDelegate,UITableViewDataSource>
 
-@property (strong, nonatomic) id<MainHandleDelegate> handleDelegate;
+@property (weak, nonatomic) id<MainHandleDelegate> handleDelegate;
 
 @end

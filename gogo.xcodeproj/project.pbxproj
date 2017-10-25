@@ -36,6 +36,8 @@
 		CF2EAE8E1FA10D9200F35974 /* CommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAE8D1FA10D9200F35974 /* CommentModel.m */; };
 		CF2EAE911FA119AA00F35974 /* InsetTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAE901FA119AA00F35974 /* InsetTextField.m */; };
 		CF2EAE941FA11C8800F35974 /* TouchScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAE931FA11C8800F35974 /* TouchScrollView.m */; };
+		CF2EAE981FA1202800F35974 /* ScheduleDetailPage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAE971FA1202800F35974 /* ScheduleDetailPage.m */; };
+		CF2EAE9B1FA1239D00F35974 /* BriefIntroduceView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAE9A1FA1239D00F35974 /* BriefIntroduceView.m */; };
 		CF7214E31F6678E4002F3634 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7214E21F6678E4002F3634 /* main.m */; };
 		CF7214E61F6678E4002F3634 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7214E51F6678E4002F3634 /* AppDelegate.m */; };
 		CF7214EE1F6678E4002F3634 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF7214ED1F6678E4002F3634 /* Assets.xcassets */; };
@@ -115,6 +117,10 @@
 		CF2EAE901FA119AA00F35974 /* InsetTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InsetTextField.m; sourceTree = "<group>"; };
 		CF2EAE921FA11C8800F35974 /* TouchScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TouchScrollView.h; sourceTree = "<group>"; };
 		CF2EAE931FA11C8800F35974 /* TouchScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TouchScrollView.m; sourceTree = "<group>"; };
+		CF2EAE961FA1202800F35974 /* ScheduleDetailPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleDetailPage.h; sourceTree = "<group>"; };
+		CF2EAE971FA1202800F35974 /* ScheduleDetailPage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScheduleDetailPage.m; sourceTree = "<group>"; };
+		CF2EAE991FA1239D00F35974 /* BriefIntroduceView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BriefIntroduceView.h; sourceTree = "<group>"; };
+		CF2EAE9A1FA1239D00F35974 /* BriefIntroduceView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BriefIntroduceView.m; sourceTree = "<group>"; };
 		CF7214DE1F6678E4002F3634 /* gogo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gogo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF7214E21F6678E4002F3634 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CF7214E41F6678E4002F3634 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -204,6 +210,7 @@
 		CF0BEDC71F9BB856005275EE /* game */ = {
 			isa = PBXGroup;
 			children = (
+				CF2EAE951FA1200100F35974 /* scheduledetail */,
 				CF2EAE621F9E71C100F35974 /* corps */,
 				CF2EAE5E1F9E719100F35974 /* schedule */,
 				CF0BEDC81F9BB862005275EE /* GamePage.h */,
@@ -263,6 +270,17 @@
 				CF2EAE8A1FA10D6200F35974 /* CommentCell.m */,
 			);
 			name = detail;
+			sourceTree = "<group>";
+		};
+		CF2EAE951FA1200100F35974 /* scheduledetail */ = {
+			isa = PBXGroup;
+			children = (
+				CF2EAE961FA1202800F35974 /* ScheduleDetailPage.h */,
+				CF2EAE971FA1202800F35974 /* ScheduleDetailPage.m */,
+				CF2EAE991FA1239D00F35974 /* BriefIntroduceView.h */,
+				CF2EAE9A1FA1239D00F35974 /* BriefIntroduceView.m */,
+			);
+			name = scheduledetail;
 			sourceTree = "<group>";
 		};
 		CF7214D51F6678E4002F3634 = {
@@ -553,6 +571,7 @@
 				CF0BEDD81F9BB998005275EE /* NewsModel.m in Sources */,
 				CF2EAE7D1FA0DA4900F35974 /* CorpsCell.m in Sources */,
 				CF0BEDD21F9BB8AF005275EE /* MinePage.m in Sources */,
+				CF2EAE981FA1202800F35974 /* ScheduleDetailPage.m in Sources */,
 				CF0BEDB31F9A3636005275EE /* LoginPage.m in Sources */,
 				CF2EAE881FA1093900F35974 /* TitleView.m in Sources */,
 				CF0BEDCA1F9BB862005275EE /* GamePage.m in Sources */,
@@ -570,6 +589,7 @@
 				CFCB0F491F711E6F0087ACC7 /* SDCollectionViewCell.m in Sources */,
 				CF2EAE6D1F9FC44300F35974 /* ScheduleTitleCell.m in Sources */,
 				CF2EAE941FA11C8800F35974 /* TouchScrollView.m in Sources */,
+				CF2EAE9B1FA1239D00F35974 /* BriefIntroduceView.m in Sources */,
 				CFCB0F181F71088F0087ACC7 /* HomeView.m in Sources */,
 				CF2EAE761F9FC7C800F35974 /* ContentModel.m in Sources */,
 				CFCB0F0C1F7105360087ACC7 /* BaseViewController.m in Sources */,

@@ -7,13 +7,13 @@
 //
 
 #import "MainPage.h"
-#import "BySegmentView.h"
 #import "BottomView.h"
 #import "HomeView.h"
 #import "GamePage.h"
 #import "MallPage.h"
 #import "MinePage.h"
 #import "NewsDetailPage.h"
+#import "ScheduleDetailPage.h"
 
 
 #define TitleHeight [PUtil getActualHeight:88]
@@ -108,6 +108,7 @@
 -(void)addGamePage{
     [self removeBodySubView];
     GamePage *gamepage = [[GamePage alloc]init];
+    gamepage.handleDelegate = self;
     [_mBodyView addSubview:gamepage.view];
 }
 
@@ -129,6 +130,12 @@
 #pragma mark 跳转到新闻详细页
 -(void)goNewsDetailPage:(long)nid{
     NewsDetailPage *page = [[NewsDetailPage alloc]init];
+    [self pushPage:page];
+}
+
+#pragma mark 跳转到赛事安排详细页
+-(void)goScheduleDetailPage : (long)nid{
+    ScheduleDetailPage *page = [[ScheduleDetailPage alloc]init];
     [self pushPage:page];
 }
 
