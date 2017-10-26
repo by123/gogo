@@ -53,11 +53,13 @@
 
 -(void)OnButtonClick : (id)sender{
     UIButton *button = sender;
-    [button setTitleColor:c01_blue forState:UIControlStateNormal];
-    [selectButton setTitleColor:c10_icon forState:UIControlStateNormal];
-    selectButton = button;
-    if(self.delegate){
-        [self.delegate OnTabSelected:button.tag];
+    if(button.tag != selectButton.tag){
+        [button setTitleColor:c01_blue forState:UIControlStateNormal];
+        [selectButton setTitleColor:c10_icon forState:UIControlStateNormal];
+        selectButton = button;
+        if(self.delegate){
+            [self.delegate OnTabSelected:button.tag];
+        }
     }
 }
 

@@ -14,6 +14,8 @@
 
 @optional -(void)goScheduleDetailPage : (long)nid;
 
+@optional -(void)goCorpsDetailPage : (long)nid;
+
 @end
 
 @interface MainPage : BaseViewController

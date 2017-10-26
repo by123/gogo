@@ -14,6 +14,7 @@
 #import "MinePage.h"
 #import "NewsDetailPage.h"
 #import "ScheduleDetailPage.h"
+#import "CorpsDetailPage.h"
 
 
 #define TitleHeight [PUtil getActualHeight:88]
@@ -139,5 +140,10 @@
     [self pushPage:page];
 }
 
+#pragma mark 跳转到战队详细页
+-(void)goCorpsDetailPage : (long)nid{
+    CorpsDetailPage *page = [[CorpsDetailPage alloc]init];
+    [self pushPage:page];
+}
 
 @end

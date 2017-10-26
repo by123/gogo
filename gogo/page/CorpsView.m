@@ -52,6 +52,12 @@
     return [PUtil getActualHeight:110];
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(_handleDelegate){
+        [_handleDelegate goCorpsDetailPage:1L];
+    }
+}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     CorpsCell *cell =  [tableView dequeueReusableCellWithIdentifier:[CorpsCell identify]];
     if(cell == nil){
