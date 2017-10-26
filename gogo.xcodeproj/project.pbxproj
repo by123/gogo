@@ -41,6 +41,9 @@
 		CF2EAEA91FA2575300F35974 /* CorpsDetailPage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAEA81FA2575200F35974 /* CorpsDetailPage.m */; };
 		CF2EAEAD1FA2619100F35974 /* HistoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAEAC1FA2619100F35974 /* HistoryModel.m */; };
 		CF2EAEB01FA2624D00F35974 /* HistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAEAF1FA2624D00F35974 /* HistoryCell.m */; };
+		CF2EAEB41FA26B8400F35974 /* MembersDetailPage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAEB31FA26B8400F35974 /* MembersDetailPage.m */; };
+		CF2EAEB71FA26C5800F35974 /* MemberModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAEB61FA26C5800F35974 /* MemberModel.m */; };
+		CF2EAEBA1FA26CDA00F35974 /* MemberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAEB91FA26CDA00F35974 /* MemberCell.m */; };
 		CF7214E31F6678E4002F3634 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7214E21F6678E4002F3634 /* main.m */; };
 		CF7214E61F6678E4002F3634 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7214E51F6678E4002F3634 /* AppDelegate.m */; };
 		CF7214EE1F6678E4002F3634 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF7214ED1F6678E4002F3634 /* Assets.xcassets */; };
@@ -130,6 +133,12 @@
 		CF2EAEAC1FA2619100F35974 /* HistoryModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryModel.m; sourceTree = "<group>"; };
 		CF2EAEAE1FA2624D00F35974 /* HistoryCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryCell.h; sourceTree = "<group>"; };
 		CF2EAEAF1FA2624D00F35974 /* HistoryCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryCell.m; sourceTree = "<group>"; };
+		CF2EAEB21FA26B8400F35974 /* MembersDetailPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MembersDetailPage.h; sourceTree = "<group>"; };
+		CF2EAEB31FA26B8400F35974 /* MembersDetailPage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MembersDetailPage.m; sourceTree = "<group>"; };
+		CF2EAEB51FA26C5800F35974 /* MemberModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemberModel.h; sourceTree = "<group>"; };
+		CF2EAEB61FA26C5800F35974 /* MemberModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemberModel.m; sourceTree = "<group>"; };
+		CF2EAEB81FA26CDA00F35974 /* MemberCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemberCell.h; sourceTree = "<group>"; };
+		CF2EAEB91FA26CDA00F35974 /* MemberCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemberCell.m; sourceTree = "<group>"; };
 		CF7214DE1F6678E4002F3634 /* gogo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gogo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF7214E21F6678E4002F3634 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CF7214E41F6678E4002F3634 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -219,6 +228,7 @@
 		CF0BEDC71F9BB856005275EE /* game */ = {
 			isa = PBXGroup;
 			children = (
+				CF2EAEB11FA26B6500F35974 /* membersdetail */,
 				CF2EAEAA1FA2575F00F35974 /* corpsdetail */,
 				CF2EAE951FA1200100F35974 /* scheduledetail */,
 				CF2EAE621F9E71C100F35974 /* corps */,
@@ -304,6 +314,17 @@
 			name = corpsdetail;
 			sourceTree = "<group>";
 		};
+		CF2EAEB11FA26B6500F35974 /* membersdetail */ = {
+			isa = PBXGroup;
+			children = (
+				CF2EAEB21FA26B8400F35974 /* MembersDetailPage.h */,
+				CF2EAEB31FA26B8400F35974 /* MembersDetailPage.m */,
+				CF2EAEB81FA26CDA00F35974 /* MemberCell.h */,
+				CF2EAEB91FA26CDA00F35974 /* MemberCell.m */,
+			);
+			name = membersdetail;
+			sourceTree = "<group>";
+		};
 		CF7214D51F6678E4002F3634 = {
 			isa = PBXGroup;
 			children = (
@@ -382,6 +403,8 @@
 				CF2EAE8D1FA10D9200F35974 /* CommentModel.m */,
 				CF2EAEAB1FA2619100F35974 /* HistoryModel.h */,
 				CF2EAEAC1FA2619100F35974 /* HistoryModel.m */,
+				CF2EAEB51FA26C5800F35974 /* MemberModel.h */,
+				CF2EAEB61FA26C5800F35974 /* MemberModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -593,6 +616,7 @@
 				CF2EAEB01FA2624D00F35974 /* HistoryCell.m in Sources */,
 				CF7214E61F6678E4002F3634 /* AppDelegate.m in Sources */,
 				CF0BEDD81F9BB998005275EE /* NewsModel.m in Sources */,
+				CF2EAEBA1FA26CDA00F35974 /* MemberCell.m in Sources */,
 				CF2EAE7D1FA0DA4900F35974 /* CorpsCell.m in Sources */,
 				CF0BEDD21F9BB8AF005275EE /* MinePage.m in Sources */,
 				CF2EAE981FA1202800F35974 /* ScheduleDetailPage.m in Sources */,
@@ -617,6 +641,7 @@
 				CF2EAE9B1FA1239D00F35974 /* BriefIntroduceView.m in Sources */,
 				CFCB0F181F71088F0087ACC7 /* HomeView.m in Sources */,
 				CF2EAE761F9FC7C800F35974 /* ContentModel.m in Sources */,
+				CF2EAEB71FA26C5800F35974 /* MemberModel.m in Sources */,
 				CFCB0F0C1F7105360087ACC7 /* BaseViewController.m in Sources */,
 				CFCB0F151F7106620087ACC7 /* BySegmentView.m in Sources */,
 				CF7214E31F6678E4002F3634 /* main.m in Sources */,
@@ -629,6 +654,7 @@
 				CF2EAEAD1FA2619100F35974 /* HistoryModel.m in Sources */,
 				CF2EAE821FA1012800F35974 /* NewsDetailPage.m in Sources */,
 				CFCB0F4F1F711E6F0087ACC7 /* UIView+SDExtension.m in Sources */,
+				CF2EAEB41FA26B8400F35974 /* MembersDetailPage.m in Sources */,
 				CF0BEDB61F9A3759005275EE /* ColorUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -15,6 +15,7 @@
 #import "CommentCell.h"
 #import "InsetTextField.h"
 #import "TouchScrollView.h"
+#import "MembersDetailPage.h"
 @interface CorpsDetailPage ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 
 @property (strong, nonatomic) BarView  *barView;
@@ -273,7 +274,8 @@
 
                                          
 -(void)OnClickMore{
-    NSLog(@"点击更多");
+    MembersDetailPage *page = [[MembersDetailPage alloc]init];
+    [self pushPage:page];
 }
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
