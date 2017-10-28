@@ -58,8 +58,7 @@
 #define c12_bg2       [ColorUtil colorWithHexString:@"#1C1531"]
 #define c13_text1     [ColorUtil colorWithHexString:@"#495AFF"]
 #define c14_text2     [ColorUtil colorWithHexString:@"#B1BAEE"]
-#define c15_text      [ColorUtil colorWithHexString:@"#7FFFFFFF"]
-
+#define c15_text3     [ColorUtil colorWithHexString:@"#F1B74C"]
 
 
 //重写NSLog,Debug模式下打印日志和当前行数

@@ -107,7 +107,8 @@
     
     _hintLabel = [[UILabel alloc]init];
     _hintLabel.text = @"发表评论";
-    _hintLabel.textColor = c15_text;
+    _hintLabel.textColor = c08_text;
+    _hintLabel.alpha = 0.5f;
     _hintLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:28]];
     _hintLabel.frame =  CGRectMake([PUtil getActualWidth:46], [PUtil getActualHeight:32], [PUtil getActualHeight:140] , [PUtil getActualHeight:46]);
     [_commentView addSubview:_hintLabel];

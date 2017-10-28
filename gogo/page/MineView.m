@@ -27,28 +27,29 @@
     NSArray *datas;
 }
 
--(instancetype)init{
-    
+-(instancetype)initWithFrame:(CGRect)frame{
+    if(self == [super initWithFrame:frame]){
+        datas = @[@"充值",@"地址信息",@"竞猜历史",@"兑换记录",@"关于"];
+        [self initView];
+    }
+    return self;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    datas = @[@"充值",@"地址信息",@"竞猜历史",@"兑换记录",@"关于"];
-    [self initView];
-}
 
 -(void)initView{
         
-    _scrollerView = [[TouchScrollView alloc]initWithParentView:self.view];
-    _scrollerView.frame = CGRectMake(0,  0, ScreenWidth, ScreenHeight-(StatuBarHeight + [PUtil getActualHeight:188]));
+    _scrollerView = [[TouchScrollView alloc]initWithParentView:self];
+    _scrollerView.frame = self.frame;
     _scrollerView.showsVerticalScrollIndicator = NO;
     _scrollerView.showsHorizontalScrollIndicator = NO;
     _scrollerView.contentSize = CGSizeMake(ScreenWidth,ScreenHeight);
-    [self.view addSubview:_scrollerView];
+    [self addSubview:_scrollerView];
     
     _userView = [[UIView alloc]init];
     _userView.frame = CGRectMake(0, [PUtil getActualHeight:20], ScreenWidth, [PUtil getActualHeight:272]);
     _userView.backgroundColor = c07_bar;
+    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(goPersonalPage)];
+    [_userView addGestureRecognizer:recognizer];
     [_scrollerView addSubview:_userView];
     
     _headImageView = [[UIView alloc]init];
@@ -85,22 +86,17 @@
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.scrollEnabled = NO;
-    _tableView.userInteractionEnabled = NO;
     [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [_scrollerView addSubview:_tableView];
     
     _logoutBtn = [[UIButton alloc]init];
-    _logoutBtn.userInteractionEnabled = YES;
     _logoutBtn.frame = CGRectMake((ScreenWidth - [PUtil getActualWidth:542])/2, [PUtil getActualHeight:922],[PUtil getActualWidth:542] , [PUtil getActualHeight:100]);
     [_logoutBtn setTitle:@"退出登录" forState:UIControlStateNormal];
-    [_logoutBtn setTitleColor:c08_text forState:UIControlStateNormal];
-    _logoutBtn.titleLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:34]];
     _logoutBtn.layer.masksToBounds = YES;
     _logoutBtn.layer.cornerRadius = [PUtil getActualHeight:100]/2;
     [_logoutBtn addTarget:self action:@selector(logout) forControlEvents:UIControlEventTouchUpInside];
     [_scrollerView addSubview:_logoutBtn];
     [ColorUtil setGradientColor:_logoutBtn startColor:c01_blue endColor:c02_red director:Left];
-    
     
 }
 
@@ -117,7 +113,7 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"点击");
+    [self goPage : indexPath.row];
 }
 
 
@@ -127,13 +123,48 @@
         cell = [[MineCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[MineCell identify]];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    [cell setData:[datas objectAtIndex:indexPath.row]];
+    if(indexPath.row == [datas count]-1){
+        [cell setData:[datas objectAtIndex:indexPath.row] hideline:YES];
+    }else{
+        [cell setData:[datas objectAtIndex:indexPath.row] hideline:NO];
+    }
     return cell;
 }
 
 -(void)logout{
-    LoginPage *page = [[LoginPage alloc]init];
-    [self pushPage:page];
+    if(_handleDelegate){
+        [_handleDelegate goLoginPage];
+    }
+}
+
+-(void)goPage : (NSInteger)index{
+    if(_handleDelegate){
+        switch (index) {
+            case 0:
+                [_handleDelegate goChargePage];
+                break;
+            case 1:
+                [_handleDelegate goAddressPage];
+                break;
+            case 2:
+                [_handleDelegate goHistoryPage];
+                break;
+            case 3:
+                [_handleDelegate goExchangePage];
+                break;
+            case 4:
+                [_handleDelegate goAboutPage];
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+-(void)goPersonalPage{
+    if(_handleDelegate){
+        [_handleDelegate goPersonalPage];
+    }
 }
 
 @end

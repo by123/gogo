@@ -11,11 +11,17 @@
 #import "HomeView.h"
 #import "GamePage.h"
 #import "MallPage.h"
-#import "MinePage.h"
+#import "MineView.h"
 #import "NewsDetailPage.h"
 #import "ScheduleDetailPage.h"
 #import "CorpsDetailPage.h"
-
+#import "LoginPage.h"
+#import "ChargePage.h"
+#import "AddressPage.h"
+#import "HistoryPage.h"
+#import "ExchangePage.h"
+#import "AboutPage.h"
+#import "PersonalPage.h"
 
 #define TitleHeight [PUtil getActualHeight:88]
 
@@ -123,8 +129,9 @@
 #pragma mark 添加我的
 -(void)addMinePage{
     [self removeBodySubView];
-    MinePage *minepage = [[MinePage alloc]init];
-    [_mBodyView addSubview:minepage.view];
+    MineView *mineView = [[MineView alloc]initWithFrame:CGRectMake(0, 0,ScreenWidth, _mBodyView.mj_h)];
+    mineView.handleDelegate = self;
+    [_mBodyView addSubview:mineView];
 }
 
 
@@ -143,6 +150,48 @@
 #pragma mark 跳转到战队详细页
 -(void)goCorpsDetailPage : (long)nid{
     CorpsDetailPage *page = [[CorpsDetailPage alloc]init];
+    [self pushPage:page];
+}
+
+#pragma mark 跳转到登录页
+-(void)goLoginPage{
+    LoginPage *page = [[LoginPage alloc]init];
+    [self pushPage:page];
+}
+
+#pragma mark 跳转到充值页
+-(void)goChargePage{
+    ChargePage *page = [[ChargePage alloc]init];
+    [self pushPage:page];
+}
+
+#pragma mark 跳转到地址信息
+-(void)goAddressPage{
+    AddressPage *page = [[AddressPage alloc]init];
+    [self pushPage:page];
+}
+
+#pragma mark 跳转竞猜历史
+-(void)goHistoryPage{
+    HistoryPage *page = [[HistoryPage alloc]init];
+    [self pushPage:page];
+}
+
+#pragma mark 跳转到兑换记录
+-(void)goExchangePage{
+    ExchangePage *page = [[ExchangePage alloc]init];
+    [self pushPage:page];
+}
+
+#pragma mark 跳转到关于
+-(void)goAboutPage{
+    AboutPage *page = [[AboutPage alloc]init];
+    [self pushPage:page];
+}
+
+#pragma mark 跳转到个人信息
+-(void)goPersonalPage{
+    PersonalPage *page = [[PersonalPage alloc]init];
     [self pushPage:page];
 }
 

@@ -16,6 +16,20 @@
 
 @optional -(void)goCorpsDetailPage : (long)nid;
 
+@optional -(void)goLoginPage;
+
+@optional -(void)goChargePage;
+
+@optional -(void)goAddressPage;
+
+@optional -(void)goHistoryPage;
+
+@optional -(void)goExchangePage;
+
+@optional -(void)goAboutPage;
+
+@optional -(void)goPersonalPage;
+
 @end
 
 @interface MainPage : BaseViewController
