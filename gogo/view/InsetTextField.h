@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface InsetTextField : UITextField
+@interface InsetTextField : UITextField<UITextFieldDelegate>
 
 -(instancetype)initWithFrame:(CGRect)frame andInsets: (UIEdgeInsets) insets;
+
+-(instancetype)initWithFrame:(CGRect)frame andInsets: (UIEdgeInsets) insets hint:(NSString *)hint;
 
 @end
