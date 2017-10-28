@@ -53,6 +53,8 @@
 		CF2EAEF81FA5034400F35974 /* PersonalPage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAEF71FA5034400F35974 /* PersonalPage.m */; };
 		CF2EAEFB1FA5070E00F35974 /* PriceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAEFA1FA5070E00F35974 /* PriceCell.m */; };
 		CF2EAEFE1FA5075300F35974 /* PayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAEFD1FA5075300F35974 /* PayCell.m */; };
+		CF2EAF011FA50F2E00F35974 /* ExchangeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAF001FA50F2E00F35974 /* ExchangeModel.m */; };
+		CF2EAF041FA5109500F35974 /* ExchangeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAF031FA5109500F35974 /* ExchangeCell.m */; };
 		CF7214E31F6678E4002F3634 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7214E21F6678E4002F3634 /* main.m */; };
 		CF7214E61F6678E4002F3634 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7214E51F6678E4002F3634 /* AppDelegate.m */; };
 		CF7214EE1F6678E4002F3634 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF7214ED1F6678E4002F3634 /* Assets.xcassets */; };
@@ -166,6 +168,10 @@
 		CF2EAEFA1FA5070E00F35974 /* PriceCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PriceCell.m; sourceTree = "<group>"; };
 		CF2EAEFC1FA5075300F35974 /* PayCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayCell.h; sourceTree = "<group>"; };
 		CF2EAEFD1FA5075300F35974 /* PayCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayCell.m; sourceTree = "<group>"; };
+		CF2EAEFF1FA50F2E00F35974 /* ExchangeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExchangeModel.h; sourceTree = "<group>"; };
+		CF2EAF001FA50F2E00F35974 /* ExchangeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExchangeModel.m; sourceTree = "<group>"; };
+		CF2EAF021FA5109500F35974 /* ExchangeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExchangeCell.h; sourceTree = "<group>"; };
+		CF2EAF031FA5109500F35974 /* ExchangeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExchangeCell.m; sourceTree = "<group>"; };
 		CF7214DE1F6678E4002F3634 /* gogo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gogo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF7214E21F6678E4002F3634 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CF7214E41F6678E4002F3634 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -396,6 +402,8 @@
 			children = (
 				CF2EAEEE1FA5007300F35974 /* ExchangePage.h */,
 				CF2EAEEF1FA5007300F35974 /* ExchangePage.m */,
+				CF2EAF021FA5109500F35974 /* ExchangeCell.h */,
+				CF2EAF031FA5109500F35974 /* ExchangeCell.m */,
 			);
 			name = exchange;
 			sourceTree = "<group>";
@@ -498,6 +506,8 @@
 				CF2EAEAC1FA2619100F35974 /* HistoryModel.m */,
 				CF2EAEB51FA26C5800F35974 /* MemberModel.h */,
 				CF2EAEB61FA26C5800F35974 /* MemberModel.m */,
+				CF2EAEFF1FA50F2E00F35974 /* ExchangeModel.h */,
+				CF2EAF001FA50F2E00F35974 /* ExchangeModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -710,6 +720,7 @@
 				CF7214E61F6678E4002F3634 /* AppDelegate.m in Sources */,
 				CF2EAEE01FA4E76400F35974 /* MineCell.m in Sources */,
 				CF0BEDD81F9BB998005275EE /* NewsModel.m in Sources */,
+				CF2EAF011FA50F2E00F35974 /* ExchangeModel.m in Sources */,
 				CF2EAEBA1FA26CDA00F35974 /* MemberCell.m in Sources */,
 				CF2EAE7D1FA0DA4900F35974 /* CorpsCell.m in Sources */,
 				CF2EAE981FA1202800F35974 /* ScheduleDetailPage.m in Sources */,
@@ -727,6 +738,7 @@
 				CF2EAEA91FA2575300F35974 /* CorpsDetailPage.m in Sources */,
 				CF0BEDC21F9B4780005275EE /* Account.m in Sources */,
 				CF2EAE851FA103CB00F35974 /* BarView.m in Sources */,
+				CF2EAF041FA5109500F35974 /* ExchangeCell.m in Sources */,
 				CF0BEDBC1F9B4378005275EE /* AccountManager.m in Sources */,
 				CFCB0F4C1F711E6F0087ACC7 /* TAAnimatedDotView.m in Sources */,
 				CF0BEDB91F9B2F78005275EE /* PUtil.m in Sources */,
