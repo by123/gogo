@@ -47,7 +47,7 @@
 		CF2EAEE01FA4E76400F35974 /* MineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAEDF1FA4E76400F35974 /* MineCell.m */; };
 		CF2EAEE31FA4FEDB00F35974 /* ChargePage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAEE21FA4FEDB00F35974 /* ChargePage.m */; };
 		CF2EAEE81FA4FF6200F35974 /* AddressPage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAEE71FA4FF6200F35974 /* AddressPage.m */; };
-		CF2EAEEC1FA4FFBC00F35974 /* HistoryPage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAEEB1FA4FFBC00F35974 /* HistoryPage.m */; };
+		CF2EAEEC1FA4FFBC00F35974 /* GuessHistoryPage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAEEB1FA4FFBC00F35974 /* GuessHistoryPage.m */; };
 		CF2EAEF01FA5007300F35974 /* ExchangePage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAEEF1FA5007300F35974 /* ExchangePage.m */; };
 		CF2EAEF41FA500A400F35974 /* AboutPage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAEF31FA500A400F35974 /* AboutPage.m */; };
 		CF2EAEF81FA5034400F35974 /* PersonalPage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAEF71FA5034400F35974 /* PersonalPage.m */; };
@@ -55,6 +55,9 @@
 		CF2EAEFE1FA5075300F35974 /* PayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAEFD1FA5075300F35974 /* PayCell.m */; };
 		CF2EAF011FA50F2E00F35974 /* ExchangeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAF001FA50F2E00F35974 /* ExchangeModel.m */; };
 		CF2EAF041FA5109500F35974 /* ExchangeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAF031FA5109500F35974 /* ExchangeCell.m */; };
+		CF2EAF071FA514F800F35974 /* GuessHistoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAF061FA514F800F35974 /* GuessHistoryModel.m */; };
+		CF2EAF0A1FA5154600F35974 /* GuessHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAF091FA5154600F35974 /* GuessHistoryCell.m */; };
+		CF2EAF0D1FA5231300F35974 /* ItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAF0C1FA5231300F35974 /* ItemView.m */; };
 		CF7214E31F6678E4002F3634 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7214E21F6678E4002F3634 /* main.m */; };
 		CF7214E61F6678E4002F3634 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7214E51F6678E4002F3634 /* AppDelegate.m */; };
 		CF7214EE1F6678E4002F3634 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF7214ED1F6678E4002F3634 /* Assets.xcassets */; };
@@ -156,8 +159,8 @@
 		CF2EAEE21FA4FEDB00F35974 /* ChargePage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChargePage.m; sourceTree = "<group>"; };
 		CF2EAEE61FA4FF6200F35974 /* AddressPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressPage.h; sourceTree = "<group>"; };
 		CF2EAEE71FA4FF6200F35974 /* AddressPage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressPage.m; sourceTree = "<group>"; };
-		CF2EAEEA1FA4FFBC00F35974 /* HistoryPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryPage.h; sourceTree = "<group>"; };
-		CF2EAEEB1FA4FFBC00F35974 /* HistoryPage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryPage.m; sourceTree = "<group>"; };
+		CF2EAEEA1FA4FFBC00F35974 /* GuessHistoryPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuessHistoryPage.h; sourceTree = "<group>"; };
+		CF2EAEEB1FA4FFBC00F35974 /* GuessHistoryPage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuessHistoryPage.m; sourceTree = "<group>"; };
 		CF2EAEEE1FA5007300F35974 /* ExchangePage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExchangePage.h; sourceTree = "<group>"; };
 		CF2EAEEF1FA5007300F35974 /* ExchangePage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExchangePage.m; sourceTree = "<group>"; };
 		CF2EAEF21FA500A400F35974 /* AboutPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutPage.h; sourceTree = "<group>"; };
@@ -172,6 +175,12 @@
 		CF2EAF001FA50F2E00F35974 /* ExchangeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExchangeModel.m; sourceTree = "<group>"; };
 		CF2EAF021FA5109500F35974 /* ExchangeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExchangeCell.h; sourceTree = "<group>"; };
 		CF2EAF031FA5109500F35974 /* ExchangeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExchangeCell.m; sourceTree = "<group>"; };
+		CF2EAF051FA514F800F35974 /* GuessHistoryModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuessHistoryModel.h; sourceTree = "<group>"; };
+		CF2EAF061FA514F800F35974 /* GuessHistoryModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuessHistoryModel.m; sourceTree = "<group>"; };
+		CF2EAF081FA5154600F35974 /* GuessHistoryCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuessHistoryCell.h; sourceTree = "<group>"; };
+		CF2EAF091FA5154600F35974 /* GuessHistoryCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuessHistoryCell.m; sourceTree = "<group>"; };
+		CF2EAF0B1FA5231300F35974 /* ItemView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemView.h; sourceTree = "<group>"; };
+		CF2EAF0C1FA5231300F35974 /* ItemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemView.m; sourceTree = "<group>"; };
 		CF7214DE1F6678E4002F3634 /* gogo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gogo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF7214E21F6678E4002F3634 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CF7214E41F6678E4002F3634 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -391,8 +400,10 @@
 		CF2EAEE91FA4FFA800F35974 /* history */ = {
 			isa = PBXGroup;
 			children = (
-				CF2EAEEA1FA4FFBC00F35974 /* HistoryPage.h */,
-				CF2EAEEB1FA4FFBC00F35974 /* HistoryPage.m */,
+				CF2EAEEA1FA4FFBC00F35974 /* GuessHistoryPage.h */,
+				CF2EAEEB1FA4FFBC00F35974 /* GuessHistoryPage.m */,
+				CF2EAF081FA5154600F35974 /* GuessHistoryCell.h */,
+				CF2EAF091FA5154600F35974 /* GuessHistoryCell.m */,
 			);
 			name = history;
 			sourceTree = "<group>";
@@ -508,6 +519,8 @@
 				CF2EAEB61FA26C5800F35974 /* MemberModel.m */,
 				CF2EAEFF1FA50F2E00F35974 /* ExchangeModel.h */,
 				CF2EAF001FA50F2E00F35974 /* ExchangeModel.m */,
+				CF2EAF051FA514F800F35974 /* GuessHistoryModel.h */,
+				CF2EAF061FA514F800F35974 /* GuessHistoryModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -556,6 +569,8 @@
 				CF2EAE901FA119AA00F35974 /* InsetTextField.m */,
 				CF2EAE921FA11C8800F35974 /* TouchScrollView.h */,
 				CF2EAE931FA11C8800F35974 /* TouchScrollView.m */,
+				CF2EAF0B1FA5231300F35974 /* ItemView.h */,
+				CF2EAF0C1FA5231300F35974 /* ItemView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -725,6 +740,7 @@
 				CF2EAE7D1FA0DA4900F35974 /* CorpsCell.m in Sources */,
 				CF2EAE981FA1202800F35974 /* ScheduleDetailPage.m in Sources */,
 				CF2EAEC51FA30BF500F35974 /* MineView.m in Sources */,
+				CF2EAF0D1FA5231300F35974 /* ItemView.m in Sources */,
 				CF0BEDB31F9A3636005275EE /* LoginPage.m in Sources */,
 				CF2EAE881FA1093900F35974 /* TitleView.m in Sources */,
 				CF2EAE611F9E71A400F35974 /* ScheduleView.m in Sources */,
@@ -736,11 +752,13 @@
 				CFCB0F0F1F7105360087ACC7 /* ByNetUtil.m in Sources */,
 				CF2EAEF01FA5007300F35974 /* ExchangePage.m in Sources */,
 				CF2EAEA91FA2575300F35974 /* CorpsDetailPage.m in Sources */,
+				CF2EAF071FA514F800F35974 /* GuessHistoryModel.m in Sources */,
 				CF0BEDC21F9B4780005275EE /* Account.m in Sources */,
 				CF2EAE851FA103CB00F35974 /* BarView.m in Sources */,
 				CF2EAF041FA5109500F35974 /* ExchangeCell.m in Sources */,
 				CF0BEDBC1F9B4378005275EE /* AccountManager.m in Sources */,
 				CFCB0F4C1F711E6F0087ACC7 /* TAAnimatedDotView.m in Sources */,
+				CF2EAF0A1FA5154600F35974 /* GuessHistoryCell.m in Sources */,
 				CF0BEDB91F9B2F78005275EE /* PUtil.m in Sources */,
 				CF2EAE701F9FC45300F35974 /* ScheduleContentCell.m in Sources */,
 				CFCB0F491F711E6F0087ACC7 /* SDCollectionViewCell.m in Sources */,
@@ -759,7 +777,7 @@
 				CF2EAEFB1FA5070E00F35974 /* PriceCell.m in Sources */,
 				CFCB0F4D1F711E6F0087ACC7 /* TADotView.m in Sources */,
 				CF0BEDC51F9BA8EE005275EE /* MainPage.m in Sources */,
-				CF2EAEEC1FA4FFBC00F35974 /* HistoryPage.m in Sources */,
+				CF2EAEEC1FA4FFBC00F35974 /* GuessHistoryPage.m in Sources */,
 				CF2EAEFE1FA5075300F35974 /* PayCell.m in Sources */,
 				CFCB0F0D1F7105360087ACC7 /* Constant.m in Sources */,
 				CF2EAE8E1FA10D9200F35974 /* CommentModel.m in Sources */,

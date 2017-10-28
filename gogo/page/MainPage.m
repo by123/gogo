@@ -18,7 +18,7 @@
 #import "LoginPage.h"
 #import "ChargePage.h"
 #import "AddressPage.h"
-#import "HistoryPage.h"
+#import "GuessHistoryPage.h"
 #import "ExchangePage.h"
 #import "AboutPage.h"
 #import "PersonalPage.h"
@@ -173,7 +173,7 @@
 
 #pragma mark 跳转竞猜历史
 -(void)goHistoryPage{
-    HistoryPage *page = [[HistoryPage alloc]init];
+    GuessHistoryPage *page = [[GuessHistoryPage alloc]init];
     [self pushPage:page];
 }
 

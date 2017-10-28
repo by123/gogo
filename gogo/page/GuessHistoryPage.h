@@ -8,6 +8,6 @@
 
 #import "BaseViewController.h"
 
-@interface HistoryPage : BaseViewController
+@interface GuessHistoryPage : BaseViewController
 
 @end
