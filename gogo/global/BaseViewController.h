@@ -17,4 +17,6 @@
 
 -(void)pushPage : (BaseViewController *)targetPage;
 
+-(void)setRedBlueStatuBar;
+
 @end

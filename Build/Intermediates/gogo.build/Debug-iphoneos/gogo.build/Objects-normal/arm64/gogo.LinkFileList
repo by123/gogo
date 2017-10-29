@@ -1,9 +1,11 @@
 /Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/TAAbstractDotView.o
 /Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/ScheduleModel.o
 /Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/SDCycleScrollView.o
+/Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/GuessModel.o
 /Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/CommentCell.o
 /Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/MallPage.o
 /Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/NewsCell.o
+/Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/FightingView.o
 /Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/GoodsView.o
 /Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/HistoryCell.o
 /Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/AppDelegate.o
@@ -35,6 +37,7 @@
 /Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/ExchangeCell.o
 /Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/AccountManager.o
 /Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/TAAnimatedDotView.o
+/Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/GuessView.o
 /Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/GuessHistoryCell.o
 /Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/SCDIntroduceView.o
 /Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/PUtil.o
@@ -48,6 +51,8 @@
 /Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/MemberModel.o
 /Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/BaseViewController.o
 /Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/BySegmentView.o
+/Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/GuessListModel.o
+/Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/GuessPage.o
 /Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/main.o
 /Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/PersonalPage.o
 /Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/ChargePage.o
@@ -59,6 +64,7 @@
 /Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/Constant.o
 /Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/CommentModel.o
 /Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/TAPageControl.o
+/Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/GuessButton.o
 /Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/BottomView.o
 /Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/HistoryModel.o
 /Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/GoodsCell.o

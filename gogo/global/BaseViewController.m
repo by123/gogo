@@ -43,6 +43,11 @@
     }
 }
 
+-(void)setRedBlueStatuBar{
+    UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
+    [ColorUtil setGradientColor:statusBar startColor:c01_blue endColor:c02_red director:Left];
+}
+
 -(void)pushPage:(BaseViewController *)targetPage{
     [self.navigationController pushViewController:targetPage animated:YES];
 }

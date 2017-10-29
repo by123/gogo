@@ -30,6 +30,8 @@
 
 @optional -(void)goPersonalPage;
 
+@optional -(void)goGuessPage;
+
 @end
 
 @interface MainPage : BaseViewController

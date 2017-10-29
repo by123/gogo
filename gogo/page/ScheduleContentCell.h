@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "ContentModel.h"
+#import "MainPage.h"
 
 @interface ScheduleContentCell : UITableViewCell
 
 -(void)setData : (ContentModel *)model;
+
+-(void)setDelegate : (id<MainHandleDelegate>)delegate;
 
 +(NSString *)identify;
 

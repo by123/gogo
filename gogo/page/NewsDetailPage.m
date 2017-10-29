@@ -100,6 +100,7 @@
     _commentTextField.backgroundColor = c06_backgroud;
     _commentTextField.font = [UIFont systemFontOfSize:[PUtil getActualHeight:28]];
     _commentTextField.textColor = c08_text;
+    _commentTextField.returnKeyType = UIReturnKeySend;
     _commentTextField.layer.masksToBounds = YES;
     _commentTextField.layer.cornerRadius = [PUtil getActualHeight:10];
     _commentTextField.delegate = self;

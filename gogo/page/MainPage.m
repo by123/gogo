@@ -22,6 +22,7 @@
 #import "ExchangePage.h"
 #import "AboutPage.h"
 #import "PersonalPage.h"
+#import "GuessPage.h"
 
 #define TitleHeight [PUtil getActualHeight:88]
 
@@ -192,6 +193,12 @@
 #pragma mark 跳转到个人信息
 -(void)goPersonalPage{
     PersonalPage *page = [[PersonalPage alloc]init];
+    [self pushPage:page];
+}
+
+#pragma mark 跳转到竞猜
+-(void)goGuessPage{
+    GuessPage *page = [[GuessPage alloc]init];
     [self pushPage:page];
 }
 

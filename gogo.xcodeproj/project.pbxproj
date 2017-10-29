@@ -69,6 +69,12 @@
 		CFBFE5031FA5BA5C00500B1B /* SCDHistoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBFE5021FA5BA5C00500B1B /* SCDHistoryModel.m */; };
 		CFBFE5061FA5BAAA00500B1B /* SCDHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBFE5051FA5BAAA00500B1B /* SCDHistoryCell.m */; };
 		CFBFE5091FA5C48E00500B1B /* TouchTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBFE5081FA5C48E00500B1B /* TouchTableView.m */; };
+		CFBFE50D1FA5C57000500B1B /* GuessPage.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBFE50C1FA5C57000500B1B /* GuessPage.m */; };
+		CFBFE5101FA5CC1300500B1B /* GuessView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBFE50F1FA5CC1300500B1B /* GuessView.m */; };
+		CFBFE5131FA5CC6E00500B1B /* FightingView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBFE5121FA5CC6E00500B1B /* FightingView.m */; };
+		CFBFE5161FA5CD8600500B1B /* GuessButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBFE5151FA5CD8600500B1B /* GuessButton.m */; };
+		CFBFE5191FA5D21000500B1B /* GuessModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBFE5181FA5D21000500B1B /* GuessModel.m */; };
+		CFBFE51C1FA5D22900500B1B /* GuessListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBFE51B1FA5D22900500B1B /* GuessListModel.m */; };
 		CFCB0F0C1F7105360087ACC7 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB0F011F7105360087ACC7 /* BaseViewController.m */; };
 		CFCB0F0D1F7105360087ACC7 /* Constant.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB0F031F7105360087ACC7 /* Constant.m */; };
 		CFCB0F0F1F7105360087ACC7 /* ByNetUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB0F0A1F7105360087ACC7 /* ByNetUtil.m */; };
@@ -211,6 +217,18 @@
 		CFBFE5051FA5BAAA00500B1B /* SCDHistoryCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCDHistoryCell.m; sourceTree = "<group>"; };
 		CFBFE5071FA5C48E00500B1B /* TouchTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TouchTableView.h; sourceTree = "<group>"; };
 		CFBFE5081FA5C48E00500B1B /* TouchTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TouchTableView.m; sourceTree = "<group>"; };
+		CFBFE50B1FA5C57000500B1B /* GuessPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuessPage.h; sourceTree = "<group>"; };
+		CFBFE50C1FA5C57000500B1B /* GuessPage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuessPage.m; sourceTree = "<group>"; };
+		CFBFE50E1FA5CC1300500B1B /* GuessView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuessView.h; sourceTree = "<group>"; };
+		CFBFE50F1FA5CC1300500B1B /* GuessView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuessView.m; sourceTree = "<group>"; };
+		CFBFE5111FA5CC6E00500B1B /* FightingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FightingView.h; sourceTree = "<group>"; };
+		CFBFE5121FA5CC6E00500B1B /* FightingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FightingView.m; sourceTree = "<group>"; };
+		CFBFE5141FA5CD8600500B1B /* GuessButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuessButton.h; sourceTree = "<group>"; };
+		CFBFE5151FA5CD8600500B1B /* GuessButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuessButton.m; sourceTree = "<group>"; };
+		CFBFE5171FA5D21000500B1B /* GuessModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuessModel.h; sourceTree = "<group>"; };
+		CFBFE5181FA5D21000500B1B /* GuessModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuessModel.m; sourceTree = "<group>"; };
+		CFBFE51A1FA5D22900500B1B /* GuessListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuessListModel.h; sourceTree = "<group>"; };
+		CFBFE51B1FA5D22900500B1B /* GuessListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuessListModel.m; sourceTree = "<group>"; };
 		CFCB0F001F7105360087ACC7 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		CFCB0F011F7105360087ACC7 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		CFCB0F021F7105360087ACC7 /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
@@ -370,6 +388,7 @@
 		CF2EAE951FA1200100F35974 /* scheduledetail */ = {
 			isa = PBXGroup;
 			children = (
+				CFBFE50A1FA5C55C00500B1B /* guess */,
 				CFBFE4F11FA5B2F100500B1B /* comment */,
 				CFBFE4ED1FA5B2B300500B1B /* history */,
 				CFBFE4E91FA5B28600500B1B /* team */,
@@ -561,6 +580,19 @@
 			name = comment;
 			sourceTree = "<group>";
 		};
+		CFBFE50A1FA5C55C00500B1B /* guess */ = {
+			isa = PBXGroup;
+			children = (
+				CFBFE50B1FA5C57000500B1B /* GuessPage.h */,
+				CFBFE50C1FA5C57000500B1B /* GuessPage.m */,
+				CFBFE50E1FA5CC1300500B1B /* GuessView.h */,
+				CFBFE50F1FA5CC1300500B1B /* GuessView.m */,
+				CFBFE5111FA5CC6E00500B1B /* FightingView.h */,
+				CFBFE5121FA5CC6E00500B1B /* FightingView.m */,
+			);
+			name = guess;
+			sourceTree = "<group>";
+		};
 		CFCB0EFF1F7105360087ACC7 /* global */ = {
 			isa = PBXGroup;
 			children = (
@@ -599,6 +631,10 @@
 				CF2EAF061FA514F800F35974 /* GuessHistoryModel.m */,
 				CFBFE5011FA5BA5C00500B1B /* SCDHistoryModel.h */,
 				CFBFE5021FA5BA5C00500B1B /* SCDHistoryModel.m */,
+				CFBFE5171FA5D21000500B1B /* GuessModel.h */,
+				CFBFE5181FA5D21000500B1B /* GuessModel.m */,
+				CFBFE51A1FA5D22900500B1B /* GuessListModel.h */,
+				CFBFE51B1FA5D22900500B1B /* GuessListModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -651,6 +687,8 @@
 				CF2EAF0C1FA5231300F35974 /* ItemView.m */,
 				CFBFE5071FA5C48E00500B1B /* TouchTableView.h */,
 				CFBFE5081FA5C48E00500B1B /* TouchTableView.m */,
+				CFBFE5141FA5CD8600500B1B /* GuessButton.h */,
+				CFBFE5151FA5CD8600500B1B /* GuessButton.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -808,9 +846,11 @@
 				CFCB0F4B1F711E6F0087ACC7 /* TAAbstractDotView.m in Sources */,
 				CF2EAE731F9FC47600F35974 /* ScheduleModel.m in Sources */,
 				CFCB0F4A1F711E6F0087ACC7 /* SDCycleScrollView.m in Sources */,
+				CFBFE5191FA5D21000500B1B /* GuessModel.m in Sources */,
 				CF2EAE8B1FA10D6200F35974 /* CommentCell.m in Sources */,
 				CF2EAEBE1FA30ABA00F35974 /* MallPage.m in Sources */,
 				CF0BEDD51F9BB96E005275EE /* NewsCell.m in Sources */,
+				CFBFE5131FA5CC6E00500B1B /* FightingView.m in Sources */,
 				CFBFE4E31FA534E000500B1B /* GoodsView.m in Sources */,
 				CF2EAEB01FA2624D00F35974 /* HistoryCell.m in Sources */,
 				CF7214E61F6678E4002F3634 /* AppDelegate.m in Sources */,
@@ -842,6 +882,7 @@
 				CF2EAF041FA5109500F35974 /* ExchangeCell.m in Sources */,
 				CF0BEDBC1F9B4378005275EE /* AccountManager.m in Sources */,
 				CFCB0F4C1F711E6F0087ACC7 /* TAAnimatedDotView.m in Sources */,
+				CFBFE5101FA5CC1300500B1B /* GuessView.m in Sources */,
 				CF2EAF0A1FA5154600F35974 /* GuessHistoryCell.m in Sources */,
 				CFBFE4FD1FA5B36500500B1B /* SCDIntroduceView.m in Sources */,
 				CF0BEDB91F9B2F78005275EE /* PUtil.m in Sources */,
@@ -855,6 +896,8 @@
 				CF2EAEB71FA26C5800F35974 /* MemberModel.m in Sources */,
 				CFCB0F0C1F7105360087ACC7 /* BaseViewController.m in Sources */,
 				CFCB0F151F7106620087ACC7 /* BySegmentView.m in Sources */,
+				CFBFE51C1FA5D22900500B1B /* GuessListModel.m in Sources */,
+				CFBFE50D1FA5C57000500B1B /* GuessPage.m in Sources */,
 				CF7214E31F6678E4002F3634 /* main.m in Sources */,
 				CF2EAEF81FA5034400F35974 /* PersonalPage.m in Sources */,
 				CF2EAEE31FA4FEDB00F35974 /* ChargePage.m in Sources */,
@@ -866,6 +909,7 @@
 				CFCB0F0D1F7105360087ACC7 /* Constant.m in Sources */,
 				CF2EAE8E1FA10D9200F35974 /* CommentModel.m in Sources */,
 				CFCB0F4E1F711E6F0087ACC7 /* TAPageControl.m in Sources */,
+				CFBFE5161FA5CD8600500B1B /* GuessButton.m in Sources */,
 				CF2EAE551F9D0FC000F35974 /* BottomView.m in Sources */,
 				CF2EAEAD1FA2619100F35974 /* HistoryModel.m in Sources */,
 				CFBFE4E71FA5363A00500B1B /* GoodsCell.m in Sources */,

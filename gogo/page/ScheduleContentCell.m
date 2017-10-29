@@ -24,7 +24,9 @@
 
 @end
 
-@implementation ScheduleContentCell
+@implementation ScheduleContentCell{
+    id <MainHandleDelegate> handleDelegate;
+}
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if(self == [super initWithStyle:style reuseIdentifier:reuseIdentifier]){
@@ -76,6 +78,7 @@
     _guessBtn.layer.masksToBounds = YES;
     _guessBtn.layer.cornerRadius = [PUtil getActualHeight:6];
     _guessBtn.titleLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:28]];
+    [_guessBtn addTarget:self action:@selector(goGuessPage) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:_guessBtn];
     
     _lineView = [[UIView alloc]init];
@@ -89,6 +92,16 @@
     _timeLabel.text = model.time;
     if(!model.needLine){
         [_lineView setHidden:YES];
+    }
+}
+
+-(void)setDelegate : (id<MainHandleDelegate>)delegate{
+    handleDelegate = delegate;
+}
+
+-(void)goGuessPage{
+    if(handleDelegate){
+        [handleDelegate goGuessPage];
     }
 }
 

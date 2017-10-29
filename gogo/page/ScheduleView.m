@@ -104,6 +104,7 @@
         if(cell == nil){
             cell = [[ScheduleContentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[ScheduleContentCell identify]];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            [cell setDelegate:_handleDelegate];
         }
         [cell setData:model.contentModel];
         return cell;
