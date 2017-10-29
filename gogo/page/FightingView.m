@@ -8,6 +8,10 @@
 
 #import "FightingView.h"
 
+@interface FightingView()
+
+@end
+
 @implementation FightingView
 
 -(instancetype)init{

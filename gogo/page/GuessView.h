@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "GuessPage.h"
 @interface GuessView : UIView
+
+@property (weak, nonatomic) id<GuessDelegate> delegate;
 
 @end

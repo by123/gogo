@@ -6,8 +6,16 @@
 //  Copyright © 2017年 by.huang. All rights reserved.
 //
 
+
 #import "BaseViewController.h"
 
+@protocol GuessDelegate <NSObject>
+
+@optional -(void)goLivePage;
+
+@end
+
 @interface GuessPage : BaseViewController
+
 
 @end

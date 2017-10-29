@@ -15,9 +15,8 @@
 
 @interface SCDCommentView()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
 
-@property (strong, nonatomic) UITableView *tableView;
+@property (strong, nonatomic) TouchTableView *tableView;
 @property (strong, nonatomic) TouchScrollView *scrollerView;
-@property (strong, nonatomic) TouchTableView *commentTabelView;
 @property (strong, nonatomic) UIView *commentView;
 @property (strong, nonatomic) InsetTextField *commentTextField;
 @property (strong, nonatomic) UILabel *hintLabel;

@@ -10,7 +10,7 @@
 #import "GuessView.h"
 #import "FightingView.h"
 #import "BySegmentView.h"
-#import "GuessButton.h"
+#import "LivePage.h"
 @interface GuessPage ()
 
 @property (strong, nonatomic) UIView *aTeamImageView;
@@ -109,25 +109,28 @@
     _gameLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:24]];
     _gameLabel.frame = CGRectMake(0 ,[PUtil getActualHeight:139]-StatuBarHeight, ScreenWidth, [PUtil getActualWidth:33]);
     [topView addSubview:_gameLabel];
+    
 }
 
 -(void)initBodyView{
     NSMutableArray *views = [[NSMutableArray alloc]init];
     GuessView *guessView = [[GuessView alloc]init];
+    guessView.delegate = self;
     FightingView *fligtingView = [[FightingView alloc]init];
     [views addObject:guessView];
     [views addObject:fligtingView];
     
     BySegmentView *segmentView = [[BySegmentView alloc]initWithFrame:CGRectMake(0, [PUtil getActualHeight:459] - StatuBarHeight, ScreenWidth, ScreenHeight - ([PUtil getActualHeight:459] - StatuBarHeight)) andTitleArray:@[@"竞猜", @"赛况"] andShowControllerNameArray:views];
     [self.view addSubview:segmentView];
-    
-    GuessButton *button = [[GuessButton alloc]initWithTitle:@"AG超会玩" guess:@"1.68"];
-    button.frame = CGRectMake(0,400,[PUtil getActualWidth:216], [PUtil getActualHeight:97]);
-    [self.view addSubview:button];
 }
 
 -(void)onBackPage{
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)goLivePage{
+    LivePage *page = [[LivePage alloc]init];
+    [self pushPage:page];
 }
 
 
