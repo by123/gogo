@@ -10,10 +10,14 @@
 #import "ScheduleDetailPage.h"
 #import "BarView.h"
 #import "BySegmentView.h"
-#import "BriefIntroduceView.h"
+#import "SCDCommentView.h"
+#import "SCDHistoryView.h"
+#import "SCDIntroduceView.h"
+#import "SCDTeamView.h"
 @interface ScheduleDetailPage ()
 
 @property (strong, nonatomic) BarView *barView;
+@property (strong, nonatomic) SCDCommentView *commentView;
 
 @end
 
@@ -30,15 +34,45 @@
     [self.view addSubview:_barView];
     
     NSMutableArray *views = [[NSMutableArray alloc]init];
-    BriefIntroduceView *briefIntroduceView = [[BriefIntroduceView alloc]init];
-    for(int i= 0 ;i <4 ;i++){
-        [views addObject:briefIntroduceView];
-    }
+    
+    CGRect rect = CGRectMake(0, 0, ScreenWidth, ScreenHeight - StatuBarHeight - [PUtil getActualHeight:278]);
+    
+    SCDIntroduceView *introduceView = [[SCDIntroduceView alloc]init];
+    [views addObject:introduceView];
+    
+    SCDTeamView *teamView = [[SCDTeamView alloc]init];
+    [views addObject:teamView];
+    
+    SCDHistoryView *historyView = [[SCDHistoryView alloc]init];
+    [views addObject:historyView];
+    
+    _commentView = [[SCDCommentView alloc]initWithFrame:rect];
+    [views addObject:_commentView];
     
     BySegmentView *segmentView = [[BySegmentView alloc]initWithFrame:CGRectMake(0, StatuBarHeight + _barView.mj_h, ScreenWidth, ScreenHeight - (StatuBarHeight + _barView.mj_h)) andTitleArray:@[@"比赛简介", @"队伍详情",@"历史交战",@"评论(251)"] andShowControllerNameArray:views];
     [self.view addSubview:segmentView];
     
     
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillChangeFrameNotification object:nil];
+}
+
+- (void)keyboardWillChangeFrame:(NSNotification *)notification{
+    if(_commentView){
+        [_commentView keyboardWillChangeFrame:notification];
+    }
+}
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    if(_commentView){
+        [_commentView touchesBegan:touches withEvent:event];
+    }
 }
 
 

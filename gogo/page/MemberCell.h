@@ -13,6 +13,8 @@
 
 -(void)setData : (MemberModel *)model;
 
+-(void)setData : (MemberModel *)model hideline: (Boolean)hideline;
+
 +(NSString *)identify;
 
 @end

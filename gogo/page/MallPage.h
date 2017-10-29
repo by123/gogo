@@ -7,7 +7,11 @@
 //
 
 #import "BaseViewController.h"
+#import "MainPage.h"
 
 @interface MallPage : BaseViewController
+
+@property (weak, nonatomic) id<MainHandleDelegate> handleDelegate;
+
 
 @end

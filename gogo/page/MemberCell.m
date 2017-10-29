@@ -12,6 +12,7 @@
 @property (strong, nonatomic) UILabel *nameLabel;
 @property (strong, nonatomic) UILabel *introduceLabel;
 @property (strong, nonatomic) UIView *headView;
+@property (strong, nonatomic) UIView *lineView;
 
 @end
 
@@ -50,10 +51,10 @@
     [self.contentView addSubview:_introduceLabel];
     
     
-    UIView *lineView = [[UIView alloc]init];
-    lineView.backgroundColor = c05_divider;
-    lineView.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualHeight:200]-1, ScreenWidth - [PUtil getActualWidth:30], 1);
-    [self.contentView addSubview:lineView];
+    _lineView = [[UIView alloc]init];
+    _lineView.backgroundColor = c05_divider;
+    _lineView.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualHeight:200]-1, ScreenWidth - [PUtil getActualWidth:30], 1);
+    [self.contentView addSubview:_lineView];
     
 }
 
@@ -61,6 +62,13 @@
     _nameLabel.text = model.name;
     _introduceLabel.text = model.introduce;
 }
+
+-(void)setData : (MemberModel *)model hideline: (Boolean)hideline{
+    _nameLabel.text = model.name;
+    _introduceLabel.text = model.introduce;
+    _lineView.hidden = hideline;
+}
+
 
 +(NSString *)identify{
     return @"MemberCell";

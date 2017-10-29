@@ -34,7 +34,6 @@
 		CF2EAE911FA119AA00F35974 /* InsetTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAE901FA119AA00F35974 /* InsetTextField.m */; };
 		CF2EAE941FA11C8800F35974 /* TouchScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAE931FA11C8800F35974 /* TouchScrollView.m */; };
 		CF2EAE981FA1202800F35974 /* ScheduleDetailPage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAE971FA1202800F35974 /* ScheduleDetailPage.m */; };
-		CF2EAE9B1FA1239D00F35974 /* BriefIntroduceView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAE9A1FA1239D00F35974 /* BriefIntroduceView.m */; };
 		CF2EAEA91FA2575300F35974 /* CorpsDetailPage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAEA81FA2575200F35974 /* CorpsDetailPage.m */; };
 		CF2EAEAD1FA2619100F35974 /* HistoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAEAC1FA2619100F35974 /* HistoryModel.m */; };
 		CF2EAEB01FA2624D00F35974 /* HistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAEAF1FA2624D00F35974 /* HistoryCell.m */; };
@@ -61,6 +60,15 @@
 		CF7214E31F6678E4002F3634 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7214E21F6678E4002F3634 /* main.m */; };
 		CF7214E61F6678E4002F3634 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7214E51F6678E4002F3634 /* AppDelegate.m */; };
 		CF7214EE1F6678E4002F3634 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF7214ED1F6678E4002F3634 /* Assets.xcassets */; };
+		CFBFE4E31FA534E000500B1B /* GoodsView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBFE4E21FA534E000500B1B /* GoodsView.m */; };
+		CFBFE4E71FA5363A00500B1B /* GoodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBFE4E61FA5363A00500B1B /* GoodsCell.m */; };
+		CFBFE4F41FA5B31E00500B1B /* SCDCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBFE4F31FA5B31E00500B1B /* SCDCommentView.m */; };
+		CFBFE4F71FA5B33100500B1B /* SCDHistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBFE4F61FA5B33100500B1B /* SCDHistoryView.m */; };
+		CFBFE4FD1FA5B36500500B1B /* SCDIntroduceView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBFE4FC1FA5B36500500B1B /* SCDIntroduceView.m */; };
+		CFBFE5001FA5B3A200500B1B /* SCDTeamView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBFE4FF1FA5B3A200500B1B /* SCDTeamView.m */; };
+		CFBFE5031FA5BA5C00500B1B /* SCDHistoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBFE5021FA5BA5C00500B1B /* SCDHistoryModel.m */; };
+		CFBFE5061FA5BAAA00500B1B /* SCDHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBFE5051FA5BAAA00500B1B /* SCDHistoryCell.m */; };
+		CFBFE5091FA5C48E00500B1B /* TouchTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBFE5081FA5C48E00500B1B /* TouchTableView.m */; };
 		CFCB0F0C1F7105360087ACC7 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB0F011F7105360087ACC7 /* BaseViewController.m */; };
 		CFCB0F0D1F7105360087ACC7 /* Constant.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB0F031F7105360087ACC7 /* Constant.m */; };
 		CFCB0F0F1F7105360087ACC7 /* ByNetUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB0F0A1F7105360087ACC7 /* ByNetUtil.m */; };
@@ -133,8 +141,6 @@
 		CF2EAE931FA11C8800F35974 /* TouchScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TouchScrollView.m; sourceTree = "<group>"; };
 		CF2EAE961FA1202800F35974 /* ScheduleDetailPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleDetailPage.h; sourceTree = "<group>"; };
 		CF2EAE971FA1202800F35974 /* ScheduleDetailPage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScheduleDetailPage.m; sourceTree = "<group>"; };
-		CF2EAE991FA1239D00F35974 /* BriefIntroduceView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BriefIntroduceView.h; sourceTree = "<group>"; };
-		CF2EAE9A1FA1239D00F35974 /* BriefIntroduceView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BriefIntroduceView.m; sourceTree = "<group>"; };
 		CF2EAEA71FA2575200F35974 /* CorpsDetailPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CorpsDetailPage.h; sourceTree = "<group>"; };
 		CF2EAEA81FA2575200F35974 /* CorpsDetailPage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CorpsDetailPage.m; sourceTree = "<group>"; };
 		CF2EAEAB1FA2619100F35974 /* HistoryModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryModel.h; sourceTree = "<group>"; };
@@ -187,6 +193,24 @@
 		CF7214E51F6678E4002F3634 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		CF7214ED1F6678E4002F3634 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF7214F21F6678E4002F3634 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CFBFE4E11FA534E000500B1B /* GoodsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsView.h; sourceTree = "<group>"; };
+		CFBFE4E21FA534E000500B1B /* GoodsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsView.m; sourceTree = "<group>"; };
+		CFBFE4E51FA5363A00500B1B /* GoodsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsCell.h; sourceTree = "<group>"; };
+		CFBFE4E61FA5363A00500B1B /* GoodsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsCell.m; sourceTree = "<group>"; };
+		CFBFE4F21FA5B31E00500B1B /* SCDCommentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCDCommentView.h; sourceTree = "<group>"; };
+		CFBFE4F31FA5B31E00500B1B /* SCDCommentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCDCommentView.m; sourceTree = "<group>"; };
+		CFBFE4F51FA5B33100500B1B /* SCDHistoryView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCDHistoryView.h; sourceTree = "<group>"; };
+		CFBFE4F61FA5B33100500B1B /* SCDHistoryView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCDHistoryView.m; sourceTree = "<group>"; };
+		CFBFE4FB1FA5B36500500B1B /* SCDIntroduceView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCDIntroduceView.h; sourceTree = "<group>"; };
+		CFBFE4FC1FA5B36500500B1B /* SCDIntroduceView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCDIntroduceView.m; sourceTree = "<group>"; };
+		CFBFE4FE1FA5B3A200500B1B /* SCDTeamView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCDTeamView.h; sourceTree = "<group>"; };
+		CFBFE4FF1FA5B3A200500B1B /* SCDTeamView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCDTeamView.m; sourceTree = "<group>"; };
+		CFBFE5011FA5BA5C00500B1B /* SCDHistoryModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCDHistoryModel.h; sourceTree = "<group>"; };
+		CFBFE5021FA5BA5C00500B1B /* SCDHistoryModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCDHistoryModel.m; sourceTree = "<group>"; };
+		CFBFE5041FA5BAAA00500B1B /* SCDHistoryCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SCDHistoryCell.h; sourceTree = "<group>"; };
+		CFBFE5051FA5BAAA00500B1B /* SCDHistoryCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SCDHistoryCell.m; sourceTree = "<group>"; };
+		CFBFE5071FA5C48E00500B1B /* TouchTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TouchTableView.h; sourceTree = "<group>"; };
+		CFBFE5081FA5C48E00500B1B /* TouchTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TouchTableView.m; sourceTree = "<group>"; };
 		CFCB0F001F7105360087ACC7 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		CFCB0F011F7105360087ACC7 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		CFCB0F021F7105360087ACC7 /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
@@ -284,6 +308,7 @@
 		CF0BEDCB1F9BB873005275EE /* mall */ = {
 			isa = PBXGroup;
 			children = (
+				CFBFE4E41FA5362700500B1B /* goods */,
 				CF2EAEBD1FA30ABA00F35974 /* MallPage.h */,
 				CF2EAEBC1FA30ABA00F35974 /* MallPage.m */,
 			);
@@ -345,10 +370,12 @@
 		CF2EAE951FA1200100F35974 /* scheduledetail */ = {
 			isa = PBXGroup;
 			children = (
+				CFBFE4F11FA5B2F100500B1B /* comment */,
+				CFBFE4ED1FA5B2B300500B1B /* history */,
+				CFBFE4E91FA5B28600500B1B /* team */,
+				CFBFE4E81FA5B26D00500B1B /* introduce */,
 				CF2EAE961FA1202800F35974 /* ScheduleDetailPage.h */,
 				CF2EAE971FA1202800F35974 /* ScheduleDetailPage.m */,
-				CF2EAE991FA1239D00F35974 /* BriefIntroduceView.h */,
-				CF2EAE9A1FA1239D00F35974 /* BriefIntroduceView.m */,
 			);
 			name = scheduledetail;
 			sourceTree = "<group>";
@@ -485,6 +512,55 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		CFBFE4E41FA5362700500B1B /* goods */ = {
+			isa = PBXGroup;
+			children = (
+				CFBFE4E11FA534E000500B1B /* GoodsView.h */,
+				CFBFE4E21FA534E000500B1B /* GoodsView.m */,
+				CFBFE4E51FA5363A00500B1B /* GoodsCell.h */,
+				CFBFE4E61FA5363A00500B1B /* GoodsCell.m */,
+			);
+			name = goods;
+			sourceTree = "<group>";
+		};
+		CFBFE4E81FA5B26D00500B1B /* introduce */ = {
+			isa = PBXGroup;
+			children = (
+				CFBFE4FB1FA5B36500500B1B /* SCDIntroduceView.h */,
+				CFBFE4FC1FA5B36500500B1B /* SCDIntroduceView.m */,
+			);
+			name = introduce;
+			sourceTree = "<group>";
+		};
+		CFBFE4E91FA5B28600500B1B /* team */ = {
+			isa = PBXGroup;
+			children = (
+				CFBFE4FE1FA5B3A200500B1B /* SCDTeamView.h */,
+				CFBFE4FF1FA5B3A200500B1B /* SCDTeamView.m */,
+			);
+			name = team;
+			sourceTree = "<group>";
+		};
+		CFBFE4ED1FA5B2B300500B1B /* history */ = {
+			isa = PBXGroup;
+			children = (
+				CFBFE4F51FA5B33100500B1B /* SCDHistoryView.h */,
+				CFBFE4F61FA5B33100500B1B /* SCDHistoryView.m */,
+				CFBFE5041FA5BAAA00500B1B /* SCDHistoryCell.h */,
+				CFBFE5051FA5BAAA00500B1B /* SCDHistoryCell.m */,
+			);
+			name = history;
+			sourceTree = "<group>";
+		};
+		CFBFE4F11FA5B2F100500B1B /* comment */ = {
+			isa = PBXGroup;
+			children = (
+				CFBFE4F21FA5B31E00500B1B /* SCDCommentView.h */,
+				CFBFE4F31FA5B31E00500B1B /* SCDCommentView.m */,
+			);
+			name = comment;
+			sourceTree = "<group>";
+		};
 		CFCB0EFF1F7105360087ACC7 /* global */ = {
 			isa = PBXGroup;
 			children = (
@@ -521,6 +597,8 @@
 				CF2EAF001FA50F2E00F35974 /* ExchangeModel.m */,
 				CF2EAF051FA514F800F35974 /* GuessHistoryModel.h */,
 				CF2EAF061FA514F800F35974 /* GuessHistoryModel.m */,
+				CFBFE5011FA5BA5C00500B1B /* SCDHistoryModel.h */,
+				CFBFE5021FA5BA5C00500B1B /* SCDHistoryModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -571,6 +649,8 @@
 				CF2EAE931FA11C8800F35974 /* TouchScrollView.m */,
 				CF2EAF0B1FA5231300F35974 /* ItemView.h */,
 				CF2EAF0C1FA5231300F35974 /* ItemView.m */,
+				CFBFE5071FA5C48E00500B1B /* TouchTableView.h */,
+				CFBFE5081FA5C48E00500B1B /* TouchTableView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -731,6 +811,7 @@
 				CF2EAE8B1FA10D6200F35974 /* CommentCell.m in Sources */,
 				CF2EAEBE1FA30ABA00F35974 /* MallPage.m in Sources */,
 				CF0BEDD51F9BB96E005275EE /* NewsCell.m in Sources */,
+				CFBFE4E31FA534E000500B1B /* GoodsView.m in Sources */,
 				CF2EAEB01FA2624D00F35974 /* HistoryCell.m in Sources */,
 				CF7214E61F6678E4002F3634 /* AppDelegate.m in Sources */,
 				CF2EAEE01FA4E76400F35974 /* MineCell.m in Sources */,
@@ -750,22 +831,25 @@
 				CF2EAEC11FA30ACF00F35974 /* GamePage.m in Sources */,
 				CF2EAE651F9E71D800F35974 /* CorpsView.m in Sources */,
 				CFCB0F0F1F7105360087ACC7 /* ByNetUtil.m in Sources */,
+				CFBFE5091FA5C48E00500B1B /* TouchTableView.m in Sources */,
 				CF2EAEF01FA5007300F35974 /* ExchangePage.m in Sources */,
 				CF2EAEA91FA2575300F35974 /* CorpsDetailPage.m in Sources */,
+				CFBFE5001FA5B3A200500B1B /* SCDTeamView.m in Sources */,
 				CF2EAF071FA514F800F35974 /* GuessHistoryModel.m in Sources */,
 				CF0BEDC21F9B4780005275EE /* Account.m in Sources */,
+				CFBFE5061FA5BAAA00500B1B /* SCDHistoryCell.m in Sources */,
 				CF2EAE851FA103CB00F35974 /* BarView.m in Sources */,
 				CF2EAF041FA5109500F35974 /* ExchangeCell.m in Sources */,
 				CF0BEDBC1F9B4378005275EE /* AccountManager.m in Sources */,
 				CFCB0F4C1F711E6F0087ACC7 /* TAAnimatedDotView.m in Sources */,
 				CF2EAF0A1FA5154600F35974 /* GuessHistoryCell.m in Sources */,
+				CFBFE4FD1FA5B36500500B1B /* SCDIntroduceView.m in Sources */,
 				CF0BEDB91F9B2F78005275EE /* PUtil.m in Sources */,
 				CF2EAE701F9FC45300F35974 /* ScheduleContentCell.m in Sources */,
 				CFCB0F491F711E6F0087ACC7 /* SDCollectionViewCell.m in Sources */,
 				CF2EAE6D1F9FC44300F35974 /* ScheduleTitleCell.m in Sources */,
 				CF2EAEF41FA500A400F35974 /* AboutPage.m in Sources */,
 				CF2EAE941FA11C8800F35974 /* TouchScrollView.m in Sources */,
-				CF2EAE9B1FA1239D00F35974 /* BriefIntroduceView.m in Sources */,
 				CFCB0F181F71088F0087ACC7 /* HomeView.m in Sources */,
 				CF2EAE761F9FC7C800F35974 /* ContentModel.m in Sources */,
 				CF2EAEB71FA26C5800F35974 /* MemberModel.m in Sources */,
@@ -784,10 +868,14 @@
 				CFCB0F4E1F711E6F0087ACC7 /* TAPageControl.m in Sources */,
 				CF2EAE551F9D0FC000F35974 /* BottomView.m in Sources */,
 				CF2EAEAD1FA2619100F35974 /* HistoryModel.m in Sources */,
+				CFBFE4E71FA5363A00500B1B /* GoodsCell.m in Sources */,
+				CFBFE4F71FA5B33100500B1B /* SCDHistoryView.m in Sources */,
+				CFBFE5031FA5BA5C00500B1B /* SCDHistoryModel.m in Sources */,
 				CF2EAE821FA1012800F35974 /* NewsDetailPage.m in Sources */,
 				CFCB0F4F1F711E6F0087ACC7 /* UIView+SDExtension.m in Sources */,
 				CF2EAEB41FA26B8400F35974 /* MembersDetailPage.m in Sources */,
 				CF0BEDB61F9A3759005275EE /* ColorUtil.m in Sources */,
+				CFBFE4F41FA5B31E00500B1B /* SCDCommentView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

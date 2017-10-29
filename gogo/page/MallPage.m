@@ -7,6 +7,8 @@
 //
 
 #import "MallPage.h"
+#import "BySegmentView.h"
+#import "GoodsView.h"
 
 @interface MallPage ()
 
@@ -16,24 +18,26 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor redColor];
-
+    [self initView];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)initView{
+    [self initTab];
 }
 
-/*
-#pragma mark - Navigation
+-(void)initTab{
+    NSMutableArray *views = [[NSMutableArray alloc]init];
+    
+    [views addObject:[[GoodsView alloc]init]];
+    [views addObject:[[GoodsView alloc]init]];
+    [views addObject:[[GoodsView alloc]init]];
+    [views addObject:[[GoodsView alloc]init]];
+    [views addObject:[[GoodsView alloc]init]];
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+    BySegmentView *segmentView = [[BySegmentView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - (StatuBarHeight + [PUtil getActualHeight:188])) andTitleArray:@[@"热门商品", @"虚拟物品",@"游戏周边",@"现金红包",@"电竞装备"] andShowControllerNameArray:views];
+    [self.view addSubview:segmentView];
 }
-*/
+
 
 @end
