@@ -29,7 +29,7 @@
     int height = _barView.mj_h + _barView.mj_y;
     
     UIImageView *imageView = [[UIImageView alloc]init];
-    imageView.image = [UIImage imageNamed:@"icon"];
+    imageView.image = [UIImage imageNamed:@"etc_logo_200"];
     imageView.frame = CGRectMake((ScreenWidth -  [PUtil getActualWidth:240])/2, height+[PUtil getActualHeight:359], [PUtil getActualWidth:240],  [PUtil getActualWidth:240]);
     imageView.layer.masksToBounds = YES;
     imageView.layer.cornerRadius = [PUtil getActualWidth:40]/2;

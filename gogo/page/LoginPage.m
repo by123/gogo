@@ -40,7 +40,7 @@
 -(void)initView{
     [ColorUtil setGradientColor:self.view startColor:c11_bg1 endColor:c12_bg2 director:Top];
     _mLogoImage = [[UIImageView alloc]init];
-    UIImage *image = [UIImage imageNamed:@"icon"];
+    UIImage *image = [UIImage imageNamed:@"etc_logo_200"];
     _mLogoImage.image = image;
     _mLogoImage.frame = CGRectMake([PUtil getActualWidth:255], [PUtil getActualHeight:190], [PUtil getActualWidth:240], [PUtil getActualWidth:240]);
     _mLogoImage.layer.masksToBounds = YES;
@@ -124,20 +124,14 @@
     
     _mWechatBtn = [[UIButton alloc]init];
     _mWechatBtn.frame = CGRectMake([PUtil getActualWidth:246], [PUtil getActualWidth:1126], [PUtil getActualWidth:99], [PUtil getActualHeight:99]);
-    [_mWechatBtn setTitle:@"微信" forState:UIControlStateNormal];
-    _mWechatBtn.layer.masksToBounds = YES;
-    _mWechatBtn.titleLabel.font = [UIFont systemFontOfSize:12.0f];
-    _mWechatBtn.backgroundColor = c01_blue;
-    _mWechatBtn.layer.cornerRadius = [PUtil getActualHeight:99]/2;
+    [_mWechatBtn setImage:[UIImage imageNamed:@"ic_wx_50"] forState:UIControlStateNormal];
+    [_mWechatBtn addTarget:self action:@selector(onWechatLogin) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_mWechatBtn];
     
     _mQQBtn = [[UIButton alloc]init];
     _mQQBtn.frame = CGRectMake([PUtil getActualWidth:405], [PUtil getActualWidth:1126], [PUtil getActualWidth:99], [PUtil getActualHeight:99]);
-    [_mQQBtn setTitle:@"QQ" forState:UIControlStateNormal];
-    _mQQBtn.layer.masksToBounds = YES;
-    _mQQBtn.titleLabel.font = [UIFont systemFontOfSize:12.0f];
-    _mQQBtn.backgroundColor = c01_blue;
-    _mQQBtn.layer.cornerRadius = [PUtil getActualHeight:99]/2;
+    [_mQQBtn setImage:[UIImage imageNamed:@"ic_qq_50"] forState:UIControlStateNormal];
+    [_mQQBtn addTarget:self action:@selector(onQQLogin) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_mQQBtn];
     
     _mDisclaimerText = [[UILabel alloc]init];
@@ -195,6 +189,17 @@
 -(void)OnLogin{
     //todo 登录
     [self.navigationController pushViewController:[[MainPage alloc]init] animated:YES];
+}
+
+-(void)onWechatLogin{
+    //todo 微信登录
+    NSLog(@"微信登录");
+}
+
+-(void)onQQLogin{
+    //todo QQ登录
+    NSLog(@"QQ登录");
+
 }
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
