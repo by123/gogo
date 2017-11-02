@@ -11,6 +11,39 @@
 #import "RespondModel.h"
 @implementation ByNetUtil
 
++(void)get:(NSString *)url parameters:(NSDictionary *)parameters success:(void (^)(id))success failure:(void (^)(NSError *))failure{
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+    manager.requestSerializer.timeoutInterval = 20.f;
+    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+    //请求头
+    Account *account = [[AccountManager sharedAccountManager] getAccount];
+    [manager.requestSerializer setValue:PT forHTTPHeaderField:@"pt"];
+    [manager.requestSerializer setValue:APPKEY forHTTPHeaderField:@"app_key"];
+    [manager.requestSerializer setValue:account.uid forHTTPHeaderField:@"uid"];
+    [manager.requestSerializer setValue:account.access_token forHTTPHeaderField:@"access_token"];
+    // 请求参数类型
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/xml",@"text/html", nil ];
+    // post请求
+    [manager GET:url parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (success){
+            [UIApplication sharedApplication].networkActivityIndicatorVisible=NO;
+            RespondModel *model = [RespondModel mj_objectWithKeyValues:responseObject];
+            success(model);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (failure){
+            [UIApplication sharedApplication].networkActivityIndicatorVisible=NO;
+            failure(error);
+        }
+    }];
+}
 
 + (void)post:(NSString *)url parameters:(NSDictionary *)parameters success:(void (^)(id))success failure:(void (^)(NSError *))failure{
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];

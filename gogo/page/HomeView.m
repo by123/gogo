@@ -8,6 +8,7 @@
 
 #import "HomeView.h"
 #import "NewsCell.h"
+#import "RespondModel.h"
 
 
 #define AdViewHeight [PUtil getActualHeight:300]
@@ -20,12 +21,17 @@
 
 @end
 
-@implementation HomeView
+@implementation HomeView{
+    long index;
+    long size;
+    NSMutableArray *datas;
+}
 
 
 
 -(instancetype)initWithFrame:(CGRect)frame{
     if(self == [super initWithFrame:frame]){
+        datas = [[NSMutableArray alloc]init];
         [self initView];
     }
     return self;
@@ -38,10 +44,10 @@
     _scrollerView.frame = CGRectMake(0, 0, ScreenWidth, self.frame.size.height);
     _scrollerView.showsVerticalScrollIndicator = NO;
     _scrollerView.showsHorizontalScrollIndicator = NO;
-    _scrollerView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(uploadMore)];
+    _scrollerView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(requestMore)];
     
     _scrollerView.contentSize = CGSizeMake(ScreenWidth, [PUtil getActualHeight:172] * 10 + AdViewHeight);
-    MJRefreshStateHeader *header = [MJRefreshStateHeader headerWithRefreshingTarget:self refreshingAction:@selector(uploadNew)];
+    MJRefreshStateHeader *header = [MJRefreshStateHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestNew)];
     header.lastUpdatedTimeLabel.hidden = YES;
     _scrollerView.mj_header = header;
     [self addSubview:_scrollerView];
@@ -65,6 +71,8 @@
     _tableView.scrollEnabled = NO;
     [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [_scrollerView addSubview:_tableView];
+    
+    [self requestNew];
 }
 
 
@@ -85,7 +93,7 @@
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return [datas count];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -106,26 +114,41 @@
         cell = [[NewsCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NewsCell identify]];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    NewsModel *model = [NewsModel getModel];
-    [cell setData:model];
+    [cell setData:[datas objectAtIndex:indexPath.row]];
     return cell;
 }
 
 
--(void)uploadNew
+-(void)requestNew
 {
     [_scrollerView.mj_header endRefreshing];
     [_scrollerView.mj_footer endRefreshing];
-//    CURRENT = 0;
-//    [self requestList : NO];
+    [self requestList : NO];
 }
 
--(void)uploadMore
+-(void)requestMore
 {
     [_scrollerView.mj_header endRefreshing];
     [_scrollerView.mj_footer endRefreshing];
-//    CURRENT += REQUEST_SIZE;
-//    [self requestList : YES];
+    [self requestList : YES];
+}
+
+-(void)requestList : (Boolean) isRequestMore{
+    
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
+    [dic setObject:[NSString stringWithFormat:@"%ld",index] forKey:@"index"];
+    [dic setObject:[NSString stringWithFormat:@"%ld",size] forKey:@"size"];
+    [ByNetUtil get:API_NEWS_LIST parameters:dic success:^(RespondModel *respondModel) {
+        if(respondModel.code == 200){
+            id items = [respondModel.data objectForKey:@"items"];
+            index =(long)[respondModel.data objectForKey:@"index"];
+            datas = [NewsModel mj_objectArrayWithKeyValuesArray:items];
+            [_tableView reloadData];
+        }
+    } failure:^(NSError *error) {
+        [DialogHelper showFailureAlertSheet:@"获取列表失败！"];
+    }];
+    
 }
 
 @end

@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "gogo/page/LoginPage.m"
-            timestampString = "531340319.745898"
+            timestampString = "531341404.899515"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "173"
@@ -106,12 +106,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "gogo/utils/ByNetUtil.m"
-            timestampString = "531340319.74597"
+            timestampString = "531341404.899595"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
-            landmarkName = "+post:parameters:success:failure:"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "+get:parameters:success:failure:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -122,12 +122,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "gogo/utils/ByNetUtil.m"
-            timestampString = "531340319.746023"
+            timestampString = "531341404.899647"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "+post:parameters:success:failure:"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "+get:parameters:success:failure:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "gogo/page/HomeView.m"
+            timestampString = "531341404.899697"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "-requestList:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "gogo/page/HomeView.m"
+            timestampString = "531341404.899977"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "-requestList:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

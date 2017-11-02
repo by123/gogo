@@ -75,9 +75,9 @@
 
 -(void)setData : (NewsModel *)model{
     _mTitleLabel.text = model.title;
-    _mTypeLabel.text = model.type;
-    [_mImageView sd_setImageWithURL:[NSURL URLWithString:model.imageUrl]];
-    _mCommentLabel.text = model.comments;
+    _mTypeLabel.text = model.tp;
+    [_mImageView sd_setImageWithURL:[NSURL URLWithString:model.cover]];
+    _mCommentLabel.text = model.view_count;
 }
 
 +(NSString *)identify{

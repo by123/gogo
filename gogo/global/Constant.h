@@ -19,6 +19,6 @@
 #define RootUrl @"https://gogo.scrats.cn/api/"
 #define API_GETVERIFY @"https://gogo.scrats.cn/api/account/sms"
 #define API_LOGIN @"https://gogo.scrats.cn/api/account/sms_login"
-
+#define API_NEWS_LIST @"https://gogo.scrats.cn/api/core/news"
 
 @end

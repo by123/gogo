@@ -19,7 +19,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
-    LoginPage *page = [[LoginPage alloc]init];
+    MainPage *page = [[MainPage alloc]init];
     UINavigationController *controller = [[UINavigationController alloc]initWithRootViewController:page];
     self.window.rootViewController = controller;
     [self.window makeKeyAndVisible];
