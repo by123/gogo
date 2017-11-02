@@ -13,7 +13,7 @@
 
 @property (strong, nonatomic) UILabel *titleLabel;
 @property (strong, nonatomic) UIView *lineView;
-@property (strong, nonatomic) UIView *arrowView;
+@property (strong, nonatomic) UIImageView *arrowView;
 @end
 
 @implementation PriceCell
@@ -35,9 +35,9 @@
     _titleLabel.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualHeight:31],[PUtil getActualWidth:300], [PUtil getActualHeight:48]);
     [self.contentView addSubview:_titleLabel];
     
-    _arrowView = [[UIView alloc]init];
+    _arrowView = [[UIImageView alloc]init];
     _arrowView.frame = CGRectMake([PUtil getActualWidth:696], [PUtil getActualHeight:30],[PUtil getActualWidth:24], [PUtil getActualWidth:24]);
-    _arrowView.backgroundColor = c10_icon;
+    [_arrowView setImage:[UIImage imageNamed:@"ic_select_16"]];
     _arrowView.hidden = YES;
     [self.contentView addSubview:_arrowView];
     

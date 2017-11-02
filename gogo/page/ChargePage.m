@@ -23,6 +23,7 @@
 @implementation ChargePage{
     NSArray *priceArray;
     NSArray *payArray;
+    NSArray *payImages;
     NSInteger priceSelect;
     NSInteger paySelect;
 }
@@ -31,6 +32,7 @@
     [super viewDidLoad];
     priceArray = @[@"6元600竞猜币",@"30元400竞猜币",@"68元1000竞猜币",@"128元30000竞猜币"];
     payArray = @[@"微信支付",@"支付宝支付"];
+    payImages = @[@"ic_wxpay_29",@"ic_alipay_29"];
     [self initView];
 }
 
@@ -133,9 +135,9 @@
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
         if(indexPath.row == [payArray count]-1){
-            [cell setData:[payArray objectAtIndex:indexPath.row] hideline:YES];
+            [cell setData:[payArray objectAtIndex:indexPath.row] hideline:YES image:[payImages objectAtIndex:indexPath.row]];
         }else{
-            [cell setData:[payArray objectAtIndex:indexPath.row] hideline:NO];
+            [cell setData:[payArray objectAtIndex:indexPath.row] hideline:NO image:[payImages objectAtIndex:indexPath.row]];
         }
         if(paySelect == indexPath.row){
             [cell setSelect:YES];

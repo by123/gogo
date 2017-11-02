@@ -57,6 +57,14 @@
 		CF2EAF071FA514F800F35974 /* GuessHistoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAF061FA514F800F35974 /* GuessHistoryModel.m */; };
 		CF2EAF0A1FA5154600F35974 /* GuessHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAF091FA5154600F35974 /* GuessHistoryCell.m */; };
 		CF2EAF0D1FA5231300F35974 /* ItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAF0C1FA5231300F35974 /* ItemView.m */; };
+		CF4278201FAB95FA00C163DD /* RespondModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF42781F1FAB95FA00C163DD /* RespondModel.m */; };
+		CF4278261FAB98A400C163DD /* DialogHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4278241FAB98A400C163DD /* DialogHelper.m */; };
+		CF4278291FAB98D800C163DD /* IDSAlertSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4278281FAB98D800C163DD /* IDSAlertSheet.m */; };
+		CF4278391FAB9A0100C163DD /* IDSExtendedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4278321FAB9A0100C163DD /* IDSExtendedLabel.m */; };
+		CF42783A1FAB9A0100C163DD /* UILabel+ContentSize.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4278341FAB9A0100C163DD /* UILabel+ContentSize.m */; };
+		CF42783B1FAB9A0100C163DD /* UILabel+StringFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4278361FAB9A0100C163DD /* UILabel+StringFrame.m */; };
+		CF42783C1FAB9A0100C163DD /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4278381FAB9A0100C163DD /* UIView+Frame.m */; };
+		CF42783F1FAB9B3A00C163DD /* LoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF42783E1FAB9B3A00C163DD /* LoginModel.m */; };
 		CF7214E31F6678E4002F3634 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7214E21F6678E4002F3634 /* main.m */; };
 		CF7214E61F6678E4002F3634 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7214E51F6678E4002F3634 /* AppDelegate.m */; };
 		CF7214EE1F6678E4002F3634 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF7214ED1F6678E4002F3634 /* Assets.xcassets */; };
@@ -195,6 +203,22 @@
 		CF2EAF091FA5154600F35974 /* GuessHistoryCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuessHistoryCell.m; sourceTree = "<group>"; };
 		CF2EAF0B1FA5231300F35974 /* ItemView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemView.h; sourceTree = "<group>"; };
 		CF2EAF0C1FA5231300F35974 /* ItemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemView.m; sourceTree = "<group>"; };
+		CF42781E1FAB95FA00C163DD /* RespondModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RespondModel.h; sourceTree = "<group>"; };
+		CF42781F1FAB95FA00C163DD /* RespondModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RespondModel.m; sourceTree = "<group>"; };
+		CF4278241FAB98A400C163DD /* DialogHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DialogHelper.m; sourceTree = "<group>"; };
+		CF4278251FAB98A400C163DD /* DialogHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DialogHelper.h; sourceTree = "<group>"; };
+		CF4278271FAB98D800C163DD /* IDSAlertSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDSAlertSheet.h; sourceTree = "<group>"; };
+		CF4278281FAB98D800C163DD /* IDSAlertSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDSAlertSheet.m; sourceTree = "<group>"; };
+		CF4278311FAB9A0100C163DD /* IDSExtendedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDSExtendedLabel.h; sourceTree = "<group>"; };
+		CF4278321FAB9A0100C163DD /* IDSExtendedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDSExtendedLabel.m; sourceTree = "<group>"; };
+		CF4278331FAB9A0100C163DD /* UILabel+ContentSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+ContentSize.h"; sourceTree = "<group>"; };
+		CF4278341FAB9A0100C163DD /* UILabel+ContentSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+ContentSize.m"; sourceTree = "<group>"; };
+		CF4278351FAB9A0100C163DD /* UILabel+StringFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+StringFrame.h"; sourceTree = "<group>"; };
+		CF4278361FAB9A0100C163DD /* UILabel+StringFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+StringFrame.m"; sourceTree = "<group>"; };
+		CF4278371FAB9A0100C163DD /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
+		CF4278381FAB9A0100C163DD /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
+		CF42783D1FAB9B3A00C163DD /* LoginModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginModel.h; sourceTree = "<group>"; };
+		CF42783E1FAB9B3A00C163DD /* LoginModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginModel.m; sourceTree = "<group>"; };
 		CF7214DE1F6678E4002F3634 /* gogo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gogo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF7214E21F6678E4002F3634 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CF7214E41F6678E4002F3634 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -489,6 +513,21 @@
 			name = personal;
 			sourceTree = "<group>";
 		};
+		CF4278301FAB9A0100C163DD /* extra */ = {
+			isa = PBXGroup;
+			children = (
+				CF4278311FAB9A0100C163DD /* IDSExtendedLabel.h */,
+				CF4278321FAB9A0100C163DD /* IDSExtendedLabel.m */,
+				CF4278331FAB9A0100C163DD /* UILabel+ContentSize.h */,
+				CF4278341FAB9A0100C163DD /* UILabel+ContentSize.m */,
+				CF4278351FAB9A0100C163DD /* UILabel+StringFrame.h */,
+				CF4278361FAB9A0100C163DD /* UILabel+StringFrame.m */,
+				CF4278371FAB9A0100C163DD /* UIView+Frame.h */,
+				CF4278381FAB9A0100C163DD /* UIView+Frame.m */,
+			);
+			path = extra;
+			sourceTree = "<group>";
+		};
 		CF7214D51F6678E4002F3634 = {
 			isa = PBXGroup;
 			children = (
@@ -669,6 +708,10 @@
 				CFBFE5181FA5D21000500B1B /* GuessModel.m */,
 				CFBFE51A1FA5D22900500B1B /* GuessListModel.h */,
 				CFBFE51B1FA5D22900500B1B /* GuessListModel.m */,
+				CF42781E1FAB95FA00C163DD /* RespondModel.h */,
+				CF42781F1FAB95FA00C163DD /* RespondModel.m */,
+				CF42783D1FAB9B3A00C163DD /* LoginModel.h */,
+				CF42783E1FAB9B3A00C163DD /* LoginModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -690,6 +733,11 @@
 		CFCB0F081F7105360087ACC7 /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				CF4278301FAB9A0100C163DD /* extra */,
+				CF4278271FAB98D800C163DD /* IDSAlertSheet.h */,
+				CF4278281FAB98D800C163DD /* IDSAlertSheet.m */,
+				CF4278251FAB98A400C163DD /* DialogHelper.h */,
+				CF4278241FAB98A400C163DD /* DialogHelper.m */,
 				CF0BEDBD1F9B43F5005275EE /* Singleton.h */,
 				CF0BEDB41F9A3759005275EE /* ColorUtil.h */,
 				CF0BEDB51F9A3759005275EE /* ColorUtil.m */,
@@ -878,12 +926,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFCB0F4B1F711E6F0087ACC7 /* TAAbstractDotView.m in Sources */,
+				CF4278391FAB9A0100C163DD /* IDSExtendedLabel.m in Sources */,
 				CF2EAE731F9FC47600F35974 /* ScheduleModel.m in Sources */,
 				CFCB0F4A1F711E6F0087ACC7 /* SDCycleScrollView.m in Sources */,
 				CFBFE5191FA5D21000500B1B /* GuessModel.m in Sources */,
 				CF2EAE8B1FA10D6200F35974 /* CommentCell.m in Sources */,
 				CFBFE5211FA642D900500B1B /* GuessCell.m in Sources */,
 				CF2EAEBE1FA30ABA00F35974 /* MallPage.m in Sources */,
+				CF42783B1FAB9A0100C163DD /* UILabel+StringFrame.m in Sources */,
 				CF0BEDD51F9BB96E005275EE /* NewsCell.m in Sources */,
 				CFBFE5131FA5CC6E00500B1B /* FightingView.m in Sources */,
 				CFBFE4E31FA534E000500B1B /* GoodsView.m in Sources */,
@@ -919,6 +969,7 @@
 				CFCB0F4C1F711E6F0087ACC7 /* TAAnimatedDotView.m in Sources */,
 				CFBFE5101FA5CC1300500B1B /* GuessView.m in Sources */,
 				CF2EAF0A1FA5154600F35974 /* GuessHistoryCell.m in Sources */,
+				CF42783F1FAB9B3A00C163DD /* LoginModel.m in Sources */,
 				CFBFE4FD1FA5B36500500B1B /* SCDIntroduceView.m in Sources */,
 				CF0BEDB91F9B2F78005275EE /* PUtil.m in Sources */,
 				CF2EAE701F9FC45300F35974 /* ScheduleContentCell.m in Sources */,
@@ -931,6 +982,7 @@
 				CF2EAEB71FA26C5800F35974 /* MemberModel.m in Sources */,
 				CFBFE5251FA64CD000500B1B /* LivePage.m in Sources */,
 				CFCB0F0C1F7105360087ACC7 /* BaseViewController.m in Sources */,
+				CF42783C1FAB9A0100C163DD /* UIView+Frame.m in Sources */,
 				CFCB0F151F7106620087ACC7 /* BySegmentView.m in Sources */,
 				CFBFE51C1FA5D22900500B1B /* GuessListModel.m in Sources */,
 				CFBFE50D1FA5C57000500B1B /* GuessPage.m in Sources */,
@@ -946,12 +998,16 @@
 				CF2EAE8E1FA10D9200F35974 /* CommentModel.m in Sources */,
 				CFCB0F4E1F711E6F0087ACC7 /* TAPageControl.m in Sources */,
 				CFBFE5161FA5CD8600500B1B /* GuessButton.m in Sources */,
+				CF4278201FAB95FA00C163DD /* RespondModel.m in Sources */,
+				CF4278261FAB98A400C163DD /* DialogHelper.m in Sources */,
 				CF2EAE551F9D0FC000F35974 /* BottomView.m in Sources */,
 				CF2EAEAD1FA2619100F35974 /* HistoryModel.m in Sources */,
 				CFBFE4E71FA5363A00500B1B /* GoodsCell.m in Sources */,
 				CFBFE4F71FA5B33100500B1B /* SCDHistoryView.m in Sources */,
 				CFBFE5031FA5BA5C00500B1B /* SCDHistoryModel.m in Sources */,
 				CF2EAE821FA1012800F35974 /* NewsDetailPage.m in Sources */,
+				CF4278291FAB98D800C163DD /* IDSAlertSheet.m in Sources */,
+				CF42783A1FAB9A0100C163DD /* UILabel+ContentSize.m in Sources */,
 				CFCB0F4F1F711E6F0087ACC7 /* UIView+SDExtension.m in Sources */,
 				CF2EAEB41FA26B8400F35974 /* MembersDetailPage.m in Sources */,
 				CF0BEDB61F9A3759005275EE /* ColorUtil.m in Sources */,

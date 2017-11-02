@@ -9,6 +9,8 @@
 #import "LoginPage.h"
 #import "AccountManager.h"
 #import "MainPage.h"
+#import "RespondModel.h"
+#import "LoginModel.h"
 
 @interface LoginPage ()<UITextFieldDelegate>
 
@@ -168,7 +170,17 @@
     time = 59;
     [self handleTimer];
     timer = [NSTimer scheduledTimerWithTimeInterval:(1.0) target:self selector:@selector(handleTimer) userInfo:nil repeats:YES];
-    //todo 获取验证码
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
+    [dic setObject:_mPhoneText.text forKey:@"tel"];
+    [ByNetUtil post:API_GETVERIFY parameters:dic success:^(RespondModel *respondModel) {
+        if(respondModel.code == 200){
+            [DialogHelper showSuccessTips:@"获取验证码成功！"];
+        }else{
+            [DialogHelper showFailureAlertSheet:respondModel.msg];
+        }
+    } failure:^(NSError *error) {
+        [DialogHelper showFailureAlertSheet:@"获取验证码失败!"];
+    }];
 }
 
 -(void)handleTimer{
@@ -187,8 +199,26 @@
 }
 
 -(void)OnLogin{
-    //todo 登录
-    [self.navigationController pushViewController:[[MainPage alloc]init] animated:YES];
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
+    [dic setObject:_mPhoneText.text forKey:@"tel"];
+    [dic setObject:_mVerifyText.text forKey:@"code"];
+    [ByNetUtil post:API_LOGIN parameters:dic success:^(RespondModel *respondModel) {
+        if(respondModel.code == 200){
+            id data = respondModel.data;
+            LoginModel *model = [LoginModel mj_objectWithKeyValues:data];
+            //保存uid和token
+            Account *account = [[Account alloc]init];
+            account.uid = model.uid;
+            account.access_token = model.access_token;
+            [[AccountManager sharedAccountManager] saveAccount:account];
+            [DialogHelper showSuccessTips:@"登录成功!"];
+            [self.navigationController pushViewController:[[MainPage alloc]init] animated:YES];
+        }else{
+            [DialogHelper showFailureAlertSheet:respondModel.msg];
+        }
+    } failure:^(NSError *error) {
+        [DialogHelper showFailureAlertSheet:@"登录失败!"];
+    }];
 }
 
 -(void)onWechatLogin{

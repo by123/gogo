@@ -34,9 +34,9 @@
     _titleLabel.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualHeight:31],[PUtil getActualWidth:150], [PUtil getActualHeight:48]);
     [self.contentView addSubview:_titleLabel];
     
-    UIView *arrowView = [[UIView alloc]init];
+    UIImageView *arrowView = [[UIImageView alloc]init];
     arrowView.frame = CGRectMake([PUtil getActualWidth:696], [PUtil getActualHeight:30],[PUtil getActualWidth:24], [PUtil getActualWidth:24]);
-    arrowView.backgroundColor = c10_icon;
+    arrowView.image = [UIImage imageNamed:@"ic_go_12"];
     [self.contentView addSubview:arrowView];
     
     _lineView = [[UIView alloc]init];

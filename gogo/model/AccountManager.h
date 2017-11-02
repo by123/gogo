@@ -11,9 +11,7 @@
 
 
 #define UID @"uid"
-#define PHONE @"phone"
-#define NAME @"name"
-#define AVATRA @"avatar"
+#define ACCESS_TOKEN @"access_token"
 
 @interface AccountManager : NSObject
 SINGLETON_DECLARATION(AccountManager);

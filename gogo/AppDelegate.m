@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "LoginPage.h"
 #import "MainPage.h"
-
+#import <AFNetworkActivityIndicatorManager.h>
 @interface AppDelegate ()
 
 @end
@@ -23,7 +23,15 @@
     UINavigationController *controller = [[UINavigationController alloc]initWithRootViewController:page];
     self.window.rootViewController = controller;
     [self.window makeKeyAndVisible];
+    
+    [self initNet];
     return YES;
+}
+
+-(void)initNet{
+    NSURLCache *URLCache = [[NSURLCache alloc] initWithMemoryCapacity:4 * 1024 * 1024 diskCapacity:20 * 1024 * 1024 diskPath:nil];
+    [NSURLCache setSharedURLCache:URLCache];
+    [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
 }
 
 

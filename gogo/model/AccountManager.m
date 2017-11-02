@@ -14,19 +14,14 @@ SINGLETON_IMPLEMENTION(AccountManager);
 -(void)saveAccount:(Account *)account{
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setValue:account.uid forKey:UID];
-    [userDefaults setValue:account.phoneNum forKey:PHONE];
-    [userDefaults setValue:account.userAvatar forKey:AVATRA];
-    [userDefaults setValue:account.userName forKey:NAME];
-
+    [userDefaults setValue:account.access_token forKey:ACCESS_TOKEN];
 }
 
 -(Account *)getAccount{
     Account *account = [[Account alloc]init];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     account.uid = [userDefaults objectForKey:UID];
-    account.phoneNum = [userDefaults objectForKey:PHONE];
-    account.userName = [userDefaults objectForKey:NAME];
-    account.userAvatar = [userDefaults objectForKey:AVATRA];
+    account.access_token = [userDefaults objectForKey:ACCESS_TOKEN];
     return account;
 }
 

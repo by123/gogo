@@ -10,7 +10,7 @@
 
 @interface PayCell : UITableViewCell
 
--(void)setData : (NSString *)title hideline : (Boolean)hideline;
+-(void)setData : (NSString *)title hideline : (Boolean)hideline image:(NSString *)image;
 
 -(void)setSelect : (Boolean)select;
 

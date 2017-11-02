@@ -11,9 +11,9 @@
 @interface NewsCell()
 
 @property (strong ,nonatomic) UILabel *mTitleLabel;
-@property (strong, nonatomic) UIView *mTypeImage;
+@property (strong, nonatomic) UIImageView *mTypeImage;
 @property (strong ,nonatomic) UILabel *mTypeLabel;
-@property (strong, nonatomic) UIView *mCommentImage;
+@property (strong, nonatomic) UIImageView *mCommentImage;
 @property (strong ,nonatomic) UILabel *mCommentLabel;
 @property (strong ,nonatomic) UIImageView *mImageView;
 @property (strong ,nonatomic) UIView  *lineView;
@@ -40,8 +40,8 @@
     _mTitleLabel.lineBreakMode = NSLineBreakByCharWrapping;
     [self.contentView addSubview:_mTitleLabel];
     
-    _mTypeImage = [[UIView alloc]init];
-    _mTypeImage.backgroundColor = c09_tips;
+    _mTypeImage = [[UIImageView alloc]init];
+    _mTypeImage.image = [UIImage imageNamed:@"ic_info_12"];
     _mTypeImage.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualHeight:120], [PUtil getActualWidth:24], [PUtil getActualWidth:24]);
     [self.contentView addSubview:_mTypeImage];
     
@@ -51,8 +51,8 @@
     _mTypeLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:24]];
     [self.contentView addSubview:_mTypeLabel];
     
-    _mCommentImage = [[UIView alloc]init];
-    _mCommentImage.backgroundColor = c09_tips;
+    _mCommentImage = [[UIImageView alloc]init];
+    _mCommentImage.image = [UIImage imageNamed:@"ic_comment_12"];
     _mCommentImage.frame = CGRectMake([PUtil getActualWidth:440], [PUtil getActualHeight:120], [PUtil getActualWidth:24], [PUtil getActualWidth:24]);
     [self.contentView addSubview:_mCommentImage];
     

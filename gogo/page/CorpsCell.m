@@ -14,7 +14,7 @@
 
 @property (strong, nonatomic) UILabel *mTitleLabel;
 
-@property (strong, nonatomic) UIView *bView;
+@property (strong, nonatomic) UIImageView *bView;
 
 @property (strong, nonatomic) UIView *lineView;
 
@@ -45,9 +45,9 @@
     _mTitleLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:34]];
     [self.contentView addSubview:_mTitleLabel];
     
-    _bView = [[UIView alloc]init];
+    _bView = [[UIImageView alloc]init];
     _bView.frame = CGRectMake([PUtil getActualWidth:688], [PUtil getActualHeight:39], [PUtil getActualHeight:32], [PUtil getActualHeight:32]);
-    _bView.backgroundColor = c10_icon;
+    _bView.image = [UIImage imageNamed:@"ic_go_12"];
     [self.contentView addSubview:_bView];
     
     _lineView = [[UIView alloc]init];

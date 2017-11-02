@@ -5,6 +5,11 @@ dependencies: \
   /Users/by.huang/Desktop/其他项目/gogo/gogo/utils/ColorUtil.h \
   /Users/by.huang/Desktop/其他项目/gogo/gogo/utils/PUtil.h \
   /Users/by.huang/Desktop/其他项目/gogo/gogo/utils/Singleton.h \
+  /Users/by.huang/Desktop/其他项目/gogo/gogo/utils/ByNetUtil.h \
+  /Users/by.huang/Desktop/其他项目/gogo/gogo/utils/DialogHelper.h \
+  /Users/by.huang/Desktop/其他项目/gogo/gogo/utils/IDSAlertSheet.h \
+  /Users/by.huang/Desktop/其他项目/gogo/gogo/utils/extra/UILabel+ContentSize.h \
+  /Users/by.huang/Desktop/其他项目/gogo/gogo/utils/extra/UIView+Frame.h \
   /Users/by.huang/Desktop/其他项目/gogo/gogo/AppDelegate.h \
   /Users/by.huang/Desktop/其他项目/gogo/gogo/page/LoginPage.h \
   /Users/by.huang/Desktop/其他项目/gogo/gogo/global/BaseViewController.h \

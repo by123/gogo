@@ -11,8 +11,7 @@
 @interface Account : NSObject
 
 @property (copy, nonatomic)   NSString  *uid;
-@property (copy, nonatomic)   NSString  *phoneNum;
-@property (copy, nonatomic)   NSString  *userName;
-@property (copy, nonatomic)   NSString  *userAvatar;
+@property (copy, nonatomic)   NSString  *access_token;
+
 
 @end

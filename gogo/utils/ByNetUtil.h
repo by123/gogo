@@ -13,15 +13,7 @@
 
 typedef void(^ByDownloadCallback)(id respondObj);
 
-+(void)get : (NSString *)url;
-
-+(void)get : (NSString *)url params : (NSMutableArray *)arrays;
-
-+(void)post : (NSString *)url;
-
-+(void)post : (NSString *)url params : (NSMutableArray *)arrays;
-
-+(void)post : (NSString *)url jsonStr : (NSString *)jsonStr;
++(void)post:(NSString *)url parameters:(NSDictionary *)parameters success:(void (^)(id))success failure:(void (^)(NSError *))failure;
 
 +(void)download : (NSString *)url callback : (ByDownloadCallback) callback;
 

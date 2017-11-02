@@ -12,10 +12,10 @@
 
 @interface PayCell()
 
-@property (strong, nonatomic) UIView *iconView;
+@property (strong, nonatomic) UIImageView *iconView;
 @property (strong, nonatomic) UILabel *titleLabel;
 @property (strong, nonatomic) UIView *lineView;
-@property (strong, nonatomic) UIView *arrowView;
+@property (strong, nonatomic) UIImageView *arrowView;
 
 @end
 
@@ -33,8 +33,7 @@
     self.contentView.backgroundColor = c07_bar;
     
     
-    _iconView = [[UIView alloc]init];
-    _iconView.backgroundColor = c01_blue;
+    _iconView = [[UIImageView alloc]init];
     _iconView.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualHeight:26], [PUtil getActualWidth:58], [PUtil getActualWidth:58]);
     [self.contentView addSubview:_iconView];
     
@@ -45,9 +44,9 @@
     _titleLabel.frame = CGRectMake([PUtil getActualWidth:108], [PUtil getActualHeight:31],[PUtil getActualWidth:300], [PUtil getActualHeight:48]);
     [self.contentView addSubview:_titleLabel];
     
-    _arrowView = [[UIView alloc]init];
+    _arrowView = [[UIImageView alloc]init];
     _arrowView.frame = CGRectMake([PUtil getActualWidth:696], [PUtil getActualHeight:30],[PUtil getActualWidth:24], [PUtil getActualWidth:24]);
-    _arrowView.backgroundColor = c10_icon;
+    [_arrowView setImage:[UIImage imageNamed:@"ic_select_16"]];
     [self.contentView addSubview:_arrowView];
     
     _lineView = [[UIView alloc]init];
@@ -57,9 +56,10 @@
     
 }
 
--(void)setData : (NSString *)title hideline : (Boolean)hideline{
+-(void)setData : (NSString *)title hideline : (Boolean)hideline image:(NSString *)image{
     _titleLabel.text = title;
     _lineView.hidden = hideline;
+    [_iconView setImage:[UIImage imageNamed:image]];
 }
 
 -(void)setSelect : (Boolean)select{
