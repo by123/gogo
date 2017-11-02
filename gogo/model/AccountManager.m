@@ -15,6 +15,7 @@ SINGLETON_IMPLEMENTION(AccountManager);
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setValue:account.uid forKey:UID];
     [userDefaults setValue:account.access_token forKey:ACCESS_TOKEN];
+    [userDefaults synchronize];
 }
 
 -(Account *)getAccount{
@@ -25,4 +26,11 @@ SINGLETON_IMPLEMENTION(AccountManager);
     return account;
 }
 
+-(Boolean)isLogin{
+    Account *account = [self getAccount];
+    if(!IS_NS_STRING_EMPTY(account.uid) && !IS_NS_STRING_EMPTY(account.access_token)){
+        return YES;
+    }
+    return NO;
+}
 @end

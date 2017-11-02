@@ -10,6 +10,7 @@
 #import "LoginPage.h"
 #import "MainPage.h"
 #import <AFNetworkActivityIndicatorManager.h>
+#import "AccountManager.h"
 @interface AppDelegate ()
 
 @end
@@ -19,8 +20,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
-    MainPage *page = [[MainPage alloc]init];
-    UINavigationController *controller = [[UINavigationController alloc]initWithRootViewController:page];
+    UINavigationController *controller;
+    if([[AccountManager sharedAccountManager]isLogin]){
+        MainPage *page = [[MainPage alloc]init];
+        controller = [[UINavigationController alloc]initWithRootViewController:page];
+    }else{
+        LoginPage *page = [[LoginPage alloc]init];
+        controller = [[UINavigationController alloc]initWithRootViewController:page];
+    }
     self.window.rootViewController = controller;
     [self.window makeKeyAndVisible];
     

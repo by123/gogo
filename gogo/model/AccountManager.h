@@ -20,5 +20,7 @@ SINGLETON_DECLARATION(AccountManager);
 
 -(Account *)getAccount;
 
+-(Boolean)isLogin;
+
 
 @end
