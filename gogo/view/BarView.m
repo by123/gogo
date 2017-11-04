@@ -37,9 +37,10 @@
     _titleLabel = [[UILabel alloc]init];
     _titleLabel.text = title;
     _titleLabel.textColor = c08_text;
-    _titleLabel.frame = CGRectMake(0, 0,ScreenWidth, [PUtil getActualHeight:88]);;
+    _titleLabel.frame = CGRectMake([PUtil getActualWidth:125], 0,ScreenWidth-[PUtil getActualWidth:250], [PUtil getActualHeight:88]);;
     _titleLabel.textAlignment = NSTextAlignmentCenter;
     _titleLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:36]];
+    _titleLabel.lineBreakMode = NSLineBreakByTruncatingMiddle;
     [self addSubview:_titleLabel];
     
     _backView = [[UIButton alloc]init];

@@ -10,11 +10,11 @@
 
 @interface CorpsCell()
 
-@property (strong, nonatomic) UIView *aView;
+@property (strong, nonatomic) UIImageView *iconView;
 
 @property (strong, nonatomic) UILabel *mTitleLabel;
 
-@property (strong, nonatomic) UIImageView *bView;
+@property (strong, nonatomic) UIImageView *arrowView;
 
 @property (strong, nonatomic) UIView *lineView;
 
@@ -34,10 +34,10 @@
     
     self.contentView.backgroundColor = c06_backgroud;
     
-    _aView = [[UIView alloc]init];
-    _aView.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualHeight:26], [PUtil getActualHeight:58], [PUtil getActualHeight:58]);
-    _aView.backgroundColor = c01_blue;
-    [self.contentView addSubview:_aView];
+    _iconView = [[UIImageView alloc]init];
+    _iconView.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualHeight:26], [PUtil getActualWidth:58], [PUtil getActualWidth:58]);
+    _iconView.contentMode = UIViewContentModeScaleAspectFit;
+    [self.contentView addSubview:_iconView];
     
     _mTitleLabel = [[UILabel alloc]init];
     _mTitleLabel.frame = CGRectMake([PUtil getActualWidth:108], [PUtil getActualHeight:31], ScreenWidth, [PUtil getActualHeight:48]);
@@ -45,10 +45,10 @@
     _mTitleLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:34]];
     [self.contentView addSubview:_mTitleLabel];
     
-    _bView = [[UIImageView alloc]init];
-    _bView.frame = CGRectMake([PUtil getActualWidth:688], [PUtil getActualHeight:39], [PUtil getActualHeight:32], [PUtil getActualHeight:32]);
-    _bView.image = [UIImage imageNamed:@"ic_go_12"];
-    [self.contentView addSubview:_bView];
+    _arrowView = [[UIImageView alloc]init];
+    _arrowView.frame = CGRectMake([PUtil getActualWidth:688], [PUtil getActualHeight:39], [PUtil getActualHeight:32], [PUtil getActualHeight:32]);
+    _arrowView.image = [UIImage imageNamed:@"ic_go_12"];
+    [self.contentView addSubview:_arrowView];
     
     _lineView = [[UIView alloc]init];
     _lineView.backgroundColor = c05_divider;
@@ -58,8 +58,9 @@
 }
 
 
--(void)setData : (NSString *)title{
-    _mTitleLabel.text = title;
+-(void)setData : (CorpsModel *)model{
+    _mTitleLabel.text = model.team_name;
+    [_iconView sd_setImageWithURL:[NSURL URLWithString:model.logo]];
     
 }
 

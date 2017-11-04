@@ -18,6 +18,7 @@
 
 @property (strong, nonatomic) UIScrollView *scrollerView;
 @property (strong, nonatomic) UITableView *tableView;
+@property (strong, nonatomic) SDCycleScrollView *cycleScrollView;
 
 @end
 
@@ -32,6 +33,8 @@
 -(instancetype)initWithFrame:(CGRect)frame{
     if(self == [super initWithFrame:frame]){
         datas = [[NSMutableArray alloc]init];
+        index = 0;
+        size = 10;
         [self initView];
     }
     return self;
@@ -46,25 +49,20 @@
     _scrollerView.showsHorizontalScrollIndicator = NO;
     _scrollerView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(requestMore)];
     
-    _scrollerView.contentSize = CGSizeMake(ScreenWidth, [PUtil getActualHeight:172] * 10 + AdViewHeight);
+    _scrollerView.contentSize = CGSizeMake(ScreenWidth, [PUtil getActualHeight:172] * [datas count] + AdViewHeight);
     MJRefreshStateHeader *header = [MJRefreshStateHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestNew)];
     header.lastUpdatedTimeLabel.hidden = YES;
     _scrollerView.mj_header = header;
     [self addSubview:_scrollerView];
     
-    NSArray *images = @[@"http://game.gtimg.cn/images/yxzj/match/img1.jpg",
-                        @"http://game.gtimg.cn/images/yxzj/match/kcc/kcc.jpg",
-                        @"http://game.gtimg.cn/images/yxzj/match/img2.jpg",
-                        @"http://game.gtimg.cn/images/yxzj/match/img3.jpg"
-                        ];
     
-    SDCycleScrollView *cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, ScreenWidth, AdViewHeight) imagesGroup:images];
-    cycleScrollView.delegate = self;
-    cycleScrollView.autoScrollTimeInterval = AdInterval;
-    [_scrollerView addSubview:cycleScrollView];
+    _cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, ScreenWidth, AdViewHeight)];
+    _cycleScrollView.delegate = self;
+    _cycleScrollView.autoScrollTimeInterval = AdInterval;
+    [_scrollerView addSubview:_cycleScrollView];
     
     _tableView = [[UITableView alloc]init];
-    _tableView.frame = CGRectMake(0, AdViewHeight, ScreenWidth, [PUtil getActualHeight:172] * 10);
+    _tableView.frame = CGRectMake(0, AdViewHeight, ScreenWidth, [PUtil getActualHeight:172] * [datas count]);
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.backgroundColor = c06_backgroud;
@@ -72,6 +70,7 @@
     [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [_scrollerView addSubview:_tableView];
     
+    [self requestBanner];
     [self requestNew];
 }
 
@@ -82,7 +81,8 @@
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index
 {
     if(_handleDelegate){
-        [_handleDelegate goNewsDetailPage:1L];
+        NewsModel *model = [datas objectAtIndex:index];
+        [_handleDelegate goNewsDetailPage:model.news_id];
     }
 }
 
@@ -103,7 +103,8 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if(_handleDelegate){
-        [_handleDelegate goNewsDetailPage:1L];
+        NewsModel *model = [datas objectAtIndex:indexPath.row];
+        [_handleDelegate goNewsDetailPage:model.news_id];
     }
 }
 
@@ -123,6 +124,8 @@
 {
     [_scrollerView.mj_header endRefreshing];
     [_scrollerView.mj_footer endRefreshing];
+    index = 0;
+    size = 10;
     [self requestList : NO];
 }
 
@@ -141,14 +144,41 @@
     [ByNetUtil get:API_NEWS_LIST parameters:dic success:^(RespondModel *respondModel) {
         if(respondModel.code == 200){
             id items = [respondModel.data objectForKey:@"items"];
-            index =(long)[respondModel.data objectForKey:@"index"];
-            datas = [NewsModel mj_objectArrayWithKeyValuesArray:items];
+            index =[[respondModel.data objectForKey:@"index"] longValue];
+            NSArray *temps = [NewsModel mj_objectArrayWithKeyValuesArray:items];
+            if([temps count] == 0){
+                [_scrollerView.mj_footer endRefreshingWithNoMoreData];
+            }
+            [datas addObjectsFromArray:temps];
+             _tableView.frame = CGRectMake(0, AdViewHeight, ScreenWidth, [PUtil getActualHeight:172] * [datas count]);
+            _scrollerView.contentSize = CGSizeMake(ScreenWidth, [PUtil getActualHeight:172] * [datas count] + AdViewHeight);
             [_tableView reloadData];
         }
     } failure:^(NSError *error) {
         [DialogHelper showFailureAlertSheet:@"获取列表失败！"];
     }];
     
+}
+
+-(void)requestBanner{
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
+    [ByNetUtil get:API_BANNER parameters:dic success:^(RespondModel *respondModel) {
+        if(respondModel.code == 200){
+            id data = respondModel.data;
+            NSMutableArray *datas = [NewsModel mj_objectArrayWithKeyValuesArray:data];
+            NSMutableArray *titles = [[NSMutableArray alloc]init];
+            NSMutableArray *images = [[NSMutableArray alloc]init];
+            if(!IS_NS_COLLECTION_EMPTY(datas)){
+                for(NewsModel *model in datas){
+                    [titles addObject:model.title];
+                    [images addObject:model.cover];
+                }
+            }
+            [_cycleScrollView setImagesGroup:images titles:titles];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 @end

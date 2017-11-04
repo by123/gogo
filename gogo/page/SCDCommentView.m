@@ -29,7 +29,7 @@
 
 -(instancetype)initWithFrame:(CGRect)frame{
     if(self == [super initWithFrame:frame]){
-        models = [CommentModel getModels];
+//        models = [CommentModel getModels];
         [self initView];
     }
     return self;

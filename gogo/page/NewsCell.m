@@ -46,7 +46,7 @@
     [self.contentView addSubview:_mTypeImage];
     
     _mTypeLabel = [[UILabel alloc]init];
-    _mTypeLabel.frame = CGRectMake([PUtil getActualWidth:62], [PUtil getActualHeight:115], [PUtil getActualWidth:120], [PUtil getActualHeight:33]);
+    _mTypeLabel.frame = CGRectMake([PUtil getActualWidth:62], [PUtil getActualHeight:115], [PUtil getActualWidth:300], [PUtil getActualHeight:33]);
     _mTypeLabel.textColor = c09_tips;
     _mTypeLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:24]];
     [self.contentView addSubview:_mTypeLabel];
@@ -78,6 +78,7 @@
     _mTypeLabel.text = model.tp;
     [_mImageView sd_setImageWithURL:[NSURL URLWithString:model.cover]];
     _mCommentLabel.text = model.view_count;
+    
 }
 
 +(NSString *)identify{

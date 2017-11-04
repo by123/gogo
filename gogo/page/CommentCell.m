@@ -63,10 +63,12 @@
     [self.contentView addSubview:_lineView];
 }
 
--(void)setData : (CommentModel *)model{
-    _nameLabel.text = model.name;
-    _timeLabel.text = model.time;
-    _contenLabel.text = model.content;
+-(void)setData : (CommentListModel *)model{
+    UserModel *userModel = [UserModel mj_objectWithKeyValues:model.user];
+    CommentModel *commentModel = [CommentModel mj_objectWithKeyValues:model.comment];
+    _nameLabel.text = userModel.username;
+    _timeLabel.text = commentModel.create_ts;
+    _contenLabel.text = commentModel.content;
 }
 
 +(NSString *)identify{

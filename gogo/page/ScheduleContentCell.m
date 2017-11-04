@@ -88,11 +88,11 @@
     
 }
 
--(void)setData : (ContentModel *)model{
-    _timeLabel.text = model.time;
-    if(!model.needLine){
-        [_lineView setHidden:YES];
-    }
+-(void)setData : (ScheduleModel *)model{
+//    _timeLabel.text = model.time;
+//    if(!model.needLine){
+//        [_lineView setHidden:YES];
+//    }
 }
 
 -(void)setDelegate : (id<MainHandleDelegate>)delegate{

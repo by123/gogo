@@ -10,8 +10,10 @@
 
 @interface CorpsModel : NSObject
 
-@property (copy, nonatomic) NSString *corpsName;
-
-+(NSMutableArray *)getModels;
+@property (assign, nonatomic) long team_id;
+@property (copy, nonatomic) NSString *team_name;
+@property (copy, nonatomic) NSString *short_name;
+@property (copy, nonatomic) NSString *logo;
+@property (copy, nonatomic) NSString *create_ts;
 
 @end

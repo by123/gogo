@@ -12,16 +12,4 @@
 
 @implementation CommentModel
 
-+(NSMutableArray *)getModels{
-    NSMutableArray *array = [[NSMutableArray alloc]init];
-    CommentModel *model = [[CommentModel alloc]init];
-    model.name = @"李银河";
-    model.time = @"6月25日 19:22";
-    model.content = @"期待新英雄";
-    for(int i =0 ;i < 10 ; i ++){
-        [array addObject:model];
-    }
-    return array;
-}
-
 @end

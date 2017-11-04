@@ -19,6 +19,11 @@
 #define RootUrl @"https://gogo.scrats.cn/api/"
 #define API_GETVERIFY @"https://gogo.scrats.cn/api/account/sms"
 #define API_LOGIN @"https://gogo.scrats.cn/api/account/sms_login"
+#define API_BANNER @"https://gogo.scrats.cn/api/core/banner"
 #define API_NEWS_LIST @"https://gogo.scrats.cn/api/core/news"
-
+#define API_NEWS_DETAIL @"https://gogo.scrats.cn/api/core/news/"
+#define API_COMMENT @"https://gogo.scrats.cn/api/core/comments"
+#define API_ADDCOMMENT @"https://gogo.scrats.cn/api/core/comment"
+#define API_RACE @"https://gogo.scrats.cn/api/core/races"
+#define API_TEAMLIST @"https://gogo.scrats.cn/api/core/teams"
 @end

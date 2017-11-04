@@ -9,10 +9,12 @@
 #import "CorpsView.h"
 #import "CorpsModel.h"
 #import "CorpsCell.h"
+#import "RespondModel.h"
 
 @interface CorpsView ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (strong, nonatomic) UITableView *tableView;
+@property (strong, nonatomic) UIScrollView *scrollerView;
 
 @end
 
@@ -22,20 +24,28 @@
 
 - (instancetype)init {
     if(self == [super init]){
-        models = [CorpsModel getModels];
         [self initView];
+        [self requestList];
     }
     return self;
 }
 
 -(void)initView{
+    _scrollerView = [[UIScrollView alloc]init];
+    _scrollerView.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight - [PUtil getActualHeight:316]);
+    _scrollerView.showsVerticalScrollIndicator = NO;
+    _scrollerView.showsHorizontalScrollIndicator = NO;
+    _scrollerView.contentSize = CGSizeMake(ScreenWidth, ScreenHeight);
+    [self addSubview:_scrollerView];
+    
     _tableView = [[UITableView alloc]init];
-    _tableView.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight - StatuBarHeight - [PUtil getActualHeight:188]);
+    _tableView.frame = _scrollerView.frame;
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    _tableView.scrollEnabled = NO;
     _tableView.backgroundColor = c06_backgroud;
     [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    [self addSubview:_tableView];
+    [_scrollerView addSubview:_tableView];
 }
 
 
@@ -65,8 +75,25 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     CorpsModel *model = [models objectAtIndex:indexPath.row];
-    [cell setData:model.corpsName];
+    [cell setData:model];
     return cell;
+}
+
+-(void)requestList{
+    [ByNetUtil get:API_TEAMLIST parameters:nil success:^(RespondModel *respondModel) {
+        if(respondModel.code == 200){
+            id data = respondModel.data;
+            id items = [data objectForKey:@"items"];
+            models = [CorpsModel mj_objectArrayWithKeyValuesArray:items];
+            [_tableView reloadData];
+        }else{
+            [DialogHelper showFailureAlertSheet:respondModel.msg];
+        }
+        _tableView.frame = CGRectMake(0, 0, ScreenWidth, [models count] * [PUtil getActualHeight:110]);
+        _scrollerView.contentSize = CGSizeMake(ScreenWidth, [models count] * [PUtil getActualHeight:110]);
+    } failure:^(NSError *error) {
+        [DialogHelper showFailureAlertSheet:@"请求失败"];
+    }];
 }
 
 

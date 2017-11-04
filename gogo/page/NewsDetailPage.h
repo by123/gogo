@@ -10,4 +10,6 @@
 
 @interface NewsDetailPage : BaseViewController
 
+@property (assign, nonatomic)long news_id;
+
 @end

@@ -11,7 +11,8 @@
 #import "ScheduleTitleCell.h"
 #import "ScheduleContentCell.h"
 #import "ScheduleModel.h"
-
+#import "RespondModel.h"
+#import "TimeUtil.h"
 @interface ScheduleView ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (strong, nonatomic) UITableView *tableView;
@@ -20,20 +21,26 @@
 
 @end
 
-@implementation ScheduleView
+@implementation ScheduleView{
+    int index;
+    NSMutableArray *datas;
+    NSMutableArray *titles;
+}
 
 
 -(instancetype)init{
     if(self == [super init]){
+        index = 0;
+        titles = [[NSMutableArray alloc]init];
         [self initView];
+        [self requestList:NO];
     }
     return self;
 }
 
 -(void)initView{
-    NSMutableArray *models = [ScheduleModel getModel];
     int height = 0;
-    for(ScheduleModel *model in models){
+    for(ScheduleModel *model in datas){
         if(model.type == Title){
             height +=[PUtil getActualHeight:86];
         }else{
@@ -65,7 +72,7 @@
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 5;
+    return [titles count];
 }
 
 
@@ -74,7 +81,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSMutableArray *models = [ScheduleModel getModel];
+    NSMutableArray *models = [datas objectAtIndex:indexPath.row];
     ScheduleModel *model = [models objectAtIndex:indexPath.row];
     if(model.type == Title){
         return [PUtil getActualHeight:86];
@@ -89,24 +96,23 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSMutableArray *models = [ScheduleModel getModel];
-    ScheduleModel *model = [models objectAtIndex:indexPath.row];
+    ScheduleModel *model = [datas objectAtIndex:indexPath.row];
     if(model.type == Title){
         ScheduleTitleCell *cell =  [tableView dequeueReusableCellWithIdentifier:[ScheduleTitleCell identify]];
         if(cell == nil){
             cell = [[ScheduleTitleCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[ScheduleTitleCell identify]];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
-        [cell setData:model.title];
+        [cell setData: [titles objectAtIndex:indexPath.row]];
         return cell;
     }else{
         ScheduleContentCell *cell =  [tableView dequeueReusableCellWithIdentifier:[ScheduleContentCell identify]];
-        if(cell == nil){
-            cell = [[ScheduleContentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[ScheduleContentCell identify]];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            [cell setDelegate:_handleDelegate];
-        }
-        [cell setData:model.contentModel];
+//        if(cell == nil){
+//            cell = [[ScheduleContentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[ScheduleContentCell identify]];
+//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//            [cell setDelegate:_handleDelegate];
+//        }
+//        [cell setData:model.contentModel];
         return cell;
     }
 }
@@ -115,19 +121,56 @@
 {
     [_scrollerView.mj_header endRefreshing];
     [_scrollerView.mj_footer endRefreshing];
-    //    CURRENT = 0;
-    //    [self requestList : NO];
+    index = 0;
+    [self requestList : NO];
 }
 
 -(void)uploadMore
 {
     [_scrollerView.mj_header endRefreshing];
     [_scrollerView.mj_footer endRefreshing];
-    //    CURRENT += REQUEST_SIZE;
-    //    [self requestList : YES];
+    [self requestList : YES];
+
 }
 
 
+-(void)requestList : (Boolean)isReuqestMore{
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
+    dic[@"index"] = @(index);
+    dic[@"size"] = @(1000);
+
+    [ByNetUtil get:API_RACE parameters:dic success:^(RespondModel *respondModel) {
+        if(respondModel.code == 200){
+            id data = respondModel.data;
+            index = [[data objectForKey:@"index"] intValue];
+            id items = [data objectForKey:@"items"];
+            datas = [ScheduleModel mj_objectArrayWithKeyValuesArray:items];
+            [self handleDatas];
+        }else{
+            [DialogHelper showFailureAlertSheet:respondModel.msg];
+        }
+    } failure:^(NSError *error) {
+        [DialogHelper showFailureAlertSheet:@"请求失败"];
+
+    }];
+}
+
+
+-(void)handleDatas{
+    for(ScheduleModel *model in datas){
+       NSString *date =  [TimeUtil generateData:model.race_ts];
+        Boolean hasDate = NO;
+//        for(NSString *dateStr in titles){
+//            if([dateStr isEqualToString:date]){
+//                hasDate = YES;
+//            }
+//        }
+//        if(!hasDate){
+            [titles addObject:date];
+//        }
+    }
+    NSLog(@"");
+}
 
 
 @end

@@ -139,6 +139,7 @@
 #pragma mark 跳转到新闻详细页
 -(void)goNewsDetailPage:(long)nid{
     NewsDetailPage *page = [[NewsDetailPage alloc]init];
+    page.news_id = nid;
     [self pushPage:page];
 }
 

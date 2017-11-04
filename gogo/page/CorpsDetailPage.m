@@ -44,7 +44,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     historyModels = [HistoryModel getModels];
-    commentModels = [CommentModel getModels];
+//    commentModels = [CommentModel getModels];
     [self initView];
 }
 

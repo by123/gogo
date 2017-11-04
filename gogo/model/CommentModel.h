@@ -10,13 +10,12 @@
 
 @interface CommentModel : NSObject
 
-@property (copy, nonatomic) NSString *name;
-
-@property (copy, nonatomic) NSString *time;
-
-@property (copy, nonatomic) NSString *imageUrl;
-
+@property (assign, nonatomic) long replay_comment_id;
+@property (copy, nonatomic) NSString *uid;
+@property (copy, nonatomic) NSString *tp;
+@property (assign, nonatomic) long target_id;
 @property (copy, nonatomic) NSString *content;
+@property (copy, nonatomic) NSString *create_ts;
 
-+(NSMutableArray *)getModels;
+
 @end

@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ContentModel.h"
+#import "ScheduleModel.h"
 #import "MainPage.h"
 
 @interface ScheduleContentCell : UITableViewCell
 
--(void)setData : (ContentModel *)model;
+-(void)setData : (ScheduleModel *)model;
 
 -(void)setDelegate : (id<MainHandleDelegate>)delegate;
 

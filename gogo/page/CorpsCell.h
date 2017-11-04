@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CorpsModel.h"
 
 @interface CorpsCell : UITableViewCell
 
--(void)setData : (NSString *)title;
+-(void)setData : (CorpsModel *)model;
 
 +(NSString *)identify;
 

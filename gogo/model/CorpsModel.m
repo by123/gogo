@@ -10,14 +10,5 @@
 
 @implementation CorpsModel
 
-+(NSMutableArray *)getModels{
-    NSArray *datas = @[@"AG超会玩",@"AS仙阁",@"EDG.M",@"eStar",@"GK"];
-    NSMutableArray *array = [[NSMutableArray alloc]init];
-    for(NSString *data in datas){
-        CorpsModel *model = [[CorpsModel alloc]init];
-        model.corpsName = data;
-        [array addObject:model];
-    }
-    return array;
-}
+
 @end

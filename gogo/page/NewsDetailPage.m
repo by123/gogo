@@ -10,32 +10,42 @@
 #import "BarView.h"
 #import "TitleView.h"
 #import "InsetTextField.h"
-#import "CommentModel.h"
 #import "CommentCell.h"
 #import "TouchScrollView.h"
+#import "RespondModel.h"
+#import "NewsDetailModel.h"
+#import "CommentListModel.h"
 
 #define CommentCellHeight [PUtil getActualHeight:180]
-@interface NewsDetailPage ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
+#define REREQUESTSIZE 10
+@interface NewsDetailPage ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,UIWebViewDelegate>
 
 @property (strong, nonatomic) BarView *barView;
-@property (strong, nonatomic) UIView *imageView;
 @property (strong, nonatomic) UILabel *contentLabel;
+@property (strong, nonatomic) UIImageView *imageView;
+@property (strong, nonatomic) UIWebView *webView;
 @property (strong, nonatomic) TitleView *commentTitleView;
 @property (strong, nonatomic) TouchScrollView *scrollerView;
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) UIView *commentView;
 @property (strong, nonatomic) InsetTextField *commentTextField;
 @property (strong, nonatomic) UILabel *hintLabel;
+@property (strong, nonatomic) UIScrollView *webScrollView;
 
 @end
 
 @implementation NewsDetailPage{
-    NSMutableArray *models;
+    NewsDetailModel *model;
+    int index;
+    NSMutableArray *datas;
+    Boolean webLoadFinish;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self initView];
+    datas = [[NSMutableArray alloc]init];
+    index = 0;
+    [self requestData];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -47,42 +57,49 @@
 }
 
 -(void)initView{
-    models = [CommentModel getModels];
-    _barView = [[BarView alloc]initWithTitle:@"标题" page:self];
+    _barView = [[BarView alloc]initWithTitle:model.title page:self];
     [self.view addSubview:_barView];
     
     _scrollerView = [[TouchScrollView alloc]initWithParentView:self.view];
-    _scrollerView.frame = CGRectMake(0, StatuBarHeight + _barView.mj_h, ScreenWidth, ScreenHeight - (StatuBarHeight + _barView.mj_h)-[PUtil getActualHeight:110]);
+    _scrollerView.backgroundColor = c06_backgroud;
+    _scrollerView.frame = CGRectMake(0, StatuBarHeight + _barView.mj_h, ScreenWidth, ScreenHeight - [PUtil getActualHeight:238]);
     _scrollerView.showsVerticalScrollIndicator = NO;
     _scrollerView.showsHorizontalScrollIndicator = NO;
-    _scrollerView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(uploadMore)];
+    _scrollerView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(requestMore)];
+    _scrollerView.scrollEnabled = NO;
     
-    _scrollerView.contentSize = CGSizeMake(ScreenWidth,CommentCellHeight* [models count]+ [PUtil getActualHeight:781-88] - StatuBarHeight);
-    MJRefreshStateHeader *header = [MJRefreshStateHeader headerWithRefreshingTarget:self refreshingAction:@selector(uploadNew)];
+    _scrollerView.contentSize = CGSizeMake(ScreenWidth,ScreenHeight);
+    MJRefreshStateHeader *header = [MJRefreshStateHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestNew)];
     header.lastUpdatedTimeLabel.hidden = YES;
     _scrollerView.mj_header = header;
     [self.view addSubview:_scrollerView];
     
-    _imageView = [[UIView alloc]init];
-    _imageView.backgroundColor = c01_blue;
-    _imageView.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualWidth:30], ScreenWidth - [PUtil getActualWidth:30]*2, [PUtil getActualHeight:345]);
-    [_scrollerView addSubview:_imageView];
+    _webView = [[UIWebView alloc]init];
+    _webView.frame = CGRectMake(0,0, ScreenWidth,ScreenHeight);
+    _webView.allowsInlineMediaPlayback = YES;
+    _webView.scalesPageToFit = YES;
+    _webView.opaque = NO;
+    _webView.delegate = self;
+    _webScrollView = (UIScrollView *)[_webView.subviews objectAtIndex:0];
+    _webScrollView.scrollEnabled = NO;
+
+    if(IS_NS_STRING_EMPTY(model.url)){
+        [_webView loadHTMLString:model.body baseURL:nil];
+    }else{
+        [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:model.url]]];
+    }
+    [_scrollerView addSubview:_webView];
     
-    _contentLabel = [[UILabel alloc]init];
-    _contentLabel.textColor = c08_text;
-    _contentLabel.text = @"文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字";
-    _contentLabel.numberOfLines = 0;
-    _contentLabel.lineBreakMode = NSLineBreakByCharWrapping;
-    _contentLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:34]];
-    _contentLabel.frame = CGRectMake([PUtil getActualWidth:30], _imageView.mj_h+_imageView.mj_y + [PUtil getActualHeight:16], ScreenWidth - [PUtil getActualWidth:30]*2, [PUtil getActualHeight:144]);
-    [_scrollerView addSubview:_contentLabel];
     
-    int height = _contentLabel.mj_h + _contentLabel.mj_y + [PUtil getActualWidth:30];
+}
+
+-(void)initComment{
+    int height = _webView.mj_h + _webView.mj_y ;
     _commentTitleView = [[TitleView alloc]initWithTitle:height title:@"评论（12）"];
     [_scrollerView addSubview:_commentTitleView];
     
     _tableView = [[UITableView alloc]init];
-    _tableView.frame = CGRectMake(0, _commentTitleView.mj_y+_commentTitleView.mj_h, ScreenWidth,  CommentCellHeight* [models count]);
+    _tableView.frame = CGRectMake(0, _commentTitleView.mj_y+_commentTitleView.mj_h, ScreenWidth,  ScreenHeight);
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.backgroundColor = c06_backgroud;
@@ -114,6 +131,7 @@
     _hintLabel.frame =  CGRectMake([PUtil getActualWidth:46], [PUtil getActualHeight:32], [PUtil getActualHeight:140] , [PUtil getActualHeight:46]);
     [_commentView addSubview:_hintLabel];
     
+    _scrollerView.scrollEnabled = YES;
 }
 
 
@@ -123,7 +141,7 @@
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [models count];
+    return [datas count];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -138,7 +156,7 @@
         cell = [[CommentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[CommentCell identify]];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    CommentModel *model = [models objectAtIndex:indexPath.row];
+    CommentListModel *model = [datas objectAtIndex:indexPath.row];
     [cell setData:model];
     return cell;
 }
@@ -151,6 +169,13 @@
     if([textField.text isEqualToString:@""]){
         _hintLabel.hidden = NO;
     }
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    if(!IS_NS_STRING_EMPTY(textField.text)){
+        [self addComment];
+    }
+    return YES;
 }
 
 - (void)keyboardWillChangeFrame:(NSNotification *)notification{
@@ -172,20 +197,102 @@
 }
 
 
--(void)uploadNew
+-(void)requestNew
 {
     [_scrollerView.mj_header endRefreshing];
     [_scrollerView.mj_footer endRefreshing];
-    //    CURRENT = 0;
-    //    [self requestList : NO];
+    index = 0;
+    [self requestComment : NO];
 }
 
--(void)uploadMore
+-(void)requestMore
 {
     [_scrollerView.mj_header endRefreshing];
     [_scrollerView.mj_footer endRefreshing];
-    //    CURRENT += REQUEST_SIZE;
-    //    [self requestList : YES];
+    [self requestComment : YES];
 }
+
+-(void)requestData{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%ld",API_NEWS_DETAIL,_news_id];
+    [ByNetUtil get:urlStr parameters:nil success:^(RespondModel *respondModel) {
+        if(respondModel.code == 200){
+            id data = respondModel.data;
+            model = [NewsDetailModel mj_objectWithKeyValues:data];
+            [self initView];
+        }else{
+            [DialogHelper showFailureAlertSheet:respondModel.msg];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
+
+
+- (void)webViewDidFinishLoad:(UIWebView*)webView{
+    if(_webView.isLoading){
+        return;
+    }
+    CGFloat WebViewHeight = [webView.scrollView contentSize].height;
+    CGRect WebViewRect = webView.frame;
+    WebViewRect.size.height = WebViewHeight;
+    _scrollerView.contentSize = CGSizeMake(ScreenWidth,CommentCellHeight* [datas count]+ [PUtil getActualHeight:88] +WebViewHeight);
+    _webView.frame = WebViewRect;
+    _webScrollView.contentSize = CGSizeMake(ScreenWidth, WebViewHeight);
+    
+    [self initComment];
+    [self requestNew];
+}
+
+-(void)requestComment : (Boolean) isRequestMore{
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
+    dic[@"index"] = @(index);
+    dic[@"size"] = @(REREQUESTSIZE);
+    dic[@"target_id"] = [NSString stringWithFormat:@"%ld",_news_id];
+    dic[@"tp"] = @"news";
+    [ByNetUtil get:API_COMMENT parameters:dic success:^(RespondModel *respondModel) {
+        if(respondModel.code == 200){
+            id data = respondModel.data;
+            id items = [data objectForKey:@"items"];
+            index = [[data objectForKey:@"index"] intValue];
+            if(isRequestMore){
+                NSArray *temps = [CommentListModel mj_objectArrayWithKeyValuesArray:items];
+                if([temps count] == 0){
+                    [_scrollerView.mj_footer endRefreshingWithNoMoreData];
+                }
+                [datas addObjectsFromArray:temps];
+            }else{
+                datas = [CommentListModel mj_objectArrayWithKeyValuesArray:items];
+            }
+            _tableView.frame = CGRectMake(0, _commentTitleView.mj_y+_commentTitleView.mj_h, ScreenWidth, [datas count] *CommentCellHeight);
+            _scrollerView.contentSize = CGSizeMake(ScreenWidth, CommentCellHeight* [datas count]+_webView.mj_h +[PUtil getActualHeight:88]);
+            [_tableView reloadData];
+        }else{
+            [DialogHelper showFailureAlertSheet:respondModel.msg];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
+
+-(void)addComment{
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
+    dic[@"content"] = _commentTextField.text;
+    dic[@"tp"] = @"news";
+    dic[@"target_id"] = [NSString stringWithFormat:@"%ld",_news_id];
+    [ByNetUtil post:API_ADDCOMMENT parameters:dic success:^(RespondModel *respondModel) {
+        if(respondModel.code == 200){
+            [DialogHelper showSuccessTips:@"发送成功!"];
+            [self requestNew];
+        }else{
+            [DialogHelper showFailureAlertSheet:respondModel.msg];
+        }
+    } failure:^(NSError *error) {
+        [DialogHelper showFailureAlertSheet:@"评论失败"];
+    }];
+
+}
+
 
 @end

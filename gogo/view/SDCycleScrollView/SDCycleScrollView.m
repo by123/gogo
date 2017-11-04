@@ -46,15 +46,13 @@ NSString * const ID = @"cycleCell";
     if (self = [super initWithFrame:frame]) {
         self.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter;
         _autoScrollTimeInterval = 1.0;
-        [self setupMainView];
     }
     return self;
 }
 
-+ (instancetype)cycleScrollViewWithFrame:(CGRect)frame imagesGroup:(NSArray *)imagesGroup
++ (instancetype)cycleScrollViewWithFrame:(CGRect)frame
 {
     SDCycleScrollView *cycleScrollView = [[self alloc] initWithFrame:frame];
-    cycleScrollView.imagesGroup = imagesGroup;
     return cycleScrollView;
 }
 
@@ -97,11 +95,12 @@ NSString * const ID = @"cycleCell";
     _mainView = mainView;
 }
 
-- (void)setImagesGroup:(NSArray *)imagesGroup
+- (void)setImagesGroup:(NSArray *)imagesGroup titles:(NSArray *)titlesGroup
 {
     _imagesGroup = imagesGroup;
+    _titlesGroup = titlesGroup;
     _totalItemsCount = imagesGroup.count * 100;
-    
+    [self setupMainView];
     [self setupTimer];
     [self setupPageControl];
 }
@@ -164,7 +163,8 @@ NSString * const ID = @"cycleCell";
 {
     SDCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
     long itemIndex = indexPath.item % self.imagesGroup.count;
-    //cell.imageView.image = self.imagesGroup[itemIndex];
+    cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
+    cell.imageView.clipsToBounds = true;
     [cell.imageView sd_setImageWithURL:[NSURL URLWithString:self.imagesGroup[itemIndex]]];
     if (_titlesGroup.count) {
         cell.title = _titlesGroup[itemIndex];

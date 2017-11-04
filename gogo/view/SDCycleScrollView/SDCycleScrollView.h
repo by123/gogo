@@ -42,6 +42,7 @@ typedef enum {
 @property (nonatomic, assign) SDCycleScrollViewPageContolAliment pageControlAliment;
 @property (nonatomic, weak) id<SDCycleScrollViewDelegate> delegate;
 
-+ (instancetype)cycleScrollViewWithFrame:(CGRect)frame imagesGroup:(NSArray *)imagesGroup;
++ (instancetype)cycleScrollViewWithFrame:(CGRect)frame;
+- (void)setImagesGroup:(NSArray *)imagesGroup titles:(NSArray *)titlesGroup;
 
 @end

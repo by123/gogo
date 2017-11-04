@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CommentModel.h"
+#import "CommentListModel.h"
 
 @interface CommentCell : UITableViewCell
 
--(void)setData : (CommentModel *)model;
+-(void)setData : (CommentListModel *)model;
 
 +(NSString *)identify;
 
