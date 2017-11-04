@@ -26,6 +26,13 @@ SINGLETON_IMPLEMENTION(AccountManager);
     return account;
 }
 
+-(void)clear{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults removeObjectForKey:UID];
+    [userDefaults removeObjectForKey:ACCESS_TOKEN];
+    [userDefaults synchronize];
+}
+
 -(Boolean)isLogin{
     Account *account = [self getAccount];
     if(!IS_NS_STRING_EMPTY(account.uid) && !IS_NS_STRING_EMPTY(account.access_token)){

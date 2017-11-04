@@ -14,7 +14,8 @@
 #define PT @"IOS"
 #define APPKEY @"test_key"
 #define APPSECRET @"test_secret"
-
+#define WECHAT_APPID @"wx3349545f4d083130"
+#define WECHAT_APPSECRET @"a38eb57a4e88a6007f5cc44f97ef84e2"
 //URL
 #define RootUrl @"https://gogo.scrats.cn/api/"
 #define API_GETVERIFY @"https://gogo.scrats.cn/api/account/sms"
@@ -28,4 +29,8 @@
 #define API_TEAMLIST @"https://gogo.scrats.cn/api/core/teams"
 #define API_TEAMDETAIL @"https://gogo.scrats.cn/api/core/team/"
 
+
+#define API_WECHAT_ACCESSTOKEN @"https://api.weixin.qq.com/sns/oauth2/access_token?"
+#define API_WECHAT_REFRES_ACCESSTOKEN @"https://api.weixin.qq.com/sns/oauth2/refresh_token?"
+#define API_WECHAT_USERINFO @"https://api.weixin.qq.com/sns/userinfo?"
 @end

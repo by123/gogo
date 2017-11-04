@@ -15,4 +15,5 @@
 @property (copy, nonatomic) NSString *uid;
 @property (copy, nonatomic) NSString *avatar;
 
+
 @end

@@ -22,5 +22,6 @@ SINGLETON_DECLARATION(AccountManager);
 
 -(Boolean)isLogin;
 
+-(void)clear;
 
 @end

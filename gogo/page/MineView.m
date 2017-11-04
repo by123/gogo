@@ -10,12 +10,13 @@
 #import "MineCell.h"
 #import "LoginPage.h"
 #import "TouchScrollView.h"
+#import "AccountManager.h"
 
 @interface MineView ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (strong, nonatomic) TouchScrollView *scrollerView;
 @property (strong, nonatomic) UIView *userView;
-@property (strong, nonatomic) UIView *headImageView;
+@property (strong, nonatomic) UIImageView *headImageView;
 @property (strong, nonatomic) UILabel *nickNameLabel;
 @property (strong, nonatomic) UILabel *coinLabel;
 @property (strong, nonatomic) UITableView *tableView;
@@ -37,7 +38,11 @@
 
 
 -(void)initView{
-        
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *nickName = [userDefaults  objectForKey:@"nickname"];
+    NSString *headimgurl = [userDefaults objectForKey:@"headimgurl"];
+    
     _scrollerView = [[TouchScrollView alloc]initWithParentView:self];
     _scrollerView.frame = self.frame;
     _scrollerView.showsVerticalScrollIndicator = NO;
@@ -52,15 +57,16 @@
     [_userView addGestureRecognizer:recognizer];
     [_scrollerView addSubview:_userView];
     
-    _headImageView = [[UIView alloc]init];
+    _headImageView = [[UIImageView alloc]init];
     _headImageView.frame = CGRectMake([PUtil getActualWidth:40], [PUtil getActualHeight:56], [PUtil getActualWidth:160], [PUtil getActualWidth:160]);
     _headImageView.backgroundColor = c01_blue;
+    [_headImageView sd_setImageWithURL:[NSURL URLWithString:headimgurl]];
     _headImageView.layer.masksToBounds = YES;
     _headImageView.layer.cornerRadius = [PUtil getActualWidth:160]/2;
     [_userView addSubview:_headImageView];
     
     _nickNameLabel = [[UILabel alloc]init];
-    _nickNameLabel.text = @"昵称";
+    _nickNameLabel.text = nickName;
     _nickNameLabel.textColor = c08_text;
     _nickNameLabel.frame = CGRectMake([PUtil getActualWidth:240], [PUtil getActualHeight:55], ScreenWidth - [PUtil getActualWidth:240], [PUtil getActualHeight:67]);
     _nickNameLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:48]];
@@ -133,6 +139,7 @@
 
 -(void)logout{
     if(_handleDelegate){
+        [[AccountManager sharedAccountManager] clear];
         [_handleDelegate goLoginPage];
     }
 }

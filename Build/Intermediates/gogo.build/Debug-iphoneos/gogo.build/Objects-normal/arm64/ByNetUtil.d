@@ -12,4 +12,5 @@ dependencies: \
   /Users/by.huang/Desktop/其他项目/gogo/gogo/utils/extra/UIView+Frame.h \
   /Users/by.huang/Desktop/其他项目/gogo/gogo/model/AccountManager.h \
   /Users/by.huang/Desktop/其他项目/gogo/gogo/model/Account.h \
+  /Users/by.huang/Desktop/其他项目/gogo/gogo/model/UserModel.h \
   /Users/by.huang/Desktop/其他项目/gogo/gogo/model/RespondModel.h

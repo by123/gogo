@@ -72,6 +72,15 @@
 		CF7B7EAE1FADE685003FC2D6 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7B7EAD1FADE685003FC2D6 /* UserModel.m */; };
 		CF7B7EB11FADE6D6003FC2D6 /* CommentListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7B7EB01FADE6D6003FC2D6 /* CommentListModel.m */; };
 		CF7B7EB41FAE49D5003FC2D6 /* TimeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7B7EB31FAE49D5003FC2D6 /* TimeUtil.m */; };
+		CF7B7EC11FAE612E003FC2D6 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF7B7EBC1FAE612E003FC2D6 /* libWeChatSDK.a */; };
+		CF7B7EC21FAE612E003FC2D6 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = CF7B7EBD1FAE612E003FC2D6 /* README.txt */; };
+		CF7B7EC41FAE61A1003FC2D6 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF7B7EC31FAE61A1003FC2D6 /* CoreTelephony.framework */; };
+		CF7B7EC61FAE61AA003FC2D6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF7B7EC51FAE61AA003FC2D6 /* SystemConfiguration.framework */; };
+		CF7B7EC81FAE61B9003FC2D6 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CF7B7EC71FAE61B9003FC2D6 /* libsqlite3.0.tbd */; };
+		CF7B7ECA1FAE61BF003FC2D6 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CF7B7EC91FAE61BF003FC2D6 /* libz.tbd */; };
+		CF7B7ECC1FAE61C8003FC2D6 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CF7B7ECB1FAE61C8003FC2D6 /* libc++.tbd */; };
+		CF7B7ECE1FAE662C003FC2D6 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF7B7ECD1FAE662B003FC2D6 /* Security.framework */; };
+		CF7B7ED01FAE663E003FC2D6 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF7B7ECF1FAE663E003FC2D6 /* CFNetwork.framework */; };
 		CFBFE4E31FA534E000500B1B /* GoodsView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBFE4E21FA534E000500B1B /* GoodsView.m */; };
 		CFBFE4E71FA5363A00500B1B /* GoodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBFE4E61FA5363A00500B1B /* GoodsCell.m */; };
 		CFBFE4F41FA5B31E00500B1B /* SCDCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBFE4F31FA5B31E00500B1B /* SCDCommentView.m */; };
@@ -237,6 +246,18 @@
 		CF7B7EB01FADE6D6003FC2D6 /* CommentListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommentListModel.m; sourceTree = "<group>"; };
 		CF7B7EB21FAE49D5003FC2D6 /* TimeUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimeUtil.h; sourceTree = "<group>"; };
 		CF7B7EB31FAE49D5003FC2D6 /* TimeUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimeUtil.m; sourceTree = "<group>"; };
+		CF7B7EBC1FAE612E003FC2D6 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		CF7B7EBD1FAE612E003FC2D6 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		CF7B7EBE1FAE612E003FC2D6 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
+		CF7B7EBF1FAE612E003FC2D6 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		CF7B7EC01FAE612E003FC2D6 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		CF7B7EC31FAE61A1003FC2D6 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		CF7B7EC51FAE61AA003FC2D6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		CF7B7EC71FAE61B9003FC2D6 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		CF7B7EC91FAE61BF003FC2D6 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		CF7B7ECB1FAE61C8003FC2D6 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		CF7B7ECD1FAE662B003FC2D6 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		CF7B7ECF1FAE663E003FC2D6 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		CFBFE4E11FA534E000500B1B /* GoodsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsView.h; sourceTree = "<group>"; };
 		CFBFE4E21FA534E000500B1B /* GoodsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsView.m; sourceTree = "<group>"; };
 		CFBFE4E51FA5363A00500B1B /* GoodsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsCell.h; sourceTree = "<group>"; };
@@ -306,6 +327,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF7B7ED01FAE663E003FC2D6 /* CFNetwork.framework in Frameworks */,
+				CF7B7ECE1FAE662C003FC2D6 /* Security.framework in Frameworks */,
+				CF7B7ECC1FAE61C8003FC2D6 /* libc++.tbd in Frameworks */,
+				CF7B7ECA1FAE61BF003FC2D6 /* libz.tbd in Frameworks */,
+				CF7B7EC81FAE61B9003FC2D6 /* libsqlite3.0.tbd in Frameworks */,
+				CF7B7EC61FAE61AA003FC2D6 /* SystemConfiguration.framework in Frameworks */,
+				CF7B7EC41FAE61A1003FC2D6 /* CoreTelephony.framework in Frameworks */,
+				CF7B7EC11FAE612E003FC2D6 /* libWeChatSDK.a in Frameworks */,
 				C58EEBC53BCADD2B05F513F8 /* libPods-gogo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,6 +345,13 @@
 		0B3F5C946CD226272B2A24DA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CF7B7ECF1FAE663E003FC2D6 /* CFNetwork.framework */,
+				CF7B7ECD1FAE662B003FC2D6 /* Security.framework */,
+				CF7B7ECB1FAE61C8003FC2D6 /* libc++.tbd */,
+				CF7B7EC91FAE61BF003FC2D6 /* libz.tbd */,
+				CF7B7EC71FAE61B9003FC2D6 /* libsqlite3.0.tbd */,
+				CF7B7EC51FAE61AA003FC2D6 /* SystemConfiguration.framework */,
+				CF7B7EC31FAE61A1003FC2D6 /* CoreTelephony.framework */,
 				B2D175D84B34404FAC68D418 /* libPods-gogo.a */,
 			);
 			name = Frameworks;
@@ -561,6 +597,7 @@
 		CF7214E01F6678E4002F3634 /* gogo */ = {
 			isa = PBXGroup;
 			children = (
+				CF7B7EBB1FAE612E003FC2D6 /* wechat */,
 				CF2EAE661F9E799C00F35974 /* gogo.entitlements */,
 				CFCB0EFF1F7105360087ACC7 /* global */,
 				CFCB0F041F7105360087ACC7 /* model */,
@@ -586,6 +623,18 @@
 				CFCB0F591F7249290087ACC7 /* News.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CF7B7EBB1FAE612E003FC2D6 /* wechat */ = {
+			isa = PBXGroup;
+			children = (
+				CF7B7EBC1FAE612E003FC2D6 /* libWeChatSDK.a */,
+				CF7B7EBD1FAE612E003FC2D6 /* README.txt */,
+				CF7B7EBE1FAE612E003FC2D6 /* WechatAuthSDK.h */,
+				CF7B7EBF1FAE612E003FC2D6 /* WXApi.h */,
+				CF7B7EC01FAE612E003FC2D6 /* WXApiObject.h */,
+			);
+			path = wechat;
 			sourceTree = "<group>";
 		};
 		CFBFE4E41FA5362700500B1B /* goods */ = {
@@ -887,6 +936,7 @@
 				CFCB0F5A1F7249290087ACC7 /* News.plist in Resources */,
 				CF7214EE1F6678E4002F3634 /* Assets.xcassets in Resources */,
 				CFCB0F571F7175940087ACC7 /* CombatTeams.plist in Resources */,
+				CF7B7EC21FAE612E003FC2D6 /* README.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1169,7 +1219,34 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/gogo/PrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/gogo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/gogo/wechat",
+				);
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"AFNetworking\"",
+					"-l\"FMDB\"",
+					"-l\"MBProgressHUD\"",
+					"-l\"MJExtension\"",
+					"-l\"MJRefresh\"",
+					"-l\"SDWebImage\"",
+					"-l\"sqlite3\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-Objc",
+					"-all_load",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.scrat.gogo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1187,7 +1264,34 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/gogo/PrefixHeader.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/gogo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/gogo/wechat",
+				);
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"AFNetworking\"",
+					"-l\"FMDB\"",
+					"-l\"MBProgressHUD\"",
+					"-l\"MJExtension\"",
+					"-l\"MJRefresh\"",
+					"-l\"SDWebImage\"",
+					"-l\"sqlite3\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-Objc",
+					"-all_load",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.scrat.gogo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

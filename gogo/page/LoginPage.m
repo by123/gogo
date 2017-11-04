@@ -11,6 +11,7 @@
 #import "MainPage.h"
 #import "RespondModel.h"
 #import "LoginModel.h"
+#import "WXApi.h"
 
 @interface LoginPage ()<UITextFieldDelegate>
 
@@ -222,8 +223,16 @@
 }
 
 -(void)onWechatLogin{
-    //todo 微信登录
     NSLog(@"微信登录");
+    if ([WXApi isWXAppInstalled]) {
+        SendAuthReq *req = [[SendAuthReq alloc] init];
+        req.scope = @"snsapi_userinfo";
+        req.state = @"App";
+        [WXApi sendReq:req];
+    }
+    else {
+        [DialogHelper showFailureAlertSheet:@"您手机上未安装微信"];
+    }
 }
 
 -(void)onQQLogin{
