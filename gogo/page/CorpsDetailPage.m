@@ -16,11 +16,14 @@
 #import "InsetTextField.h"
 #import "TouchScrollView.h"
 #import "MembersDetailPage.h"
+#import "RespondModel.h"
+#import "TeamModel.h"
+#import "MemberModel.h"
 @interface CorpsDetailPage ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 
 @property (strong, nonatomic) BarView  *barView;
 @property (strong, nonatomic) TouchScrollView *scrollerView;
-@property (strong, nonatomic) UIView   *corpsImageView;
+@property (strong, nonatomic) UIImageView   *corpsImageView;
 @property (strong, nonatomic) UILabel  *corpsNameLabel;
 @property (strong, nonatomic) UIView   *membersView;
 @property (strong, nonatomic) UIButton *moreBtn;
@@ -39,13 +42,15 @@
 @implementation CorpsDetailPage{
     NSMutableArray *historyModels;
     NSMutableArray *commentModels;
+    TeamModel *teamModel;
+    NSMutableArray *memberModels;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     historyModels = [HistoryModel getModels];
-//    commentModels = [CommentModel getModels];
     [self initView];
+    [self request];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -72,11 +77,7 @@
     _scrollerView.mj_header = header;
     [self.view addSubview:_scrollerView];
     
-    [self initTopView];
-    [self initHonourView];
-    [self initHistory];
-    [self initCommentView];
-    [self initWriteCommentView];
+
     
 }
 
@@ -85,15 +86,16 @@
     topView.frame = CGRectMake(0, 0, ScreenWidth, [PUtil getActualHeight:220]);
     [_scrollerView addSubview:topView];
     
-    _corpsImageView = [[UIView alloc]init];
-    _corpsImageView.backgroundColor = c01_blue;
+    _corpsImageView = [[UIImageView alloc]init];
+    _corpsImageView.contentMode =UIViewContentModeScaleAspectFit;
     _corpsImageView.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualWidth:30], [PUtil getActualWidth:160], [PUtil getActualWidth:160]);
     _corpsImageView.layer.masksToBounds = YES;
     _corpsImageView.layer.cornerRadius = [PUtil getActualWidth:20];
+    [_corpsImageView sd_setImageWithURL:[NSURL URLWithString:teamModel.logo]];
     [topView addSubview:_corpsImageView];
     
     _corpsNameLabel = [[UILabel alloc]init];
-    _corpsNameLabel.text = @"AG超会玩";
+    _corpsNameLabel.text = teamModel.team_name;
     _corpsNameLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:40]];
     _corpsNameLabel.textColor = c08_text;
     _corpsNameLabel.frame = CGRectMake([PUtil getActualWidth:210], [PUtil getActualHeight:42], ScreenWidth - [PUtil getActualWidth:210], [PUtil getActualHeight:56]);
@@ -112,19 +114,26 @@
     [ColorUtil setGradientColor:_moreBtn startColor:c01_blue endColor:c02_red director:Left];
     
     for(int i=0;i<5;i++){
-        UILabel *label = [[UILabel alloc]init];
-        label.frame = CGRectMake(i*[PUtil getActualWidth:74], 0, width, width);
-        label.layer.masksToBounds = YES;
-        label.layer.cornerRadius = width/2;
         if(i == 4){
+            UILabel *label = [[UILabel alloc]init];
+            label.frame = CGRectMake(i*[PUtil getActualWidth:74], 0, width, width);
+            label.layer.masksToBounds = YES;
+            label.layer.cornerRadius = width/2;
             label.text = @"更多";
             label.textColor = c08_text;
             label.font = [UIFont systemFontOfSize:[PUtil getActualHeight:20]];
             label.textAlignment = NSTextAlignmentCenter;
+            [_membersView addSubview:label];
         }else{
-            label.backgroundColor = c01_blue;
+            UIImageView *imageView = [[UIImageView alloc]init];
+            imageView.contentMode =UIViewContentModeScaleAspectFit;
+            imageView.frame = CGRectMake(i*[PUtil getActualWidth:74], 0, width, width);
+            imageView.layer.masksToBounds = YES;
+            imageView.layer.cornerRadius = width/2;
+            MemberModel *memberModel = [memberModels objectAtIndex:i];
+            [imageView sd_setImageWithURL:[NSURL URLWithString:memberModel.avatar]];
+            [_membersView addSubview:imageView];
         }
-        [_membersView addSubview:label];
     }
     [topView addSubview:_membersView];
     
@@ -132,6 +141,11 @@
     lineView.backgroundColor = c05_divider;
     lineView.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualHeight:220] -1, ScreenWidth -[PUtil getActualWidth:30] , 1);
     [topView addSubview:lineView];
+    
+    [self initHonourView];
+    [self initHistory];
+    [self initCommentView];
+    [self initWriteCommentView];
     
 }
 
@@ -277,6 +291,7 @@
                                          
 -(void)OnClickMore{
     MembersDetailPage *page = [[MembersDetailPage alloc]init];
+    page.memberModels = memberModels;
     [self pushPage:page];
 }
 
@@ -308,5 +323,23 @@
     [_commentTextField resignFirstResponder];
 }
 
+
+-(void)request{
+    NSString *urlStr = [NSString stringWithFormat:@"%@%ld",API_TEAMDETAIL,_team_id];
+    [ByNetUtil get:urlStr parameters:nil success:^(RespondModel *respondModel) {
+        if(respondModel.code == 200){
+            id data = respondModel.data;
+            id team = [data objectForKey:@"team"];
+            teamModel = [TeamModel mj_objectWithKeyValues:team];
+            id members = [data objectForKey:@"members"];
+            memberModels = [MemberModel mj_objectArrayWithKeyValuesArray:members];
+            [self initTopView];
+        }else{
+            [DialogHelper showFailureAlertSheet:respondModel.msg];
+        }
+    } failure:^(NSError *error) {
+        [DialogHelper showFailureAlertSheet:@"请求失败"];
+    }];
+}
 
 @end

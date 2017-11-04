@@ -10,4 +10,6 @@
 
 @interface MembersDetailPage : BaseViewController
 
+@property (strong, nonatomic) NSMutableArray *memberModels;
+
 @end

@@ -19,12 +19,10 @@
 @end
 
 @implementation MembersDetailPage{
-    NSMutableArray *models;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    models = [MemberModel getModels];
     [self initView];
 }
 
@@ -33,7 +31,8 @@
     [self.view addSubview:_barView];
     
     _tableView = [[UITableView alloc]init];
-    _tableView.frame = CGRectMake(0, StatuBarHeight + [PUtil getActualHeight:88], ScreenWidth, ScreenHeight - StatuBarHeight - [PUtil getActualHeight:88]);
+    _tableView.frame = CGRectMake(0, StatuBarHeight + [PUtil getActualHeight:88], ScreenWidth, ScreenHeight -[PUtil getActualHeight:88] - StatuBarHeight);
+    _tableView.contentSize = CGSizeMake(ScreenWidth, [_memberModels count] *[PUtil getActualHeight:200]);
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.backgroundColor = c06_backgroud;
@@ -48,7 +47,10 @@
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [models count];
+    if(IS_NS_COLLECTION_EMPTY(_memberModels)){
+        return 0;
+    }
+    return [_memberModels count];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -61,7 +63,7 @@
         cell = [[MemberCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[MemberCell identify]];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    MemberModel *model = [models objectAtIndex:indexPath.row];
+    MemberModel *model = [_memberModels objectAtIndex:indexPath.row];
     [cell setData:model];
     return cell;
 }

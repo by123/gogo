@@ -10,4 +10,5 @@
 
 @interface CorpsDetailPage : BaseViewController
 
+@property (assign, nonatomic) long team_id;
 @end

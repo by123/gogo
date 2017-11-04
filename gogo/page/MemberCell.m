@@ -11,7 +11,7 @@
 @interface MemberCell()
 @property (strong, nonatomic) UILabel *nameLabel;
 @property (strong, nonatomic) UILabel *introduceLabel;
-@property (strong, nonatomic) UIView *headView;
+@property (strong, nonatomic) UIImageView *headView;
 @property (strong, nonatomic) UIView *lineView;
 
 @end
@@ -28,15 +28,14 @@
 -(void)initView{
     self.contentView.backgroundColor = c06_backgroud;
     
-    _headView = [[UIView alloc]init];
+    _headView = [[UIImageView alloc]init];
     _headView.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualWidth:30], [PUtil getActualWidth:90], [PUtil getActualWidth:90]);
     _headView.layer.masksToBounds = YES;
     _headView.layer.cornerRadius = [PUtil getActualWidth:90]/2;
-    _headView.backgroundColor = c01_blue;
     [self.contentView addSubview:_headView];
     
     _nameLabel = [[UILabel alloc]init];
-    _nameLabel.frame = CGRectMake([PUtil getActualWidth:140], [PUtil getActualHeight:30],[PUtil getActualWidth:136], [PUtil getActualHeight:48]);
+    _nameLabel.frame = CGRectMake([PUtil getActualWidth:140],  [PUtil getActualWidth:30],ScreenWidth- [PUtil getActualWidth:140], [PUtil getActualHeight:48]);
     _nameLabel.textColor =c08_text;
     _nameLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:34]];
     [self.contentView addSubview:_nameLabel];
@@ -59,12 +58,13 @@
 }
 
 -(void)setData : (MemberModel *)model{
-    _nameLabel.text = model.name;
+    _nameLabel.text = model.member_name;
     _introduceLabel.text = model.introduce;
+    [_headView sd_setImageWithURL:[NSURL URLWithString:model.avatar]];
 }
 
 -(void)setData : (MemberModel *)model hideline: (Boolean)hideline{
-    _nameLabel.text = model.name;
+    _nameLabel.text = model.member_name;
     _introduceLabel.text = model.introduce;
     _lineView.hidden = hideline;
 }

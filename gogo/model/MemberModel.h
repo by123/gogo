@@ -10,10 +10,13 @@
 
 @interface MemberModel : NSObject
 
-@property (copy, nonatomic) NSString *name;
-
+@property (assign, nonatomic) long member_id;
+@property (assign, nonatomic) long team_id;
+@property (copy, nonatomic) NSString *member_name;
+@property (copy, nonatomic) NSString *avatar;
 @property (copy, nonatomic) NSString *introduce;
+@property (copy, nonatomic) NSString *create_ts;
 
-+(NSMutableArray *)getModels;
++ (NSDictionary *)mj_replacedKeyFromPropertyName;
 
 @end

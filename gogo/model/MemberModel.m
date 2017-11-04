@@ -10,14 +10,8 @@
 
 @implementation MemberModel
 
-+(NSMutableArray *)getModels{
-    NSMutableArray *models = [[NSMutableArray alloc]init];
-    MemberModel *model = [[MemberModel alloc]init];
-    model.name = @"队员姓名";
-    model.introduce = @"队员介绍队员介绍队员介绍队员介绍队员介绍队员介绍队员介绍队员介绍队员介绍队员";
-    for(int i=0;i<5;i++){
-        [models addObject:model];
-    }
-    return models;
++ (NSDictionary *)mj_replacedKeyFromPropertyName
+{
+    return @{@"introduce": @"description"};
 }
 @end

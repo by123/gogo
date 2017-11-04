@@ -26,7 +26,6 @@
 
 -(instancetype)init{
     if(self == [super init]){
-        models = [MemberModel getModels];
         [self initView];
     }
     return self;

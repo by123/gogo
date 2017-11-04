@@ -64,7 +64,8 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if(_handleDelegate){
-        [_handleDelegate goCorpsDetailPage:1L];
+        CorpsModel *model = [models objectAtIndex:indexPath.row];
+        [_handleDelegate goCorpsDetailPage:model.team_id];
     }
 }
 

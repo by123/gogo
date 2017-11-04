@@ -152,6 +152,7 @@
 #pragma mark 跳转到战队详细页
 -(void)goCorpsDetailPage : (long)nid{
     CorpsDetailPage *page = [[CorpsDetailPage alloc]init];
+    page.team_id = nid;
     [self pushPage:page];
 }
 

@@ -26,4 +26,6 @@
 #define API_ADDCOMMENT @"https://gogo.scrats.cn/api/core/comment"
 #define API_RACE @"https://gogo.scrats.cn/api/core/races"
 #define API_TEAMLIST @"https://gogo.scrats.cn/api/core/teams"
+#define API_TEAMDETAIL @"https://gogo.scrats.cn/api/core/team/"
+
 @end
