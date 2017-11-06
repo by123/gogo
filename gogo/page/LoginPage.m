@@ -34,11 +34,21 @@
     int time;
 }
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initView];
+    
 }
 
+
+-(void)viewWillAppear:(BOOL)animated{
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(onWechatLoginCallback) name:NOTIFY_WECAHT_CALLBACK object:nil];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:NOTIFY_WECAHT_CALLBACK object:nil];
+}
 
 -(void)initView{
     [ColorUtil setGradientColor:self.view startColor:c11_bg1 endColor:c12_bg2 director:Top];
@@ -213,7 +223,7 @@
             account.access_token = model.access_token;
             [[AccountManager sharedAccountManager] saveAccount:account];
             [DialogHelper showSuccessTips:@"登录成功!"];
-            [self.navigationController pushViewController:[[MainPage alloc]init] animated:YES];
+            [self pushPage:[[MainPage alloc]init]];
         }else{
             [DialogHelper showFailureAlertSheet:respondModel.msg];
         }
@@ -233,6 +243,32 @@
     else {
         [DialogHelper showFailureAlertSheet:@"您手机上未安装微信"];
     }
+}
+
+-(void)onWechatLoginCallback{
+    Account *account = [[AccountManager sharedAccountManager] getAccount];
+    if(account == nil || IS_NS_STRING_EMPTY(account.code)){
+        [DialogHelper showFailureAlertSheet:@"授权失败，请重新授权"];
+        return;
+    }
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
+    dic[@"code"] = account.code;
+    [ByNetUtil post:API_WECHAT_LOGIN parameters:dic success:^(RespondModel *respondModel) {
+        if(respondModel.code == 200){
+            id data = respondModel.data;
+            LoginModel *model = [LoginModel mj_objectWithKeyValues:data];
+            //保存uid和token
+            account.uid = model.uid;
+            account.access_token = model.access_token;
+            [[AccountManager sharedAccountManager] saveAccount:account];
+            [DialogHelper showSuccessTips:@"登录成功!"];
+            [self pushPage:[[MainPage alloc]init]];
+        }else{
+            [DialogHelper showFailureAlertSheet:respondModel.msg];
+        }
+    } failure:^(NSError *error) {
+        [DialogHelper showFailureAlertSheet:@"登录失败!"];
+    }];
 }
 
 -(void)onQQLogin{

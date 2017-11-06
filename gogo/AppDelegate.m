@@ -69,61 +69,65 @@
     if ([resp isKindOfClass:[SendAuthResp class]]) {
         SendAuthResp *authResp = (SendAuthResp *)resp;
         NSString *code =  authResp.code;
-        [self requestLogin:code];
+        Account *account = [[AccountManager sharedAccountManager] getAccount];
+        account.code = code;
+        [[AccountManager sharedAccountManager] saveAccount:account];
+        
+        [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFY_WECAHT_CALLBACK object:nil];
     }
 }
 
--(void)requestLogin : (NSString *)code{
-    NSString *urlStr = [NSString stringWithFormat:@"%@appid=%@&secret=%@&code=%@&grant_type=authorization_code",API_WECHAT_ACCESSTOKEN,WECHAT_APPID,WECHAT_APPSECRET,code];
-    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:urlStr]];
-    NSURLSession *urlSession = [NSURLSession sharedSession];
-    NSURLSessionDataTask *dataTask = [urlSession dataTaskWithRequest:urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        if (!error) {
-            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-            NSString *access_token = [dic objectForKey:@"access_token"];
-            [self requestUserInfo:access_token];
-        }
-    }];
-    [dataTask resume];
-}
-
--(void)refreshAcceeToken : (NSString *)access_token{
-    NSString *urlStr = [NSString stringWithFormat:@"%@appid=%@&refresh_token=%@&grant_type=refresh_token",API_WECHAT_REFRES_ACCESSTOKEN,WECHAT_APPID,access_token];
-    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:urlStr]];
-    NSURLSession *urlSession = [NSURLSession sharedSession];
-    NSURLSessionDataTask *dataTask = [urlSession dataTaskWithRequest:urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        if (!error) {
-            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-            NSString *refresh_token = [dic objectForKey:@"access_token"];
-            [self requestUserInfo:refresh_token];
-        }
-    }];
-    [dataTask resume];
-}
-
--(void)requestUserInfo : (NSString *)access_token{
-    NSString *urlStr = [NSString stringWithFormat:@"%@access_token=%@&openid=OPENID",API_WECHAT_USERINFO,access_token];
-    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:urlStr]];
-    NSURLSession *urlSession = [NSURLSession sharedSession];
-    NSURLSessionDataTask *dataTask = [urlSession dataTaskWithRequest:urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        if (!error) {
-            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-
-            NSString *nickname = [dic objectForKey:@"nickname"];
-//            int sex = [[dic objectForKey:@"sex"] intValue];
-//            NSString *city = [dic objectForKey:@"city"];
-//            NSString *province = [dic objectForKey:@"province"];
-            NSString *headimgurl = [dic objectForKey:@"headimgurl"];
-
-            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-            [userDefaults setValue:nickname forKey:@"nickname"];
-            [userDefaults setValue:headimgurl forKey:@"headimgurl"];
-            [userDefaults synchronize];
-            
-        }
-    }];
-    [dataTask resume];
-}
+//-(void)requestLogin : (NSString *)code{
+//    NSString *urlStr = [NSString stringWithFormat:@"%@appid=%@&secret=%@&code=%@&grant_type=authorization_code",API_WECHAT_ACCESSTOKEN,WECHAT_APPID,WECHAT_APPSECRET,code];
+//    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:urlStr]];
+//    NSURLSession *urlSession = [NSURLSession sharedSession];
+//    NSURLSessionDataTask *dataTask = [urlSession dataTaskWithRequest:urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+//        if (!error) {
+//            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+//            NSString *access_token = [dic objectForKey:@"access_token"];
+//            [self requestUserInfo:access_token];
+//        }
+//    }];
+//    [dataTask resume];
+//}
+//
+//-(void)refreshAcceeToken : (NSString *)access_token{
+//    NSString *urlStr = [NSString stringWithFormat:@"%@appid=%@&refresh_token=%@&grant_type=refresh_token",API_WECHAT_REFRES_ACCESSTOKEN,WECHAT_APPID,access_token];
+//    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:urlStr]];
+//    NSURLSession *urlSession = [NSURLSession sharedSession];
+//    NSURLSessionDataTask *dataTask = [urlSession dataTaskWithRequest:urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+//        if (!error) {
+//            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+//            NSString *refresh_token = [dic objectForKey:@"access_token"];
+//            [self requestUserInfo:refresh_token];
+//        }
+//    }];
+//    [dataTask resume];
+//}
+//
+//-(void)requestUserInfo : (NSString *)access_token{
+//    NSString *urlStr = [NSString stringWithFormat:@"%@access_token=%@&openid=OPENID",API_WECHAT_USERINFO,access_token];
+//    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:urlStr]];
+//    NSURLSession *urlSession = [NSURLSession sharedSession];
+//    NSURLSessionDataTask *dataTask = [urlSession dataTaskWithRequest:urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+//        if (!error) {
+//            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+//
+//            NSString *nickname = [dic objectForKey:@"nickname"];
+////            int sex = [[dic objectForKey:@"sex"] intValue];
+////            NSString *city = [dic objectForKey:@"city"];
+////            NSString *province = [dic objectForKey:@"province"];
+//            NSString *headimgurl = [dic objectForKey:@"headimgurl"];
+//
+//            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+//            [userDefaults setValue:nickname forKey:@"nickname"];
+//            [userDefaults setValue:headimgurl forKey:@"headimgurl"];
+//            [userDefaults synchronize];
+//
+//        }
+//    }];
+//    [dataTask resume];
+//}
 
 
 

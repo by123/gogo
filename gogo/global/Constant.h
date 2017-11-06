@@ -30,7 +30,12 @@
 #define API_TEAMDETAIL @"https://gogo.scrats.cn/api/core/team/"
 
 
-#define API_WECHAT_ACCESSTOKEN @"https://api.weixin.qq.com/sns/oauth2/access_token?"
-#define API_WECHAT_REFRES_ACCESSTOKEN @"https://api.weixin.qq.com/sns/oauth2/refresh_token?"
-#define API_WECHAT_USERINFO @"https://api.weixin.qq.com/sns/userinfo?"
+#define API_WECHAT_LOGIN @"https://gogo.scrats.cn/api/account/wx_login"
+
+
+
+
+//notification
+#define NOTIFY_WECAHT_CALLBACK @"notify_wechat_callback"
+
 @end

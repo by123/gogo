@@ -15,6 +15,7 @@ SINGLETON_IMPLEMENTION(AccountManager);
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setValue:account.uid forKey:UID];
     [userDefaults setValue:account.access_token forKey:ACCESS_TOKEN];
+    [userDefaults setValue:account.code forKey:CODE];
     [userDefaults synchronize];
 }
 
@@ -23,6 +24,7 @@ SINGLETON_IMPLEMENTION(AccountManager);
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     account.uid = [userDefaults objectForKey:UID];
     account.access_token = [userDefaults objectForKey:ACCESS_TOKEN];
+    account.code = [userDefaults objectForKey:CODE];
     return account;
 }
 
@@ -30,6 +32,7 @@ SINGLETON_IMPLEMENTION(AccountManager);
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults removeObjectForKey:UID];
     [userDefaults removeObjectForKey:ACCESS_TOKEN];
+    [userDefaults removeObjectForKey:CODE];
     [userDefaults synchronize];
 }
 

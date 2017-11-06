@@ -12,6 +12,8 @@
 
 #define UID @"uid"
 #define ACCESS_TOKEN @"access_token"
+#define CODE @"code"
+
 
 @interface AccountManager : NSObject
 SINGLETON_DECLARATION(AccountManager);
