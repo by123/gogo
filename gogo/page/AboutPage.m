@@ -51,6 +51,8 @@
     sloganLabel.alpha = 0.5f;
     sloganLabel.text = @"这里是SLOGAN";
     [self.view addSubview:sloganLabel];
+    
+    
 
 }
 
