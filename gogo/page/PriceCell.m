@@ -48,7 +48,8 @@
     
 }
 
--(void)setData : (NSString *)title hideline : (Boolean)hideline{
+-(void)setData : (PayModel *)model hideline : (Boolean)hideline{
+    NSString *title = [NSString stringWithFormat:@"%ld元%ld竞猜币",model.fee/100,model.coin_count];
     _titleLabel.text = title;
     _lineView.hidden = hideline;
 }

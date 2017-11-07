@@ -113,6 +113,7 @@
 		CFCB0F571F7175940087ACC7 /* CombatTeams.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFCB0F561F7175940087ACC7 /* CombatTeams.plist */; };
 		CFCB0F5A1F7249290087ACC7 /* News.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFCB0F591F7249290087ACC7 /* News.plist */; };
 		CFD14E651FB055BA00A28982 /* ScheduleItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD14E641FB055BA00A28982 /* ScheduleItemModel.m */; };
+		CFD14E6A1FB215B100A28982 /* PayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD14E691FB215B100A28982 /* PayModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -322,6 +323,8 @@
 		CFCBA8021F6FAD2100D7D8B4 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		CFD14E631FB055BA00A28982 /* ScheduleItemModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleItemModel.h; sourceTree = "<group>"; };
 		CFD14E641FB055BA00A28982 /* ScheduleItemModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScheduleItemModel.m; sourceTree = "<group>"; };
+		CFD14E681FB215B100A28982 /* PayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayModel.h; sourceTree = "<group>"; };
+		CFD14E691FB215B100A28982 /* PayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayModel.m; sourceTree = "<group>"; };
 		FC91EBAA0A903D9AA36FDE62 /* Pods-gogo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gogo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-gogo/Pods-gogo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -784,6 +787,8 @@
 				CF7B7EB01FADE6D6003FC2D6 /* CommentListModel.m */,
 				CFD14E631FB055BA00A28982 /* ScheduleItemModel.h */,
 				CFD14E641FB055BA00A28982 /* ScheduleItemModel.m */,
+				CFD14E681FB215B100A28982 /* PayModel.h */,
+				CFD14E691FB215B100A28982 /* PayModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1050,6 +1055,7 @@
 				CFBFE4FD1FA5B36500500B1B /* SCDIntroduceView.m in Sources */,
 				CF0BEDB91F9B2F78005275EE /* PUtil.m in Sources */,
 				CF2EAE701F9FC45300F35974 /* ScheduleContentCell.m in Sources */,
+				CFD14E6A1FB215B100A28982 /* PayModel.m in Sources */,
 				CFCB0F491F711E6F0087ACC7 /* SDCollectionViewCell.m in Sources */,
 				CF2EAE6D1F9FC44300F35974 /* ScheduleTitleCell.m in Sources */,
 				CF2EAEF41FA500A400F35974 /* AboutPage.m in Sources */,

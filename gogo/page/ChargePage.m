@@ -10,6 +10,8 @@
 #import "BarView.h"
 #import "PriceCell.h"
 #import "PayCell.h"
+#import "RespondModel.h"
+#import "PayModel.h"
 
 @interface ChargePage ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -30,10 +32,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    priceArray = @[@"6元600竞猜币",@"30元400竞猜币",@"68元1000竞猜币",@"128元30000竞猜币"];
+    priceArray = [[NSMutableArray alloc]init];
     payArray = @[@"微信支付",@"支付宝支付"];
     payImages = @[@"ic_wxpay_29",@"ic_alipay_29"];
     [self initView];
+    [self requestPayList];
 }
 
 -(void)initView{
@@ -49,10 +52,10 @@
     [self.view addSubview:priceTitle];
     
     _priceTableView = [[UITableView alloc]init];
-    _priceTableView.frame = CGRectMake(0,  [PUtil getActualHeight:86] + height, ScreenWidth, [priceArray count]*[PUtil getActualHeight:110]);
+    _priceTableView.frame = CGRectMake(0,  [PUtil getActualHeight:86] + height, ScreenWidth, 4*[PUtil getActualHeight:110]);
     _priceTableView.delegate = self;
     _priceTableView.dataSource = self;
-    _priceTableView.scrollEnabled = NO;
+    _priceTableView.backgroundColor = c06_backgroud;
     [_priceTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self.view addSubview:_priceTableView];
     
@@ -146,6 +149,21 @@
         }
         return cell;
     }
+}
+
+-(void)requestPayList{
+    [ByNetUtil get:API_PAYLIST parameters:nil success:^(RespondModel *respondModel) {
+        if(respondModel.code == 200){
+            id data = respondModel.data;
+            priceArray = [PayModel mj_objectArrayWithKeyValuesArray:data];
+            _priceTableView.contentSize = CGSizeMake(ScreenWidth, [payArray count]*[PUtil getActualHeight:110]);
+            [_priceTableView reloadData];
+        }else{
+            [DialogHelper showFailureAlertSheet:respondModel.msg];
+        }
+    } failure:^(NSError *error) {
+        [DialogHelper showFailureAlertSheet:@"请求失败!"];
+    }];
 }
 
 -(void)doPay{

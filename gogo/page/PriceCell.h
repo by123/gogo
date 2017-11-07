@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PayModel.h"
 
 @interface PriceCell : UITableViewCell
 
--(void)setData : (NSString *)title hideline : (Boolean)hideline;
+-(void)setData : (PayModel *)model hideline : (Boolean)hideline;
 
 -(void)setSelect : (Boolean)select;
 
