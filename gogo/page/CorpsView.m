@@ -20,12 +20,14 @@
 
 @implementation CorpsView{
     NSMutableArray *models;
+    int index;
 }
 
 - (instancetype)init {
     if(self == [super init]){
+        index = 0;
         [self initView];
-        [self requestList];
+        [self requestList : NO];
     }
     return self;
 }
@@ -36,6 +38,11 @@
     _scrollerView.showsVerticalScrollIndicator = NO;
     _scrollerView.showsHorizontalScrollIndicator = NO;
     _scrollerView.contentSize = CGSizeMake(ScreenWidth, ScreenHeight);
+    _scrollerView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(uploadMore)];
+    
+    MJRefreshStateHeader *header = [MJRefreshStateHeader headerWithRefreshingTarget:self refreshingAction:@selector(uploadNew)];
+    header.lastUpdatedTimeLabel.hidden = YES;
+    _scrollerView.mj_header = header;
     [self addSubview:_scrollerView];
     
     _tableView = [[UITableView alloc]init];
@@ -80,12 +87,37 @@
     return cell;
 }
 
--(void)requestList{
-    [ByNetUtil get:API_TEAMLIST parameters:nil success:^(RespondModel *respondModel) {
+-(void)uploadNew
+{
+    [_scrollerView.mj_header endRefreshing];
+    [_scrollerView.mj_footer endRefreshing];
+    index = 0;
+    [self requestList : NO];
+}
+
+-(void)uploadMore
+{
+    [_scrollerView.mj_header endRefreshing];
+    [_scrollerView.mj_footer endRefreshing];
+    [self requestList : YES];
+    
+}
+
+-(void)requestList : (Boolean) isRequestMore{
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
+    dic[@"index"] = @(index);
+    dic[@"size"] = @(20);
+    [ByNetUtil get:API_TEAMLIST parameters:dic success:^(RespondModel *respondModel) {
         if(respondModel.code == 200){
             id data = respondModel.data;
+            index = [[data objectForKey:@"index"] intValue];
             id items = [data objectForKey:@"items"];
-            models = [CorpsModel mj_objectArrayWithKeyValuesArray:items];
+            NSMutableArray * tempModels = [CorpsModel mj_objectArrayWithKeyValuesArray:items];
+            if(isRequestMore){
+                [models addObjectsFromArray:tempModels];
+            }else{
+                models = tempModels;
+            }
             [_tableView reloadData];
         }else{
             [DialogHelper showFailureAlertSheet:respondModel.msg];
