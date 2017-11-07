@@ -38,8 +38,16 @@
 }
 
 
--(void)setData : (NSString *)title{
-    _mTitleLabel.text = title;
+-(void)setData : (ScheduleItemModel *)model{
+    NSString *tempStr = model.create_ts;
+    NSRange range = NSMakeRange(0, 4);
+    NSString *a = [tempStr substringWithRange:range];
+    range = NSMakeRange(4, 2);
+    NSString *b = [tempStr substringWithRange:range];
+    range = NSMakeRange(6, 2);
+    NSString *c = [tempStr substringWithRange:range];
+    NSString *timeStr = [NSString stringWithFormat:@"%@年%@月%@日",a,b,c];
+    _mTitleLabel.text = timeStr;
 
 }
 

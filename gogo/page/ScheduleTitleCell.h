@@ -11,7 +11,7 @@
 
 @interface ScheduleTitleCell : UITableViewCell
 
--(void)setData : (NSString *)title;
+-(void)setData : (ScheduleItemModel *)model;
 
 +(NSString *)identify;
 

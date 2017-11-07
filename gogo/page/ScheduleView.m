@@ -13,6 +13,7 @@
 #import "ScheduleModel.h"
 #import "RespondModel.h"
 #import "TimeUtil.h"
+#import "ScheduleItemModel.h"
 @interface ScheduleView ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (strong, nonatomic) UITableView *tableView;
@@ -24,14 +25,13 @@
 @implementation ScheduleView{
     int index;
     NSMutableArray *datas;
-    NSMutableArray *titles;
 }
 
 
 -(instancetype)init{
     if(self == [super init]){
         index = 0;
-        titles = [[NSMutableArray alloc]init];
+        datas = [[NSMutableArray alloc]init];
         [self initView];
         [self requestList:NO];
     }
@@ -39,14 +39,6 @@
 }
 
 -(void)initView{
-    int height = 0;
-    for(ScheduleModel *model in datas){
-        if(model.type == Title){
-            height +=[PUtil getActualHeight:86];
-        }else{
-            height +=[PUtil getActualHeight:164];
-        }
-    }
     
     _scrollerView = [[UIScrollView alloc]init];
     _scrollerView.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight - StatuBarHeight - [PUtil getActualHeight:188]);
@@ -54,7 +46,6 @@
     _scrollerView.showsHorizontalScrollIndicator = NO;
     _scrollerView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(uploadMore)];
     
-    _scrollerView.contentSize = CGSizeMake(ScreenWidth, height * 5);
     MJRefreshStateHeader *header = [MJRefreshStateHeader headerWithRefreshingTarget:self refreshingAction:@selector(uploadNew)];
     header.lastUpdatedTimeLabel.hidden = YES;
     _scrollerView.mj_header = header;
@@ -62,7 +53,7 @@
     
 
     _tableView = [[UITableView alloc]init];
-    _tableView.frame = CGRectMake(0, 0, ScreenWidth, height*5);
+    _tableView.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight - StatuBarHeight - [PUtil getActualHeight:188]);
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.backgroundColor = c06_backgroud;
@@ -72,47 +63,50 @@
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return [titles count];
+    return 1;
 }
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 3;
+    return [datas count];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSMutableArray *models = [datas objectAtIndex:indexPath.row];
-    ScheduleModel *model = [models objectAtIndex:indexPath.row];
-    if(model.type == Title){
+    ScheduleItemModel *model = [datas objectAtIndex:indexPath.row];
+    if(IS_NS_STRING_EMPTY(model.score_a)){
         return [PUtil getActualHeight:86];
     }
     return [PUtil getActualHeight:164];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(_handleDelegate){
-        [_handleDelegate goScheduleDetailPage:1L];
+    ScheduleItemModel *model = [datas objectAtIndex:indexPath.row];
+    if(!IS_NS_STRING_EMPTY(model.score_a)){
+        if(_handleDelegate){
+            [_handleDelegate goScheduleDetailPage:1L];
+        }
     }
+
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    ScheduleModel *model = [datas objectAtIndex:indexPath.row];
-    if(model.type == Title){
+    ScheduleItemModel *model = [datas objectAtIndex:indexPath.row];
+    if(IS_NS_STRING_EMPTY(model.score_a)){
         ScheduleTitleCell *cell =  [tableView dequeueReusableCellWithIdentifier:[ScheduleTitleCell identify]];
         if(cell == nil){
             cell = [[ScheduleTitleCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[ScheduleTitleCell identify]];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
-        [cell setData: [titles objectAtIndex:indexPath.row]];
+        [cell setData: model];
         return cell;
     }else{
         ScheduleContentCell *cell =  [tableView dequeueReusableCellWithIdentifier:[ScheduleContentCell identify]];
-//        if(cell == nil){
-//            cell = [[ScheduleContentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[ScheduleContentCell identify]];
-//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//            [cell setDelegate:_handleDelegate];
-//        }
-//        [cell setData:model.contentModel];
+        if(cell == nil){
+            cell = [[ScheduleContentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[ScheduleContentCell identify]];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            [cell setDelegate:_handleDelegate];
+        }
+        [cell setData:model];
         return cell;
     }
 }
@@ -137,15 +131,44 @@
 -(void)requestList : (Boolean)isReuqestMore{
     NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
     dic[@"index"] = @(index);
-    dic[@"size"] = @(1000);
-
     [ByNetUtil get:API_RACE parameters:dic success:^(RespondModel *respondModel) {
         if(respondModel.code == 200){
             id data = respondModel.data;
             index = [[data objectForKey:@"index"] intValue];
             id items = [data objectForKey:@"items"];
-            datas = [ScheduleModel mj_objectArrayWithKeyValuesArray:items];
-            [self handleDatas];
+            NSMutableArray *tempDatas = [ScheduleModel mj_objectArrayWithKeyValuesArray:items];
+            NSMutableArray *addDatas = [[NSMutableArray alloc]init];
+            for(ScheduleModel *model in tempDatas){
+                ScheduleItemModel *titleModel = [[ScheduleItemModel alloc]init];
+                titleModel.create_ts = [NSString stringWithFormat:@"%ld",model.dt];
+                [addDatas addObject:titleModel];
+                NSMutableArray *contentItems =model.items;
+                for(int i = 0 ; i < [contentItems count];i++){
+                    id contentItem = [contentItems objectAtIndex:i];
+                    ScheduleItemModel *contentModel  = [ScheduleItemModel mj_objectWithKeyValues:contentItem];
+                    if(i == [contentItems count]-1){
+                        contentModel.hideLine = YES;
+                    }
+                    [addDatas addObject:contentModel];
+                }
+            }
+            
+            if(isReuqestMore){
+                [datas addObjectsFromArray:addDatas];
+            }else{
+                datas = addDatas;
+            }
+            int height = 0;
+            for(ScheduleItemModel *model in datas){
+                if(IS_NS_STRING_EMPTY(model.score_a)){
+                    height +=[PUtil getActualHeight:86];
+                }else{
+                    height +=[PUtil getActualHeight:164];
+                }
+            }
+            _tableView.frame = CGRectMake(0, 0, ScreenWidth, height);
+            _scrollerView.contentSize =CGSizeMake(ScreenWidth,height);
+            [_tableView reloadData];
         }else{
             [DialogHelper showFailureAlertSheet:respondModel.msg];
         }
@@ -156,21 +179,6 @@
 }
 
 
--(void)handleDatas{
-    for(ScheduleModel *model in datas){
-       NSString *date =  [TimeUtil generateData:model.race_ts];
-        Boolean hasDate = NO;
-//        for(NSString *dateStr in titles){
-//            if([dateStr isEqualToString:date]){
-//                hasDate = YES;
-//            }
-//        }
-//        if(!hasDate){
-            [titles addObject:date];
-//        }
-    }
-    NSLog(@"");
-}
 
 
 @end

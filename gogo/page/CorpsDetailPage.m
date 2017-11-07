@@ -105,16 +105,24 @@
     _membersView.frame = CGRectMake([PUtil getActualWidth:210], [PUtil getActualHeight:114], ScreenWidth - [PUtil getActualWidth:210], [PUtil getActualHeight:64]);
     
     int width = [PUtil getActualWidth:64];
-    _moreBtn = [[UIButton alloc]init];
-    _moreBtn.frame = CGRectMake(4*[PUtil getActualWidth:74], 0, width, width);
-    _moreBtn.layer.masksToBounds = YES;
-    _moreBtn.layer.cornerRadius = width/2;
-    [_moreBtn addTarget:self action:@selector(OnClickMore) forControlEvents:UIControlEventTouchUpInside];
-    [_membersView addSubview:_moreBtn];
-    [ColorUtil setGradientColor:_moreBtn startColor:c01_blue endColor:c02_red director:Left];
+    if(!IS_NS_COLLECTION_EMPTY(memberModels)){
+        _moreBtn = [[UIButton alloc]init];
+        _moreBtn.frame = CGRectMake(4*[PUtil getActualWidth:74], 0, width, width);
+        _moreBtn.layer.masksToBounds = YES;
+        _moreBtn.layer.cornerRadius = width/2;
+        [_moreBtn addTarget:self action:@selector(OnClickMore) forControlEvents:UIControlEventTouchUpInside];
+        [_membersView addSubview:_moreBtn];
+        [ColorUtil setGradientColor:_moreBtn startColor:c01_blue endColor:c02_red director:Left];
+    }
     
-    for(int i=0;i<5;i++){
-        if(i == 4){
+    NSInteger index = 0;
+    if([memberModels count]> 4){
+        index = 5;
+    }else{
+        index = [memberModels count];
+    }
+    for(int i=0;i<index;i++){
+        if(i == index-1){
             UILabel *label = [[UILabel alloc]init];
             label.frame = CGRectMake(i*[PUtil getActualWidth:74], 0, width, width);
             label.layer.masksToBounds = YES;
@@ -135,6 +143,7 @@
             [_membersView addSubview:imageView];
         }
     }
+  
     [topView addSubview:_membersView];
     
     UIView *lineView = [[UIView alloc]init];

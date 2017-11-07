@@ -12,7 +12,7 @@
 
 @interface ScheduleContentCell : UITableViewCell
 
--(void)setData : (ScheduleModel *)model;
+-(void)setData : (ScheduleItemModel *)model;
 
 -(void)setDelegate : (id<MainHandleDelegate>)delegate;
 

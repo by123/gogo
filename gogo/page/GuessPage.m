@@ -44,7 +44,7 @@
     
     UIButton *backView = [[UIButton alloc]init];
     backView.frame = CGRectMake([PUtil getActualWidth:20], [PUtil getActualHeight:20], [PUtil getActualHeight:48], [PUtil getActualHeight:48]);
-    backView.backgroundColor = c08_text;
+    [backView setImage:[UIImage imageNamed:@"ic_back_24"] forState:UIControlStateNormal];
     [backView addTarget:self action:@selector(onBackPage) forControlEvents:UIControlEventTouchUpInside];
     [topView addSubview:backView];
     

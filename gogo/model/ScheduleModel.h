@@ -7,28 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TeamModel.h"
-
-typedef NS_ENUM(NSInteger,ScheduleType){
-    Title = 0,
-    Content = 1,
-};
+#import "ScheduleItemModel.h"
 
 @interface ScheduleModel : NSObject
 
-@property (assign, nonatomic) ScheduleType type;
-
-@property (assign, nonatomic) long race_id;
-@property (assign, nonatomic) long race_info_id;
-@property (assign, nonatomic) long game_id;
-@property (copy, nonatomic) NSString* score_a;
-@property (copy, nonatomic) NSString* score_b;
-@property (copy, nonatomic) NSString* race_ts;
-@property (copy, nonatomic) NSString* create_ts;
-@property (copy, nonatomic) NSString* status;
-
-@property (strong, nonatomic) TeamModel *aTeamModel;
-@property (strong, nonatomic) TeamModel *bTeamModel;
+@property (assign, nonatomic) long dt;
+@property (strong, nonatomic) NSMutableArray *items;
 
 
 

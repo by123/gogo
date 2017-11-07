@@ -7,12 +7,12 @@
 //
 
 #import "ScheduleContentCell.h"
-
+#import "TimeUtil.h"
 @interface ScheduleContentCell()
 
-@property (strong, nonatomic) UIView *aView;
+@property (strong, nonatomic) UIImageView *aView;
 
-@property (strong, nonatomic) UIView *bView;
+@property (strong, nonatomic) UIImageView *bView;
 
 @property (strong, nonatomic) UIView *timeView;
 
@@ -38,11 +38,12 @@
 -(void)initView{
     
     self.contentView.backgroundColor = c07_bar;
-    _aView = [[UIView alloc]init];
-    _aView.frame = CGRectMake([PUtil getActualWidth:110], [PUtil getActualHeight:52], [PUtil getActualHeight:60], [PUtil getActualHeight:60]);
+    _aView = [[UIImageView alloc]init];
+    _aView.frame = CGRectMake([PUtil getActualWidth:110], [PUtil getActualHeight:42], [PUtil getActualHeight:80], [PUtil getActualHeight:80]);
     _aView.layer.masksToBounds = YES;
     _aView.layer.cornerRadius = [PUtil getActualHeight:60]/2;
-    _aView.backgroundColor = c01_blue;
+    _aView.contentMode = UIViewContentModeScaleAspectFit;
+//    _aView.backgroundColor = c01_blue;
     [self.contentView addSubview:_aView];
 
     _timeView = [[UIView alloc]init];
@@ -63,11 +64,12 @@
     [self.contentView addSubview:_timeLabel];
 
     
-    _bView = [[UIView alloc]init];
-    _bView.frame = CGRectMake([PUtil getActualWidth:406], [PUtil getActualHeight:52], [PUtil getActualHeight:60], [PUtil getActualHeight:60]);
+    _bView = [[UIImageView alloc]init];
+    _bView.frame = CGRectMake([PUtil getActualWidth:406], [PUtil getActualHeight:42], [PUtil getActualHeight:80], [PUtil getActualHeight:80]);
     _bView.layer.masksToBounds = YES;
     _bView.layer.cornerRadius = [PUtil getActualHeight:60]/2;
-    _bView.backgroundColor = c02_red;
+//    _bView.backgroundColor = c02_red;
+    _bView.contentMode = UIViewContentModeScaleAspectFit;
     [self.contentView addSubview:_bView];
     
     _guessBtn = [[UIButton alloc]init];
@@ -88,11 +90,16 @@
     
 }
 
--(void)setData : (ScheduleModel *)model{
-//    _timeLabel.text = model.time;
-//    if(!model.needLine){
-//        [_lineView setHidden:YES];
-//    }
+-(void)setData : (ScheduleItemModel *)model{
+    _timeLabel.text = [TimeUtil generateTime:model.race_ts];
+    TeamModel *aTeamModel = [TeamModel mj_objectWithKeyValues:model.team_a];
+    [_aView sd_setImageWithURL:[NSURL URLWithString:aTeamModel.logo]];
+    TeamModel *bTeamModel = [TeamModel mj_objectWithKeyValues:model.team_b];
+    [_bView sd_setImageWithURL:[NSURL URLWithString:bTeamModel.logo]];
+
+    if(model.hideLine){
+        [_lineView setHidden:YES];
+    }
 }
 
 -(void)setDelegate : (id<MainHandleDelegate>)delegate{

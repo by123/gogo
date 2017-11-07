@@ -112,6 +112,7 @@
 		CFCB0F4F1F711E6F0087ACC7 /* UIView+SDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCB0F481F711E6F0087ACC7 /* UIView+SDExtension.m */; };
 		CFCB0F571F7175940087ACC7 /* CombatTeams.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFCB0F561F7175940087ACC7 /* CombatTeams.plist */; };
 		CFCB0F5A1F7249290087ACC7 /* News.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFCB0F591F7249290087ACC7 /* News.plist */; };
+		CFD14E651FB055BA00A28982 /* ScheduleItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD14E641FB055BA00A28982 /* ScheduleItemModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -319,6 +320,8 @@
 		CFCB0F561F7175940087ACC7 /* CombatTeams.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CombatTeams.plist; sourceTree = "<group>"; };
 		CFCB0F591F7249290087ACC7 /* News.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = News.plist; sourceTree = "<group>"; };
 		CFCBA8021F6FAD2100D7D8B4 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		CFD14E631FB055BA00A28982 /* ScheduleItemModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleItemModel.h; sourceTree = "<group>"; };
+		CFD14E641FB055BA00A28982 /* ScheduleItemModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScheduleItemModel.m; sourceTree = "<group>"; };
 		FC91EBAA0A903D9AA36FDE62 /* Pods-gogo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gogo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-gogo/Pods-gogo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -779,6 +782,8 @@
 				CF7B7EAD1FADE685003FC2D6 /* UserModel.m */,
 				CF7B7EAF1FADE6D6003FC2D6 /* CommentListModel.h */,
 				CF7B7EB01FADE6D6003FC2D6 /* CommentListModel.m */,
+				CFD14E631FB055BA00A28982 /* ScheduleItemModel.h */,
+				CFD14E641FB055BA00A28982 /* ScheduleItemModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1038,6 +1043,7 @@
 				CF2EAF041FA5109500F35974 /* ExchangeCell.m in Sources */,
 				CF0BEDBC1F9B4378005275EE /* AccountManager.m in Sources */,
 				CFCB0F4C1F711E6F0087ACC7 /* TAAnimatedDotView.m in Sources */,
+				CFD14E651FB055BA00A28982 /* ScheduleItemModel.m in Sources */,
 				CFBFE5101FA5CC1300500B1B /* GuessView.m in Sources */,
 				CF2EAF0A1FA5154600F35974 /* GuessHistoryCell.m in Sources */,
 				CF42783F1FAB9B3A00C163DD /* LoginModel.m in Sources */,

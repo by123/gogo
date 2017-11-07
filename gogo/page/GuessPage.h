@@ -15,7 +15,7 @@
 
 @end
 
-@interface GuessPage : BaseViewController
+@interface GuessPage : BaseViewController<GuessDelegate>
 
 
 @end
