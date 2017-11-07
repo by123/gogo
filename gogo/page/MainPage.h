@@ -32,6 +32,8 @@
 
 @optional -(void)goGuessPage;
 
+@optional -(void)updateUserInfo;
+
 @end
 
 @interface MainPage : BaseViewController

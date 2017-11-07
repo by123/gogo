@@ -39,9 +39,7 @@
 
 -(void)initView{
     
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSString *nickName = [userDefaults  objectForKey:@"nickname"];
-    NSString *headimgurl = [userDefaults objectForKey:@"headimgurl"];
+    UserModel *model = [[AccountManager sharedAccountManager]getUserInfo];
     
     _scrollerView = [[TouchScrollView alloc]initWithParentView:self];
     _scrollerView.frame = self.frame;
@@ -60,13 +58,15 @@
     _headImageView = [[UIImageView alloc]init];
     _headImageView.frame = CGRectMake([PUtil getActualWidth:40], [PUtil getActualHeight:56], [PUtil getActualWidth:160], [PUtil getActualWidth:160]);
     _headImageView.backgroundColor = c01_blue;
-    [_headImageView sd_setImageWithURL:[NSURL URLWithString:headimgurl]];
+    if(!IS_NS_STRING_EMPTY(model.avatar)){
+      [_headImageView sd_setImageWithURL:[NSURL URLWithString:model.avatar]];
+    }
     _headImageView.layer.masksToBounds = YES;
     _headImageView.layer.cornerRadius = [PUtil getActualWidth:160]/2;
     [_userView addSubview:_headImageView];
     
     _nickNameLabel = [[UILabel alloc]init];
-    _nickNameLabel.text = nickName;
+    _nickNameLabel.text = model.username;
     _nickNameLabel.textColor = c08_text;
     _nickNameLabel.frame = CGRectMake([PUtil getActualWidth:240], [PUtil getActualHeight:55], ScreenWidth - [PUtil getActualWidth:240], [PUtil getActualHeight:67]);
     _nickNameLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:48]];
@@ -80,7 +80,7 @@
     [_userView addSubview:coinTitleLabel];
 
     _coinLabel = [[UILabel alloc]init];
-    _coinLabel.text = @"1000";
+    _coinLabel.text = model.coin;
     _coinLabel.textColor = c15_text3;
     _coinLabel.frame = CGRectMake([PUtil getActualWidth:240], [PUtil getActualHeight:162], ScreenWidth - [PUtil getActualWidth:240], [PUtil getActualHeight:56]);
     _coinLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:40]];
@@ -171,6 +171,15 @@
 -(void)goPersonalPage{
     if(_handleDelegate){
         [_handleDelegate goPersonalPage];
+    }
+}
+
+-(void)updateUserInfo{
+    UserModel *model = [[AccountManager sharedAccountManager]getUserInfo];
+    _nickNameLabel.text = model.username;
+    _coinLabel.text = model.coin;
+    if(!IS_NS_STRING_EMPTY(model.avatar)){
+        [_headImageView sd_setImageWithURL:[NSURL URLWithString:model.avatar]];
     }
 }
 

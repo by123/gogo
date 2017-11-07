@@ -15,6 +15,13 @@
 #define CODE @"code"
 
 
+#define USERNAME @"username"
+#define GENDER @"gender"
+#define AVATAR @"avatar"
+#define COIN @"coin"
+
+
+
 @interface AccountManager : NSObject
 SINGLETON_DECLARATION(AccountManager);
 
@@ -25,5 +32,9 @@ SINGLETON_DECLARATION(AccountManager);
 -(Boolean)isLogin;
 
 -(void)clear;
+
+-(void)saveUserInfo : (UserModel *)userModel;
+
+-(UserModel *)getUserInfo;
 
 @end

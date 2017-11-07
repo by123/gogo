@@ -23,6 +23,9 @@
 #import "AboutPage.h"
 #import "PersonalPage.h"
 #import "GuessPage.h"
+#import "RespondModel.h"
+#import "UserModel.h"
+#import "AccountManager.h"
 
 #define TitleHeight [PUtil getActualHeight:88]
 
@@ -30,6 +33,7 @@
 
 @property (strong, nonatomic) UILabel *mTitleLabel;
 @property (strong, nonatomic) UIView  *mBodyView;
+@property (strong, nonatomic) MineView *mineView;
 
 @end
 
@@ -41,6 +45,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initView];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [self getUserInfo];
 }
 
 -(void)initView{
@@ -130,9 +138,9 @@
 #pragma mark 添加我的
 -(void)addMinePage{
     [self removeBodySubView];
-    MineView *mineView = [[MineView alloc]initWithFrame:CGRectMake(0, 0,ScreenWidth, _mBodyView.mj_h)];
-    mineView.handleDelegate = self;
-    [_mBodyView addSubview:mineView];
+    _mineView = [[MineView alloc]initWithFrame:CGRectMake(0, 0,ScreenWidth, _mBodyView.mj_h)];
+    _mineView.handleDelegate = self;
+    [_mBodyView addSubview:_mineView];
 }
 
 
@@ -203,5 +211,23 @@
     GuessPage *page = [[GuessPage alloc]init];
     [self pushPage:page];
 }
+
+
+
+-(void)getUserInfo{
+    [ByNetUtil get:API_USERINFO parameters:nil success:^(RespondModel *respondModel) {
+        if(respondModel.code == 200){
+            id data = respondModel.data;
+            UserModel *userModel = [UserModel mj_objectWithKeyValues:data];
+            [[AccountManager sharedAccountManager]saveUserInfo:userModel];
+            if(_mineView){
+                [_mineView updateUserInfo];
+            }
+       }
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
 
 @end

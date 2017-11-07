@@ -9,8 +9,11 @@
 #import "BaseViewController.h"
 #import "MainPage.h"
 
+
 @interface MineView : UIView
 
 @property (weak, nonatomic) id<MainHandleDelegate> handleDelegate;
+
+-(void)updateUserInfo;
 
 @end

@@ -33,6 +33,10 @@ SINGLETON_IMPLEMENTION(AccountManager);
     [userDefaults removeObjectForKey:UID];
     [userDefaults removeObjectForKey:ACCESS_TOKEN];
     [userDefaults removeObjectForKey:CODE];
+    [userDefaults removeObjectForKey:AVATAR];
+    [userDefaults removeObjectForKey:USERNAME];
+    [userDefaults removeObjectForKey:GENDER];
+    [userDefaults removeObjectForKey:COIN];
     [userDefaults synchronize];
 }
 
@@ -42,5 +46,26 @@ SINGLETON_IMPLEMENTION(AccountManager);
         return YES;
     }
     return NO;
+}
+
+-(void)saveUserInfo : (UserModel *)userModel{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setValue:userModel.uid forKey:UID];
+    [userDefaults setValue:userModel.avatar forKey:AVATAR];
+    [userDefaults setValue:userModel.username forKey:USERNAME];
+    [userDefaults setValue:userModel.gender forKey:GENDER];
+    [userDefaults setValue:userModel.coin forKey:COIN];
+    [userDefaults synchronize];
+}
+
+-(UserModel *)getUserInfo{
+    UserModel *userModel = [[UserModel alloc]init];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    userModel.uid = [userDefaults objectForKey:UID];
+    userModel.avatar = [userDefaults objectForKey:AVATAR];
+    userModel.username = [userDefaults objectForKey:USERNAME];
+    userModel.coin = [userDefaults objectForKey:COIN];
+    userModel.gender = [userDefaults objectForKey:GENDER];
+    return userModel;
 }
 @end

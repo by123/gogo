@@ -14,6 +14,6 @@
 @property (copy, nonatomic) NSString *gender;
 @property (copy, nonatomic) NSString *uid;
 @property (copy, nonatomic) NSString *avatar;
-
+@property (copy, nonatomic) NSString *coin;
 
 @end
