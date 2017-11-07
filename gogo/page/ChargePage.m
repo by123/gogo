@@ -167,7 +167,33 @@
 }
 
 -(void)doPay{
-    //todo
+    if(paySelect == 0){
+        
+    }else{
+        [self doAliPay];
+    }
+}
+
+-(void)doWechatPay{
+    
+}
+
+-(void)doAliPay{
+    PayModel *model = [priceArray objectAtIndex:priceSelect];
+    NSString *requestUrl = [NSString stringWithFormat:@"%@/%ld",API_ALIPAY,model.coin_plan_id];
+    [ByNetUtil post:requestUrl parameters:nil success:^(RespondModel *respondModel) {
+        if(respondModel.code == 200){
+            id data = respondModel.data;
+            [[AlipaySDK defaultService]payOrder:data fromScheme:@"gogo" callback:^(NSDictionary *resultDic) {
+                NSLog(@"reslut = %@",resultDic);
+            }];
+        }else{
+            [DialogHelper showFailureAlertSheet:respondModel.msg];
+        }
+    } failure:^(NSError *error) {
+        [DialogHelper showFailureAlertSheet:@"请求失败!"];
+
+    }];
 }
 
 @end

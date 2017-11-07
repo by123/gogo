@@ -22,6 +22,8 @@
 #import "DialogHelper.h"
 #import "UILabel+ContentSize.h"
 #import "UIView+Frame.h"
+#import <AlipaySDK/AlipaySDK.h>
+
 
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch

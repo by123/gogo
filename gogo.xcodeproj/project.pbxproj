@@ -114,6 +114,14 @@
 		CFCB0F5A1F7249290087ACC7 /* News.plist in Resources */ = {isa = PBXBuildFile; fileRef = CFCB0F591F7249290087ACC7 /* News.plist */; };
 		CFD14E651FB055BA00A28982 /* ScheduleItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD14E641FB055BA00A28982 /* ScheduleItemModel.m */; };
 		CFD14E6A1FB215B100A28982 /* PayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD14E691FB215B100A28982 /* PayModel.m */; };
+		CFD14E6C1FB2193900A28982 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD14E6B1FB2192900A28982 /* QuartzCore.framework */; };
+		CFD14E6E1FB2194D00A28982 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD14E6D1FB2194700A28982 /* CoreText.framework */; };
+		CFD14E701FB2196200A28982 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD14E6F1FB2195900A28982 /* CoreGraphics.framework */; };
+		CFD14E721FB2197900A28982 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD14E711FB2197400A28982 /* UIKit.framework */; };
+		CFD14E741FB2198800A28982 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD14E731FB2198300A28982 /* Foundation.framework */; };
+		CFD14E761FB2199F00A28982 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD14E751FB2199800A28982 /* CoreMotion.framework */; };
+		CFD14E7A1FB219E400A28982 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD14E781FB219E400A28982 /* AlipaySDK.framework */; };
+		CFD14E7B1FB219E400A28982 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CFD14E791FB219E400A28982 /* AlipaySDK.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -325,6 +333,14 @@
 		CFD14E641FB055BA00A28982 /* ScheduleItemModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScheduleItemModel.m; sourceTree = "<group>"; };
 		CFD14E681FB215B100A28982 /* PayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayModel.h; sourceTree = "<group>"; };
 		CFD14E691FB215B100A28982 /* PayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayModel.m; sourceTree = "<group>"; };
+		CFD14E6B1FB2192900A28982 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		CFD14E6D1FB2194700A28982 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		CFD14E6F1FB2195900A28982 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		CFD14E711FB2197400A28982 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		CFD14E731FB2198300A28982 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		CFD14E751FB2199800A28982 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		CFD14E781FB219E400A28982 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
+		CFD14E791FB219E400A28982 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
 		FC91EBAA0A903D9AA36FDE62 /* Pods-gogo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gogo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-gogo/Pods-gogo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -333,6 +349,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFD14E761FB2199F00A28982 /* CoreMotion.framework in Frameworks */,
+				CFD14E7A1FB219E400A28982 /* AlipaySDK.framework in Frameworks */,
+				CFD14E741FB2198800A28982 /* Foundation.framework in Frameworks */,
+				CFD14E721FB2197900A28982 /* UIKit.framework in Frameworks */,
+				CFD14E701FB2196200A28982 /* CoreGraphics.framework in Frameworks */,
+				CFD14E6E1FB2194D00A28982 /* CoreText.framework in Frameworks */,
+				CFD14E6C1FB2193900A28982 /* QuartzCore.framework in Frameworks */,
 				CF7B7ED01FAE663E003FC2D6 /* CFNetwork.framework in Frameworks */,
 				CF7B7ECE1FAE662C003FC2D6 /* Security.framework in Frameworks */,
 				CF7B7ECC1FAE61C8003FC2D6 /* libc++.tbd in Frameworks */,
@@ -351,6 +374,12 @@
 		0B3F5C946CD226272B2A24DA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CFD14E751FB2199800A28982 /* CoreMotion.framework */,
+				CFD14E731FB2198300A28982 /* Foundation.framework */,
+				CFD14E711FB2197400A28982 /* UIKit.framework */,
+				CFD14E6F1FB2195900A28982 /* CoreGraphics.framework */,
+				CFD14E6D1FB2194700A28982 /* CoreText.framework */,
+				CFD14E6B1FB2192900A28982 /* QuartzCore.framework */,
 				CF7B7ECF1FAE663E003FC2D6 /* CFNetwork.framework */,
 				CF7B7ECD1FAE662B003FC2D6 /* Security.framework */,
 				CF7B7ECB1FAE61C8003FC2D6 /* libc++.tbd */,
@@ -603,6 +632,7 @@
 		CF7214E01F6678E4002F3634 /* gogo */ = {
 			isa = PBXGroup;
 			children = (
+				CFD14E771FB219B000A28982 /* alipay */,
 				CF7B7EBB1FAE612E003FC2D6 /* wechat */,
 				CF2EAE661F9E799C00F35974 /* gogo.entitlements */,
 				CFCB0EFF1F7105360087ACC7 /* global */,
@@ -875,6 +905,15 @@
 			path = SDCycleScrollView;
 			sourceTree = "<group>";
 		};
+		CFD14E771FB219B000A28982 /* alipay */ = {
+			isa = PBXGroup;
+			children = (
+				CFD14E791FB219E400A28982 /* AlipaySDK.bundle */,
+				CFD14E781FB219E400A28982 /* AlipaySDK.framework */,
+			);
+			path = alipay;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -942,6 +981,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFD14E7B1FB219E400A28982 /* AlipaySDK.bundle in Resources */,
 				CF0BEDD91F9BC817005275EE /* LaunchScreen.storyboard in Resources */,
 				CFCB0F5A1F7249290087ACC7 /* News.plist in Resources */,
 				CF7214EE1F6678E4002F3634 /* Assets.xcassets in Resources */,
@@ -1227,8 +1267,23 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = gogo/gogo.entitlements;
 				DEVELOPMENT_TEAM = AB86U4DT8H;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/gogo/alipay",
+				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/gogo/PrefixHeader.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/gogo/alipay",
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/FMDB\"",
+					"\"${PODS_ROOT}/Headers/Public/MBProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/MJExtension\"",
+					"\"${PODS_ROOT}/Headers/Public/MJRefresh\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/gogo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -1272,8 +1327,23 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = gogo/gogo.entitlements;
 				DEVELOPMENT_TEAM = AB86U4DT8H;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/gogo/alipay",
+				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/gogo/PrefixHeader.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/gogo/alipay",
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/FMDB\"",
+					"\"${PODS_ROOT}/Headers/Public/MBProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/MJExtension\"",
+					"\"${PODS_ROOT}/Headers/Public/MJRefresh\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/gogo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
