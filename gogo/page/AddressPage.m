@@ -9,16 +9,18 @@
 #import "AddressPage.h"
 #import "BarView.h"
 #import "InsetTextField.h"
+#import "AddressPickerView.h"
 
-@interface AddressPage ()<UITextFieldDelegate>
+@interface AddressPage ()<UITextFieldDelegate,AddressPickerViewDelegate>
 
 @property (strong, nonatomic) BarView *barView;
 @property (strong, nonatomic) UIView *bodyView;
 @property (strong, nonatomic) InsetTextField *receiverTextField;
 @property (strong, nonatomic) InsetTextField *phoneNumTextField;
-@property (strong, nonatomic) InsetTextField *areaTextField;
+@property (strong, nonatomic) UIButton *areaBtn;
 @property (strong, nonatomic) InsetTextField *addressTextField;
 @property (strong, nonatomic) UIButton *saveBtn;
+@property (strong, nonatomic) AddressPickerView *addressPickerView;
 
 @end
 
@@ -54,12 +56,17 @@
     [_bodyView addSubview:_phoneNumTextField];
     [self buildLineView:_phoneNumTextField.mj_y + _phoneNumTextField.mj_h];
     
-    _areaTextField = [[InsetTextField alloc]initWithFrame:CGRectMake(0,  [PUtil getActualHeight:220],ScreenWidth, [PUtil getActualHeight:110]) andInsets:inset hint:@"地区"];
-    _areaTextField.backgroundColor = c07_bar;
-    _areaTextField.textColor = c08_text;
-    _areaTextField.font = [UIFont systemFontOfSize:[PUtil getActualHeight:34]];
-    [_bodyView addSubview:_areaTextField];
-    [self buildLineView:_areaTextField.mj_y+_areaTextField.mj_h];
+    _areaBtn = [[UIButton alloc]initWithFrame:CGRectMake(0,  [PUtil getActualHeight:220],ScreenWidth, [PUtil getActualHeight:110])];
+    [_areaBtn setTitle:@"地区" forState:UIControlStateNormal];
+    [_areaBtn setTitleColor:c08_text forState:UIControlStateNormal];
+    _areaBtn.titleLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:34]];
+    _areaBtn.titleLabel.alpha = 0.5f;
+    _areaBtn.titleLabel.textAlignment = NSTextAlignmentLeft;
+    _areaBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    _areaBtn.titleEdgeInsets = UIEdgeInsetsMake(0, [PUtil getActualWidth:30], 0, 0);
+    [_areaBtn addTarget:self action:@selector(OnAddressClick) forControlEvents:UIControlEventTouchUpInside];
+    [_bodyView addSubview:_areaBtn];
+    [self buildLineView:_areaBtn.mj_y+_areaBtn.mj_h];
     
     _addressTextField = [[InsetTextField alloc]initWithFrame:CGRectMake(0,  [PUtil getActualHeight:330],ScreenWidth, [PUtil getActualHeight:240]) andInsets:inset hint:@"详细地址"];
     _addressTextField.backgroundColor = c07_bar;
@@ -88,9 +95,28 @@
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [_receiverTextField resignFirstResponder];
     [_addressTextField resignFirstResponder];
-    [_areaTextField resignFirstResponder];
     [_phoneNumTextField resignFirstResponder];
 }
+
+
+-(void)OnAddressClick{
+    NSLog(@"点击");
+    _addressPickerView = [[AddressPickerView alloc]initWithFrame:CGRectMake(0, ScreenHeight ,ScreenWidth , ScreenHeight)];
+    _addressPickerView.delegate = self;
+    [self.view addSubview:_addressPickerView];
+    [_addressPickerView show];
+}
+
+-(void)cancelBtnClick{
+    [_addressPickerView hide];
+}
+
+-(void)sureBtnClickReturnProvince:(NSString *)province City:(NSString *)city Area:(NSString *)area{
+    [_addressPickerView hide];
+    NSString *result = [NSString stringWithFormat:@"%@%@%@",province,city,area];
+    [_areaBtn setTitle:result forState:UIControlStateNormal];
+}
+
 
 -(void)doSave{
     //todo

@@ -164,7 +164,7 @@
     [_scrollerView addSubview:honourView];
     
     _honourLabel = [[UILabel alloc]init];
-    _honourLabel.text = @"获取奖励";
+    _honourLabel.text = @"获取荣誉";
     _honourLabel.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualHeight:20], ScreenWidth - [PUtil getActualWidth:30], [PUtil getActualHeight:33]);
     _honourLabel.textColor = c09_tips;
     _honourLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:24]];

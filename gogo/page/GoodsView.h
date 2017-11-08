@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+#define HOT @"hot"
+#define EQUIPMENT @"equipment"
+#define LUCKYMONEY @"lucky_money"
+#define GAMEAROUND @"game_around"
+#define VIRTUAL @"virtual"
+
 @interface GoodsView : UIView
+
+@property (copy, nonatomic) NSString *type;
+
+-(instancetype)initWithType : (NSString *)type;
 
 @end

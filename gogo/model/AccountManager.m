@@ -16,6 +16,7 @@ SINGLETON_IMPLEMENTION(AccountManager);
     [userDefaults setValue:account.uid forKey:UID];
     [userDefaults setValue:account.access_token forKey:ACCESS_TOKEN];
     [userDefaults setValue:account.code forKey:CODE];
+    [userDefaults setValue:account.refresh_token forKey:REFRESH_TOKEN];
     [userDefaults synchronize];
 }
 
@@ -25,6 +26,7 @@ SINGLETON_IMPLEMENTION(AccountManager);
     account.uid = [userDefaults objectForKey:UID];
     account.access_token = [userDefaults objectForKey:ACCESS_TOKEN];
     account.code = [userDefaults objectForKey:CODE];
+    account.refresh_token = [userDefaults objectForKey:REFRESH_TOKEN];
     return account;
 }
 
@@ -33,6 +35,7 @@ SINGLETON_IMPLEMENTION(AccountManager);
     [userDefaults removeObjectForKey:UID];
     [userDefaults removeObjectForKey:ACCESS_TOKEN];
     [userDefaults removeObjectForKey:CODE];
+    [userDefaults removeObjectForKey:REFRESH_TOKEN];
     [userDefaults removeObjectForKey:AVATAR];
     [userDefaults removeObjectForKey:USERNAME];
     [userDefaults removeObjectForKey:GENDER];

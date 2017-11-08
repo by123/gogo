@@ -11,6 +11,7 @@
 #import "LoginPage.h"
 #import "TouchScrollView.h"
 #import "AccountManager.h"
+#import "RespondModel.h"
 
 @interface MineView ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -138,10 +139,23 @@
 }
 
 -(void)logout{
-    if(_handleDelegate){
-        [[AccountManager sharedAccountManager] clear];
-        [_handleDelegate goLoginPage];
-    }
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
+    dic[@"refresh_token"] = [[AccountManager sharedAccountManager] getAccount].refresh_token;
+    [ByNetUtil post:API_LOGOUT parameters:dic success:^(RespondModel *respondModel) {
+        if(respondModel.code == 200){
+            if(_handleDelegate){
+                [[AccountManager sharedAccountManager] clear];
+                [_handleDelegate goLoginPage];
+            }
+        }else{
+            [DialogHelper showFailureAlertSheet:respondModel.msg];
+        }
+        
+    } failure:^(NSError *error) {
+        [DialogHelper showFailureAlertSheet:@"请求失败"];
+
+    }];
+   
 }
 
 -(void)goPage : (NSInteger)index{

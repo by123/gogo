@@ -14,6 +14,7 @@
 @property (copy, nonatomic)   NSString  *uid;
 @property (copy, nonatomic)   NSString  *access_token;
 @property (copy, nonatomic)   NSString  *code;
+@property (copy, nonatomic)   NSString  *refresh_token;
 
 
 @end

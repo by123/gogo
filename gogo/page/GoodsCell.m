@@ -10,32 +10,34 @@
 
 @interface GoodsCell()
 
-@property (strong, nonatomic) UIView *showImg;
+@property (strong, nonatomic) UIImageView *showImg;
 
 
 @end
 
 @implementation GoodsCell
 
--(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
-    if(self == [super initWithStyle:style reuseIdentifier:reuseIdentifier]){
+-(instancetype)initWithFrame:(CGRect)frame{
+    if(self == [super initWithFrame:frame]){
         [self initView];
     }
     return self;
 }
 
+
 -(void)initView{
-    self.contentView.backgroundColor = c06_backgroud;
     
-    _showImg = [[UIView alloc]init];
-    _showImg.backgroundColor = c01_blue;
-//    _showImg.frame = CGRectMake(0, 0, PUtil getActualWidth:3, <#CGFloat height#>)
+    _showImg = [[UIImageView alloc]initWithFrame:self.bounds];
+    _showImg.layer.masksToBounds = YES;
+    _showImg.layer.cornerRadius = [PUtil getActualWidth:10];
+    _showImg.contentMode = UIViewContentModeScaleAspectFill;
     [self.contentView addSubview:_showImg];
     
 }
 
--(void)setData:(NSString *)imgUrl{
-    
+-(void)setData : (GoodsModel *)goodsModel{
+    [_showImg sd_setImageWithURL:[NSURL URLWithString:goodsModel.cover]];
+
 }
 
 +(NSString *)identify{

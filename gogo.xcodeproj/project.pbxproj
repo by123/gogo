@@ -68,6 +68,11 @@
 		CF4855721FB2BB300018502A /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4855711FB2BB300018502A /* TencentOpenAPI.framework */; };
 		CF4855741FB2BBBD0018502A /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4855731FB2BBBD0018502A /* libiconv.tbd */; };
 		CF4855761FB2BBD60018502A /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4855751FB2BBD60018502A /* libstdc++.tbd */; };
+		CF48557F1FB2ECEF0018502A /* Province.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4855781FB2ECEE0018502A /* Province.m */; };
+		CF4855801FB2ECEF0018502A /* AddressPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF48557A1FB2ECEE0018502A /* AddressPickerView.m */; };
+		CF4855811FB2ECEF0018502A /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = CF48557B1FB2ECEE0018502A /* City.m */; };
+		CF4855821FB2ECEF0018502A /* address.txt in Resources */ = {isa = PBXBuildFile; fileRef = CF48557D1FB2ECEE0018502A /* address.txt */; };
+		CF48559A1FB37E060018502A /* GoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4855991FB37E060018502A /* GoodsModel.m */; };
 		CF7214E31F6678E4002F3634 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7214E21F6678E4002F3634 /* main.m */; };
 		CF7214E61F6678E4002F3634 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7214E51F6678E4002F3634 /* AppDelegate.m */; };
 		CF7214EE1F6678E4002F3634 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF7214ED1F6678E4002F3634 /* Assets.xcassets */; };
@@ -248,6 +253,15 @@
 		CF4855711FB2BB300018502A /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
 		CF4855731FB2BBBD0018502A /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		CF4855751FB2BBD60018502A /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		CF4855781FB2ECEE0018502A /* Province.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Province.m; sourceTree = "<group>"; };
+		CF4855791FB2ECEE0018502A /* City.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = City.h; sourceTree = "<group>"; };
+		CF48557A1FB2ECEE0018502A /* AddressPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressPickerView.m; sourceTree = "<group>"; };
+		CF48557B1FB2ECEE0018502A /* City.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = City.m; sourceTree = "<group>"; };
+		CF48557C1FB2ECEE0018502A /* Province.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Province.h; sourceTree = "<group>"; };
+		CF48557D1FB2ECEE0018502A /* address.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = address.txt; sourceTree = "<group>"; };
+		CF48557E1FB2ECEE0018502A /* AddressPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressPickerView.h; sourceTree = "<group>"; };
+		CF4855981FB37E060018502A /* GoodsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsModel.h; sourceTree = "<group>"; };
+		CF4855991FB37E060018502A /* GoodsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsModel.m; sourceTree = "<group>"; };
 		CF7214DE1F6678E4002F3634 /* gogo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gogo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF7214E21F6678E4002F3634 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CF7214E41F6678E4002F3634 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -630,6 +644,20 @@
 			path = qq;
 			sourceTree = "<group>";
 		};
+		CF4855771FB2ECA90018502A /* addresspicker */ = {
+			isa = PBXGroup;
+			children = (
+				CF48557D1FB2ECEE0018502A /* address.txt */,
+				CF48557E1FB2ECEE0018502A /* AddressPickerView.h */,
+				CF48557A1FB2ECEE0018502A /* AddressPickerView.m */,
+				CF4855791FB2ECEE0018502A /* City.h */,
+				CF48557B1FB2ECEE0018502A /* City.m */,
+				CF48557C1FB2ECEE0018502A /* Province.h */,
+				CF4855781FB2ECEE0018502A /* Province.m */,
+			);
+			path = addresspicker;
+			sourceTree = "<group>";
+		};
 		CF7214D51F6678E4002F3634 = {
 			isa = PBXGroup;
 			children = (
@@ -839,6 +867,8 @@
 				CFD14E641FB055BA00A28982 /* ScheduleItemModel.m */,
 				CFD14E681FB215B100A28982 /* PayModel.h */,
 				CFD14E691FB215B100A28982 /* PayModel.m */,
+				CF4855981FB37E060018502A /* GoodsModel.h */,
+				CF4855991FB37E060018502A /* GoodsModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -881,6 +911,7 @@
 		CFCB0F0B1F7105360087ACC7 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				CF4855771FB2ECA90018502A /* addresspicker */,
 				CFCB0F3A1F711E6F0087ACC7 /* SDCycleScrollView */,
 				CFCB0F131F7106620087ACC7 /* BySegmentView.h */,
 				CFCB0F141F7106620087ACC7 /* BySegmentView.m */,
@@ -1006,6 +1037,7 @@
 				CFCB0F5A1F7249290087ACC7 /* News.plist in Resources */,
 				CF7214EE1F6678E4002F3634 /* Assets.xcassets in Resources */,
 				CFCB0F571F7175940087ACC7 /* CombatTeams.plist in Resources */,
+				CF4855821FB2ECEF0018502A /* address.txt in Resources */,
 				CF7B7EC21FAE612E003FC2D6 /* README.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1091,6 +1123,7 @@
 				CF2EAE881FA1093900F35974 /* TitleView.m in Sources */,
 				CF2EAE611F9E71A400F35974 /* ScheduleView.m in Sources */,
 				CF2EAE7A1FA0D8F500F35974 /* CorpsModel.m in Sources */,
+				CF4855811FB2ECEF0018502A /* City.m in Sources */,
 				CF2EAE911FA119AA00F35974 /* InsetTextField.m in Sources */,
 				CF2EAEE81FA4FF6200F35974 /* AddressPage.m in Sources */,
 				CF2EAEC11FA30ACF00F35974 /* GamePage.m in Sources */,
@@ -1126,6 +1159,7 @@
 				CF2EAEB71FA26C5800F35974 /* MemberModel.m in Sources */,
 				CFBFE5251FA64CD000500B1B /* LivePage.m in Sources */,
 				CFCB0F0C1F7105360087ACC7 /* BaseViewController.m in Sources */,
+				CF48557F1FB2ECEF0018502A /* Province.m in Sources */,
 				CF42783C1FAB9A0100C163DD /* UIView+Frame.m in Sources */,
 				CFCB0F151F7106620087ACC7 /* BySegmentView.m in Sources */,
 				CFBFE51C1FA5D22900500B1B /* GuessListModel.m in Sources */,
@@ -1136,12 +1170,14 @@
 				CF2EAEE31FA4FEDB00F35974 /* ChargePage.m in Sources */,
 				CF2EAEFB1FA5070E00F35974 /* PriceCell.m in Sources */,
 				CFCB0F4D1F711E6F0087ACC7 /* TADotView.m in Sources */,
+				CF4855801FB2ECEF0018502A /* AddressPickerView.m in Sources */,
 				CF0BEDC51F9BA8EE005275EE /* MainPage.m in Sources */,
 				CF2EAEEC1FA4FFBC00F35974 /* GuessHistoryPage.m in Sources */,
 				CF2EAEFE1FA5075300F35974 /* PayCell.m in Sources */,
 				CFCB0F0D1F7105360087ACC7 /* Constant.m in Sources */,
 				CF2EAE8E1FA10D9200F35974 /* CommentModel.m in Sources */,
 				CFCB0F4E1F711E6F0087ACC7 /* TAPageControl.m in Sources */,
+				CF48559A1FB37E060018502A /* GoodsModel.m in Sources */,
 				CFBFE5161FA5CD8600500B1B /* GuessButton.m in Sources */,
 				CF4278201FAB95FA00C163DD /* RespondModel.m in Sources */,
 				CF4278261FAB98A400C163DD /* DialogHelper.m in Sources */,

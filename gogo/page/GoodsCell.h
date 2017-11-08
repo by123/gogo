@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GoodsModel.h"
 
-@interface GoodsCell : UITableViewCell
+@interface GoodsCell : UICollectionViewCell
 
--(void)setData : (NSString *)imgUrl;
 
 +(NSString *)identify;
+
+-(void)setData : (GoodsModel *)goodsModel;
 
 @end

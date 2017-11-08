@@ -12,6 +12,7 @@
 
 #define UID @"uid"
 #define ACCESS_TOKEN @"access_token"
+#define REFRESH_TOKEN @"refresh_token"
 #define CODE @"code"
 
 

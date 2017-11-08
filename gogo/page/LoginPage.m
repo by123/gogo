@@ -28,6 +28,8 @@
 @property (strong, nonatomic) UIButton    *mWechatBtn;
 @property (strong, nonatomic) UIButton    *mQQBtn;
 @property (strong, nonatomic) UILabel     *mDisclaimerText;
+@property (strong, nonatomic) TencentOAuth *tencentOAuth;
+
 
 @end
 
@@ -223,6 +225,7 @@
             Account *account = [[Account alloc]init];
             account.uid = model.uid;
             account.access_token = model.access_token;
+            account.refresh_token = model.refresh_token;
             [[AccountManager sharedAccountManager] saveAccount:account];
             [DialogHelper showSuccessTips:@"登录成功!"];
             [self pushPage:[[MainPage alloc]init]];
@@ -262,6 +265,7 @@
             //保存uid和token
             account.uid = model.uid;
             account.access_token = model.access_token;
+            account.refresh_token = model.refresh_token;
             [[AccountManager sharedAccountManager] saveAccount:account];
             [DialogHelper showSuccessTips:@"登录成功!"];
             [self pushPage:[[MainPage alloc]init]];
@@ -276,10 +280,25 @@
 
 -(void)onQQLogin{
     NSLog(@"QQ登录");
-    TencentOAuth *tencentOAuth=[[TencentOAuth alloc]initWithAppId:QQ_APPID andDelegate:self];
+    _tencentOAuth=[[TencentOAuth alloc]initWithAppId:QQ_APPID andDelegate:self];
     NSMutableArray *permissionArray = [NSMutableArray arrayWithObjects: kOPEN_PERMISSION_GET_SIMPLE_USER_INFO,nil];
-    [tencentOAuth authorize:permissionArray inSafari:NO];
+    [_tencentOAuth authorize:permissionArray inSafari:NO];
 
+}
+
+-(void)tencentDidLogin{
+    
+    if (_tencentOAuth.accessToken) {
+                
+        [_tencentOAuth getUserInfo];
+    }else{
+        
+        NSLog(@"accessToken 没有获取成功");
+    }
+}
+
+- (void)getUserInfoResponse:(APIResponse*) response{
+    NSLog(@" response %@",response);
 }
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
