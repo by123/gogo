@@ -71,4 +71,24 @@ SINGLETON_IMPLEMENTION(AccountManager);
     userModel.gender = [userDefaults objectForKey:GENDER];
     return userModel;
 }
+
+
+-(void)saveAddress : (AddressModel *)addressModel{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setValue:addressModel.name forKey:ADDRESS_NAME];
+    [userDefaults setValue:addressModel.phone forKey:ADDRESS_PHONE];
+    [userDefaults setValue:addressModel.area forKey:ADDRESS_AREA];
+    [userDefaults setValue:addressModel.address forKey:ADDRESS_ADDRESS];
+    [userDefaults synchronize];
+}
+
+-(AddressModel *)getAddressModel{
+    AddressModel *addressModel = [[AddressModel alloc]init];
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    addressModel.name = [userDefaults objectForKey:ADDRESS_NAME];
+    addressModel.phone = [userDefaults objectForKey:ADDRESS_PHONE];
+    addressModel.area = [userDefaults objectForKey:ADDRESS_AREA];
+    addressModel.address = [userDefaults objectForKey:ADDRESS_ADDRESS];
+    return addressModel;
+}
 @end

@@ -65,4 +65,10 @@
     }
 }
 
+-(void)check{
+    if(!IS_NS_STRING_EMPTY(self.text)){
+        _hintLabel.hidden = YES;
+    }
+}
+
 @end

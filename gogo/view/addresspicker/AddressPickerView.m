@@ -321,7 +321,7 @@ numberOfRowsInComponent:(NSInteger)component{
 }
 
 - (void)showOrHide:(BOOL)isShow{
-    
+    _isShow = isShow;
     CGFloat selfY = self.frame.origin.y;
     __block CGFloat selfkY = selfY;
     [UIView animateWithDuration:0.5 animations:^{
@@ -388,6 +388,9 @@ typedef void(^lastIdxBlock)(NSInteger p, NSInteger c, NSInteger a);
     }
 }
 
+- (Boolean)isShow{
+    return _isShow;
+}
 
 
 @end

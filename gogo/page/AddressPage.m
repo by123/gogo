@@ -10,6 +10,7 @@
 #import "BarView.h"
 #import "InsetTextField.h"
 #import "AddressPickerView.h"
+#import "AccountManager.h"
 
 @interface AddressPage ()<UITextFieldDelegate,AddressPickerViewDelegate>
 
@@ -21,6 +22,7 @@
 @property (strong, nonatomic) InsetTextField *addressTextField;
 @property (strong, nonatomic) UIButton *saveBtn;
 @property (strong, nonatomic) AddressPickerView *addressPickerView;
+@property (strong, nonatomic) UILabel *areahintLabel;
 
 @end
 
@@ -32,6 +34,9 @@
 }
 
 -(void)initView{
+    
+    AddressModel *model = [[AccountManager sharedAccountManager]getAddressModel];
+
     _barView = [[BarView alloc]initWithTitle:@"地址信息" page:self];
     [self.view addSubview:_barView];
     
@@ -44,24 +49,39 @@
     _receiverTextField = [[InsetTextField alloc]initWithFrame:CGRectMake(0, 0,ScreenWidth, [PUtil getActualHeight:110]) andInsets:inset hint:@"收货人"];
     _receiverTextField.backgroundColor = c07_bar;
     _receiverTextField.textColor = c08_text;
+    _receiverTextField.text = model.name;
     _receiverTextField.font = [UIFont systemFontOfSize:[PUtil getActualHeight:34]];
+    [_receiverTextField check];
     [_bodyView addSubview:_receiverTextField];
     [self buildLineView:_receiverTextField.mj_y + _receiverTextField.mj_h];
     
     _phoneNumTextField = [[InsetTextField alloc]initWithFrame:CGRectMake(0, [PUtil getActualHeight:110],ScreenWidth, [PUtil getActualHeight:110]) andInsets:inset hint:@"手机号"];
     _phoneNumTextField.backgroundColor = c07_bar;
     _phoneNumTextField.textColor = c08_text;
+    _phoneNumTextField.text = model.phone;
     _phoneNumTextField.keyboardType = UIKeyboardTypeNumberPad;
     _phoneNumTextField.font = [UIFont systemFontOfSize:[PUtil getActualHeight:34]];
+    [_phoneNumTextField check];
     [_bodyView addSubview:_phoneNumTextField];
     [self buildLineView:_phoneNumTextField.mj_y + _phoneNumTextField.mj_h];
     
+    _areahintLabel = [[UILabel alloc]init];
+    _areahintLabel.frame = CGRectMake([PUtil getActualWidth:30],  [PUtil getActualHeight:220],ScreenWidth, [PUtil getActualHeight:110]);
+    _areahintLabel.alpha = 0.5f;
+    _areahintLabel.text = @"地区";
+    _areahintLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:34]];
+    _areahintLabel.textColor = c08_text;
+    [_bodyView addSubview:_areahintLabel];
+    
+    if(!IS_NS_STRING_EMPTY(model.area)){
+        _areahintLabel.hidden = YES;
+    }
+
     _areaBtn = [[UIButton alloc]initWithFrame:CGRectMake(0,  [PUtil getActualHeight:220],ScreenWidth, [PUtil getActualHeight:110])];
-    [_areaBtn setTitle:@"地区" forState:UIControlStateNormal];
     [_areaBtn setTitleColor:c08_text forState:UIControlStateNormal];
     _areaBtn.titleLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:34]];
-    _areaBtn.titleLabel.alpha = 0.5f;
     _areaBtn.titleLabel.textAlignment = NSTextAlignmentLeft;
+    [_areaBtn setTitle:model.area forState:UIControlStateNormal];
     _areaBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     _areaBtn.titleEdgeInsets = UIEdgeInsetsMake(0, [PUtil getActualWidth:30], 0, 0);
     [_areaBtn addTarget:self action:@selector(OnAddressClick) forControlEvents:UIControlEventTouchUpInside];
@@ -71,7 +91,9 @@
     _addressTextField = [[InsetTextField alloc]initWithFrame:CGRectMake(0,  [PUtil getActualHeight:330],ScreenWidth, [PUtil getActualHeight:240]) andInsets:inset hint:@"详细地址"];
     _addressTextField.backgroundColor = c07_bar;
     _addressTextField.textColor = c08_text;
+    _addressTextField.text = model.address;
     _addressTextField.font = [UIFont systemFontOfSize:[PUtil getActualHeight:34]];
+    [_addressTextField check];
     [_bodyView addSubview:_addressTextField];
     
     _saveBtn = [[UIButton alloc]init];
@@ -100,7 +122,13 @@
 
 
 -(void)OnAddressClick{
-    NSLog(@"点击");
+    if([_addressPickerView isShow]){
+        return;
+    }
+    [_receiverTextField resignFirstResponder];
+    [_addressTextField resignFirstResponder];
+    [_phoneNumTextField resignFirstResponder];
+    
     _addressPickerView = [[AddressPickerView alloc]initWithFrame:CGRectMake(0, ScreenHeight ,ScreenWidth , ScreenHeight)];
     _addressPickerView.delegate = self;
     [self.view addSubview:_addressPickerView];
@@ -115,11 +143,34 @@
     [_addressPickerView hide];
     NSString *result = [NSString stringWithFormat:@"%@%@%@",province,city,area];
     [_areaBtn setTitle:result forState:UIControlStateNormal];
+    _areahintLabel.hidden = YES;
 }
 
 
 -(void)doSave{
-    //todo
+    if(IS_NS_STRING_EMPTY(_receiverTextField.text)){
+        [DialogHelper showFailureAlertSheet:@"请填写收货人"];
+        return;
+    }
+    if(IS_NS_STRING_EMPTY(_phoneNumTextField.text)){
+        [DialogHelper showFailureAlertSheet:@"请填写手机号"];
+        return;
+    }
+    if(IS_NS_STRING_EMPTY(_areaBtn.titleLabel.text)){
+        [DialogHelper showFailureAlertSheet:@"请填写地区"];
+        return;
+    }
+    if(IS_NS_STRING_EMPTY(_addressTextField.text)){
+        [DialogHelper showFailureAlertSheet:@"请填写详细地址"];
+        return;
+    }
+    AddressModel *model = [[AddressModel alloc]init];
+    model.name = _receiverTextField.text;
+    model.phone = _phoneNumTextField.text;
+    model.area = _areaBtn.titleLabel.text;
+    model.address = _addressTextField.text;
+    [[AccountManager sharedAccountManager] saveAddress:model];
+    [DialogHelper showSuccessTips:@"保存成功"];
 }
 
 @end

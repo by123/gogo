@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Account.h"
-
+#import "AddressModel.h"
 
 #define UID @"uid"
 #define ACCESS_TOKEN @"access_token"
@@ -22,6 +22,11 @@
 #define COIN @"coin"
 
 
+
+#define ADDRESS_NAME @"address_name"
+#define ADDRESS_PHONE @"address_phone"
+#define ADDRESS_AREA @"address_area"
+#define ADDRESS_ADDRESS @"address_address"
 
 @interface AccountManager : NSObject
 SINGLETON_DECLARATION(AccountManager);
@@ -37,5 +42,9 @@ SINGLETON_DECLARATION(AccountManager);
 -(void)saveUserInfo : (UserModel *)userModel;
 
 -(UserModel *)getUserInfo;
+
+-(void)saveAddress : (AddressModel *)addressModel;
+
+-(AddressModel *)getAddressModel;
 
 @end

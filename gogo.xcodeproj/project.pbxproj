@@ -77,6 +77,7 @@
 		CF4855A01FB384790018502A /* GoodsDetailPage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF48559F1FB384790018502A /* GoodsDetailPage.m */; };
 		CF4855A41FB397A80018502A /* ExchangeOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4855A31FB397A80018502A /* ExchangeOrderModel.m */; };
 		CF4855A71FB397E30018502A /* ExchangeGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4855A61FB397E30018502A /* ExchangeGoodsModel.m */; };
+		CF4855AA1FB39C720018502A /* AddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4855A91FB39C720018502A /* AddressModel.m */; };
 		CF7214E31F6678E4002F3634 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7214E21F6678E4002F3634 /* main.m */; };
 		CF7214E61F6678E4002F3634 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7214E51F6678E4002F3634 /* AppDelegate.m */; };
 		CF7214EE1F6678E4002F3634 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF7214ED1F6678E4002F3634 /* Assets.xcassets */; };
@@ -274,6 +275,8 @@
 		CF4855A31FB397A80018502A /* ExchangeOrderModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExchangeOrderModel.m; sourceTree = "<group>"; };
 		CF4855A51FB397E30018502A /* ExchangeGoodsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExchangeGoodsModel.h; sourceTree = "<group>"; };
 		CF4855A61FB397E30018502A /* ExchangeGoodsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExchangeGoodsModel.m; sourceTree = "<group>"; };
+		CF4855A81FB39C720018502A /* AddressModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressModel.h; sourceTree = "<group>"; };
+		CF4855A91FB39C720018502A /* AddressModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressModel.m; sourceTree = "<group>"; };
 		CF7214DE1F6678E4002F3634 /* gogo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gogo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF7214E21F6678E4002F3634 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CF7214E41F6678E4002F3634 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -897,6 +900,8 @@
 				CF4855A31FB397A80018502A /* ExchangeOrderModel.m */,
 				CF4855A51FB397E30018502A /* ExchangeGoodsModel.h */,
 				CF4855A61FB397E30018502A /* ExchangeGoodsModel.m */,
+				CF4855A81FB39C720018502A /* AddressModel.h */,
+				CF4855A91FB39C720018502A /* AddressModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1159,6 +1164,7 @@
 				CF2EAEE81FA4FF6200F35974 /* AddressPage.m in Sources */,
 				CF48559D1FB384100018502A /* GoodDetailModel.m in Sources */,
 				CF2EAEC11FA30ACF00F35974 /* GamePage.m in Sources */,
+				CF4855AA1FB39C720018502A /* AddressModel.m in Sources */,
 				CF2EAE651F9E71D800F35974 /* CorpsView.m in Sources */,
 				CFCB0F0F1F7105360087ACC7 /* ByNetUtil.m in Sources */,
 				CFBFE5091FA5C48E00500B1B /* TouchTableView.m in Sources */,

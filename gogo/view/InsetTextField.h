@@ -14,4 +14,6 @@
 
 -(instancetype)initWithFrame:(CGRect)frame andInsets: (UIEdgeInsets) insets hint:(NSString *)hint;
 
+-(void)check;
+
 @end
