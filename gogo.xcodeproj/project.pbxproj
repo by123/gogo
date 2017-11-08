@@ -73,6 +73,8 @@
 		CF4855811FB2ECEF0018502A /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = CF48557B1FB2ECEE0018502A /* City.m */; };
 		CF4855821FB2ECEF0018502A /* address.txt in Resources */ = {isa = PBXBuildFile; fileRef = CF48557D1FB2ECEE0018502A /* address.txt */; };
 		CF48559A1FB37E060018502A /* GoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4855991FB37E060018502A /* GoodsModel.m */; };
+		CF48559D1FB384100018502A /* GoodDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF48559C1FB384100018502A /* GoodDetailModel.m */; };
+		CF4855A01FB384790018502A /* GoodsDetailPage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF48559F1FB384790018502A /* GoodsDetailPage.m */; };
 		CF7214E31F6678E4002F3634 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7214E21F6678E4002F3634 /* main.m */; };
 		CF7214E61F6678E4002F3634 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7214E51F6678E4002F3634 /* AppDelegate.m */; };
 		CF7214EE1F6678E4002F3634 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF7214ED1F6678E4002F3634 /* Assets.xcassets */; };
@@ -262,6 +264,10 @@
 		CF48557E1FB2ECEE0018502A /* AddressPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressPickerView.h; sourceTree = "<group>"; };
 		CF4855981FB37E060018502A /* GoodsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsModel.h; sourceTree = "<group>"; };
 		CF4855991FB37E060018502A /* GoodsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsModel.m; sourceTree = "<group>"; };
+		CF48559B1FB384100018502A /* GoodDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodDetailModel.h; sourceTree = "<group>"; };
+		CF48559C1FB384100018502A /* GoodDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodDetailModel.m; sourceTree = "<group>"; };
+		CF48559E1FB384790018502A /* GoodsDetailPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsDetailPage.h; sourceTree = "<group>"; };
+		CF48559F1FB384790018502A /* GoodsDetailPage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsDetailPage.m; sourceTree = "<group>"; };
 		CF7214DE1F6678E4002F3634 /* gogo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gogo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF7214E21F6678E4002F3634 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CF7214E41F6678E4002F3634 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -464,6 +470,7 @@
 		CF0BEDCB1F9BB873005275EE /* mall */ = {
 			isa = PBXGroup;
 			children = (
+				CF4855A11FB3847D0018502A /* goodsdetail */,
 				CFBFE4E41FA5362700500B1B /* goods */,
 				CF2EAEBD1FA30ABA00F35974 /* MallPage.h */,
 				CF2EAEBC1FA30ABA00F35974 /* MallPage.m */,
@@ -656,6 +663,15 @@
 				CF4855781FB2ECEE0018502A /* Province.m */,
 			);
 			path = addresspicker;
+			sourceTree = "<group>";
+		};
+		CF4855A11FB3847D0018502A /* goodsdetail */ = {
+			isa = PBXGroup;
+			children = (
+				CF48559E1FB384790018502A /* GoodsDetailPage.h */,
+				CF48559F1FB384790018502A /* GoodsDetailPage.m */,
+			);
+			name = goodsdetail;
 			sourceTree = "<group>";
 		};
 		CF7214D51F6678E4002F3634 = {
@@ -869,6 +885,8 @@
 				CFD14E691FB215B100A28982 /* PayModel.m */,
 				CF4855981FB37E060018502A /* GoodsModel.h */,
 				CF4855991FB37E060018502A /* GoodsModel.m */,
+				CF48559B1FB384100018502A /* GoodDetailModel.h */,
+				CF48559C1FB384100018502A /* GoodDetailModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1114,6 +1132,7 @@
 				CF2EAEE01FA4E76400F35974 /* MineCell.m in Sources */,
 				CF0BEDD81F9BB998005275EE /* NewsModel.m in Sources */,
 				CF2EAF011FA50F2E00F35974 /* ExchangeModel.m in Sources */,
+				CF4855A01FB384790018502A /* GoodsDetailPage.m in Sources */,
 				CF2EAEBA1FA26CDA00F35974 /* MemberCell.m in Sources */,
 				CF2EAE7D1FA0DA4900F35974 /* CorpsCell.m in Sources */,
 				CF2EAE981FA1202800F35974 /* ScheduleDetailPage.m in Sources */,
@@ -1126,6 +1145,7 @@
 				CF4855811FB2ECEF0018502A /* City.m in Sources */,
 				CF2EAE911FA119AA00F35974 /* InsetTextField.m in Sources */,
 				CF2EAEE81FA4FF6200F35974 /* AddressPage.m in Sources */,
+				CF48559D1FB384100018502A /* GoodDetailModel.m in Sources */,
 				CF2EAEC11FA30ACF00F35974 /* GamePage.m in Sources */,
 				CF2EAE651F9E71D800F35974 /* CorpsView.m in Sources */,
 				CFCB0F0F1F7105360087ACC7 /* ByNetUtil.m in Sources */,

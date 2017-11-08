@@ -35,8 +35,9 @@
 #define API_USERINFO @"https://gogo.scrats.cn/api/core/user"
 #define API_LOGOUT @"https://gogo.scrats.cn/api/account/logout"
 #define API_WECHAT_LOGIN @"https://gogo.scrats.cn/api/account/wx_login"
+#define API_QQ_LOGIN @"https://gogo.scrats.cn/api/account/qq_login"
 #define API_GOODS_LIST @"https://gogo.scrats.cn/api/mall/goods"
-
+#define API_GOODS_DETAIL @"https://gogo.scrats.cn/api/mall/goods/"
 
 
 

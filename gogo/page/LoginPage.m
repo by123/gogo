@@ -287,19 +287,42 @@
 }
 
 -(void)tencentDidLogin{
-    
-    if (_tencentOAuth.accessToken) {
-                
-        [_tencentOAuth getUserInfo];
-    }else{
+    if (_tencentOAuth.accessToken && _tencentOAuth.openId) {
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
+        dic[@"openid"] = _tencentOAuth.openId;
+        dic[@"access_token"] = _tencentOAuth.accessToken;
+
+        [ByNetUtil post:API_QQ_LOGIN parameters:dic success:^(RespondModel *respondModel) {
+            if(respondModel.code == 200){
+                id data = respondModel.data;
+                LoginModel *model = [LoginModel mj_objectWithKeyValues:data];
+                Account *account = [[AccountManager sharedAccountManager] getAccount];
+                account.uid = model.uid;
+                account.access_token = model.access_token;
+                account.refresh_token = model.refresh_token;
+                [[AccountManager sharedAccountManager] saveAccount:account];
+                [DialogHelper showSuccessTips:@"登录成功!"];
+                [self pushPage:[[MainPage alloc]init]];
+            }else{
+                [DialogHelper showFailureAlertSheet:respondModel.msg];
+            }
+        } failure:^(NSError *error) {
+            [DialogHelper showFailureAlertSheet:@"登录失败!"];
+        }];
         
-        NSLog(@"accessToken 没有获取成功");
+    }else{
+        [DialogHelper showFailureAlertSheet:@"accessToken 没有获取成功"];
     }
 }
 
-- (void)getUserInfoResponse:(APIResponse*) response{
-    NSLog(@" response %@",response);
+-(void)tencentDidNotNetWork{
+    [DialogHelper showFailureAlertSheet:@"网络好像开了点小差,请重试"];
 }
+
+-(void)tencentDidNotLogin:(BOOL)cancelled{
+    [DialogHelper showFailureAlertSheet:@"授权失败，请重试"];
+}
+
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [_mPhoneText resignFirstResponder];
