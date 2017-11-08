@@ -10,6 +10,8 @@
 
 @interface TimeUtil : NSObject
 
++(NSString *)generateAll : (NSString *)timestamp;
+
 +(NSString *)generateData : (NSString *)timestamp;
 
 +(NSString *)generateTime : (NSString *)timestamp;;

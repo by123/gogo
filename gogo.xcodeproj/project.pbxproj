@@ -75,6 +75,8 @@
 		CF48559A1FB37E060018502A /* GoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4855991FB37E060018502A /* GoodsModel.m */; };
 		CF48559D1FB384100018502A /* GoodDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF48559C1FB384100018502A /* GoodDetailModel.m */; };
 		CF4855A01FB384790018502A /* GoodsDetailPage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF48559F1FB384790018502A /* GoodsDetailPage.m */; };
+		CF4855A41FB397A80018502A /* ExchangeOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4855A31FB397A80018502A /* ExchangeOrderModel.m */; };
+		CF4855A71FB397E30018502A /* ExchangeGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4855A61FB397E30018502A /* ExchangeGoodsModel.m */; };
 		CF7214E31F6678E4002F3634 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7214E21F6678E4002F3634 /* main.m */; };
 		CF7214E61F6678E4002F3634 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7214E51F6678E4002F3634 /* AppDelegate.m */; };
 		CF7214EE1F6678E4002F3634 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF7214ED1F6678E4002F3634 /* Assets.xcassets */; };
@@ -268,6 +270,10 @@
 		CF48559C1FB384100018502A /* GoodDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodDetailModel.m; sourceTree = "<group>"; };
 		CF48559E1FB384790018502A /* GoodsDetailPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsDetailPage.h; sourceTree = "<group>"; };
 		CF48559F1FB384790018502A /* GoodsDetailPage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsDetailPage.m; sourceTree = "<group>"; };
+		CF4855A21FB397A80018502A /* ExchangeOrderModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExchangeOrderModel.h; sourceTree = "<group>"; };
+		CF4855A31FB397A80018502A /* ExchangeOrderModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExchangeOrderModel.m; sourceTree = "<group>"; };
+		CF4855A51FB397E30018502A /* ExchangeGoodsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExchangeGoodsModel.h; sourceTree = "<group>"; };
+		CF4855A61FB397E30018502A /* ExchangeGoodsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExchangeGoodsModel.m; sourceTree = "<group>"; };
 		CF7214DE1F6678E4002F3634 /* gogo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gogo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF7214E21F6678E4002F3634 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CF7214E41F6678E4002F3634 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -887,6 +893,10 @@
 				CF4855991FB37E060018502A /* GoodsModel.m */,
 				CF48559B1FB384100018502A /* GoodDetailModel.h */,
 				CF48559C1FB384100018502A /* GoodDetailModel.m */,
+				CF4855A21FB397A80018502A /* ExchangeOrderModel.h */,
+				CF4855A31FB397A80018502A /* ExchangeOrderModel.m */,
+				CF4855A51FB397E30018502A /* ExchangeGoodsModel.h */,
+				CF4855A61FB397E30018502A /* ExchangeGoodsModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1118,6 +1128,7 @@
 				CFCB0F4B1F711E6F0087ACC7 /* TAAbstractDotView.m in Sources */,
 				CF4278391FAB9A0100C163DD /* IDSExtendedLabel.m in Sources */,
 				CF2EAE731F9FC47600F35974 /* ScheduleModel.m in Sources */,
+				CF4855A41FB397A80018502A /* ExchangeOrderModel.m in Sources */,
 				CFCB0F4A1F711E6F0087ACC7 /* SDCycleScrollView.m in Sources */,
 				CFBFE5191FA5D21000500B1B /* GuessModel.m in Sources */,
 				CF2EAE8B1FA10D6200F35974 /* CommentCell.m in Sources */,
@@ -1135,6 +1146,7 @@
 				CF4855A01FB384790018502A /* GoodsDetailPage.m in Sources */,
 				CF2EAEBA1FA26CDA00F35974 /* MemberCell.m in Sources */,
 				CF2EAE7D1FA0DA4900F35974 /* CorpsCell.m in Sources */,
+				CF4855A71FB397E30018502A /* ExchangeGoodsModel.m in Sources */,
 				CF2EAE981FA1202800F35974 /* ScheduleDetailPage.m in Sources */,
 				CF2EAEC51FA30BF500F35974 /* MineView.m in Sources */,
 				CF2EAF0D1FA5231300F35974 /* ItemView.m in Sources */,

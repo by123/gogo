@@ -39,7 +39,7 @@
 #define API_GOODS_LIST @"https://gogo.scrats.cn/api/mall/goods"
 #define API_GOODS_DETAIL @"https://gogo.scrats.cn/api/mall/goods/"
 #define API_EXCHANGE @"https://gogo.scrats.cn/api/mall/exchange/"
-
+#define API_EXCHANGE_HISTORY @"https://gogo.scrats.cn/api/mall/exchange/history"
 
 
 //notification

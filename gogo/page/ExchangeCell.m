@@ -7,6 +7,7 @@
 //
 
 #import "ExchangeCell.h"
+#import "TimeUtil.h"
 
 @interface ExchangeCell()
 
@@ -61,13 +62,15 @@
 }
 
 -(void)setData : (ExchangeModel *)model hideline : (Boolean)hideline{
-    _prizeLabel.text = model.prize;
-    _coinLabel.text = model.coin;
-    _timeLabel.text = model.time;
-    if(model.statu == InHand){
+    ExchangeOrderModel *orderModel = [ExchangeOrderModel mj_objectWithKeyValues:model.goods_order];
+    ExchangeGoodsModel *goodsModel = [ExchangeGoodsModel mj_objectWithKeyValues:model.goods];
+    _prizeLabel.text = goodsModel.title;
+    _coinLabel.text = [NSString stringWithFormat:@"%ld竞猜币",goodsModel.coin];
+    _timeLabel.text = [TimeUtil generateAll:orderModel.create_ts];
+    if([orderModel.status isEqualToString:@"apply"]){
         _statuLabel.text = @"处理中";
         _statuLabel.textColor = c01_blue;
-    }else if(model.statu == Exchanged){
+    }else if([orderModel.status isEqualToString:@"done"]){
         _statuLabel.text = @"已完成";
         _statuLabel.textColor = c08_text;
         _statuLabel.alpha = 0.5f;

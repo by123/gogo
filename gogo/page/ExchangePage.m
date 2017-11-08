@@ -10,6 +10,7 @@
 #import "BarView.h"
 #import "ExchangeModel.h"
 #import "ExchangeCell.h"
+#import "RespondModel.h"
 
 @interface ExchangePage ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -20,13 +21,16 @@
 @end
 
 @implementation ExchangePage{
-    NSMutableArray *models;
+    NSMutableArray *datas;
+    int index;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    models = [ExchangeModel getModels];
+    index = 0;
+    datas = [[NSMutableArray alloc]init];
     [self initView];
+    [self requestHistory:NO];
 }
 
 -(void)initView{
@@ -41,14 +45,14 @@
     _scrollerView.showsHorizontalScrollIndicator = NO;
     _scrollerView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(uploadMore)];
     
-    _scrollerView.contentSize = CGSizeMake(ScreenWidth, [models count] * [PUtil getActualHeight:168]);
+    _scrollerView.contentSize = CGSizeMake(ScreenWidth, [datas count] * [PUtil getActualHeight:168]);
     MJRefreshStateHeader *header = [MJRefreshStateHeader headerWithRefreshingTarget:self refreshingAction:@selector(uploadNew)];
     header.lastUpdatedTimeLabel.hidden = YES;
     _scrollerView.mj_header = header;
     [self.view addSubview:_scrollerView];
     
     _tableView = [[UITableView alloc]init];
-    _tableView.frame = CGRectMake(0,  0, ScreenWidth, [models count] * [PUtil getActualHeight:168]);
+    _tableView.frame = CGRectMake(0,  0, ScreenWidth, [datas count] * [PUtil getActualHeight:168]);
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.backgroundColor = c06_backgroud;
@@ -64,7 +68,7 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [models count];
+    return [datas count];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -78,10 +82,10 @@
         cell = [[ExchangeCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[ExchangeCell identify]];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    if(indexPath.row == [models count]-1){
-        [cell setData:[models objectAtIndex:indexPath.row] hideline:YES];
+    if(indexPath.row == [datas count]-1){
+        [cell setData:[datas objectAtIndex:indexPath.row] hideline:YES];
     }else{
-        [cell setData:[models objectAtIndex:indexPath.row] hideline:NO];
+        [cell setData:[datas objectAtIndex:indexPath.row] hideline:NO];
     }
     return cell;
 }
@@ -90,16 +94,47 @@
 {
     [_scrollerView.mj_header endRefreshing];
     [_scrollerView.mj_footer endRefreshing];
-    //    CURRENT = 0;
-    //    [self requestList : NO];
+    index = 0;
+    [self requestHistory: NO];
 }
 
 -(void)uploadMore
 {
     [_scrollerView.mj_header endRefreshing];
     [_scrollerView.mj_footer endRefreshing];
-    //    CURRENT += REQUEST_SIZE;
-    //    [self requestList : YES];
+    [self requestHistory : YES];
+}
+
+-(void)requestHistory : (Boolean)isRequestMore{
+    
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
+    dic[@"index"] = @(index);
+    dic[@"size"] = @(10);
+    [ByNetUtil get:API_EXCHANGE_HISTORY parameters:dic success:^(RespondModel *respondModel) {
+        if(respondModel.code == 200){
+            id data = respondModel.data;
+            id items = [data objectForKey:@"items"];
+            index =  [[data objectForKey:@"index"] intValue];
+            NSMutableArray *tempDatas = [ExchangeModel mj_objectArrayWithKeyValuesArray:items];
+            if(IS_NS_COLLECTION_EMPTY(tempDatas)){
+                [_scrollerView.mj_footer endRefreshingWithNoMoreData];
+                return;
+            }
+            if(isRequestMore){
+                [datas arrayByAddingObjectsFromArray:tempDatas];
+            }else{
+                datas = tempDatas;
+            }
+            [_tableView reloadData];
+            _scrollerView.contentSize = CGSizeMake(ScreenWidth, [datas count] * [PUtil getActualHeight:168]);
+            _tableView.frame = CGRectMake(0,  0, ScreenWidth, [datas count] * [PUtil getActualHeight:168]);
+
+        }else{
+            [DialogHelper showFailureAlertSheet:respondModel.msg];
+        }
+    } failure:^(NSError *error) {
+        [DialogHelper showFailureAlertSheet:@"请求失败"];
+    }];
 }
 
 @end

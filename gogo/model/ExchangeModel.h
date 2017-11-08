@@ -7,22 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ExchangeGoodsModel.h"
+#import "ExchangeOrderModel.h"
 
-typedef NS_ENUM(NSInteger,ExchangeStatu){
-    InHand,
-    Exchanged
-};
 
 @interface ExchangeModel : NSObject
 
-@property (copy, nonatomic) NSString *prize;
+@property (strong, nonatomic) ExchangeOrderModel *goods_order;
 
-@property (copy, nonatomic) NSString *coin;
+@property (strong, nonatomic) ExchangeGoodsModel *goods;
 
-@property (copy, nonatomic) NSString *time;
 
-@property (assign, nonatomic) ExchangeStatu statu;
-
-+(NSMutableArray *)getModels;
 
 @end

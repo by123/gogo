@@ -10,6 +10,17 @@
 
 @implementation TimeUtil
 
++(NSString *)generateAll : (NSString *)timestamp{
+    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    [formatter setDateFormat:@"YY年MM月dd日 HH:mm"];
+    
+    NSDate* date = [NSDate dateWithTimeIntervalSince1970:[timestamp doubleValue]/ 1000.0];
+    NSString* dateStr = [formatter stringFromDate:date];
+    return dateStr;
+}
+
 +(NSString *)generateData : (NSString *)timestamp{
     NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
     [formatter setDateStyle:NSDateFormatterMediumStyle];
