@@ -21,11 +21,12 @@
     NSMutableArray *datas;
 }
 
--(instancetype)initWithType : (NSString *)type{
+-(instancetype)initWithType : (NSString *)type withDelegate : (id<MainHandleDelegate>)delegate{
     if(self == [super init]){
         index = 0;
         datas = [[NSMutableArray alloc]init];
         _type = type;
+        _handleDelegate = delegate;
         [self initView];
         [self requestList : NO];
     }
@@ -71,6 +72,13 @@
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
     return UIEdgeInsetsMake([PUtil getActualWidth:30], [PUtil getActualWidth:30], [PUtil getActualWidth:30], [PUtil getActualWidth:30]);
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    if(_handleDelegate){
+        GoodsModel *model = [datas objectAtIndex:indexPath.row];
+        [_handleDelegate goGoodsDetailPage:model.goods_id];
+    }
 }
 
 -(void)requestList : (Boolean)isRequestMore{

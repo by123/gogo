@@ -18,10 +18,10 @@
 @property (copy, nonatomic) NSString *tp;
 @property (copy, nonatomic) NSString *cover;
 @property (copy, nonatomic) NSString *title;
-@property (copy, nonatomic) NSString *description;
+@property (copy, nonatomic) NSString *introduce;
 @property (copy, nonatomic) NSString *expired_ts;
 @property (copy, nonatomic) NSString *create_ts;
-@property (copy, nonatomic) NSString *total_apply;
+@property (assign, nonatomic) long total_apply;
 
 
 @end

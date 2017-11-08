@@ -32,6 +32,8 @@
 
 @optional -(void)goGuessPage;
 
+@optional -(void)goGoodsDetailPage : (long)nid;
+
 @optional -(void)updateUserInfo;
 
 @end

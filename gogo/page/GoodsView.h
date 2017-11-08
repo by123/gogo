@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MainPage.h"
 
 #define HOT @"hot"
 #define EQUIPMENT @"equipment"
@@ -18,6 +19,8 @@
 
 @property (copy, nonatomic) NSString *type;
 
--(instancetype)initWithType : (NSString *)type;
+@property (weak, nonatomic) id<MainHandleDelegate> handleDelegate;
+
+-(instancetype)initWithType : (NSString *)type withDelegate : (id<MainHandleDelegate>)delegate;
 
 @end

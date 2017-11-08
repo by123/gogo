@@ -28,11 +28,11 @@
 -(void)initTab{
     NSMutableArray *views = [[NSMutableArray alloc]init];
     
-    [views addObject:[[GoodsView alloc]initWithType:EQUIPMENT]];
-    [views addObject:[[GoodsView alloc]initWithType:VIRTUAL]];
-    [views addObject:[[GoodsView alloc]initWithType:GAMEAROUND]];
-    [views addObject:[[GoodsView alloc]initWithType:LUCKYMONEY]];
-    [views addObject:[[GoodsView alloc]initWithType:EQUIPMENT]];
+    [views addObject:[[GoodsView alloc]initWithType:EQUIPMENT withDelegate:_handleDelegate]];
+    [views addObject:[[GoodsView alloc]initWithType:VIRTUAL withDelegate:_handleDelegate]];
+    [views addObject:[[GoodsView alloc]initWithType:GAMEAROUND withDelegate:_handleDelegate]];
+    [views addObject:[[GoodsView alloc]initWithType:LUCKYMONEY withDelegate:_handleDelegate]];
+    [views addObject:[[GoodsView alloc]initWithType:EQUIPMENT withDelegate:_handleDelegate]];
 
     
     BySegmentView *segmentView = [[BySegmentView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - (StatuBarHeight + [PUtil getActualHeight:188])) andTitleArray:@[@"热门商品", @"虚拟物品",@"游戏周边",@"现金红包",@"电竞装备"] andShowControllerNameArray:views];

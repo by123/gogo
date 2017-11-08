@@ -10,4 +10,8 @@
 
 @implementation GoodDetailModel
 
++ (NSDictionary *)mj_replacedKeyFromPropertyName
+{
+    return @{@"introduce": @"description"};
+}
 @end

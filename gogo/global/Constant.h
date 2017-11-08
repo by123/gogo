@@ -38,6 +38,7 @@
 #define API_QQ_LOGIN @"https://gogo.scrats.cn/api/account/qq_login"
 #define API_GOODS_LIST @"https://gogo.scrats.cn/api/mall/goods"
 #define API_GOODS_DETAIL @"https://gogo.scrats.cn/api/mall/goods/"
+#define API_EXCHANGE @"https://gogo.scrats.cn/api/mall/exchange/"
 
 
 

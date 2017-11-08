@@ -23,6 +23,7 @@
 #import "AboutPage.h"
 #import "PersonalPage.h"
 #import "GuessPage.h"
+#import "GoodsDetailPage.h"
 #import "RespondModel.h"
 #import "UserModel.h"
 #import "AccountManager.h"
@@ -132,6 +133,7 @@
 -(void)addMallPage{
     [self removeBodySubView];
     MallPage *mallpage = [[MallPage alloc]init];
+    mallpage.handleDelegate = self;
     [_mBodyView addSubview:mallpage.view];
 }
 
@@ -209,6 +211,13 @@
 #pragma mark 跳转到竞猜
 -(void)goGuessPage{
     GuessPage *page = [[GuessPage alloc]init];
+    [self pushPage:page];
+}
+
+#pragma mark 跳转到商品详情
+-(void)goGoodsDetailPage:(long)nid{
+    GoodsDetailPage *page = [[GoodsDetailPage alloc]init];
+    page.goods_id = nid;
     [self pushPage:page];
 }
 

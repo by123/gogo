@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BaseViewController.h"
 
-@interface GoodsDetailPage : NSObject
+@interface GoodsDetailPage : BaseViewController
+
+@property (assign, nonatomic) long goods_id;
 
 @end
