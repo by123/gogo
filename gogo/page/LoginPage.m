@@ -12,8 +12,10 @@
 #import "RespondModel.h"
 #import "LoginModel.h"
 #import "WXApi.h"
+#import <TencentOpenAPI/TencentOAuth.h>
+#import <TencentOpenAPI/QQApiInterface.h>
 
-@interface LoginPage ()<UITextFieldDelegate>
+@interface LoginPage ()<UITextFieldDelegate,TencentSessionDelegate>
 
 @property (strong, nonatomic) UIImageView *mLogoImage;
 @property (strong, nonatomic) UILabel     *mPhoneLabel;
@@ -273,8 +275,10 @@
 
 
 -(void)onQQLogin{
-    //todo QQ登录
     NSLog(@"QQ登录");
+    TencentOAuth *tencentOAuth=[[TencentOAuth alloc]initWithAppId:QQ_APPID andDelegate:self];
+    NSMutableArray *permissionArray = [NSMutableArray arrayWithObjects: kOPEN_PERMISSION_GET_SIMPLE_USER_INFO,nil];
+    [tencentOAuth authorize:permissionArray inSafari:NO];
 
 }
 

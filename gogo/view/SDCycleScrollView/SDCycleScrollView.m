@@ -102,7 +102,7 @@ NSString * const ID = @"cycleCell";
     _totalItemsCount = imagesGroup.count * 100;
     [self setupMainView];
     [self setupTimer];
-    [self setupPageControl];
+//    [self setupPageControl];
 }
 
 - (void)setupPageControl

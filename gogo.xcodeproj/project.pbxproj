@@ -65,6 +65,9 @@
 		CF42783B1FAB9A0100C163DD /* UILabel+StringFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4278361FAB9A0100C163DD /* UILabel+StringFrame.m */; };
 		CF42783C1FAB9A0100C163DD /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4278381FAB9A0100C163DD /* UIView+Frame.m */; };
 		CF42783F1FAB9B3A00C163DD /* LoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF42783E1FAB9B3A00C163DD /* LoginModel.m */; };
+		CF4855721FB2BB300018502A /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4855711FB2BB300018502A /* TencentOpenAPI.framework */; };
+		CF4855741FB2BBBD0018502A /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4855731FB2BBBD0018502A /* libiconv.tbd */; };
+		CF4855761FB2BBD60018502A /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4855751FB2BBD60018502A /* libstdc++.tbd */; };
 		CF7214E31F6678E4002F3634 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7214E21F6678E4002F3634 /* main.m */; };
 		CF7214E61F6678E4002F3634 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7214E51F6678E4002F3634 /* AppDelegate.m */; };
 		CF7214EE1F6678E4002F3634 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF7214ED1F6678E4002F3634 /* Assets.xcassets */; };
@@ -242,6 +245,9 @@
 		CF4278381FAB9A0100C163DD /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		CF42783D1FAB9B3A00C163DD /* LoginModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginModel.h; sourceTree = "<group>"; };
 		CF42783E1FAB9B3A00C163DD /* LoginModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginModel.m; sourceTree = "<group>"; };
+		CF4855711FB2BB300018502A /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
+		CF4855731FB2BBBD0018502A /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
+		CF4855751FB2BBD60018502A /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		CF7214DE1F6678E4002F3634 /* gogo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gogo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF7214E21F6678E4002F3634 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CF7214E41F6678E4002F3634 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -355,7 +361,9 @@
 				CFD14E721FB2197900A28982 /* UIKit.framework in Frameworks */,
 				CFD14E701FB2196200A28982 /* CoreGraphics.framework in Frameworks */,
 				CFD14E6E1FB2194D00A28982 /* CoreText.framework in Frameworks */,
+				CF4855741FB2BBBD0018502A /* libiconv.tbd in Frameworks */,
 				CFD14E6C1FB2193900A28982 /* QuartzCore.framework in Frameworks */,
+				CF4855721FB2BB300018502A /* TencentOpenAPI.framework in Frameworks */,
 				CF7B7ED01FAE663E003FC2D6 /* CFNetwork.framework in Frameworks */,
 				CF7B7ECE1FAE662C003FC2D6 /* Security.framework in Frameworks */,
 				CF7B7ECC1FAE61C8003FC2D6 /* libc++.tbd in Frameworks */,
@@ -365,6 +373,7 @@
 				CF7B7EC41FAE61A1003FC2D6 /* CoreTelephony.framework in Frameworks */,
 				CF7B7EC11FAE612E003FC2D6 /* libWeChatSDK.a in Frameworks */,
 				C58EEBC53BCADD2B05F513F8 /* libPods-gogo.a in Frameworks */,
+				CF4855761FB2BBD60018502A /* libstdc++.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,6 +383,8 @@
 		0B3F5C946CD226272B2A24DA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CF4855751FB2BBD60018502A /* libstdc++.tbd */,
+				CF4855731FB2BBBD0018502A /* libiconv.tbd */,
 				CFD14E751FB2199800A28982 /* CoreMotion.framework */,
 				CFD14E731FB2198300A28982 /* Foundation.framework */,
 				CFD14E711FB2197400A28982 /* UIKit.framework */,
@@ -611,6 +622,14 @@
 			path = extra;
 			sourceTree = "<group>";
 		};
+		CF4855701FB2BB1A0018502A /* qq */ = {
+			isa = PBXGroup;
+			children = (
+				CF4855711FB2BB300018502A /* TencentOpenAPI.framework */,
+			);
+			path = qq;
+			sourceTree = "<group>";
+		};
 		CF7214D51F6678E4002F3634 = {
 			isa = PBXGroup;
 			children = (
@@ -632,6 +651,7 @@
 		CF7214E01F6678E4002F3634 /* gogo */ = {
 			isa = PBXGroup;
 			children = (
+				CF4855701FB2BB1A0018502A /* qq */,
 				CFD14E771FB219B000A28982 /* alipay */,
 				CF7B7EBB1FAE612E003FC2D6 /* wechat */,
 				CF2EAE661F9E799C00F35974 /* gogo.entitlements */,
@@ -1270,6 +1290,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/gogo/alipay",
+					"$(PROJECT_DIR)/gogo/qq",
 				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/gogo/PrefixHeader.pch";
@@ -1313,6 +1334,7 @@
 					"\"SystemConfiguration\"",
 					"-Objc",
 					"-all_load",
+					"-fobjc-arc",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.scrat.gogo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1330,6 +1352,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/gogo/alipay",
+					"$(PROJECT_DIR)/gogo/qq",
 				);
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/gogo/PrefixHeader.pch";
@@ -1373,6 +1396,7 @@
 					"\"SystemConfiguration\"",
 					"-Objc",
 					"-all_load",
+					"-fobjc-arc",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.scrat.gogo;
 				PRODUCT_NAME = "$(TARGET_NAME)";

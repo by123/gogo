@@ -12,7 +12,10 @@
 #import <AFNetworkActivityIndicatorManager.h>
 #import "AccountManager.h"
 #import "WXApi.h"
-@interface AppDelegate ()<WXApiDelegate>
+#import <TencentOpenAPI/QQApiInterface.h>
+#import <TencentOpenAPI/TencentOAuth.h>
+
+@interface AppDelegate ()<WXApiDelegate,QQApiInterfaceDelegate>
 @end
 
 @implementation AppDelegate{
@@ -64,6 +67,9 @@
         [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
             NSLog(@"result = %@",resultDic);
         }];
+    }else{
+        [QQApiInterface handleOpenURL:url delegate:self];
+        return [TencentOAuth HandleOpenURL:url];
     }
     return YES;
 }
