@@ -8,9 +8,10 @@
 
 
 #import "CommentCell.h"
+#import "TimeUtil.h"
 @interface CommentCell()
 
-@property (strong, nonatomic) UIView *imgView;
+@property (strong, nonatomic) UIImageView *imgView;
 @property (strong, nonatomic) UILabel *nameLabel;
 @property (strong, nonatomic) UILabel *timeLabel;
 @property (strong, nonatomic) UILabel *contenLabel;
@@ -32,9 +33,9 @@
     
     self.contentView.backgroundColor = c06_backgroud;
     
-    _imgView = [[UIView alloc]init];
-    _imgView.backgroundColor = c01_blue;
+    _imgView = [[UIImageView alloc]init];
     _imgView.layer.masksToBounds = YES;
+    _imgView.contentMode = UIViewContentModeScaleAspectFit;
     _imgView.layer.cornerRadius = [PUtil getActualHeight:64]/2;
     _imgView.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualWidth:30], [PUtil getActualHeight:64], [PUtil getActualHeight:64]);
     [self.contentView addSubview:_imgView];
@@ -67,8 +68,9 @@
     UserModel *userModel = [UserModel mj_objectWithKeyValues:model.user];
     CommentModel *commentModel = [CommentModel mj_objectWithKeyValues:model.comment];
     _nameLabel.text = userModel.username;
-    _timeLabel.text = commentModel.create_ts;
+    _timeLabel.text = [TimeUtil generateAll:commentModel.create_ts];
     _contenLabel.text = commentModel.content;
+    [_imgView sd_setImageWithURL:[NSURL URLWithString:userModel.avatar]];
 }
 
 +(NSString *)identify{

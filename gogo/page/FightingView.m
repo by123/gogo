@@ -23,6 +23,13 @@
 
 -(void)initView{
     self.backgroundColor = c06_backgroud;
+    UILabel *tipsLabel  = [[UILabel alloc]init];
+    tipsLabel.text = @"暂无赛况";
+    tipsLabel.textColor = c08_text;
+    tipsLabel.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight - [PUtil getActualHeight:539]);
+    tipsLabel.textAlignment = NSTextAlignmentCenter;
+    tipsLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:30]];
+    [self addSubview:tipsLabel];
 }
 
 

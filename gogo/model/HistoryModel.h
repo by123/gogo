@@ -22,6 +22,8 @@
 
 @property (copy, nonatomic) NSString *time;
 
+@property (assign, nonatomic) Boolean hideLine;
+
 
 +(NSMutableArray *)getModels;
 

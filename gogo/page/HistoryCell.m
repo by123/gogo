@@ -15,6 +15,7 @@
 @property (strong, nonatomic) UILabel *bTeamLabel;
 @property (strong, nonatomic) UILabel *scoreLabel;
 @property (strong, nonatomic) UILabel *timeLabel;
+@property (strong, nonatomic) UIView *lineView;
 
 @end
 
@@ -61,19 +62,20 @@
     _timeLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:20]];
     [self.contentView addSubview:_timeLabel];
     
-    UIView *lineView = [[UIView alloc]init];
-    lineView.backgroundColor = c05_divider;
-    lineView.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualHeight:153]-1, ScreenWidth - [PUtil getActualWidth:30], 1);
-    [self.contentView addSubview:lineView];
+    _lineView = [[UIView alloc]init];
+    _lineView.backgroundColor = c05_divider;
+    _lineView.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualHeight:153]-1, ScreenWidth - [PUtil getActualWidth:30], 1);
+    [self.contentView addSubview:_lineView];
     
 }
 
--(void)setData : (HistoryModel *)model{
+-(void)setData : (HistoryModel *)model hideLine:(Boolean)hideLine{
     _resultLabel.text = model.result;
     _aTeamLabel.text = model.aTeam;
     _bTeamLabel.text = model.bTeam;
     _timeLabel.text = model.time;
     _scoreLabel.text = model.score;
+    _lineView.hidden = hideLine;
 }
 
 +(NSString *)identify{

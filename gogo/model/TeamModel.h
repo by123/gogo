@@ -16,6 +16,7 @@
 @property (copy , nonatomic) NSString *logo;
 @property (copy , nonatomic) NSString *create_ts;
 @property (assign, nonatomic) Boolean needLine;
+@property (copy, nonatomic) NSString *introduce;
 
 
 @end

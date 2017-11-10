@@ -10,4 +10,9 @@
 
 @implementation TeamModel
 
++ (NSDictionary *)mj_replacedKeyFromPropertyName
+{
+    return @{@"introduce": @"description"};
+}
+
 @end

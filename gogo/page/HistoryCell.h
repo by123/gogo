@@ -11,7 +11,7 @@
 
 @interface HistoryCell : UITableViewCell
 
--(void)setData : (HistoryModel *)model;
+-(void)setData : (HistoryModel *)model hideLine : (Boolean)hideLine;
 
 +(NSString *)identify;
 

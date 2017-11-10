@@ -28,7 +28,8 @@
 @property (strong, nonatomic) UIView   *membersView;
 @property (strong, nonatomic) UIButton *moreBtn;
 @property (strong, nonatomic) UILabel  *honourLabel;
-@property (strong, nonatomic) UIView   *honourListView;
+//@property (strong, nonatomic) UIView   *honourListView;
+@property (strong, nonatomic) UILabel   *corpsIntroduce;
 @property (strong, nonatomic) TitleView *historyTitleView;
 @property (strong, nonatomic) UITableView *historyTabelView;
 @property (strong, nonatomic) TitleView *commentTitleView;
@@ -44,6 +45,7 @@
     NSMutableArray *commentModels;
     TeamModel *teamModel;
     NSMutableArray *memberModels;
+    CGSize titleSize;
 }
 
 - (void)viewDidLoad {
@@ -160,37 +162,52 @@
 
 -(void)initHonourView{
     UIView *honourView = [[UIView alloc]init];
-    honourView.frame = CGRectMake(0,  [PUtil getActualHeight:219], ScreenWidth, [PUtil getActualHeight:225]);
     [_scrollerView addSubview:honourView];
     
     _honourLabel = [[UILabel alloc]init];
-    _honourLabel.text = @"获取荣誉";
+    _honourLabel.text = @"战队简介";
     _honourLabel.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualHeight:20], ScreenWidth - [PUtil getActualWidth:30], [PUtil getActualHeight:33]);
     _honourLabel.textColor = c09_tips;
     _honourLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:24]];
     [honourView addSubview:_honourLabel];
     
-    _honourListView = [[UIView alloc]init];
-    NSArray *datas = @[@"2016年KPL秋季赛冠军",@"2017年KPL春季赛冠军",@"2017年KPL秋季赛亚军"];
-    for(int i=0 ; i < [datas count] ; i++){
-        UILabel *label = [[UILabel alloc]init];
-        label.text = [datas objectAtIndex:i];
-        label.textColor = c08_text;
-        label.alpha = 0.5f;
-        label.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualHeight:69] + i * [PUtil getActualHeight:48], ScreenWidth - [PUtil getActualWidth:30], [PUtil getActualHeight:40]);
-        label.font = [UIFont systemFontOfSize:[PUtil getActualHeight:28]];
-        [_honourListView addSubview:label];
-    }
-    [honourView addSubview:_honourListView];
+//    _honourListView = [[UIView alloc]init];
+//    NSArray *datas = @[@"2016年KPL秋季赛冠军",@"2017年KPL春季赛冠军",@"2017年KPL秋季赛亚军"];
+//    for(int i=0 ; i < [datas count] ; i++){
+//        UILabel *label = [[UILabel alloc]init];
+//        label.text = [datas objectAtIndex:i];
+//        label.textColor = c08_text;
+//        label.alpha = 0.5f;
+//        label.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualHeight:69] + i * [PUtil getActualHeight:48], ScreenWidth - [PUtil getActualWidth:30], [PUtil getActualHeight:40]);
+//        label.font = [UIFont systemFontOfSize:[PUtil getActualHeight:28]];
+//        [_honourListView addSubview:label];
+//    }
+//    [honourView addSubview:_honourListView];
+    
+    _corpsIntroduce = [[UILabel alloc]init];
+    _corpsIntroduce.textColor = c08_text;
+    _corpsIntroduce.alpha = 0.5f;
+    _corpsIntroduce.font = [UIFont systemFontOfSize:[PUtil getActualHeight:28]];
+    _corpsIntroduce.text = teamModel.introduce;
+    _corpsIntroduce.numberOfLines = 0;
+    _corpsIntroduce.lineBreakMode = NSLineBreakByCharWrapping;
+    titleSize = [_corpsIntroduce.text boundingRectWithSize:CGSizeMake( ScreenWidth - [PUtil getActualWidth:30]*2, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:[PUtil getActualHeight:28]]} context:nil].size;
+
+    _corpsIntroduce.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualHeight:48], ScreenWidth - [PUtil getActualWidth:30],titleSize.height);
+    [honourView addSubview:_corpsIntroduce];
+    
+    honourView.frame = CGRectMake(0,  [PUtil getActualHeight:219], ScreenWidth, [PUtil getActualHeight:78] + titleSize.height);
+
+   
     
 }
 
 -(void)initHistory{
-    _historyTitleView = [[TitleView alloc]initWithTitle: [PUtil getActualHeight:443] title:@"历史战绩"];
+    _historyTitleView = [[TitleView alloc]initWithTitle: [PUtil getActualHeight:277]+titleSize.height title:@"历史战绩"];
     [_scrollerView addSubview:_historyTitleView];
     
     _historyTabelView = [[UITableView alloc]init];
-    _historyTabelView.frame = CGRectMake(0,  [PUtil getActualHeight:531], ScreenWidth, [historyModels count]*[PUtil getActualHeight:153]);
+    _historyTabelView.frame = CGRectMake(0,  [PUtil getActualHeight:277+88] + titleSize.height, ScreenWidth, [historyModels count]*[PUtil getActualHeight:153]);
     _historyTabelView.delegate = self;
     _historyTabelView.dataSource = self;
     _historyTabelView.backgroundColor = c06_backgroud;
@@ -238,6 +255,8 @@
     _hintLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:28]];
     _hintLabel.frame =  CGRectMake([PUtil getActualWidth:46], [PUtil getActualHeight:32], [PUtil getActualHeight:140] , [PUtil getActualHeight:46]);
     [_commentView addSubview:_hintLabel];
+    
+    _scrollerView.contentSize = CGSizeMake(ScreenWidth,  [PUtil getActualHeight:277+88 + 88] + titleSize.height + [PUtil getActualHeight:153] * [historyModels count] + [PUtil getActualHeight:180] * [commentModels count]);
 }
 
  -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -265,7 +284,11 @@
              cell.selectionStyle = UITableViewCellSelectionStyleNone;
          }
          HistoryModel *model = [historyModels objectAtIndex:indexPath.row];
-         [cell setData:model];
+         if(indexPath.row + 1 == [historyModels count]){
+             [cell setData:model hideLine:YES];
+         }else{
+             [cell setData:model hideLine:NO];
+         }
          return cell;
      }else{
          CommentCell *cell =  [tableView dequeueReusableCellWithIdentifier:[CommentCell identify]];
@@ -273,7 +296,7 @@
              cell = [[CommentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[CommentCell identify]];
              cell.selectionStyle = UITableViewCellSelectionStyleNone;
          }
-         CommentModel *model = [commentModels objectAtIndex:indexPath.row];
+         CommentListModel *model = [commentModels objectAtIndex:indexPath.row];
          [cell setData:model];
          return cell;
      }
