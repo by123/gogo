@@ -13,6 +13,9 @@
 
 typedef void(^ByDownloadCallback)(id respondObj);
 
+typedef void(^RefreshCompelete)(id data);
+
+
 +(void)get:(NSString *)url parameters:(NSDictionary *)parameters success:(void (^)(id))success failure:(void (^)(NSError *))failure;
 
 +(void)post:(NSString *)url parameters:(NSDictionary *)parameters success:(void (^)(id))success failure:(void (^)(NSError *))failure;

@@ -9,6 +9,7 @@
 #import "ByNetUtil.h"
 #import "AccountManager.h"
 #import "RespondModel.h"
+#import "LoginModel.h"
 @implementation ByNetUtil
 
 +(void)get:(NSString *)url parameters:(NSDictionary *)parameters success:(void (^)(id))success failure:(void (^)(NSError *))failure{
@@ -35,7 +36,13 @@
         if (success){
             [UIApplication sharedApplication].networkActivityIndicatorVisible=NO;
             RespondModel *model = [RespondModel mj_objectWithKeyValues:responseObject];
-            success(model);
+            if(model.code == 498){
+                [self refreshToken : ^(id data){
+                    [self get:url parameters:parameters success:success failure:failure];
+                }];
+            }else{
+                success(model);
+            }
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if (failure){
@@ -69,7 +76,14 @@
         if (success){
             [UIApplication sharedApplication].networkActivityIndicatorVisible=NO;
             RespondModel *model = [RespondModel mj_objectWithKeyValues:responseObject];
-            success(model);
+            if(model.code == 498){
+                [self refreshToken : ^(id data){
+                    [self post:url parameters:parameters success:success failure:failure];
+                }];
+            }else{
+                success(model);
+                
+            }
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if (failure){
@@ -110,7 +124,13 @@
           }else{
               if (success){
                   RespondModel *model = [RespondModel mj_objectWithKeyValues:responseObject];
-                  success(model);
+                  if(model.code == 498){
+                      [self refreshToken : ^(id data){
+                          [self post:url content:content success:success failure:failure];
+                      }];
+                  }else{
+                      success(model);
+                  }
               }
           }
         [UIApplication sharedApplication].networkActivityIndicatorVisible=NO;
@@ -134,6 +154,25 @@
         NSLog(@"File downloaded to: %@", filePath);
     }];
     [downloadTask resume];
+}
+
++(void)refreshToken : (RefreshCompelete)compelete{
+    Account *account = [[AccountManager sharedAccountManager]getAccount];
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
+    dic[@"refresh_token"]=account.refresh_token;
+    [self post:API_REFRESH_TOKEN parameters:dic success:^(RespondModel *respondModel) {
+        if(respondModel.code == 200){
+            id data = respondModel.data;
+            LoginModel *model = [LoginModel mj_objectWithKeyValues:data];
+            account.uid = model.uid;
+            account.access_token = model.access_token;
+            account.refresh_token = model.refresh_token;
+            [[AccountManager sharedAccountManager] saveAccount:account];
+            compelete(account);
+        }
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 @end

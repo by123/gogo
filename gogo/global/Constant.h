@@ -44,6 +44,7 @@
 #define API_UPDATE_ADDRESS @"https://gogo.scrats.cn/api/core/address"
 #define API_GUESS_DETAIL @"https://gogo.scrats.cn/api/core/race/"
 #define API_GUESS @"https://gogo.scrats.cn/api/core/betting"
+#define API_REFRESH_TOKEN @"https://gogo.scrats.cn/api/account/token"
 
 
 //notification
