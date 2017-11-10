@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GuessListModel.h"
+#import "BettingModel.h"
+#import "GuessButton.h"
 
 @interface GuessCell : UITableViewCell
 
--(void)setData : (GuessListModel *)model;
+-(void)setData : (BettingModel *)model deleaget : (id<GuessButtonDelegate>)delegate;
 
 +(NSString *)identify;
 

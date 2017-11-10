@@ -17,6 +17,9 @@
 		CF0BEDD51F9BB96E005275EE /* NewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0BEDD41F9BB96E005275EE /* NewsCell.m */; };
 		CF0BEDD81F9BB998005275EE /* NewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0BEDD71F9BB998005275EE /* NewsModel.m */; };
 		CF0BEDD91F9BC817005275EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF0BEDDB1F9BC817005275EE /* LaunchScreen.storyboard */; };
+		CF1CD6E71FB61CA20058EEBB /* RaceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1CD6E61FB61CA20058EEBB /* RaceModel.m */; };
+		CF1CD6EA1FB620060058EEBB /* BettingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1CD6E91FB620060058EEBB /* BettingModel.m */; };
+		CF1CD6ED1FB6219C0058EEBB /* BettingItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1CD6EC1FB6219C0058EEBB /* BettingItemModel.m */; };
 		CF2EAE551F9D0FC000F35974 /* BottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAE541F9D0FC000F35974 /* BottomView.m */; };
 		CF2EAE611F9E71A400F35974 /* ScheduleView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAE601F9E71A400F35974 /* ScheduleView.m */; };
 		CF2EAE651F9E71D800F35974 /* CorpsView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAE641F9E71D800F35974 /* CorpsView.m */; };
@@ -158,6 +161,12 @@
 		CF0BEDD61F9BB998005275EE /* NewsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsModel.h; sourceTree = "<group>"; };
 		CF0BEDD71F9BB998005275EE /* NewsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsModel.m; sourceTree = "<group>"; };
 		CF0BEDDA1F9BC817005275EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CF1CD6E51FB61CA20058EEBB /* RaceModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RaceModel.h; sourceTree = "<group>"; };
+		CF1CD6E61FB61CA20058EEBB /* RaceModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RaceModel.m; sourceTree = "<group>"; };
+		CF1CD6E81FB620060058EEBB /* BettingModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BettingModel.h; sourceTree = "<group>"; };
+		CF1CD6E91FB620060058EEBB /* BettingModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BettingModel.m; sourceTree = "<group>"; };
+		CF1CD6EB1FB6219C0058EEBB /* BettingItemModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BettingItemModel.h; sourceTree = "<group>"; };
+		CF1CD6EC1FB6219C0058EEBB /* BettingItemModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BettingItemModel.m; sourceTree = "<group>"; };
 		CF2EAE531F9D0FC000F35974 /* BottomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BottomView.h; sourceTree = "<group>"; };
 		CF2EAE541F9D0FC000F35974 /* BottomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BottomView.m; sourceTree = "<group>"; };
 		CF2EAE5F1F9E71A400F35974 /* ScheduleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleView.h; sourceTree = "<group>"; };
@@ -902,6 +911,12 @@
 				CF4855A61FB397E30018502A /* ExchangeGoodsModel.m */,
 				CF4855A81FB39C720018502A /* AddressModel.h */,
 				CF4855A91FB39C720018502A /* AddressModel.m */,
+				CF1CD6E51FB61CA20058EEBB /* RaceModel.h */,
+				CF1CD6E61FB61CA20058EEBB /* RaceModel.m */,
+				CF1CD6E81FB620060058EEBB /* BettingModel.h */,
+				CF1CD6E91FB620060058EEBB /* BettingModel.m */,
+				CF1CD6EB1FB6219C0058EEBB /* BettingItemModel.h */,
+				CF1CD6EC1FB6219C0058EEBB /* BettingItemModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1137,6 +1152,7 @@
 				CFCB0F4A1F711E6F0087ACC7 /* SDCycleScrollView.m in Sources */,
 				CFBFE5191FA5D21000500B1B /* GuessModel.m in Sources */,
 				CF2EAE8B1FA10D6200F35974 /* CommentCell.m in Sources */,
+				CF1CD6EA1FB620060058EEBB /* BettingModel.m in Sources */,
 				CFBFE5211FA642D900500B1B /* GuessCell.m in Sources */,
 				CF2EAEBE1FA30ABA00F35974 /* MallPage.m in Sources */,
 				CF42783B1FAB9A0100C163DD /* UILabel+StringFrame.m in Sources */,
@@ -1168,6 +1184,7 @@
 				CF2EAE651F9E71D800F35974 /* CorpsView.m in Sources */,
 				CFCB0F0F1F7105360087ACC7 /* ByNetUtil.m in Sources */,
 				CFBFE5091FA5C48E00500B1B /* TouchTableView.m in Sources */,
+				CF1CD6E71FB61CA20058EEBB /* RaceModel.m in Sources */,
 				CF2EAEF01FA5007300F35974 /* ExchangePage.m in Sources */,
 				CF2EAEA91FA2575300F35974 /* CorpsDetailPage.m in Sources */,
 				CFBFE5001FA5B3A200500B1B /* SCDTeamView.m in Sources */,
@@ -1179,6 +1196,7 @@
 				CF2EAF041FA5109500F35974 /* ExchangeCell.m in Sources */,
 				CF0BEDBC1F9B4378005275EE /* AccountManager.m in Sources */,
 				CFCB0F4C1F711E6F0087ACC7 /* TAAnimatedDotView.m in Sources */,
+				CF1CD6ED1FB6219C0058EEBB /* BettingItemModel.m in Sources */,
 				CFD14E651FB055BA00A28982 /* ScheduleItemModel.m in Sources */,
 				CFBFE5101FA5CC1300500B1B /* GuessView.m in Sources */,
 				CF2EAF0A1FA5154600F35974 /* GuessHistoryCell.m in Sources */,

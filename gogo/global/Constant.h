@@ -42,6 +42,8 @@
 #define API_EXCHANGE_HISTORY @"https://gogo.scrats.cn/api/mall/exchange/history"
 #define API_GET_ADDRESS @"https://gogo.scrats.cn/api/core/address"
 #define API_UPDATE_ADDRESS @"https://gogo.scrats.cn/api/core/address"
+#define API_GUESS_DETAIL @"https://gogo.scrats.cn/api/core/race/"
+#define API_GUESS @"https://gogo.scrats.cn/api/core/betting"
 
 
 //notification

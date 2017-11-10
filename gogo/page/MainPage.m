@@ -209,8 +209,9 @@
 }
 
 #pragma mark 跳转到竞猜
--(void)goGuessPage{
+-(void)goGuessPage:(long)race_id{
     GuessPage *page = [[GuessPage alloc]init];
+    page.race_id = race_id;
     [self pushPage:page];
 }
 

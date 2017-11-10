@@ -46,17 +46,22 @@
     
 }
 
--(void)setData : (GuessListModel *)model{
+-(void)setData : (BettingModel *)model deleaget : (id<GuessButtonDelegate>)delegate{
     _guessLabel.text = model.title;
-    NSMutableArray *datas = model.models;
+    NSMutableArray *datas = [BettingItemModel mj_objectArrayWithKeyValuesArray:model.items];
     if(datas != nil && [datas count] > 0){
         NSInteger rows = [datas count] / 3;
         int per = [PUtil getActualHeight:117];
         _guessContentView.frame = CGRectMake(0, [PUtil getActualHeight:79], ScreenWidth, [PUtil getActualHeight:127] +per * rows);
         _lineView.frame = CGRectMake([PUtil getActualWidth:30],[PUtil getActualHeight:206] + (per * rows)-1, ScreenWidth - 30, 1);
         for(int i = 0 ; i < [datas count] ; i ++){
-            GuessModel *guessModel = [datas objectAtIndex:i];
-            GuessButton *button  =[[GuessButton alloc]initWithTitle:guessModel.teamName guess:guessModel.guess];
+            BettingItemModel *itemModel = [datas objectAtIndex:i];
+            GuessButton *button  =[[GuessButton alloc]initWithModel:itemModel delegate:delegate];
+            if(itemModel.isSelect){
+                button.backgroundColor = c01_blue;
+            }else{
+                button.backgroundColor = c06_backgroud;
+            }
             button.frame = CGRectMake([PUtil getActualWidth:30] + [PUtil getActualWidth:236] * (i % 3),  per * (i/3), [PUtil getActualWidth:216], [PUtil getActualHeight:97]);
             [_guessContentView addSubview:button];
         }

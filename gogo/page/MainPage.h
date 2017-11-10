@@ -30,7 +30,7 @@
 
 @optional -(void)goPersonalPage;
 
-@optional -(void)goGuessPage;
+@optional -(void)goGuessPage : (long)race_id;
 
 @optional -(void)goGoodsDetailPage : (long)nid;
 

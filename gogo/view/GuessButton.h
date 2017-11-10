@@ -7,9 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BettingItemModel.h"
+
+@protocol GuessButtonDelegate <NSObject>
+
+@optional -(void)onClick : (BettingItemModel *)model;
+
+@end
 
 @interface GuessButton : UIButton
 
--(instancetype)initWithTitle : (NSString *)title guess : (NSString *)guess;
+-(instancetype)initWithModel : (BettingItemModel *)model delegate : (id<GuessButtonDelegate>)delegate;
 
 @end

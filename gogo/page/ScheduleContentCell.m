@@ -68,7 +68,6 @@
     _bView.frame = CGRectMake([PUtil getActualWidth:406], [PUtil getActualHeight:42], [PUtil getActualHeight:80], [PUtil getActualHeight:80]);
     _bView.layer.masksToBounds = YES;
     _bView.layer.cornerRadius = [PUtil getActualHeight:60]/2;
-//    _bView.backgroundColor = c02_red;
     _bView.contentMode = UIViewContentModeScaleAspectFit;
     [self.contentView addSubview:_bView];
     
@@ -78,6 +77,7 @@
     [_guessBtn setTitleColor:c08_text forState:UIControlStateNormal];
     _guessBtn.backgroundColor = c01_blue;
     _guessBtn.layer.masksToBounds = YES;
+    _guessBtn.enabled = NO;
     _guessBtn.layer.cornerRadius = [PUtil getActualHeight:6];
     _guessBtn.titleLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:28]];
     [_guessBtn addTarget:self action:@selector(goGuessPage) forControlEvents:UIControlEventTouchUpInside];
@@ -108,7 +108,8 @@
 
 -(void)goGuessPage{
     if(handleDelegate){
-        [handleDelegate goGuessPage];
+        //todo
+        [handleDelegate goGuessPage:1L];
     }
 }
 

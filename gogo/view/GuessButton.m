@@ -18,12 +18,17 @@
 @implementation GuessButton{
     NSString *titleStr;
     NSString *guessStr;
+    BettingItemModel *itemModel;
+    id guessButtonDelegate;
+    Boolean isSelect;
 }
 
--(instancetype)initWithTitle:(NSString *)title guess:(NSString *)guess{
+-(instancetype)initWithModel : (BettingItemModel *)model delegate:(id<GuessButtonDelegate>)delegate{
     if(self == [super init]){
-        titleStr = title;
-        guessStr = guess;
+        titleStr = model.title;
+        guessStr = model.odds;
+        guessButtonDelegate = delegate;
+        itemModel = model;
         [self initView];
     }
     return self;
@@ -52,6 +57,23 @@
     _mGuessLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:24]];
     _mGuessLabel.frame = CGRectMake(0, [PUtil getActualHeight:52], [PUtil getActualWidth:216],[PUtil getActualHeight:33]);
     [self addSubview:_mGuessLabel];
+    
+    [self addTarget:self action:@selector(OnClick) forControlEvents:UIControlEventTouchUpInside];
 }
+
+-(void)OnClick{
+
+    if(!isSelect){
+        self.backgroundColor = c01_blue;
+    }else{
+        self.backgroundColor = c06_backgroud;
+    }
+    isSelect = !isSelect;
+    itemModel.isSelect = isSelect;
+    if(guessButtonDelegate){
+        [guessButtonDelegate onClick:itemModel];
+    }
+}
+
 
 @end

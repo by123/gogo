@@ -168,14 +168,15 @@
 
 -(void)doPay{
     if(paySelect == 0){
-        
+        [self doWechatPay];
     }else{
         [self doAliPay];
     }
 }
 
 -(void)doWechatPay{
-    
+
+    [DialogHelper showFailureAlertSheet:@"暂不支持"];
 }
 
 -(void)doAliPay{

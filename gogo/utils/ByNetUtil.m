@@ -80,6 +80,45 @@
 }
 
 
++(void)post:(NSString *)url content:(NSString *)content success:(void (^)(id))success failure:(void (^)(NSError *))failure{
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
+    manager.requestSerializer.timeoutInterval = 20.f;
+    [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
+    //请求头
+    Account *account = [[AccountManager sharedAccountManager] getAccount];
+    NSMutableURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:url parameters:nil error:nil];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request addValue:PT forHTTPHeaderField:@"pt"];
+    [request addValue:APPKEY forHTTPHeaderField:@"app_key"];
+    [request addValue:account.uid forHTTPHeaderField:@"uid"];
+    [request addValue:account.access_token forHTTPHeaderField:@"access_token"];
+
+    NSData *body  =[content dataUsingEncoding:NSUTF8StringEncoding];
+    [request setHTTPBody:body];
+    
+    [[manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id _Nullable responseObject, NSError * _Nullable error)
+    {
+          if(error){
+              if (failure){
+                  failure(error);
+              }
+          }else{
+              if (success){
+                  RespondModel *model = [RespondModel mj_objectWithKeyValues:responseObject];
+                  success(model);
+              }
+          }
+        [UIApplication sharedApplication].networkActivityIndicatorVisible=NO;
+
+      }] resume];
+}
+
+
 +(void)download : (NSString *)url callback : (ByDownloadCallback) callback{
 
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];

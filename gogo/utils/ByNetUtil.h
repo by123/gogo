@@ -17,6 +17,8 @@ typedef void(^ByDownloadCallback)(id respondObj);
 
 +(void)post:(NSString *)url parameters:(NSDictionary *)parameters success:(void (^)(id))success failure:(void (^)(NSError *))failure;
 
++(void)post:(NSString *)url content:(NSString *)content success:(void (^)(id))success failure:(void (^)(NSError *))failure;
+
 +(void)download : (NSString *)url callback : (ByDownloadCallback) callback;
 
 @end

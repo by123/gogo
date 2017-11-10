@@ -7,10 +7,10 @@
 //
 
 #import "GuessView.h"
-#import "GuessListModel.h"
 #import "TouchTableView.h"
 #import "TouchScrollView.h"
 #import "GuessCell.h"
+#import "BettingModel.h"
 
 @interface GuessView()<UITableViewDataSource,UITableViewDelegate>
 
@@ -22,11 +22,12 @@
 
 @implementation GuessView{
     NSMutableArray *models;
+    long rid;
 }
 
--(instancetype)init{
+-(instancetype)initWithDatas:(NSMutableArray *)datas{
     if(self == [super init]){
-        models = [GuessListModel models];
+        models = datas;
         [self initView];
     }
     return self;
@@ -34,8 +35,8 @@
 
 -(void)initView{
     int height = 0;
-    for(GuessListModel *guessListModel in models){
-        NSMutableArray *datas = guessListModel.models;
+    for(BettingModel *bettingModel in models){
+        NSMutableArray *datas = bettingModel.items;
         NSInteger rows = [datas count] / 3;
         int per = [PUtil getActualHeight:117];
         height += [PUtil getActualHeight:206] + per * rows;
@@ -50,9 +51,9 @@
     _scrollerView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(uploadMore)];
     
     _scrollerView.contentSize = CGSizeMake(ScreenWidth,  height);
-    MJRefreshStateHeader *header = [MJRefreshStateHeader headerWithRefreshingTarget:self refreshingAction:@selector(uploadNew)];
-    header.lastUpdatedTimeLabel.hidden = YES;
-    _scrollerView.mj_header = header;
+//    MJRefreshStateHeader *header = [MJRefreshStateHeader headerWithRefreshingTarget:self refreshingAction:@selector(uploadNew)];
+//    header.lastUpdatedTimeLabel.hidden = YES;
+//    _scrollerView.mj_header = header;
     [self addSubview:_scrollerView];
     
     _tableView = [[TouchTableView alloc]initWithParentView:_scrollerView];
@@ -83,8 +84,8 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    GuessListModel *guessListModel = [models objectAtIndex:indexPath.row];
-    NSMutableArray *datas = guessListModel.models;
+    BettingModel *bettingModel = [models objectAtIndex:indexPath.row];
+    NSMutableArray *datas = [BettingItemModel mj_objectArrayWithKeyValuesArray:bettingModel.items];
     NSInteger rows = [datas count] / 3;
     int per = [PUtil getActualHeight:117];
     return [PUtil getActualHeight:206] + per * rows;
@@ -96,8 +97,8 @@
         cell = [[GuessCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[GuessCell identify]];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    GuessListModel *model = [models objectAtIndex:indexPath.row];
-    [cell setData:model];
+    BettingModel *bettingModel = [models objectAtIndex:indexPath.row];
+    [cell setData:bettingModel deleaget:self];
     return cell;
 }
 
@@ -121,6 +122,22 @@
     if(_delegate){
         [_delegate goLivePage];
     }
+}
+
+-(void)onClick:(BettingItemModel *)model{
+    if(_delegate){
+        [_delegate OpenGuessOrderView:model];
+    }
+}
+
+-(void)restoreItems{
+    for(BettingModel *bettingModel in models){
+        NSMutableArray *datas = [BettingItemModel mj_objectArrayWithKeyValuesArray:bettingModel.items];
+        for(BettingItemModel *itemModel in datas){
+            itemModel.isSelect = NO;
+        }
+    }
+    [_tableView reloadData];
 }
 
 @end

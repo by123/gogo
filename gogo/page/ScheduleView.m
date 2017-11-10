@@ -83,7 +83,7 @@
     ScheduleItemModel *model = [datas objectAtIndex:indexPath.row];
     if(!IS_NS_STRING_EMPTY(model.score_a)){
         if(_handleDelegate){
-            [_handleDelegate goScheduleDetailPage:1L];
+            [_handleDelegate goGuessPage:model.race_id];
         }
     }
 
