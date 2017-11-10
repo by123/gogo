@@ -75,20 +75,20 @@ SINGLETON_IMPLEMENTION(AccountManager);
 
 -(void)saveAddress : (AddressModel *)addressModel{
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setValue:addressModel.name forKey:ADDRESS_NAME];
-    [userDefaults setValue:addressModel.phone forKey:ADDRESS_PHONE];
-    [userDefaults setValue:addressModel.area forKey:ADDRESS_AREA];
-    [userDefaults setValue:addressModel.address forKey:ADDRESS_ADDRESS];
+    [userDefaults setValue:addressModel.receiver forKey:ADDRESS_NAME];
+    [userDefaults setValue:addressModel.tel forKey:ADDRESS_PHONE];
+    [userDefaults setValue:addressModel.location forKey:ADDRESS_AREA];
+    [userDefaults setValue:addressModel.address_detail forKey:ADDRESS_ADDRESS];
     [userDefaults synchronize];
 }
 
 -(AddressModel *)getAddressModel{
     AddressModel *addressModel = [[AddressModel alloc]init];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    addressModel.name = [userDefaults objectForKey:ADDRESS_NAME];
-    addressModel.phone = [userDefaults objectForKey:ADDRESS_PHONE];
-    addressModel.area = [userDefaults objectForKey:ADDRESS_AREA];
-    addressModel.address = [userDefaults objectForKey:ADDRESS_ADDRESS];
+    addressModel.receiver = [userDefaults objectForKey:ADDRESS_NAME];
+    addressModel.tel = [userDefaults objectForKey:ADDRESS_PHONE];
+    addressModel.location = [userDefaults objectForKey:ADDRESS_AREA];
+    addressModel.address_detail = [userDefaults objectForKey:ADDRESS_ADDRESS];
     return addressModel;
 }
 @end

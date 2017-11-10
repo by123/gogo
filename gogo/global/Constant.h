@@ -40,6 +40,8 @@
 #define API_GOODS_DETAIL @"https://gogo.scrats.cn/api/mall/goods/"
 #define API_EXCHANGE @"https://gogo.scrats.cn/api/mall/exchange/"
 #define API_EXCHANGE_HISTORY @"https://gogo.scrats.cn/api/mall/exchange/history"
+#define API_GET_ADDRESS @"https://gogo.scrats.cn/api/core/address"
+#define API_UPDATE_ADDRESS @"https://gogo.scrats.cn/api/core/address"
 
 
 //notification

@@ -11,6 +11,7 @@
 #import "InsetTextField.h"
 #import "AddressPickerView.h"
 #import "AccountManager.h"
+#import "RespondModel.h"
 
 @interface AddressPage ()<UITextFieldDelegate,AddressPickerViewDelegate>
 
@@ -26,17 +27,18 @@
 
 @end
 
-@implementation AddressPage
+@implementation AddressPage{
+    AddressModel *model;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initView];
+    [self requestAddress];
 }
 
 -(void)initView{
     
-    AddressModel *model = [[AccountManager sharedAccountManager]getAddressModel];
-
     _barView = [[BarView alloc]initWithTitle:@"地址信息" page:self];
     [self.view addSubview:_barView];
     
@@ -49,7 +51,6 @@
     _receiverTextField = [[InsetTextField alloc]initWithFrame:CGRectMake(0, 0,ScreenWidth, [PUtil getActualHeight:110]) andInsets:inset hint:@"收货人"];
     _receiverTextField.backgroundColor = c07_bar;
     _receiverTextField.textColor = c08_text;
-    _receiverTextField.text = model.name;
     _receiverTextField.font = [UIFont systemFontOfSize:[PUtil getActualHeight:34]];
     [_receiverTextField check];
     [_bodyView addSubview:_receiverTextField];
@@ -58,7 +59,6 @@
     _phoneNumTextField = [[InsetTextField alloc]initWithFrame:CGRectMake(0, [PUtil getActualHeight:110],ScreenWidth, [PUtil getActualHeight:110]) andInsets:inset hint:@"手机号"];
     _phoneNumTextField.backgroundColor = c07_bar;
     _phoneNumTextField.textColor = c08_text;
-    _phoneNumTextField.text = model.phone;
     _phoneNumTextField.keyboardType = UIKeyboardTypeNumberPad;
     _phoneNumTextField.font = [UIFont systemFontOfSize:[PUtil getActualHeight:34]];
     [_phoneNumTextField check];
@@ -73,15 +73,12 @@
     _areahintLabel.textColor = c08_text;
     [_bodyView addSubview:_areahintLabel];
     
-    if(!IS_NS_STRING_EMPTY(model.area)){
-        _areahintLabel.hidden = YES;
-    }
+
 
     _areaBtn = [[UIButton alloc]initWithFrame:CGRectMake(0,  [PUtil getActualHeight:220],ScreenWidth, [PUtil getActualHeight:110])];
     [_areaBtn setTitleColor:c08_text forState:UIControlStateNormal];
     _areaBtn.titleLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:34]];
     _areaBtn.titleLabel.textAlignment = NSTextAlignmentLeft;
-    [_areaBtn setTitle:model.area forState:UIControlStateNormal];
     _areaBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     _areaBtn.titleEdgeInsets = UIEdgeInsetsMake(0, [PUtil getActualWidth:30], 0, 0);
     [_areaBtn addTarget:self action:@selector(OnAddressClick) forControlEvents:UIControlEventTouchUpInside];
@@ -91,7 +88,6 @@
     _addressTextField = [[InsetTextField alloc]initWithFrame:CGRectMake(0,  [PUtil getActualHeight:330],ScreenWidth, [PUtil getActualHeight:240]) andInsets:inset hint:@"详细地址"];
     _addressTextField.backgroundColor = c07_bar;
     _addressTextField.textColor = c08_text;
-    _addressTextField.text = model.address;
     _addressTextField.font = [UIFont systemFontOfSize:[PUtil getActualHeight:34]];
     [_addressTextField check];
     [_bodyView addSubview:_addressTextField];
@@ -164,13 +160,60 @@
         [DialogHelper showFailureAlertSheet:@"请填写详细地址"];
         return;
     }
-    AddressModel *model = [[AddressModel alloc]init];
-    model.name = _receiverTextField.text;
-    model.phone = _phoneNumTextField.text;
-    model.area = _areaBtn.titleLabel.text;
-    model.address = _addressTextField.text;
-    [[AccountManager sharedAccountManager] saveAddress:model];
-    [DialogHelper showSuccessTips:@"保存成功"];
+    [self requestUpdateAddress];
 }
+
+-(void)updateAddress{
+    _receiverTextField.text = model.receiver;
+    _phoneNumTextField.text = model.tel;
+    if(!IS_NS_STRING_EMPTY(model.location)){
+        _areahintLabel.hidden = YES;
+    }
+    [_areaBtn setTitle:model.location forState:UIControlStateNormal];
+    _addressTextField.text = model.address_detail;
+    [_receiverTextField check];
+    [_phoneNumTextField check];
+    [_addressTextField check];
+}
+
+
+-(void)requestAddress{
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [ByNetUtil get:API_GET_ADDRESS parameters:nil success:^(RespondModel *respondModel) {
+        if(respondModel.code == 200){
+            id data = respondModel.data;
+            model = [AddressModel mj_objectWithKeyValues:data];
+            [self updateAddress];
+
+        }else{
+            [DialogHelper showFailureAlertSheet:respondModel.msg];
+        }
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    } failure:^(NSError *error) {
+        [DialogHelper showFailureAlertSheet:@"请求失败"];
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    }];
+}
+
+-(void)requestUpdateAddress{
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
+    dic[@"receiver"]= _receiverTextField.text;
+    dic[@"tel"]= _phoneNumTextField.text;
+    dic[@"address_detail"]= _areaBtn.titleLabel.text;
+    dic[@"location"]= _addressTextField.text;
+    [ByNetUtil post:API_UPDATE_ADDRESS parameters:dic success:^(RespondModel *respondModel) {
+        if(respondModel.code == 200){
+            [DialogHelper showSuccessTips:@"保存成功"];
+        }else{
+            [DialogHelper showFailureAlertSheet:respondModel.msg];
+        }
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    } failure:^(NSError *error) {
+        [DialogHelper showFailureAlertSheet:@"请求失败"];
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    }];
+}
+
 
 @end

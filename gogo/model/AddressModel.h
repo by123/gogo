@@ -10,9 +10,13 @@
 
 @interface AddressModel : NSObject
 
-@property (copy, nonatomic) NSString *name;
-@property (copy, nonatomic) NSString *phone;
-@property (copy, nonatomic) NSString *area;
-@property (copy, nonatomic) NSString *address;
+@property (assign, nonatomic) long address_id;
+@property (copy, nonatomic) NSString *uid;
+@property (copy, nonatomic) NSString *receiver;
+@property (copy, nonatomic) NSString *tel;
+@property (copy, nonatomic) NSString *location;
+@property (copy, nonatomic) NSString *address_detail;
+
+
 
 @end

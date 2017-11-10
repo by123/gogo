@@ -23,6 +23,7 @@
 #import "UILabel+ContentSize.h"
 #import "UIView+Frame.h"
 #import <AlipaySDK/AlipaySDK.h>
+#import <MBProgressHUD/MBProgressHUD.h>
 
 
 #ifndef PrefixHeader_pch
