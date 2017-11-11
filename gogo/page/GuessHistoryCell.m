@@ -8,6 +8,7 @@
 
 #import "GuessHistoryCell.h"
 #import "ItemView.h"
+#import "TimeUtil.h"
 
 @interface GuessHistoryCell()
 
@@ -97,33 +98,52 @@
 
 
 -(void)setData : (GuessHistoryModel *)model{
-    if(model.statu == Uncompleted){
+    if([model.status isEqualToString:APPLY]){
         _coinLabel.hidden = YES;
         _coinUnitLabel.hidden = YES;
         _resultLabel.text = @"-";
         _resultLabel.textColor = c08_text;
-    }else if(model.statu == Win){
+        [_resultView setContent:@"比赛未完成"];
+
+    }else if([model.status isEqualToString:WIN]){
         _statuLabel.hidden = YES;
         _coinLabel.textColor = c01_blue;
         _coinUnitLabel.textColor = c01_blue;
-        _coinLabel.text = [NSString stringWithFormat:@"+ %@",model.coin];
+        int result = [model.coin intValue] * [model.odds intValue];
+        _coinLabel.text = [NSString stringWithFormat:@"+ %d",result];
         _resultLabel.text = @"WIN";
         _resultLabel.textColor = c01_blue;
+        [_resultView setContent:@"赢"];
 
-    }else if(model.statu == Lose){
+    }else if([model.status isEqualToString:LOSE]){
         _statuLabel.hidden = YES;
         _coinLabel.textColor = c02_red;
         _coinUnitLabel.textColor = c02_red;
-        _coinLabel.text = [NSString stringWithFormat:@"+ %@",model.coin];
+        _coinLabel.text = [NSString stringWithFormat:@"- %@",model.coin];
         _resultLabel.text = @"LOSE";
         _resultLabel.textColor = c02_red;
+        [_resultView setContent:@"输"];
+
     }
     
-    [_timeView setContent:model.time];
-    [_teamView setContent:model.team];
-    [_guessView setContent:model.guess];
-    [_cathecticView setContent:model.cathectic];
-    [_resultView setContent:model.result];
+    NSString *time = [TimeUtil generateAll:model.create_ts];
+    [_timeView setContent:time];
+    RaceModel *raceModel = [RaceModel mj_objectWithKeyValues:model.race];
+    [_teamView setContent:raceModel.race_name];
+    
+    NSMutableArray *bettingModels = [BettingModel mj_objectArrayWithKeyValuesArray:model.bettings];
+    BettingModel *bettingModel = [bettingModels objectAtIndex:0];
+    
+    NSMutableArray *itemModels = [BettingItemModel mj_objectArrayWithKeyValuesArray:bettingModel.items];
+    BettingItemModel *itemModel = [itemModels objectAtIndex:0];
+    
+    NSString *guessStr = [NSString stringWithFormat:@"%@ / %@",bettingModel.title,itemModel.title];
+    [_guessView setContent:guessStr];
+    
+    
+    NSString *cathecticStr = [NSString stringWithFormat:@"%@竞猜币 / 赔率%@",model.coin,model.odds];
+    [_cathecticView setContent:cathecticStr];
+    
 }
 
 +(NSString *)identify{

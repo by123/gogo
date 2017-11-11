@@ -20,4 +20,5 @@
 @property (copy, nonatomic) NSString *expired_ts;
 @property (copy, nonatomic) NSString *create_ts;
 
+
 @end

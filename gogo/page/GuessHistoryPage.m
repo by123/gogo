@@ -10,6 +10,7 @@
 #import "BarView.h"
 #import "GuessHistoryModel.h"
 #import "GuessHistoryCell.h"
+#import "RespondModel.h"
 
 @interface GuessHistoryPage ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -21,16 +22,19 @@
 
 @implementation GuessHistoryPage{
     NSMutableArray *models;
+    int index;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    models = [GuessHistoryModel getModels];
+    index = 0;
+    models = [[NSMutableArray alloc]init];
     [self initView];
+    [self uploadNew];
 }
 
 -(void)initView{
-    _barView = [[BarView alloc]initWithTitle:@"兑换记录" page:self];
+    _barView = [[BarView alloc]initWithTitle:@"竞猜历史" page:self];
     [self.view addSubview:_barView];
     
     int height = _barView.mj_h + _barView.mj_y;
@@ -87,17 +91,45 @@
 {
     [_scrollerView.mj_header endRefreshing];
     [_scrollerView.mj_footer endRefreshing];
-    //    CURRENT = 0;
-    //    [self requestList : NO];
+    index = 0;
+    [self requestHistory : NO];
 }
 
 -(void)uploadMore
 {
     [_scrollerView.mj_header endRefreshing];
     [_scrollerView.mj_footer endRefreshing];
-    //    CURRENT += REQUEST_SIZE;
-    //    [self requestList : YES];
+    [self requestHistory : YES];
 }
 
+-(void)requestHistory : (Boolean) isRequestMore{
+    NSMutableDictionary *dic =[[NSMutableDictionary alloc]init];
+    dic[@"index"] = @(index);
+    [ByNetUtil get:API_GUESS_HISTORY parameters:dic success:^(RespondModel *respondModel) {
+        if(respondModel.code == 200){
+            id data = respondModel.data;
+            id items = [data objectForKey:@"items"];
+            index = [[data objectForKey:@"index"] intValue];
+            NSMutableArray *tempModel  = [GuessHistoryModel mj_objectArrayWithKeyValuesArray:items];
+            if(IS_NS_COLLECTION_EMPTY(tempModel)){
+                [_scrollerView.mj_footer endRefreshingWithNoMoreData];
+            }
+            if(isRequestMore){
+                [models addObjectsFromArray:tempModel];
+            }else{
+                models = tempModel;
+            }
+            [_tableView reloadData];
+            _tableView.frame = CGRectMake(0,  0, ScreenWidth, [models count] * [PUtil getActualHeight:580]);
+            _scrollerView.contentSize = CGSizeMake(ScreenWidth, [models count] * [PUtil getActualHeight:580]);
+
+        }else{
+            [DialogHelper showFailureAlertSheet:respondModel.msg];
+        }
+    } failure:^(NSError *error) {
+        [DialogHelper showFailureAlertSheet:@"请求失败"];
+    }];
+    
+}
 @end
 

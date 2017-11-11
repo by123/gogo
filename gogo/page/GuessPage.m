@@ -336,11 +336,13 @@
         return;
     }
     NSMutableArray *array = [[NSMutableArray alloc]init];
+    [array addObject:@(selectModel.betting_item_id)];
+
     NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
     dic[@"coin"] = @(selectCoin);
-    dic[@"betting_item_id"] = @(selectModel.betting_item_id);
-    [array addObject:dic];
-    [ByNetUtil post:API_GUESS content:array.mj_JSONString success:^(RespondModel *respondModel) {
+    dic[@"betting_item_id_list"] = array;
+    
+    [ByNetUtil post:API_GUESS content:dic.mj_JSONString success:^(RespondModel *respondModel) {
         if(respondModel.code == 200){
             [self getUserInfo];
             [self CloseGuessOrderView];

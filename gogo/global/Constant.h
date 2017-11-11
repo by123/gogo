@@ -45,6 +45,7 @@
 #define API_GUESS_DETAIL @"https://gogo.scrats.cn/api/core/race/"
 #define API_GUESS @"https://gogo.scrats.cn/api/core/betting"
 #define API_REFRESH_TOKEN @"https://gogo.scrats.cn/api/account/token"
+#define API_GUESS_HISTORY @"https://gogo.scrats.cn/api/core/betting"
 
 
 //notification

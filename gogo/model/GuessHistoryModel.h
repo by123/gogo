@@ -7,24 +7,25 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RaceModel.h"
+#import "BettingModel.h"
 
-typedef NS_ENUM(NSInteger,GuessHistoryStatu){
-    Uncompleted,
-    Win,
-    Lose,
-    
-};
+//未完成，赢，输，比赛被取消
+#define APPLY @"apply"
+#define WIN @"win"
+#define LOSE @"lose"
+#define INVALID @"invalid"
+
 
 @interface GuessHistoryModel : NSObject
 
-@property (assign, nonatomic) GuessHistoryStatu statu;
+@property (copy, nonatomic) NSString *status;
+@property (copy, nonatomic) NSString *create_ts;
+@property (strong, nonatomic) RaceModel *race;
+@property (strong, nonatomic) NSMutableArray *bettings;
 @property (copy, nonatomic) NSString *coin;
-@property (copy, nonatomic) NSString *time;
-@property (copy, nonatomic) NSString *team;
-@property (copy, nonatomic) NSString *guess;
-@property (copy, nonatomic) NSString *cathectic;
-@property (copy, nonatomic) NSString *result;
+@property (copy, nonatomic) NSString *odds;
 
-+(NSMutableArray *)getModels;
+
 
 @end
