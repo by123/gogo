@@ -170,6 +170,7 @@
 		CF1CD6EC1FB6219C0058EEBB /* BettingItemModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BettingItemModel.m; sourceTree = "<group>"; };
 		CF1CD6EE1FB8B8920058EEBB /* TitleButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleButton.h; sourceTree = "<group>"; };
 		CF1CD6EF1FB8B8920058EEBB /* TitleButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleButton.m; sourceTree = "<group>"; };
+		CF1CD6F11FB8C9F80058EEBB /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		CF2EAE531F9D0FC000F35974 /* BottomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BottomView.h; sourceTree = "<group>"; };
 		CF2EAE541F9D0FC000F35974 /* BottomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BottomView.m; sourceTree = "<group>"; };
 		CF2EAE5F1F9E71A400F35974 /* ScheduleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleView.h; sourceTree = "<group>"; };
@@ -424,6 +425,7 @@
 		0B3F5C946CD226272B2A24DA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CF1CD6F11FB8C9F80058EEBB /* Accelerate.framework */,
 				CF4855751FB2BBD60018502A /* libstdc++.tbd */,
 				CF4855731FB2BBBD0018502A /* libiconv.tbd */,
 				CFD14E751FB2199800A28982 /* CoreMotion.framework */,

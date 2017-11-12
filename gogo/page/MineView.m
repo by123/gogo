@@ -16,7 +16,7 @@
 @interface MineView ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (strong, nonatomic) TouchScrollView *scrollerView;
-@property (strong, nonatomic) UIView *userView;
+@property (strong, nonatomic) UIImageView *userView;
 @property (strong, nonatomic) UIImageView *headImageView;
 @property (strong, nonatomic) UILabel *nickNameLabel;
 @property (strong, nonatomic) UILabel *coinLabel;
@@ -48,9 +48,15 @@
     _scrollerView.contentSize = CGSizeMake(ScreenWidth,ScreenHeight);
     [self addSubview:_scrollerView];
     
-    _userView = [[UIView alloc]init];
+    _userView = [[UIImageView alloc]init];
     _userView.frame = CGRectMake(0, [PUtil getActualHeight:20], ScreenWidth, [PUtil getActualHeight:272]);
     _userView.backgroundColor = c07_bar;
+    _userView.contentMode = UIViewContentModeScaleAspectFill;
+    [_userView sd_setImageWithURL:[NSURL URLWithString:model.avatar] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        _userView.image = [ColorUtil boxblurImage:image withBlurNumber:0.5f];
+
+    }];
+    _userView.userInteractionEnabled = YES;
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(goPersonalPage)];
     [_userView addGestureRecognizer:recognizer];
     [_scrollerView addSubview:_userView];

@@ -22,4 +22,6 @@ typedef NS_ENUM(NSInteger,ColorDirector){
 
 + (void)setGradientColor : (UIView *)view startColor: (UIColor *)startColor endColor : (UIColor *)endColor director : (ColorDirector)director;
 
++(UIImage *)boxblurImage:(UIImage *)image withBlurNumber:(CGFloat)blur;
+
 @end
