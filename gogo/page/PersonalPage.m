@@ -93,7 +93,7 @@
     if([userModel.gender isEqualToString: @"male"]){
         _genderLabel.text = @"男";
     }else{
-        _genderLabel.text = @"nv";
+        _genderLabel.text = @"女";
     }
     _genderLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:34]];
     _genderLabel.textAlignment = NSTextAlignmentCenter;
