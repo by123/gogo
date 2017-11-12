@@ -101,5 +101,11 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>&quot;gogo电竞&quot;需要访问您的相机</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>&quot;gogo电竞&quot;需要为您添加图片</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>&quot;gogo电竞&quot;需要访问您的相册</string>
 </dict>
 </plist>

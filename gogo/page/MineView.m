@@ -21,7 +21,6 @@
 @property (strong, nonatomic) UILabel *nickNameLabel;
 @property (strong, nonatomic) UILabel *coinLabel;
 @property (strong, nonatomic) UITableView *tableView;
-@property (strong, nonatomic) UIButton *logoutBtn;
 
 @end
 
@@ -96,14 +95,7 @@
     [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [_scrollerView addSubview:_tableView];
     
-    _logoutBtn = [[UIButton alloc]init];
-    _logoutBtn.frame = CGRectMake((ScreenWidth - [PUtil getActualWidth:542])/2, [PUtil getActualHeight:922],[PUtil getActualWidth:542] , [PUtil getActualHeight:100]);
-    [_logoutBtn setTitle:@"退出登录" forState:UIControlStateNormal];
-    _logoutBtn.layer.masksToBounds = YES;
-    _logoutBtn.layer.cornerRadius = [PUtil getActualHeight:100]/2;
-    [_logoutBtn addTarget:self action:@selector(logout) forControlEvents:UIControlEventTouchUpInside];
-    [_scrollerView addSubview:_logoutBtn];
-    [ColorUtil setGradientColor:_logoutBtn startColor:c01_blue endColor:c02_red director:Left];
+
     
 }
 
@@ -138,25 +130,6 @@
     return cell;
 }
 
--(void)logout{
-    NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
-    dic[@"refresh_token"] = [[AccountManager sharedAccountManager] getAccount].refresh_token;
-    [ByNetUtil post:API_LOGOUT parameters:dic success:^(RespondModel *respondModel) {
-        if(respondModel.code == 200){
-            if(_handleDelegate){
-                [[AccountManager sharedAccountManager] clear];
-                [_handleDelegate goLoginPage];
-            }
-        }else{
-            [DialogHelper showFailureAlertSheet:respondModel.msg];
-        }
-        
-    } failure:^(NSError *error) {
-        [DialogHelper showFailureAlertSheet:@"请求失败"];
-
-    }];
-   
-}
 
 -(void)goPage : (NSInteger)index{
     if(_handleDelegate){

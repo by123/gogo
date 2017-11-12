@@ -20,6 +20,7 @@
 		CF1CD6E71FB61CA20058EEBB /* RaceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1CD6E61FB61CA20058EEBB /* RaceModel.m */; };
 		CF1CD6EA1FB620060058EEBB /* BettingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1CD6E91FB620060058EEBB /* BettingModel.m */; };
 		CF1CD6ED1FB6219C0058EEBB /* BettingItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1CD6EC1FB6219C0058EEBB /* BettingItemModel.m */; };
+		CF1CD6F01FB8B8920058EEBB /* TitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1CD6EF1FB8B8920058EEBB /* TitleButton.m */; };
 		CF2EAE551F9D0FC000F35974 /* BottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAE541F9D0FC000F35974 /* BottomView.m */; };
 		CF2EAE611F9E71A400F35974 /* ScheduleView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAE601F9E71A400F35974 /* ScheduleView.m */; };
 		CF2EAE651F9E71D800F35974 /* CorpsView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAE641F9E71D800F35974 /* CorpsView.m */; };
@@ -167,6 +168,8 @@
 		CF1CD6E91FB620060058EEBB /* BettingModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BettingModel.m; sourceTree = "<group>"; };
 		CF1CD6EB1FB6219C0058EEBB /* BettingItemModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BettingItemModel.h; sourceTree = "<group>"; };
 		CF1CD6EC1FB6219C0058EEBB /* BettingItemModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BettingItemModel.m; sourceTree = "<group>"; };
+		CF1CD6EE1FB8B8920058EEBB /* TitleButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleButton.h; sourceTree = "<group>"; };
+		CF1CD6EF1FB8B8920058EEBB /* TitleButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleButton.m; sourceTree = "<group>"; };
 		CF2EAE531F9D0FC000F35974 /* BottomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BottomView.h; sourceTree = "<group>"; };
 		CF2EAE541F9D0FC000F35974 /* BottomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BottomView.m; sourceTree = "<group>"; };
 		CF2EAE5F1F9E71A400F35974 /* ScheduleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleView.h; sourceTree = "<group>"; };
@@ -979,6 +982,8 @@
 				CFBFE5081FA5C48E00500B1B /* TouchTableView.m */,
 				CFBFE5141FA5CD8600500B1B /* GuessButton.h */,
 				CFBFE5151FA5CD8600500B1B /* GuessButton.m */,
+				CF1CD6EE1FB8B8920058EEBB /* TitleButton.h */,
+				CF1CD6EF1FB8B8920058EEBB /* TitleButton.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1235,6 +1240,7 @@
 				CFCB0F4E1F711E6F0087ACC7 /* TAPageControl.m in Sources */,
 				CF48559A1FB37E060018502A /* GoodsModel.m in Sources */,
 				CFBFE5161FA5CD8600500B1B /* GuessButton.m in Sources */,
+				CF1CD6F01FB8B8920058EEBB /* TitleButton.m in Sources */,
 				CF4278201FAB95FA00C163DD /* RespondModel.m in Sources */,
 				CF4278261FAB98A400C163DD /* DialogHelper.m in Sources */,
 				CF2EAE551F9D0FC000F35974 /* BottomView.m in Sources */,
