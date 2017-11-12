@@ -68,6 +68,7 @@
     phoneView = [[UITextField alloc]init];
     phoneView.layer.borderWidth = 1;
     phoneView.layer.borderColor = c13_text1.CGColor;
+    phoneView.userInteractionEnabled = NO;
     phoneView.frame = CGRectMake([PUtil getActualWidth:89], [PUtil getActualHeight:552], [PUtil getActualWidth:572], [PUtil getActualHeight:100]);
     phoneView.layer.masksToBounds = YES;
     phoneView.layer.cornerRadius = [PUtil getActualHeight:100]/2;
@@ -99,6 +100,7 @@
     UIView *verifyView = [[UIView alloc]init];
     verifyView = [[UITextField alloc]init];
     verifyView.layer.borderWidth = 1;
+    verifyView.userInteractionEnabled = NO;
     verifyView.layer.borderColor = c13_text1.CGColor;
     verifyView.frame = CGRectMake([PUtil getActualWidth:89], [PUtil getActualHeight:682], [PUtil getActualWidth:572], [PUtil getActualHeight:100]);
     verifyView.layer.masksToBounds = YES;
