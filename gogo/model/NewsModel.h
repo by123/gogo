@@ -17,6 +17,7 @@
 @property (copy,nonatomic) NSString *news_ts;
 @property (copy,nonatomic) NSString *view_count;
 @property (copy,nonatomic) NSString *cover;
+@property (copy, nonatomic) NSString *comment_count;
 
 
 @end

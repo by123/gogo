@@ -41,6 +41,8 @@
 @implementation MainPage
 {
     NSArray * titles;
+    NSArray * images;
+
 }
 
 - (void)viewDidLoad {
@@ -54,6 +56,7 @@
 
 -(void)initView{
     titles = @[@"首页",@"赛事",@"商城",@"我的"];
+    images =@[@"ic_home_0_24",@"ic_home_1_24",@"ic_game_0_24",@"ic_game_1_24",@"ic_store_0_24",@"ic_store_1_24",@"ic_me_0_24",@"ic_me_1_24"];
     [self initBar];
     [self initBody];
     [self initBottom];
@@ -80,7 +83,7 @@
 }
 
 -(void)initBottom{
-    BottomView *bottomView = [[BottomView alloc]initWithTitles:titles delegate:self];
+    BottomView *bottomView = [[BottomView alloc]initWithTitles:titles images:images delegate:self];
     [self.view addSubview:bottomView];
 }
 

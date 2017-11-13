@@ -16,6 +16,6 @@
 
 @interface BottomView : UIView
 
--(instancetype)initWithTitles:(NSArray *)titles delegate:(id<BottomViewDelegate>)delegate;
+-(instancetype)initWithTitles:(NSArray *)titles images : (NSArray *)images delegate:(id<BottomViewDelegate>)delegate;
 
 @end

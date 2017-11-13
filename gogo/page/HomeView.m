@@ -9,6 +9,7 @@
 #import "HomeView.h"
 #import "NewsCell.h"
 #import "RespondModel.h"
+#import "RHPlayerView.h"
 
 
 #define AdViewHeight [PUtil getActualHeight:300]
@@ -23,7 +24,7 @@
 @end
 
 @implementation HomeView{
-    long index;
+    NSString *index;
     long size;
     NSMutableArray *datas;
 }
@@ -33,7 +34,7 @@
 -(instancetype)initWithFrame:(CGRect)frame{
     if(self == [super initWithFrame:frame]){
         datas = [[NSMutableArray alloc]init];
-        index = 0;
+        index = @"0";
         size = 10;
         [self initView];
     }
@@ -124,7 +125,7 @@
 {
     [_scrollerView.mj_header endRefreshing];
     [_scrollerView.mj_footer endRefreshing];
-    index = 0;
+    index = @"0";
     size = 10;
     [self requestList : NO];
 }
@@ -139,12 +140,12 @@
 -(void)requestList : (Boolean) isRequestMore{
     
     NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
-    [dic setObject:[NSString stringWithFormat:@"%ld",index] forKey:@"index"];
+    [dic setObject:index forKey:@"index"];
     [dic setObject:[NSString stringWithFormat:@"%ld",size] forKey:@"size"];
     [ByNetUtil get:API_NEWS_LIST parameters:dic success:^(RespondModel *respondModel) {
         if(respondModel.code == 200){
             id items = [respondModel.data objectForKey:@"items"];
-            index =[[respondModel.data objectForKey:@"index"] longValue];
+            index =[respondModel.data objectForKey:@"index"] ;
             NSArray *temps = [NewsModel mj_objectArrayWithKeyValuesArray:items];
             if([temps count] == 0){
                 [_scrollerView.mj_footer endRefreshingWithNoMoreData];

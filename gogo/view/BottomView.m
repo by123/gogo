@@ -18,18 +18,20 @@
 
 @implementation BottomView{
     UIButton *selectButton;
+    NSArray *imagesArray;
 }
 
--(instancetype)initWithTitles:(NSArray *)titles delegate:(id<BottomViewDelegate>)delegate{
+-(instancetype)initWithTitles:(NSArray *)titles images : (NSArray *)images delegate:(id<BottomViewDelegate>)delegate{
     if(self == [super init]){
         self.delegate = delegate;
-        [self initView : titles];
+        [self initView : titles images:images];
     }
     return self;
 }
 
 
--(void)initView : (NSArray*) titles{
+-(void)initView : (NSArray*) titles images : (NSArray *)images{
+    imagesArray = images;
     self.frame = CGRectMake(0, ScreenHeight - TabHeight, ScreenWidth, TabHeight);
     self.backgroundColor = c07_bar;
     if(titles!=nil &&  [titles count]> 0){
@@ -39,9 +41,15 @@
             button.tag = i;
             button.frame = CGRectMake(width * i, 0, width, TabHeight);
             [button setTitle:[titles objectAtIndex:i]  forState:UIControlStateNormal];
+            [button setImage:[UIImage imageNamed:[images objectAtIndex:i*2]]  forState:UIControlStateNormal];
+            button.titleLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:20]];
+            
+            button.titleEdgeInsets = UIEdgeInsetsMake(0, -button.imageView.size.width, -button.imageView.size.height - 5, 0);
+            button.imageEdgeInsets = UIEdgeInsetsMake( -button.titleLabel.size.height - 5,  0,  0, -button.titleLabel.size.width);
             if(i == 0){
                 selectButton = button;
                 [button setTitleColor:c01_blue forState:UIControlStateNormal];
+                [button setImage:[UIImage imageNamed:[images objectAtIndex:i*2+1]]  forState:UIControlStateNormal];
             }else{
                 [button setTitleColor:c10_icon forState:UIControlStateNormal];
             }
@@ -55,7 +63,10 @@
     UIButton *button = sender;
     if(button.tag != selectButton.tag){
         [button setTitleColor:c01_blue forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:[imagesArray objectAtIndex:button.tag*2+1]]  forState:UIControlStateNormal];
+
         [selectButton setTitleColor:c10_icon forState:UIControlStateNormal];
+        [selectButton setImage:[UIImage imageNamed:[imagesArray objectAtIndex:selectButton.tag*2]]  forState:UIControlStateNormal];
         selectButton = button;
         if(self.delegate){
             [self.delegate OnTabSelected:button.tag];

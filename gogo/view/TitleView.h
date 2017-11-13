@@ -12,4 +12,6 @@
 
 -(instancetype)initWithTitle:(int)height title : (NSString *)title;
 
+-(void)setTitle : (NSString *)title;
+
 @end

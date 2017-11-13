@@ -36,13 +36,7 @@
         if (success){
             [UIApplication sharedApplication].networkActivityIndicatorVisible=NO;
             RespondModel *model = [RespondModel mj_objectWithKeyValues:responseObject];
-            if(model.code == 498){
-                [self refreshToken : ^(id data){
-                    [self get:url parameters:parameters success:success failure:failure];
-                }];
-            }else{
-                success(model);
-            }
+            success(model);
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if (failure){
@@ -76,14 +70,7 @@
         if (success){
             [UIApplication sharedApplication].networkActivityIndicatorVisible=NO;
             RespondModel *model = [RespondModel mj_objectWithKeyValues:responseObject];
-            if(model.code == 498){
-                [self refreshToken : ^(id data){
-                    [self post:url parameters:parameters success:success failure:failure];
-                }];
-            }else{
-                success(model);
-                
-            }
+            success(model);
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if (failure){
@@ -124,13 +111,7 @@
           }else{
               if (success){
                   RespondModel *model = [RespondModel mj_objectWithKeyValues:responseObject];
-                  if(model.code == 498){
-                      [self refreshToken : ^(id data){
-                          [self post:url content:content success:success failure:failure];
-                      }];
-                  }else{
-                      success(model);
-                  }
+                  success(model);
               }
           }
         [UIApplication sharedApplication].networkActivityIndicatorVisible=NO;

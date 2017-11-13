@@ -8,6 +8,12 @@
 
 #import "TitleView.h"
 
+
+@interface TitleView()
+
+@property (strong, nonatomic) UILabel *titleLabel;
+@end
+
 @implementation TitleView
 
 -(instancetype)initWithTitle:(int)height title:(NSString *)title{
@@ -25,13 +31,16 @@
     leftView.frame = CGRectMake(0, [PUtil getActualHeight:27], [PUtil getActualWidth:6],[PUtil getActualHeight:34]);
     [self addSubview:leftView];
     
-    UILabel *titleLabel = [[UILabel alloc]init];
-    titleLabel.text = title;
-    titleLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:34]];
-    titleLabel.textColor = c08_text;
-    titleLabel.frame = CGRectMake([PUtil getActualWidth:22],[PUtil getActualHeight:20],[PUtil getActualWidth:400] , [PUtil getActualHeight:48]);
-    [self addSubview:titleLabel];
+    _titleLabel = [[UILabel alloc]init];
+    _titleLabel.text = title;
+    _titleLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:34]];
+    _titleLabel.textColor = c08_text;
+    _titleLabel.frame = CGRectMake([PUtil getActualWidth:22],[PUtil getActualHeight:20],[PUtil getActualWidth:400] , [PUtil getActualHeight:48]);
+    [self addSubview:_titleLabel];
 }
 
+-(void)setTitle : (NSString *)title{
+    _titleLabel.text = title;
+}
 
 @end

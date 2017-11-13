@@ -15,10 +15,12 @@
 #import "RespondModel.h"
 #import "NewsDetailModel.h"
 #import "CommentListModel.h"
+#import "RHPlayerView.h"
+#import "RHVideoModel.h"
 
 #define CommentCellHeight [PUtil getActualHeight:180]
 #define REREQUESTSIZE 10
-@interface NewsDetailPage ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,UIWebViewDelegate>
+@interface NewsDetailPage ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,UIWebViewDelegate,RHPlayerViewDelegate>
 
 @property (strong, nonatomic) BarView *barView;
 @property (strong, nonatomic) UILabel *contentLabel;
@@ -31,6 +33,7 @@
 @property (strong, nonatomic) InsetTextField *commentTextField;
 @property (strong, nonatomic) UILabel *hintLabel;
 @property (strong, nonatomic) UIScrollView *webScrollView;
+@property (strong, nonatomic) RHPlayerView *playView;
 
 @end
 
@@ -45,7 +48,7 @@
     [super viewDidLoad];
     datas = [[NSMutableArray alloc]init];
     index = 0;
-    [self requestData];
+    [self requestData : NO];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -54,6 +57,9 @@
 
 -(void)viewWillDisappear:(BOOL)animated{
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillChangeFrameNotification object:nil];
+    if(_playView){
+        [_playView stop];
+    }
 }
 
 -(void)initView{
@@ -74,28 +80,43 @@
     _scrollerView.mj_header = header;
     [self.view addSubview:_scrollerView];
     
-    _webView = [[UIWebView alloc]init];
-    _webView.frame = CGRectMake(0,0, ScreenWidth,ScreenHeight);
-    _webView.allowsInlineMediaPlayback = YES;
-    _webView.scalesPageToFit = YES;
-    _webView.opaque = NO;
-    _webView.delegate = self;
-    _webScrollView = (UIScrollView *)[_webView.subviews objectAtIndex:0];
-    _webScrollView.scrollEnabled = NO;
-
-    if(IS_NS_STRING_EMPTY(model.url)){
-        [_webView loadHTMLString:model.body baseURL:nil];
+    if(IS_NS_STRING_EMPTY(model.video)){
+        _webView = [[UIWebView alloc]init];
+        _webView.frame = CGRectMake(0,0, ScreenWidth,ScreenHeight);
+        _webView.allowsInlineMediaPlayback = YES;
+        _webView.scalesPageToFit = YES;
+        _webView.opaque = NO;
+        _webView.delegate = self;
+        _webScrollView = (UIScrollView *)[_webView.subviews objectAtIndex:0];
+        _webScrollView.scrollEnabled = NO;
+        NSString *htmlStr = [NSString stringWithFormat:@"<head></head><body style=\"zoom:1.5\">%@</body>",model.body];
+        [_webView loadHTMLString:htmlStr baseURL:nil];
+        [_scrollerView addSubview:_webView];
     }else{
-        [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:model.url]]];
+        _playView = [[RHPlayerView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenWidth * ScreenWidth / ScreenHeight) currentVC:self parentView : _scrollerView];
+        _playView.delegate = self;
+        NSMutableArray *dataArr = [[NSMutableArray alloc]init];
+        RHVideoModel *videoModel = [[RHVideoModel alloc] initWithVideoId:@"" title:@"" url:model.video currentTime:0];
+        [dataArr addObject:videoModel];
+        [_playView setVideoModels:dataArr playVideoId:@""];
+        [_scrollerView addSubview:_playView];
+        [self initComment];
+        [self requestNew];
     }
-    [_scrollerView addSubview:_webView];
     
     
 }
 
 -(void)initComment{
-    int height = _webView.mj_h + _webView.mj_y ;
-    _commentTitleView = [[TitleView alloc]initWithTitle:height title:@"评论（12）"];
+    int height = 0;
+    if(IS_NS_STRING_EMPTY(model.video)){
+        height = _webView.mj_h + _webView.mj_y;
+    }else{
+        height = ScreenWidth * ScreenWidth /ScreenHeight;
+    }
+    
+    _commentTitleView = [[TitleView alloc]initWithTitle:height title:@"评论（0）"];
+    [_commentTitleView setTitle:[NSString stringWithFormat:@"评论（%d）",model.comment_count]];
     [_scrollerView addSubview:_commentTitleView];
     
     _tableView = [[UITableView alloc]init];
@@ -212,13 +233,17 @@
     [self requestComment : YES];
 }
 
--(void)requestData{
+-(void)requestData : (Boolean)updateComment{
     NSString *urlStr = [NSString stringWithFormat:@"%@%ld",API_NEWS_DETAIL,_news_id];
     [ByNetUtil get:urlStr parameters:nil success:^(RespondModel *respondModel) {
         if(respondModel.code == 200){
             id data = respondModel.data;
             model = [NewsDetailModel mj_objectWithKeyValues:data];
-            [self initView];
+            if(updateComment){
+                [_commentTitleView setTitle:[NSString stringWithFormat:@"评论（%d）",model.comment_count]];
+            }else{
+                [self initView];
+            }
         }else{
             [DialogHelper showFailureAlertSheet:respondModel.msg];
         }
@@ -285,6 +310,7 @@
         if(respondModel.code == 200){
             [DialogHelper showSuccessTips:@"发送成功!"];
             [self requestNew];
+            [self requestData : YES];
         }else{
             [DialogHelper showFailureAlertSheet:respondModel.msg];
         }
@@ -294,5 +320,25 @@
 
 }
 
+
+-(BOOL)playerViewShouldPlay{
+    return YES;
+}
+
+// 当前播放的
+- (void)playerView:(RHPlayerView *)playView didPlayVideo:(RHVideoModel *)videoModel index:(NSInteger)index {
+    
+    
+}
+// 当前播放结束的
+- (void)playerView:(RHPlayerView *)playView didPlayEndVideo:(RHVideoModel *)videoModel index:(NSInteger)index {
+    
+    
+}
+// 当前正在播放的  会调用多次  更新当前播放时间
+- (void)playerView:(RHPlayerView *)playView didPlayVideo:(RHVideoModel *)videoModel playTime:(NSTimeInterval)playTime {
+    
+    
+}
 
 @end

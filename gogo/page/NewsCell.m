@@ -77,7 +77,7 @@
     _mTitleLabel.text = model.title;
     _mTypeLabel.text = model.tp;
     [_mImageView sd_setImageWithURL:[NSURL URLWithString:model.cover]];
-    _mCommentLabel.text = model.view_count;
+    _mCommentLabel.text = model.comment_count;
     
 }
 
