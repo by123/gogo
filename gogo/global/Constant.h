@@ -49,6 +49,7 @@
 #define API_GUESS_HISTORY @"https://gogo.scrats.cn/api/core/betting"
 #define API_UPLOAD_HEAD @"https://gogo.scrats.cn/api/file/qiniu_token"
 #define API_UPLOAD_USERINFO @"https://gogo.scrats.cn/api/core/user"
+#define API_QINIU @"https://gogo.scrats.cn/api/file/qiniu_token"
 
 //notification
 #define NOTIFY_WECAHT_CALLBACK @"notify_wechat_callback"

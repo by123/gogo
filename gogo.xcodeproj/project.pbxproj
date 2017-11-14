@@ -117,6 +117,7 @@
 		CFADF8571FBA1B3100A7501E /* RHProgressSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = CFADF8441FBA1B3000A7501E /* RHProgressSlider.m */; };
 		CFADF8581FBA1B3100A7501E /* RHVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CFADF8461FBA1B3000A7501E /* RHVideoModel.m */; };
 		CFADF85D1FBA943300A7501E /* WechatPayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CFADF85C1FBA943300A7501E /* WechatPayModel.m */; };
+		CFADF8741FBB65A900A7501E /* UploadImageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CFADF8731FBB65A900A7501E /* UploadImageUtil.m */; };
 		CFBFE4E31FA534E000500B1B /* GoodsView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBFE4E21FA534E000500B1B /* GoodsView.m */; };
 		CFBFE4E71FA5363A00500B1B /* GoodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBFE4E61FA5363A00500B1B /* GoodsCell.m */; };
 		CFBFE4F41FA5B31E00500B1B /* SCDCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBFE4F31FA5B31E00500B1B /* SCDCommentView.m */; };
@@ -363,6 +364,8 @@
 		CFADF8461FBA1B3000A7501E /* RHVideoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHVideoModel.m; sourceTree = "<group>"; };
 		CFADF85B1FBA943300A7501E /* WechatPayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WechatPayModel.h; sourceTree = "<group>"; };
 		CFADF85C1FBA943300A7501E /* WechatPayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WechatPayModel.m; sourceTree = "<group>"; };
+		CFADF8721FBB65A900A7501E /* UploadImageUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UploadImageUtil.h; sourceTree = "<group>"; };
+		CFADF8731FBB65A900A7501E /* UploadImageUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UploadImageUtil.m; sourceTree = "<group>"; };
 		CFBFE4E11FA534E000500B1B /* GoodsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsView.h; sourceTree = "<group>"; };
 		CFBFE4E21FA534E000500B1B /* GoodsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsView.m; sourceTree = "<group>"; };
 		CFBFE4E51FA5363A00500B1B /* GoodsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsCell.h; sourceTree = "<group>"; };
@@ -1047,6 +1050,8 @@
 				CF0BEDB81F9B2F78005275EE /* PUtil.m */,
 				CF7B7EB21FAE49D5003FC2D6 /* TimeUtil.h */,
 				CF7B7EB31FAE49D5003FC2D6 /* TimeUtil.m */,
+				CFADF8721FBB65A900A7501E /* UploadImageUtil.h */,
+				CFADF8731FBB65A900A7501E /* UploadImageUtil.m */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -1267,6 +1272,7 @@
 				CF42783B1FAB9A0100C163DD /* UILabel+StringFrame.m in Sources */,
 				CF0BEDD51F9BB96E005275EE /* NewsCell.m in Sources */,
 				CFADF8551FBA1B3100A7501E /* RHPlayerToolView.m in Sources */,
+				CFADF8741FBB65A900A7501E /* UploadImageUtil.m in Sources */,
 				CFBFE5131FA5CC6E00500B1B /* FightingView.m in Sources */,
 				CFBFE4E31FA534E000500B1B /* GoodsView.m in Sources */,
 				CF2EAEB01FA2624D00F35974 /* HistoryCell.m in Sources */,

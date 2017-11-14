@@ -13,8 +13,9 @@
 #import "AccountManager.h"
 #import "RespondModel.h"
 #import "LoginPage.h"
+#import "UploadImageUtil.h"
 
-@interface PersonalPage ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface PersonalPage ()<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UploadImageDelegate>
 
 @property(strong, nonatomic) BarView *barView;
 @property(strong, nonatomic) UIButton *headBtn;
@@ -37,6 +38,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initView];
+
 }
 
 -(void)initView{
@@ -166,14 +168,26 @@
     [picker dismissViewControllerAnimated:YES completion:nil];
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     _headImageView.image = image;
-    
+    NSData *data = UIImagePNGRepresentation(image);
+    [UploadImageUtil getUploadToken:data delegate:self];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-//
+-(void)uploadSuccess:(NSString *)imageUrl{
+    UserModel *userModel = [[AccountManager sharedAccountManager]getUserInfo];
+    avatarStr = imageUrl;
+    [[AccountManager sharedAccountManager]saveUserInfo:userModel];
+    [self updateUserInfo:YES];
+}
+
+-(void)uploadFail{
+    [DialogHelper showFailureAlertSheet:@"上传失败"];
+}
+
 -(void)selectNickName{
     UIAlertController * alertController = [UIAlertController alertControllerWithTitle: @"修改昵称"
                                                                               message: nil
@@ -195,7 +209,7 @@
          CGSize size = [textField.text boundingRectWithSize:CGSizeMake( ScreenWidth, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:[PUtil getActualHeight:34]]} context:nil].size;
         _nickNameLabel.frame = CGRectMake(ScreenWidth - [PUtil getActualWidth:84] - size.width, 0, size.width, _nickNameBtn.mj_h);
         userNameStr = textField.text;
-        [self updateUserInfo];
+        [self updateUserInfo : NO];
         
     }]];
     [self presentViewController:alertController animated:YES completion:nil];
@@ -208,13 +222,13 @@
     UIAlertAction *maleAction = [UIAlertAction actionWithTitle:@"男" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         _genderLabel.text = @"男";
         genderStr = @"male";
-        [self updateUserInfo];
+        [self updateUserInfo : NO];
     }];
     
     UIAlertAction *femaleAction = [UIAlertAction actionWithTitle:@"女" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action){
         _genderLabel.text = @"女";
         genderStr = @"female";
-        [self updateUserInfo];
+        [self updateUserInfo : NO];
     }];
  
     [alert addAction:maleAction];
@@ -243,7 +257,7 @@
     
 }
 
--(void)updateUserInfo{
+-(void)updateUserInfo : (Boolean)uploadAvatar{
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     NSMutableDictionary *dic= [[NSMutableDictionary alloc]init];
     dic[@"username"] = userNameStr;
@@ -251,7 +265,9 @@
     dic[@"gender"] = genderStr;
     [ByNetUtil post:API_UPLOAD_USERINFO parameters:dic success:^(RespondModel *respondModel) {
         if(respondModel.code == 200){
-          
+            if(uploadAvatar){
+                [DialogHelper showSuccessTips:@"上传成功"];
+            }
         }else{
             [DialogHelper showFailureAlertSheet:respondModel.msg];
         }

@@ -8,5 +8,6 @@ pod 'MJExtension', '~> 3.0.10'
 pod 'FMDB', '~> 2.6'
 pod 'MJRefresh'
 pod 'Masonry'
+pod 'Qiniu', '~> 7.1'
 
 end

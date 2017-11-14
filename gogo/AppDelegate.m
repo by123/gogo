@@ -14,6 +14,7 @@
 #import "WXApi.h"
 #import <TencentOpenAPI/QQApiInterface.h>
 #import <TencentOpenAPI/TencentOAuth.h>
+#import <QiniuSDK.h>
 
 @interface AppDelegate ()<WXApiDelegate,QQApiInterfaceDelegate>
 @end
@@ -68,7 +69,11 @@
         [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
             NSLog(@"result = %@",resultDic);
         }];
-    }else{
+    }else if([url.host isEqualToString:@"pay"]){
+        return  [WXApi handleOpenURL:url delegate:self];
+        
+    }
+    else{
         [QQApiInterface handleOpenURL:url delegate:self];
         return [TencentOAuth HandleOpenURL:url];
     }
@@ -125,7 +130,8 @@
 }
 
 
-
-
+- (void)isOnlineResponse:(NSDictionary *)response{
+    
+}
 
 @end

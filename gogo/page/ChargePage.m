@@ -14,6 +14,9 @@
 #import "PayModel.h"
 #import "WXApi.h"
 #import "WechatPayModel.h"
+#import<CommonCrypto/CommonDigest.h>
+#import <CommonCrypto/CommonDigest.h>
+#import <CommonCrypto/CommonHMAC.h>
 
 @interface ChargePage ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -177,7 +180,6 @@
 }
 
 -(void)doWechatPay{
-
     PayModel *model = [priceArray objectAtIndex:priceSelect];
     NSString *requestUrl = [NSString stringWithFormat:@"%@/%ld",API_WECAHT_PAY,model.coin_plan_id];
     [ByNetUtil post:requestUrl parameters:nil success:^(RespondModel *respondModel) {
@@ -218,5 +220,8 @@
 
     }];
 }
+
+
+
 
 @end

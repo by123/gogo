@@ -69,6 +69,7 @@
     }
     _headImageView.layer.masksToBounds = YES;
     _headImageView.layer.cornerRadius = [PUtil getActualWidth:160]/2;
+    _headImageView.contentMode = UIViewContentModeScaleAspectFill;
     [_userView addSubview:_headImageView];
     
     _nickNameLabel = [[UILabel alloc]init];
@@ -173,7 +174,12 @@
     _coinLabel.text = model.coin;
     if(!IS_NS_STRING_EMPTY(model.avatar)){
         [_headImageView sd_setImageWithURL:[NSURL URLWithString:model.avatar]];
+        [_userView sd_setImageWithURL:[NSURL URLWithString:model.avatar] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            _userView.image = [ColorUtil boxblurImage:image withBlurNumber:0.5f];
+            
+        }];
     }
+    
 }
 
 @end
