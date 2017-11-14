@@ -35,7 +35,7 @@
     
     _imgView = [[UIImageView alloc]init];
     _imgView.layer.masksToBounds = YES;
-    _imgView.contentMode = UIViewContentModeScaleAspectFit;
+    _imgView.contentMode = UIViewContentModeScaleAspectFill;
     _imgView.layer.cornerRadius = [PUtil getActualHeight:64]/2;
     _imgView.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualWidth:30], [PUtil getActualHeight:64], [PUtil getActualHeight:64]);
     [self.contentView addSubview:_imgView];
@@ -70,7 +70,7 @@
     _nameLabel.text = userModel.username;
     _timeLabel.text = [TimeUtil generateAll:commentModel.create_ts];
     _contenLabel.text = commentModel.content;
-    [_imgView sd_setImageWithURL:[NSURL URLWithString:userModel.avatar]];
+    [_imgView sd_setImageWithURL:[NSURL URLWithString:userModel.avatar] placeholderImage:[UIImage imageNamed:@"ic_default_head"]];
 }
 
 +(NSString *)identify{

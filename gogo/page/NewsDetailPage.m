@@ -292,7 +292,11 @@
                 datas = [CommentListModel mj_objectArrayWithKeyValuesArray:items];
             }
             _tableView.frame = CGRectMake(0, _commentTitleView.mj_y+_commentTitleView.mj_h, ScreenWidth, [datas count] *CommentCellHeight);
-            _scrollerView.contentSize = CGSizeMake(ScreenWidth, CommentCellHeight* [datas count]+_webView.mj_h +[PUtil getActualHeight:88]);
+            if(IS_NS_STRING_EMPTY(model.video)){
+                _scrollerView.contentSize = CGSizeMake(ScreenWidth, CommentCellHeight* [datas count]+_webView.mj_h +[PUtil getActualHeight:88]);
+            }else{
+                _scrollerView.contentSize = CGSizeMake(ScreenWidth, CommentCellHeight* [datas count]+ScreenWidth *ScreenWidth / ScreenHeight +[PUtil getActualHeight:88]);
+            }
             [_tableView reloadData];
         }else{
             [DialogHelper showFailureAlertSheet:respondModel.msg];
