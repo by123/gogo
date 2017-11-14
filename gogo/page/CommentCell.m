@@ -68,7 +68,7 @@
     UserModel *userModel = [UserModel mj_objectWithKeyValues:model.user];
     CommentModel *commentModel = [CommentModel mj_objectWithKeyValues:model.comment];
     _nameLabel.text = userModel.username;
-    _timeLabel.text = [TimeUtil generateAll:commentModel.create_ts];
+    _timeLabel.text = [TimeUtil getCommentTime:commentModel.create_ts];
     _contenLabel.text = commentModel.content;
     [_imgView sd_setImageWithURL:[NSURL URLWithString:userModel.avatar] placeholderImage:[UIImage imageNamed:@"ic_default_head"]];
 }

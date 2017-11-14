@@ -14,6 +14,8 @@
 
 +(NSString *)generateData : (NSString *)timestamp;
 
-+(NSString *)generateTime : (NSString *)timestamp;;
++(NSString *)generateTime : (NSString *)timestamp;
+
++(NSString *)getCommentTime : (NSString *)timestamp;
 
 @end

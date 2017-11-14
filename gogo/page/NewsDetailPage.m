@@ -351,9 +351,8 @@
     if(_playView){
         [_playView removePlayer];
         _playView = nil;
-        [self.navigationController popViewControllerAnimated:YES];
-        NSLog(@"by666移除了");
     }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end
