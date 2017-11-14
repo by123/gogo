@@ -12,6 +12,8 @@
 #import "PayCell.h"
 #import "RespondModel.h"
 #import "PayModel.h"
+#import "WXApi.h"
+#import "WechatPayModel.h"
 
 @interface ChargePage ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -176,7 +178,27 @@
 
 -(void)doWechatPay{
 
-    [DialogHelper showFailureAlertSheet:@"暂不支持"];
+    PayModel *model = [priceArray objectAtIndex:priceSelect];
+    NSString *requestUrl = [NSString stringWithFormat:@"%@/%ld",API_WECAHT_PAY,model.coin_plan_id];
+    [ByNetUtil post:requestUrl parameters:nil success:^(RespondModel *respondModel) {
+        if(respondModel.code == 200){
+            id data = respondModel.data;
+            WechatPayModel *payModel = [WechatPayModel mj_objectWithKeyValues:data];
+            PayReq *request = [[PayReq alloc]init];
+            request.openID = payModel.app_id;
+            request.partnerId = payModel.partner_id;
+            request.prepayId = payModel.prepay_id;
+            request.nonceStr = payModel.nonce_str;
+            request.timeStamp = [payModel.timestamp intValue];
+            request.package = payModel.package;
+            request.sign = payModel.sign;
+            [WXApi sendReq:request];
+        }else{
+            [DialogHelper showFailureAlertSheet:respondModel.msg];
+        }
+    } failure:^(NSError *error) {
+        [DialogHelper showFailureAlertSheet:@"请求失败!"];
+    }];
 }
 
 -(void)doAliPay{

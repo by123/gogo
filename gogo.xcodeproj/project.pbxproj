@@ -116,6 +116,7 @@
 		CFADF8561FBA1B3100A7501E /* RHPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFADF8421FBA1B3000A7501E /* RHPlayerView.m */; };
 		CFADF8571FBA1B3100A7501E /* RHProgressSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = CFADF8441FBA1B3000A7501E /* RHProgressSlider.m */; };
 		CFADF8581FBA1B3100A7501E /* RHVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CFADF8461FBA1B3000A7501E /* RHVideoModel.m */; };
+		CFADF85D1FBA943300A7501E /* WechatPayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CFADF85C1FBA943300A7501E /* WechatPayModel.m */; };
 		CFBFE4E31FA534E000500B1B /* GoodsView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBFE4E21FA534E000500B1B /* GoodsView.m */; };
 		CFBFE4E71FA5363A00500B1B /* GoodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBFE4E61FA5363A00500B1B /* GoodsCell.m */; };
 		CFBFE4F41FA5B31E00500B1B /* SCDCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBFE4F31FA5B31E00500B1B /* SCDCommentView.m */; };
@@ -360,6 +361,8 @@
 		CFADF8441FBA1B3000A7501E /* RHProgressSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHProgressSlider.m; sourceTree = "<group>"; };
 		CFADF8451FBA1B3000A7501E /* RHVideoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RHVideoModel.h; sourceTree = "<group>"; };
 		CFADF8461FBA1B3000A7501E /* RHVideoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RHVideoModel.m; sourceTree = "<group>"; };
+		CFADF85B1FBA943300A7501E /* WechatPayModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WechatPayModel.h; sourceTree = "<group>"; };
+		CFADF85C1FBA943300A7501E /* WechatPayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WechatPayModel.m; sourceTree = "<group>"; };
 		CFBFE4E11FA534E000500B1B /* GoodsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsView.h; sourceTree = "<group>"; };
 		CFBFE4E21FA534E000500B1B /* GoodsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsView.m; sourceTree = "<group>"; };
 		CFBFE4E51FA5363A00500B1B /* GoodsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsCell.h; sourceTree = "<group>"; };
@@ -1007,6 +1010,8 @@
 				CF1CD6E91FB620060058EEBB /* BettingModel.m */,
 				CF1CD6EB1FB6219C0058EEBB /* BettingItemModel.h */,
 				CF1CD6EC1FB6219C0058EEBB /* BettingItemModel.m */,
+				CFADF85B1FBA943300A7501E /* WechatPayModel.h */,
+				CFADF85C1FBA943300A7501E /* WechatPayModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1279,6 +1284,7 @@
 				CF0BEDB31F9A3636005275EE /* LoginPage.m in Sources */,
 				CF2EAE881FA1093900F35974 /* TitleView.m in Sources */,
 				CF2EAE611F9E71A400F35974 /* ScheduleView.m in Sources */,
+				CFADF85D1FBA943300A7501E /* WechatPayModel.m in Sources */,
 				CF2EAE7A1FA0D8F500F35974 /* CorpsModel.m in Sources */,
 				CF4855811FB2ECEF0018502A /* City.m in Sources */,
 				CF2EAE911FA119AA00F35974 /* InsetTextField.m in Sources */,

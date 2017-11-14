@@ -15,10 +15,21 @@
 
 @property (strong, nonatomic) UILabel *titleLabel;
 
+@property (weak, nonatomic) id<BarViewDelegate> delegate;
+
 @end
 
 @implementation BarView{
     BaseViewController *currentPage;
+}
+
+-(instancetype)initWithTitle:(NSString *)title page : (BaseViewController *)cPage delegate : (id<BarViewDelegate>)delegate{
+    if(self == [super init]){
+        currentPage = cPage;
+        _delegate = delegate;
+        [self initView : title];
+    }
+    return self;
 }
 
 -(instancetype)initWithTitle:(NSString *)title page : (BaseViewController *)cPage{
@@ -52,7 +63,11 @@
 
 -(void)onBackPage{
     if(currentPage){
-        [currentPage.navigationController popViewControllerAnimated:YES];
+        if(_delegate){
+            [_delegate onBackClick];
+        }else{
+            [currentPage.navigationController popViewControllerAnimated:YES];
+        }
     }
 }
 

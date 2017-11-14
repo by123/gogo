@@ -9,8 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 
+@protocol BarViewDelegate <NSObject>
+
+@optional -(void)onBackClick;
+
+@end
+
 @interface BarView : UIView
 
 -(instancetype)initWithTitle:(NSString *)title page : (BaseViewController *)cPage;
+
+-(instancetype)initWithTitle:(NSString *)title page : (BaseViewController *)cPage delegate : (id<BarViewDelegate>)delegate;
 
 @end

@@ -56,6 +56,11 @@
  */
 - (void)stop;
 
+/**
+ *移除
+ */
+-(void)removePlayer;
+
 @end
 @protocol RHPlayerViewDelegate <NSObject>
 

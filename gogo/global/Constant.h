@@ -32,6 +32,7 @@
 #define API_TEAMDETAIL @"https://gogo.scrats.cn/api/core/team/"
 #define API_PAYLIST @"https://gogo.scrats.cn/api/core/coin/plans"
 #define API_ALIPAY @"https://gogo.scrats.cn/api/pay/alipay/order/coin_plan"
+#define API_WECAHT_PAY @"https://gogo.scrats.cn/api/pay/weixin/order/coin_plan"
 #define API_USERINFO @"https://gogo.scrats.cn/api/core/user"
 #define API_LOGOUT @"https://gogo.scrats.cn/api/account/logout"
 #define API_WECHAT_LOGIN @"https://gogo.scrats.cn/api/account/wx_login"

@@ -20,7 +20,7 @@
 
 #define CommentCellHeight [PUtil getActualHeight:180]
 #define REREQUESTSIZE 10
-@interface NewsDetailPage ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,UIWebViewDelegate,RHPlayerViewDelegate>
+@interface NewsDetailPage ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,UIWebViewDelegate,RHPlayerViewDelegate,BarViewDelegate>
 
 @property (strong, nonatomic) BarView *barView;
 @property (strong, nonatomic) UILabel *contentLabel;
@@ -59,11 +59,13 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillChangeFrameNotification object:nil];
     if(_playView){
         [_playView stop];
+        NSLog(@"by666暂停了");
     }
 }
 
+
 -(void)initView{
-    _barView = [[BarView alloc]initWithTitle:model.title page:self];
+    _barView = [[BarView alloc]initWithTitle:model.title page:self delegate:self];
     [self.view addSubview:_barView];
     
     _scrollerView = [[TouchScrollView alloc]initWithParentView:self.view];
@@ -339,6 +341,15 @@
 - (void)playerView:(RHPlayerView *)playView didPlayVideo:(RHVideoModel *)videoModel playTime:(NSTimeInterval)playTime {
     
     
+}
+
+-(void)onBackClick{
+    if(_playView){
+        [_playView removePlayer];
+        _playView = nil;
+        [self.navigationController popViewControllerAnimated:YES];
+        NSLog(@"by666移除了");
+    }
 }
 
 @end

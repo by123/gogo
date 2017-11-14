@@ -148,12 +148,12 @@
 }
 // 停止
 - (void)stop {
-    
     [self.player pause];
     [self.link invalidate];
     _toolView.playSwitch.selected = NO;
     [self removeToolViewTimer];
 }
+
 
 #pragma mark - add subviews and make constraints
 
@@ -301,6 +301,7 @@
         
         [playerItem removeObserver:self forKeyPath:@"loadedTimeRanges"];
         [playerItem removeObserver:self forKeyPath:@"status"];
+        [self.player replaceCurrentItemWithPlayerItem:nil];
     }
 }
 
@@ -689,8 +690,7 @@
     
 }
 
-- (void)dealloc {
-    
+-(void)removePlayer{
     NSLog(@"player view dealloc");
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self removeObserverWithPlayerItem:self.playerItem];
