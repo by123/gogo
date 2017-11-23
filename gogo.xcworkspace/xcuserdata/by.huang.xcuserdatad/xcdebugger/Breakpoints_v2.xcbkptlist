@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "gogo/page/GuessPage.m"
-            timestampString = "532204320.867313"
+            timestampString = "533136068.499574"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "341"
-            endingLineNumber = "341"
+            startingLineNumber = "385"
+            endingLineNumber = "385"
             landmarkName = "-requestGuess"
             landmarkType = "7">
          </BreakpointContent>
@@ -153,13 +153,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "gogo/page/ScheduleContentCell.m"
-            timestampString = "533132324.578712"
+            filePath = "gogo/page/GuessPage.m"
+            timestampString = "533136068.500109"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
-            landmarkName = "-setData:"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
+            landmarkName = "-initBodyView"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -169,13 +169,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "gogo/page/ScheduleView.m"
-            timestampString = "533132324.579354"
+            filePath = "gogo/page/GuessPage.m"
+            timestampString = "533136068.500333"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
-            landmarkName = "-requestList:"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
+            landmarkName = "-initBodyView"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

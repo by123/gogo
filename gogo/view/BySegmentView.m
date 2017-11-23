@@ -83,7 +83,7 @@
         [_scrollViewMain setBounces:NO];
         [self addSubview:_scrollViewMain];
         
-        _lineView = [[UIView alloc]initWithFrame:CGRectMake((ScreenWidth/[titleArray count] - [PUtil getActualWidth:120])/2, [PUtil getActualHeight:82], [PUtil getActualWidth:120], [PUtil getActualHeight:6])];
+        _lineView = [[UIView alloc]initWithFrame:CGRectMake((ItemWidth - [PUtil getActualWidth:120])/2, [PUtil getActualHeight:82], [PUtil getActualWidth:120], [PUtil getActualHeight:6])];
         _lineView.backgroundColor = c01_blue;
         [_showContentLabelView addSubview:_lineView];
         

@@ -50,8 +50,9 @@
     _mTitleLabel.frame = CGRectMake(0, [PUtil getActualHeight:12], [PUtil getActualWidth:216],[PUtil getActualHeight:40]);
     [self addSubview:_mTitleLabel];
     
+    NSString *realGuessStr = [NSString stringWithFormat:@"%.2f",[guessStr doubleValue]];
     _mGuessLabel =  [[UILabel alloc]init];
-    _mGuessLabel.text = guessStr;
+    _mGuessLabel.text =realGuessStr;
     _mGuessLabel.textColor = c02_red;
     _mGuessLabel.textAlignment = NSTextAlignmentCenter;
     _mGuessLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:24]];

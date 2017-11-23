@@ -16,7 +16,6 @@
 
 @property (strong, nonatomic) TouchTableView *tableView;
 @property (strong, nonatomic) TouchScrollView *scrollerView;
-@property (strong, nonatomic) UIButton *liveBtn;
 
 @end
 
@@ -65,14 +64,6 @@
     [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [_scrollerView addSubview:_tableView];
     
-    _liveBtn = [[UIButton alloc]init];
-    _liveBtn.frame = CGRectMake([PUtil getActualWidth:540], [PUtil getActualHeight:683],[PUtil getActualWidth:170] , [PUtil getActualHeight:72]);
-    [_liveBtn setTitle:@"看直播" forState:UIControlStateNormal];
-    _liveBtn.layer.masksToBounds = YES;
-    _liveBtn.layer.cornerRadius = [PUtil getActualHeight:72]/2;
-    [_liveBtn addTarget:self action:@selector(goLivePage) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:_liveBtn];
-    [ColorUtil setGradientColor:_liveBtn startColor:c01_blue endColor:c02_red director:Left];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -118,11 +109,6 @@
     //    [self requestList : YES];
 }
 
--(void)goLivePage{
-    if(_delegate){
-        [_delegate goLivePage];
-    }
-}
 
 -(void)onClick:(BettingItemModel *)model{
     if(_delegate){

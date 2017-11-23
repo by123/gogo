@@ -28,10 +28,11 @@
 @property (strong, nonatomic) UILabel *gameLabel;
 @property (strong, nonatomic) UILabel *scoreLabel;
 @property (strong, nonatomic) UIView *guessOrderView;
-@property (strong, nonatomic) GuessView *guessView;
+//@property (strong, nonatomic) GuessView *guessView;
 @property (strong, nonatomic) UILabel *guessTitleLabel;
 @property (strong, nonatomic) UILabel *coinLabel;
 @property (strong, nonatomic) UIButton *guessBtn;
+@property (strong, nonatomic) UIButton *liveBtn;
 
 @end
 
@@ -54,6 +55,7 @@
 
 -(void)initView{
     [self initTopView];
+    
 }
 
 -(void)initTopView{
@@ -130,16 +132,58 @@
 }
 
 -(void)initBodyView{
-    NSMutableArray *views = [[NSMutableArray alloc]init];
-    _guessView = [[GuessView alloc]initWithDatas:bettingArray];
-    _guessView.delegate = self;
-    FightingView *fligtingView = [[FightingView alloc]init];
-    [views addObject:_guessView];
-    [views addObject:fligtingView];
+    if(!IS_NS_COLLECTION_EMPTY(bettingArray)){
+        NSMutableArray *views = [[NSMutableArray alloc]init];
+
+
+        NSMutableArray *temps = [[NSMutableArray alloc]init];
+        for(BettingModel *model in bettingArray){
+            if (![temps containsObject:model.tp]) {
+                [temps addObject:model.tp];
+            }
+        }
+        
+        //数据集合
+        for(NSString *title in temps){
+            NSMutableArray *datas = [[NSMutableArray alloc]init];
+            for(BettingModel *model in bettingArray){
+                if([model.tp isEqualToString:title]){
+                    [datas addObject:model];
+                }
+            }
+            
+            GuessView *guessView = [[GuessView alloc]initWithDatas:datas];
+            guessView.delegate = self;
+            [views addObject:guessView];
+        }
+        
+        //标题集合
+        NSMutableArray *titles = [[NSMutableArray alloc]init];
+        for(NSString *temp in temps){
+            if([temp isEqualToString:@"0"]){
+                [titles addObject:@"总局"];
+            }else{
+                [titles addObject:[NSString stringWithFormat:@"第%@局",temp]];
+            }
+        }
+        
+
+        
+        
+        BySegmentView *segmentView = [[BySegmentView alloc]initWithFrame:CGRectMake(0, [PUtil getActualHeight:459] - StatuBarHeight, ScreenWidth, ScreenHeight - ([PUtil getActualHeight:459] - StatuBarHeight)) andTitleArray:titles andShowControllerNameArray:views];
+        [self.view addSubview:segmentView];
+        [self initGuessOrderView];
+    }
+
     
-    BySegmentView *segmentView = [[BySegmentView alloc]initWithFrame:CGRectMake(0, [PUtil getActualHeight:459] - StatuBarHeight, ScreenWidth, ScreenHeight - ([PUtil getActualHeight:459] - StatuBarHeight)) andTitleArray:@[@"竞猜", @"赛况"] andShowControllerNameArray:views];
-    [self.view addSubview:segmentView];
-    [self initGuessOrderView];
+    _liveBtn = [[UIButton alloc]init];
+    _liveBtn.frame = CGRectMake([PUtil getActualWidth:540], ScreenHeight - [PUtil getActualHeight:120],[PUtil getActualWidth:170] , [PUtil getActualHeight:72]);
+    [_liveBtn setTitle:@"看直播" forState:UIControlStateNormal];
+    _liveBtn.layer.masksToBounds = YES;
+    _liveBtn.layer.cornerRadius = [PUtil getActualHeight:72]/2;
+    [_liveBtn addTarget:self action:@selector(goLivePage) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_liveBtn];
+    [ColorUtil setGradientColor:_liveBtn startColor:c01_blue endColor:c02_red director:Left];
 }
 
 -(void)initGuessOrderView{
@@ -231,7 +275,7 @@
         tempView.frame = CGRectMake(0, ScreenHeight, ScreenWidth, ScreenHeight);
     } completion:^(BOOL finished) {
         tempView.hidden = YES;
-        [_guessView restoreItems];
+//        [_guessView restoreItems];
         for(UIButton *tempBtn in buttons){
             tempBtn.backgroundColor = [UIColor clearColor];
         }
