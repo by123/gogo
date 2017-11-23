@@ -47,7 +47,7 @@
     NSTimeInterval currentTime = [[NSDate date] timeIntervalSince1970];
     NSTimeInterval createTime = [timestamp longLongValue]/1000;
     NSTimeInterval time = currentTime - createTime;
-    NSInteger sec = time/60;
+    long sec = time/60;
     if(sec == 0){
         return @"刚刚";
     }

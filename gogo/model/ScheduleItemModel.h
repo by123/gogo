@@ -23,6 +23,7 @@ typedef NS_ENUM(NSInteger,ScheduleType){
 @property (copy, nonatomic) NSString* score_a;
 @property (copy, nonatomic) NSString* score_b;
 @property (copy, nonatomic) NSString* race_ts;
+@property (copy, nonatomic) NSString* race_name;
 @property (copy, nonatomic) NSString* create_ts;
 @property (copy, nonatomic) NSString* status;
 @property (assign, nonatomic) Boolean hideLine;

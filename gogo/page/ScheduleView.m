@@ -76,7 +76,7 @@
     if(IS_NS_STRING_EMPTY(model.score_a)){
         return [PUtil getActualHeight:86];
     }
-    return [PUtil getActualHeight:164];
+    return [PUtil getActualHeight:204];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -163,7 +163,7 @@
                 if(IS_NS_STRING_EMPTY(model.score_a)){
                     height +=[PUtil getActualHeight:86];
                 }else{
-                    height +=[PUtil getActualHeight:164];
+                    height +=[PUtil getActualHeight:204];
                 }
             }
             _tableView.frame = CGRectMake(0, 0, ScreenWidth, height);

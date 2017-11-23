@@ -27,6 +27,7 @@
 #import "RespondModel.h"
 #import "UserModel.h"
 #import "AccountManager.h"
+#import "SettingPage.h"
 
 #define TitleHeight [PUtil getActualHeight:88]
 
@@ -199,9 +200,9 @@
     [self pushPage:page];
 }
 
-#pragma mark 跳转到关于
--(void)goAboutPage{
-    AboutPage *page = [[AboutPage alloc]init];
+#pragma mark 跳转到设置
+-(void)goSettingPage{
+    SettingPage *page = [[SettingPage alloc]init];
     [self pushPage:page];
 }
 

@@ -159,6 +159,8 @@
 		CFD14E761FB2199F00A28982 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD14E751FB2199800A28982 /* CoreMotion.framework */; };
 		CFD14E7A1FB219E400A28982 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD14E781FB219E400A28982 /* AlipaySDK.framework */; };
 		CFD14E7B1FB219E400A28982 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CFD14E791FB219E400A28982 /* AlipaySDK.bundle */; };
+		CFF0377F1FC6EB4B002C2358 /* SettingPage.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF0377E1FC6EB4B002C2358 /* SettingPage.m */; };
+		CFF037831FC6EDC1002C2358 /* FeedbackPage.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF037821FC6EDC1002C2358 /* FeedbackPage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -439,6 +441,10 @@
 		CFD14E751FB2199800A28982 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		CFD14E781FB219E400A28982 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
 		CFD14E791FB219E400A28982 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
+		CFF0377D1FC6EB4B002C2358 /* SettingPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingPage.h; sourceTree = "<group>"; };
+		CFF0377E1FC6EB4B002C2358 /* SettingPage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingPage.m; sourceTree = "<group>"; };
+		CFF037811FC6EDC1002C2358 /* FeedbackPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedbackPage.h; sourceTree = "<group>"; };
+		CFF037821FC6EDC1002C2358 /* FeedbackPage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedbackPage.m; sourceTree = "<group>"; };
 		FC91EBAA0A903D9AA36FDE62 /* Pods-gogo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gogo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-gogo/Pods-gogo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -554,6 +560,8 @@
 		CF0BEDCF1F9BB89B005275EE /* mine */ = {
 			isa = PBXGroup;
 			children = (
+				CFF037801FC6EDAF002C2358 /* feedback */,
+				CFF0377C1FC6EB36002C2358 /* setting */,
 				CF2EAEF51FA5033200F35974 /* personal */,
 				CF2EAEF11FA5009400F35974 /* about */,
 				CF2EAEED1FA5005000F35974 /* exchange */,
@@ -1116,6 +1124,24 @@
 			path = alipay;
 			sourceTree = "<group>";
 		};
+		CFF0377C1FC6EB36002C2358 /* setting */ = {
+			isa = PBXGroup;
+			children = (
+				CFF0377D1FC6EB4B002C2358 /* SettingPage.h */,
+				CFF0377E1FC6EB4B002C2358 /* SettingPage.m */,
+			);
+			name = setting;
+			sourceTree = "<group>";
+		};
+		CFF037801FC6EDAF002C2358 /* feedback */ = {
+			isa = PBXGroup;
+			children = (
+				CFF037811FC6EDC1002C2358 /* FeedbackPage.h */,
+				CFF037821FC6EDC1002C2358 /* FeedbackPage.m */,
+			);
+			name = feedback;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1297,6 +1323,7 @@
 				CF2EAEE81FA4FF6200F35974 /* AddressPage.m in Sources */,
 				CF48559D1FB384100018502A /* GoodDetailModel.m in Sources */,
 				CFADF8511FBA1B3100A7501E /* RHFullViewController.m in Sources */,
+				CFF037831FC6EDC1002C2358 /* FeedbackPage.m in Sources */,
 				CF2EAEC11FA30ACF00F35974 /* GamePage.m in Sources */,
 				CF4855AA1FB39C720018502A /* AddressModel.m in Sources */,
 				CF2EAE651F9E71D800F35974 /* CorpsView.m in Sources */,
@@ -1305,6 +1332,7 @@
 				CF1CD6E71FB61CA20058EEBB /* RaceModel.m in Sources */,
 				CF2EAEF01FA5007300F35974 /* ExchangePage.m in Sources */,
 				CF2EAEA91FA2575300F35974 /* CorpsDetailPage.m in Sources */,
+				CFF0377F1FC6EB4B002C2358 /* SettingPage.m in Sources */,
 				CFBFE5001FA5B3A200500B1B /* SCDTeamView.m in Sources */,
 				CF2EAF071FA514F800F35974 /* GuessHistoryModel.m in Sources */,
 				CF0BEDC21F9B4780005275EE /* Account.m in Sources */,

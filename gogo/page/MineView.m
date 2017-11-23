@@ -30,7 +30,7 @@
 
 -(instancetype)initWithFrame:(CGRect)frame{
     if(self == [super initWithFrame:frame]){
-        datas = @[@"充值",@"地址信息",@"竞猜历史",@"兑换记录",@"关于"];
+        datas = @[@"充值",@"地址信息",@"竞猜历史",@"兑换记录",@"设置"];
         [self initView];
     }
     return self;
@@ -52,10 +52,13 @@
     _userView.frame = CGRectMake(0, [PUtil getActualHeight:20], ScreenWidth, [PUtil getActualHeight:272]);
     _userView.backgroundColor = c07_bar;
     _userView.contentMode = UIViewContentModeScaleAspectFill;
-    [_userView sd_setImageWithURL:[NSURL URLWithString:model.avatar] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        _userView.image = [ColorUtil boxblurImage:image withBlurNumber:0.5f];
+    if(!IS_NS_STRING_EMPTY(model.avatar)){
+        [_userView sd_setImageWithURL:[NSURL URLWithString:model.avatar] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            _userView.image = [ColorUtil boxblurImage:image withBlurNumber:0.5f];
+            
+        }];
+    }
 
-    }];
     _userView.userInteractionEnabled = YES;
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(goPersonalPage)];
     [_userView addGestureRecognizer:recognizer];
@@ -63,10 +66,7 @@
     
     _headImageView = [[UIImageView alloc]init];
     _headImageView.frame = CGRectMake([PUtil getActualWidth:40], [PUtil getActualHeight:56], [PUtil getActualWidth:160], [PUtil getActualWidth:160]);
-    _headImageView.backgroundColor = c01_blue;
-    if(!IS_NS_STRING_EMPTY(model.avatar)){
-      [_headImageView sd_setImageWithURL:[NSURL URLWithString:model.avatar]];
-    }
+    [_headImageView sd_setImageWithURL:[NSURL URLWithString:model.avatar] placeholderImage:[UIImage imageNamed:@"ic_default_head"]];
     _headImageView.layer.masksToBounds = YES;
     _headImageView.layer.cornerRadius = [PUtil getActualWidth:160]/2;
     _headImageView.contentMode = UIViewContentModeScaleAspectFill;
@@ -154,7 +154,7 @@
                 [_handleDelegate goExchangePage];
                 break;
             case 4:
-                [_handleDelegate goAboutPage];
+                [_handleDelegate goSettingPage];
                 break;
             default:
                 break;

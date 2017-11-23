@@ -26,7 +26,7 @@
 
 @optional -(void)goExchangePage;
 
-@optional -(void)goAboutPage;
+@optional -(void)goSettingPage;
 
 @optional -(void)goPersonalPage;
 
