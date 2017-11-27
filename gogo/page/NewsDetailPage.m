@@ -85,11 +85,13 @@
     
     if(IS_NS_STRING_EMPTY(model.video)){
         _webView = [[UIWebView alloc]init];
-        _webView.frame = CGRectMake(0,0, ScreenWidth,ScreenHeight);
+        _webView.frame = CGRectMake(0,0, ScreenWidth,2000);
         _webView.allowsInlineMediaPlayback = YES;
+        _webView.backgroundColor = c06_backgroud;
         _webView.scalesPageToFit = YES;
         _webView.opaque = NO;
         _webView.delegate = self;
+        _webView.hidden = YES;
         _webScrollView = (UIScrollView *)[_webView.subviews objectAtIndex:0];
         _webScrollView.scrollEnabled = NO;
         NSString *htmlStr = [NSString stringWithFormat:@"<head></head><body style=\"zoom:1.5\">%@</body>",model.body];
@@ -256,21 +258,37 @@
     }];
 }
 
-
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    NSURL *url = request.URL;
+    if([url.absoluteString isEqualToString:@"http://kpl.qq.com/"]){
+        return NO;
+    }
+    return YES;
+}
 
 - (void)webViewDidFinishLoad:(UIWebView*)webView{
     if(_webView.isLoading){
         return;
     }
-    CGFloat WebViewHeight = [webView.scrollView contentSize].height;
-    CGRect WebViewRect = webView.frame;
-    WebViewRect.size.height = WebViewHeight;
-    _scrollerView.contentSize = CGSizeMake(ScreenWidth,CommentCellHeight* [datas count]+ [PUtil getActualHeight:88] +WebViewHeight);
-    _webView.frame = WebViewRect;
-    _webScrollView.contentSize = CGSizeMake(ScreenWidth, WebViewHeight);
-    
-    [self initComment];
-    [self requestNew];
+    [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.background='#252845'"];
+    [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.webkitTextSizeAdjust= '250%'"];
+    [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.webkitTextFillColor= '#FFFFFF'"];
+
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        CGFloat WebViewHeight = [webView sizeThatFits:CGSizeZero].height + [PUtil getActualWidth:20];
+        CGRect WebViewRect = CGRectMake(0, 0, ScreenWidth, WebViewHeight);
+        WebViewRect.size.height = WebViewHeight;
+        _scrollerView.contentSize = CGSizeMake(ScreenWidth,CommentCellHeight* [datas count]+ [PUtil getActualHeight:88] +WebViewHeight);
+        _webView.frame = WebViewRect;
+        _webScrollView.contentSize = CGSizeMake(ScreenWidth, WebViewHeight);
+        
+        _webView.hidden = NO;
+        [self initComment];
+        [self requestNew];
+    });
+
+
 }
 
 -(void)requestComment : (Boolean) isRequestMore{

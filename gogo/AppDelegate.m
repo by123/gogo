@@ -174,7 +174,13 @@
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-
+    NSMutableString *deviceTokenString1 = [NSMutableString string];
+    const char *bytes = deviceToken.bytes;
+    NSUInteger iCount = deviceToken.length;
+    for (int i = 0; i < iCount; i++) {
+        [deviceTokenString1 appendFormat:@"%02x", bytes[i]&0x000000FF];
+    }
+    NSLog(@"deviceToken：%@", deviceTokenString1);
 }
 
 //iOS10以下使用这个方法接收通知
