@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "gogo/AppDelegate.m"
-            timestampString = "532380515.110853"
+            timestampString = "533501559.937092"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "-onResp:"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "-application:openURL:sourceApplication:annotation:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "gogo/AppDelegate.m"
-            timestampString = "532380515.110916"
+            timestampString = "533501559.937138"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
-            landmarkName = "-onResp:"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "-application:openURL:options:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,12 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "gogo/AppDelegate.m"
-            timestampString = "532380515.110976"
+            timestampString = "533501559.937183"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
-            landmarkName = "-onReq:"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "-application:openURL:options:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

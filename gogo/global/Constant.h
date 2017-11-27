@@ -11,12 +11,14 @@
 @interface Constant : NSObject
 
 //请求头
+#define CHANNELCODE @"000001"
 #define PT @"IOS"
 #define APPKEY @"test_key"
 #define APPSECRET @"test_secret"
 #define WECHAT_APPID @"wx3349545f4d083130"
 #define WECHAT_APPSECRET @"a38eb57a4e88a6007f5cc44f97ef84e2"
 #define QQ_APPID @"1106448485"
+#define UMENG_APPKEY @"5a1947f48f4a9d44ce0000c5"
 
 //URL
 #define RootUrl @"https://gogo.scrats.cn/api/"

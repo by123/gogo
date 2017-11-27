@@ -22,6 +22,7 @@ typedef NS_ENUM(NSInteger, RHVideoPlayStyle) {
 @property (nonatomic, strong, readonly) NSURL * url;
 @property (nonatomic, assign) RHVideoPlayStyle style;
 @property (nonatomic, assign) NSTimeInterval currentTime;
+@property (nonatomic, assign) Boolean isFirst;
 
 /**
  创建本地视频模型

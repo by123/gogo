@@ -51,6 +51,8 @@
     _aView.layer.masksToBounds = YES;
     _aView.layer.cornerRadius = [PUtil getActualHeight:60]/2;
     _aView.contentMode = UIViewContentModeScaleAspectFit;
+    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(goDetail)];
+    [_aView addGestureRecognizer:recognizer];
     [self.contentView addSubview:_aView];
     
     _aLabel = [[UILabel alloc]init];
@@ -81,6 +83,7 @@
     _bView.layer.masksToBounds = YES;
     _bView.layer.cornerRadius = [PUtil getActualHeight:60]/2;
     _bView.contentMode = UIViewContentModeScaleAspectFit;
+    [_bView addGestureRecognizer:recognizer];
     [self.contentView addSubview:_bView];
     
     _bLabel = [[UILabel alloc]init];
@@ -97,7 +100,7 @@
     _guessBtn.enabled = NO;
     _guessBtn.layer.cornerRadius = [PUtil getActualHeight:6];
     _guessBtn.titleLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:28]];
-    [_guessBtn addTarget:self action:@selector(goGuessPage) forControlEvents:UIControlEventTouchUpInside];
+    [_guessBtn addTarget:self action:@selector(goGuessPage:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:_guessBtn];
     
     _lineView = [[UIView alloc]init];
@@ -125,6 +128,14 @@
     if(model.hideLine){
         [_lineView setHidden:YES];
     }
+    
+    if([model.status isEqualToString:Statu_Ready]){
+        [_guessBtn setTitle:@"竞猜" forState:UIControlStateNormal];
+        _guessBtn.backgroundColor = c02_red;
+    }else{
+        [_guessBtn setTitle:@"结果" forState:UIControlStateNormal];
+        _guessBtn.backgroundColor = c01_blue;
+    }
 }
 
 -(void)setDelegate : (id<MainHandleDelegate>)delegate{
@@ -133,8 +144,13 @@
 
 -(void)goGuessPage{
     if(handleDelegate){
-        //todo
-        [handleDelegate goGuessPage:1L];
+        [handleDelegate goGuessPage:1L end:NO];
+    }
+}
+
+-(void)goDetail{
+    if(handleDelegate){
+        [handleDelegate goCorpsDetailPage:1L];
     }
 }
 

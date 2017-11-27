@@ -14,4 +14,6 @@
 
 @property (weak, nonatomic) id<MainHandleDelegate> handleDelegate;
 
+@property (strong, nonatomic) BaseViewController *vc;
+
 @end

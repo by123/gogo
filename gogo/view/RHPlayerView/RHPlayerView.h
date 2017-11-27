@@ -14,7 +14,7 @@
 @interface RHPlayerView : UIView
 
 @property (nonatomic, weak) id<RHPlayerViewDelegate> delegate;
-
+@property (assign, nonatomic) Boolean isFirst;
 /**
  对象方法创建对象
 
@@ -71,7 +71,7 @@
 // 播放结束
 - (void)playerView:(RHPlayerView *)playView didPlayEndVideo:(RHVideoModel *)videoModel index:(NSInteger)index;
 // 开始播放
-- (void)playerView:(RHPlayerView *)playView didPlayVideo:(RHVideoModel *)videoModel index:(NSInteger)index;
+- (void)playerView:(RHPlayerView *)playView didPlayVideo:(RHVideoModel *)videoModel index:(NSInteger)index statu:(int)statu;
 // 播放中
 - (void)playerView:(RHPlayerView *)playView didPlayVideo:(RHVideoModel *)videoModel playTime:(NSTimeInterval)playTime;
 @end

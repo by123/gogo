@@ -9,5 +9,6 @@ pod 'FMDB', '~> 2.6'
 pod 'MJRefresh'
 pod 'Masonry'
 pod 'Qiniu', '~> 7.1'
+pod 'UMengAnalytics'
 
 end

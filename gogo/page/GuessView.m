@@ -22,11 +22,13 @@
 @implementation GuessView{
     NSMutableArray *models;
     long rid;
+    Boolean end;
 }
 
--(instancetype)initWithDatas:(NSMutableArray *)datas{
+-(instancetype)initWithDatas : (NSMutableArray *)datas end:(Boolean)isEnd{
     if(self == [super init]){
         models = datas;
+        end = isEnd;
         [self initView];
     }
     return self;
@@ -89,6 +91,11 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     BettingModel *bettingModel = [models objectAtIndex:indexPath.row];
+    if(end){
+        bettingModel.betting_status = Statu_AlreadyBet;
+    }else{
+        bettingModel.betting_status = Statu_NotBet;
+    }
     [cell setData:bettingModel deleaget:self];
     return cell;
 }
@@ -112,7 +119,7 @@
 
 -(void)onClick:(BettingItemModel *)model{
     if(_delegate){
-        [_delegate OpenGuessOrderView:model];
+        [_delegate OpenGuessOrderView:model guessView:self];
     }
 }
 

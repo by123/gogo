@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "TeamModel.h"
 
+#define Statu_Ready @"ready"
+#define Statu_End @"end"
+
 
 typedef NS_ENUM(NSInteger,ScheduleType){
     Content = 0,

@@ -34,6 +34,8 @@
 
 @property (nonatomic, strong) NSTimer * toolViewShowTimer;
 @property (nonatomic, assign) NSTimeInterval toolViewShowTime;
+//1 = 播放，0=停止， -1 = 暂停
+@property (assign, nonatomic) int statu;
 
 // 当前是否显示控制条
 @property (nonatomic, assign) BOOL isShowToolView;
@@ -170,7 +172,7 @@
     // 下部工具栏
     [self addSubview:self.toolView];
     // 上部标题栏
-    [self addSubview:self.titleView];
+//    [self addSubview:self.titleView];
     // 添加约束
     [self makeConstraintsForUI];
 }
@@ -376,12 +378,18 @@
             [_layerView addPlayerLayer:self.playerLayer];
             
             NSInteger index = [self.videoArr indexOfObject:self.videoModel];
-            if (self.delegate && [self.delegate respondsToSelector:@selector(playerView:didPlayVideo:index:)]) {
+            if (self.delegate && [self.delegate respondsToSelector:@selector(playerView:didPlayVideo:index:statu:)]) {
                 
-                [self.delegate playerView:self didPlayVideo:self.videoModel index:index];
+                if(self.player.timeControlStatus == AVPlayerTimeControlStatusPlaying){
+                    [self pause];
+                    [self.delegate playerView:self didPlayVideo:self.videoModel index:index statu:0];
+                }else{
+                    [self.delegate playerView:self didPlayVideo:self.videoModel index:index statu:1];
+                }
+                self.link = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateSlider)];
+                [self.link addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
             }
-            self.link = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateSlider)];
-            [self.link addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+     
         } else {
             
             _failedView.hidden = NO;
@@ -419,9 +427,9 @@
                 //更换播放的AVPlayerItem
                 [self.player replaceCurrentItemWithPlayerItem:self.playerItem];
                 NSInteger index = [self.videoArr indexOfObject:self.videoModel];
-                if (self.delegate && [self.delegate respondsToSelector:@selector(playerView:didPlayVideo:index:)]) {
+                if (self.delegate && [self.delegate respondsToSelector:@selector(playerView:didPlayVideo:index:statu:)]) {
                     
-                    [self.delegate playerView:self didPlayVideo:self.videoModel index:index];
+                    [self.delegate playerView:self didPlayVideo:self.videoModel index:index statu:1];
                 }
                 _toolView.playSwitch.enabled = NO;
                 _toolView.slider.enabled = NO;

@@ -229,6 +229,7 @@
             account.access_token = model.access_token;
             account.refresh_token = model.refresh_token;
             [[AccountManager sharedAccountManager] saveAccount:account];
+            [MobClick profileSignInWithPUID : model.uid];
             [DialogHelper showSuccessTips:@"登录成功!"];
             [self pushPage:[[MainPage alloc]init]];
         }else{
@@ -269,6 +270,7 @@
             account.access_token = model.access_token;
             account.refresh_token = model.refresh_token;
             [[AccountManager sharedAccountManager] saveAccount:account];
+            [MobClick profileSignInWithPUID : model.uid];
             [DialogHelper showSuccessTips:@"登录成功!"];
             [self pushPage:[[MainPage alloc]init]];
         }else{
@@ -303,6 +305,7 @@
                 account.access_token = model.access_token;
                 account.refresh_token = model.refresh_token;
                 [[AccountManager sharedAccountManager] saveAccount:account];
+                [MobClick profileSignInWithPUID : model.uid];
                 [DialogHelper showSuccessTips:@"登录成功!"];
                 [self pushPage:[[MainPage alloc]init]];
             }else{

@@ -42,6 +42,7 @@
     NSMutableArray *buttons;
     BettingItemModel *selectModel;
     int selectCoin ;
+    GuessView *selectGuessView;
 }
 
 - (void)viewDidLoad {
@@ -152,7 +153,7 @@
                 }
             }
             
-            GuessView *guessView = [[GuessView alloc]initWithDatas:datas];
+            GuessView *guessView = [[GuessView alloc]initWithDatas:datas end:_isEnd];
             guessView.delegate = self;
             [views addObject:guessView];
         }
@@ -258,24 +259,31 @@
     
 }
 
--(void)OpenGuessOrderView:(BettingItemModel *)model{
+-(void)OpenGuessOrderView:(BettingItemModel *)model guessView:(GuessView *)guessView{
     selectModel = model;
+    selectGuessView = guessView;
     _guessOrderView.hidden = NO;
     UserModel *userModel = [[AccountManager sharedAccountManager]getUserInfo];
     _coinLabel.text = [NSString stringWithFormat:@"余额：%@",userModel.coin];
     __weak UIView *tempView  = _guessOrderView;
+    __weak UIButton *tempLiveBtn = _liveBtn;
     [UIView animateWithDuration:0.3f animations:^{
         tempView.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight);
+        tempLiveBtn.frame = CGRectMake([PUtil getActualWidth:540], ScreenHeight, [PUtil getActualWidth:170] , [PUtil getActualHeight:72]);
     }];
 }
 
 -(void)CloseGuessOrderView{
     __weak UIView *tempView  = _guessOrderView;
+    __weak UIButton *tempLiveBtn = _liveBtn;
     [UIView animateWithDuration:0.3f animations:^{
         tempView.frame = CGRectMake(0, ScreenHeight, ScreenWidth, ScreenHeight);
+        tempLiveBtn.frame = CGRectMake([PUtil getActualWidth:540], ScreenHeight - [PUtil getActualHeight:120], [PUtil getActualWidth:170] , [PUtil getActualHeight:72]);
     } completion:^(BOOL finished) {
         tempView.hidden = YES;
-//        [_guessView restoreItems];
+        if(selectGuessView){
+            [selectGuessView restoreItems];
+        }
         for(UIButton *tempBtn in buttons){
             tempBtn.backgroundColor = [UIColor clearColor];
         }

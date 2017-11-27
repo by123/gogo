@@ -17,6 +17,6 @@
 
 @interface GuessButton : UIButton
 
--(instancetype)initWithModel : (BettingItemModel *)model delegate : (id<GuessButtonDelegate>)delegate;
+-(instancetype)initWithModel : (BettingItemModel *)model delegate : (id<GuessButtonDelegate>)delegate statu:(NSString *)statu;
 
 @end

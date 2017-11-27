@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+#define Statu_Win @"win"
+#define Statu_Lose @"lose"
+#define Statu_Unknown @"unknown"
+#define Statu_NotBet @"not_bet"
+#define Statu_AlreadyBet @"already_bet"
+
 @interface BettingItemModel : NSObject
 
 @property (copy, nonatomic) NSString *title;
@@ -16,5 +22,6 @@
 @property (copy, nonatomic) NSString *odds;
 @property (assign, nonatomic) long coin;
 @property (assign, nonatomic) Boolean isSelect;
+@property (copy, nonatomic) NSString *status;
 
 @end

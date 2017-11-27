@@ -15,8 +15,12 @@
 #import <TencentOpenAPI/QQApiInterface.h>
 #import <TencentOpenAPI/TencentOAuth.h>
 #import <QiniuSDK.h>
+#import "UMessage.h"
+#import <UserNotifications/UserNotifications.h>
 
-@interface AppDelegate ()<WXApiDelegate,QQApiInterfaceDelegate>
+
+
+@interface AppDelegate ()<WXApiDelegate,QQApiInterfaceDelegate,UNUserNotificationCenterDelegate>
 @end
 
 @implementation AppDelegate{
@@ -39,6 +43,8 @@
     
     [self initNet];
     [self initWechat];
+    [self initUmeng];
+    [self initUmengPush : launchOptions];
     return YES;
 }
 
@@ -52,6 +58,35 @@
 
 - (void)initWechat{
     [WXApi registerApp:WECHAT_APPID];
+}
+
+-(void)initUmeng{
+    UMConfigInstance.appKey = UMENG_APPKEY;
+    UMConfigInstance.channelId = CHANNELCODE;
+    [MobClick startWithConfigure:UMConfigInstance];//配置以上参数后调用此方法初始化SDK！
+}
+
+-(void)initUmengPush : (NSDictionary *)launchOptions{
+    [UMessage startWithAppkey:UMENG_APPKEY launchOptions:launchOptions];
+    //注册通知，如果要使用category的自定义策略，可以参考demo中的代码。
+    [UMessage registerForRemoteNotifications];
+    
+    //iOS10必须加下面这段代码。
+    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+    center.delegate=self;
+    UNAuthorizationOptions types10=UNAuthorizationOptionBadge|  UNAuthorizationOptionAlert|UNAuthorizationOptionSound;
+    [center requestAuthorizationWithOptions:types10     completionHandler:^(BOOL granted, NSError * _Nullable error) {
+        if (granted) {
+            //点击允许
+            //这里可以添加一些自己的逻辑
+        } else {
+            //点击不允许
+            //这里可以添加一些自己的逻辑
+        }
+    }];
+    //打开日志，方便调试
+    [UMessage setLogEnabled:YES];
+    
 }
 
 // 这个方法是用于从微信返回第三方App
@@ -79,6 +114,8 @@
     }
     return YES;
 }
+
+
 
 
 - (BOOL)application:(UIApplication *)application
@@ -133,5 +170,64 @@
 - (void)isOnlineResponse:(NSDictionary *)response{
     
 }
+
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+
+}
+
+//iOS10以下使用这个方法接收通知
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    //关闭U-Push自带的弹出框
+    [UMessage setAutoAlert:NO];
+    [UMessage didReceiveRemoteNotification:userInfo];
+    
+    //    self.userInfo = userInfo;
+    //    //定制自定的的弹出框
+    //    if([UIApplication sharedApplication].applicationState == UIApplicationStateActive)
+    //    {
+    //        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"标题"
+    //                                                            message:@"Test On ApplicationStateActive"
+    //                                                           delegate:self
+    //                                                  cancelButtonTitle:@"确定"
+    //                                                  otherButtonTitles:nil];
+    //
+    //        [alertView show];
+    //
+    //    }
+}
+
+//iOS10新增：处理前台收到通知的代理方法
+-(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler{
+    NSDictionary * userInfo = notification.request.content.userInfo;
+    if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+        //应用处于前台时的远程推送接受
+        //关闭U-Push自带的弹出框
+        [UMessage setAutoAlert:NO];
+        //必须加这句代码
+        [UMessage didReceiveRemoteNotification:userInfo];
+        
+    }else{
+        //应用处于前台时的本地推送接受
+    }
+    //当应用处于前台时提示设置，需要哪个可以设置哪一个
+    completionHandler(UNNotificationPresentationOptionSound|UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionAlert);
+}
+
+//iOS10新增：处理后台点击通知的代理方法
+-(void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(nonnull void (^)(void))completionHandler{
+    NSDictionary * userInfo = response.notification.request.content.userInfo;
+    if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
+        //应用处于后台时的远程推送接受
+        //必须加这句代码
+        [UMessage didReceiveRemoteNotification:userInfo];
+        
+    }else{
+        //应用处于后台时的本地推送接受
+    }
+}
+
 
 @end

@@ -7,14 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GuessPage.h"
 #import "GuessButton.h"
 #import "BettingItemModel.h"
+#import "GuessPage.h"
+
 @interface GuessView : UIView<GuessButtonDelegate>
 
--(instancetype)initWithDatas : (NSMutableArray *)datas;
+@property (weak, nonatomic) id delegate;
 
-@property (weak, nonatomic) id<GuessDelegate> delegate;
+-(instancetype)initWithDatas : (NSMutableArray *)datas end:(Boolean)isEnd;
 
 -(void)restoreItems;
 

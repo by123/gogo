@@ -28,6 +28,7 @@ PODS:
   - SDWebImage (3.7.6):
     - SDWebImage/Core (= 3.7.6)
   - SDWebImage/Core (3.7.6)
+  - UMengAnalytics (4.2.4)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
@@ -38,6 +39,7 @@ DEPENDENCIES:
   - MJRefresh
   - Qiniu (~> 7.1)
   - SDWebImage (~> 3.7.5)
+  - UMengAnalytics
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -49,7 +51,8 @@ SPEC CHECKSUMS:
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   Qiniu: 2f1b9d13904b6a7608a66a2d02c5b7b24575622a
   SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
+  UMengAnalytics: ef8d45f94c0e5771dc364cf6a5731d9d3b101da2
 
-PODFILE CHECKSUM: eb4b4a4f9bcb74d37f8c416789c62ce710029387
+PODFILE CHECKSUM: 6119bc63c65ff606d0ca7527bacb21b3946186ba
 
 COCOAPODS: 1.2.0

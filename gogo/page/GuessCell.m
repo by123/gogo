@@ -56,8 +56,13 @@
         _lineView.frame = CGRectMake([PUtil getActualWidth:30],[PUtil getActualHeight:206] + (per * rows)-1, ScreenWidth - 30, 1);
         for(int i = 0 ; i < [datas count] ; i ++){
             BettingItemModel *itemModel = [datas objectAtIndex:i];
-            GuessButton *button  =[[GuessButton alloc]initWithModel:itemModel delegate:delegate];
+            GuessButton *button  =[[GuessButton alloc]initWithModel:itemModel delegate:delegate statu:model.betting_status];
             if(itemModel.isSelect){
+                button.backgroundColor = c01_blue;
+            }else{
+                button.backgroundColor = c06_backgroud;
+            }
+            if([itemModel.status isEqualToString:Statu_Win]){
                 button.backgroundColor = c01_blue;
             }else{
                 button.backgroundColor = c06_backgroud;

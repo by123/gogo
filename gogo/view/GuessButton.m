@@ -21,14 +21,16 @@
     BettingItemModel *itemModel;
     id guessButtonDelegate;
     Boolean isSelect;
+    NSString *statuStr;
 }
 
--(instancetype)initWithModel : (BettingItemModel *)model delegate:(id<GuessButtonDelegate>)delegate{
+-(instancetype)initWithModel : (BettingItemModel *)model delegate : (id<GuessButtonDelegate>)delegate statu:(NSString *)statu{
     if(self == [super init]){
         titleStr = model.title;
         guessStr = model.odds;
         guessButtonDelegate = delegate;
         itemModel = model;
+        statuStr = statu;
         [self initView];
     }
     return self;
@@ -63,6 +65,9 @@
 }
 
 -(void)OnClick{
+    if([statuStr isEqualToString:Statu_AlreadyBet]){
+        return;
+    }
 
     if(!isSelect){
         self.backgroundColor = c01_blue;

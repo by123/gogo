@@ -10,12 +10,12 @@
 #import "NewsCell.h"
 #import "RespondModel.h"
 #import "RHPlayerView.h"
-
+#import "VideoCell.h"
 
 #define AdViewHeight [PUtil getActualHeight:300]
 #define AdInterval 3.0f
 
-@interface HomeView ()
+@interface HomeView ()<RHPlayerViewDelegate>
 
 @property (strong, nonatomic) UIScrollView *scrollerView;
 @property (strong, nonatomic) UITableView *tableView;
@@ -98,7 +98,12 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return [PUtil getActualHeight:172];
+    NewsModel *model = [datas objectAtIndex:indexPath.row];
+    if(IS_NS_STRING_EMPTY(model.video)){
+        return [PUtil getActualHeight:172];
+    }else{
+        return [PUtil getActualHeight:600];
+    }
 }
 
 
@@ -111,13 +116,26 @@
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NewsCell *cell =  [tableView dequeueReusableCellWithIdentifier:[NewsCell identify]];
-    if(cell == nil){
-        cell = [[NewsCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NewsCell identify]];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    NewsModel *model = [datas objectAtIndex:indexPath.row];
+    if(IS_NS_STRING_EMPTY(model.video)){
+        NewsCell *cell =  [tableView dequeueReusableCellWithIdentifier:[NewsCell identify]];
+        if(cell == nil){
+            cell = [[NewsCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NewsCell identify]];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
+        [cell setData:model];
+        return cell;
+    }else{
+        VideoCell *cell =  [tableView dequeueReusableCellWithIdentifier:[VideoCell identify]];
+        if(cell == nil){
+            cell = [[VideoCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[VideoCell identify] controller:_vc delegate:self];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
+        [cell setData:model];
+        return cell;
     }
-    [cell setData:[datas objectAtIndex:indexPath.row]];
-    return cell;
+
 }
 
 
@@ -151,8 +169,16 @@
                 [_scrollerView.mj_footer endRefreshingWithNoMoreData];
             }
             [datas addObjectsFromArray:temps];
-             _tableView.frame = CGRectMake(0, AdViewHeight, ScreenWidth, [PUtil getActualHeight:172] * [datas count]);
-            _scrollerView.contentSize = CGSizeMake(ScreenWidth, [PUtil getActualHeight:172] * [datas count] + AdViewHeight);
+            int height = 0;
+            for(NewsModel *model in datas){
+                if(IS_NS_STRING_EMPTY(model.video)){
+                    height += [PUtil getActualHeight:172];
+                }else{
+                    height += [PUtil getActualHeight:600];
+                }
+            }
+             _tableView.frame = CGRectMake(0, AdViewHeight, ScreenWidth, height);
+            _scrollerView.contentSize = CGSizeMake(ScreenWidth, height + AdViewHeight);
             [_tableView reloadData];
         }
     } failure:^(NSError *error) {
@@ -174,12 +200,44 @@
                     [titles addObject:model.title];
                     [images addObject:model.cover];
                 }
+                [_cycleScrollView setImagesGroup:images titles:titles];
             }
-            [_cycleScrollView setImagesGroup:images titles:titles];
         }
     } failure:^(NSError *error) {
         
     }];
 }
+
+// 当前播放的
+- (void)playerView:(RHPlayerView *)playView didPlayVideo:(RHVideoModel *)videoModel index:(NSInteger)index statu:(int)statu{
+  
+    if(statu == 0){
+        return;
+    }
+    for(NewsModel *model in datas){
+        model.isPlay = NO;
+    }
+    for(NewsModel *model in datas){
+            if(model.news_id == [videoModel.videoId longLongValue] ){
+                model.isPlay = YES;
+            }
+    }
+    [_tableView reloadData];
+
+}
+// 当前播放结束的
+- (void)playerView:(RHPlayerView *)playView didPlayEndVideo:(RHVideoModel *)videoModel index:(NSInteger)index {
+    
+    
+}
+// 当前正在播放的  会调用多次  更新当前播放时间
+- (void)playerView:(RHPlayerView *)playView didPlayVideo:(RHVideoModel *)videoModel playTime:(NSTimeInterval)playTime {
+    
+}
+
+-(BOOL)playerViewShouldPlay{
+    return YES;
+}
+
 
 @end

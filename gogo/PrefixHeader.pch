@@ -25,6 +25,7 @@
 #import <AlipaySDK/AlipaySDK.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <Masonry/Masonry.h>
+#import "UMMobClick/MobClick.h"
 
 
 #ifndef PrefixHeader_pch

@@ -83,10 +83,13 @@
     ScheduleItemModel *model = [datas objectAtIndex:indexPath.row];
     if(!IS_NS_STRING_EMPTY(model.score_a)){
         if(_handleDelegate){
-            [_handleDelegate goGuessPage:model.race_id];
+            if([model.status isEqualToString:Statu_End]){
+                [_handleDelegate goGuessPage:model.race_id end:YES];
+            }else{
+                [_handleDelegate goGuessPage:model.race_id end:NO];
+            }
         }
     }
-
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -135,21 +138,29 @@
         if(respondModel.code == 200){
             id data = respondModel.data;
             index = [[data objectForKey:@"index"] intValue];
+            if(index == -1){
+                [_scrollerView.mj_footer endRefreshingWithNoMoreData];
+                return ;
+            }
             id items = [data objectForKey:@"items"];
             NSMutableArray *tempDatas = [ScheduleModel mj_objectArrayWithKeyValuesArray:items];
             NSMutableArray *addDatas = [[NSMutableArray alloc]init];
             for(ScheduleModel *model in tempDatas){
-                ScheduleItemModel *titleModel = [[ScheduleItemModel alloc]init];
-                titleModel.create_ts = [NSString stringWithFormat:@"%ld",model.dt];
-                [addDatas addObject:titleModel];
-                NSMutableArray *contentItems =model.items;
-                for(int i = 0 ; i < [contentItems count];i++){
-                    id contentItem = [contentItems objectAtIndex:i];
-                    ScheduleItemModel *contentModel  = [ScheduleItemModel mj_objectWithKeyValues:contentItem];
-                    if(i == [contentItems count]-1){
-                        contentModel.hideLine = YES;
+                if(model.dt != 0){
+                    ScheduleItemModel *titleModel = [[ScheduleItemModel alloc]init];
+                    titleModel.create_ts = [NSString stringWithFormat:@"%ld",model.dt];
+                    [addDatas addObject:titleModel];
+                    NSMutableArray *contentItems =model.items;
+                    if(!IS_NS_COLLECTION_EMPTY(contentItems)){
+                        for(int i = 0 ; i < [contentItems count];i++){
+                            id contentItem = [contentItems objectAtIndex:i];
+                            ScheduleItemModel *contentModel  = [ScheduleItemModel mj_objectWithKeyValues:contentItem];
+                            if(i == [contentItems count]-1){
+                                contentModel.hideLine = YES;
+                            }
+                            [addDatas addObject:contentModel];
+                        }
                     }
-                    [addDatas addObject:contentModel];
                 }
             }
             

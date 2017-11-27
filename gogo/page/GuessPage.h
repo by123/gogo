@@ -9,17 +9,19 @@
 
 #import "BaseViewController.h"
 #import "BettingItemModel.h"
-@protocol GuessDelegate <NSObject>
+#import "GuessView.h"
 
-@optional -(void)goLivePage;
+@protocol GuessDelegate<NSObject>
 
-@optional -(void)OpenGuessOrderView : (BettingItemModel *)model;
+@optional -(void)OpenGuessOrderView : (BettingItemModel *)model guessView : (UIView *)guessView;
 
 @end
 
 @interface GuessPage : BaseViewController<GuessDelegate>
 
 @property (assign, nonatomic) long race_id;
-
+@property (assign, nonatomic) Boolean isEnd;
 
 @end
+
+

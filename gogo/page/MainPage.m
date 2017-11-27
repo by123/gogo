@@ -122,6 +122,7 @@
     [self removeBodySubView];
     HomeView *homeView = [[HomeView alloc]initWithFrame:CGRectMake(0, 0,ScreenWidth, _mBodyView.mj_h)];
     homeView.handleDelegate = self;
+    homeView.vc = self;
     [_mBodyView addSubview:homeView];
 }
 
@@ -213,9 +214,10 @@
 }
 
 #pragma mark 跳转到竞猜
--(void)goGuessPage:(long)race_id{
+-(void)goGuessPage:(long)race_id end:(Boolean *)isEnd{
     GuessPage *page = [[GuessPage alloc]init];
     page.race_id = race_id;
+    page.isEnd = isEnd;
     [self pushPage:page];
 }
 

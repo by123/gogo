@@ -21,6 +21,8 @@
 		CF1CD6EA1FB620060058EEBB /* BettingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1CD6E91FB620060058EEBB /* BettingModel.m */; };
 		CF1CD6ED1FB6219C0058EEBB /* BettingItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1CD6EC1FB6219C0058EEBB /* BettingItemModel.m */; };
 		CF1CD6F01FB8B8920058EEBB /* TitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1CD6EF1FB8B8920058EEBB /* TitleButton.m */; };
+		CF2B9D151FC74F0A00121BE6 /* VideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2B9D141FC74F0A00121BE6 /* VideoCell.m */; };
+		CF2B9D1A1FC985D800121BE6 /* libUMessage_Sdk_1.5.0a.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF2B9D181FC985D800121BE6 /* libUMessage_Sdk_1.5.0a.a */; };
 		CF2EAE551F9D0FC000F35974 /* BottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAE541F9D0FC000F35974 /* BottomView.m */; };
 		CF2EAE611F9E71A400F35974 /* ScheduleView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAE601F9E71A400F35974 /* ScheduleView.m */; };
 		CF2EAE651F9E71D800F35974 /* CorpsView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAE641F9E71D800F35974 /* CorpsView.m */; };
@@ -193,6 +195,11 @@
 		CF1CD6EE1FB8B8920058EEBB /* TitleButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleButton.h; sourceTree = "<group>"; };
 		CF1CD6EF1FB8B8920058EEBB /* TitleButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleButton.m; sourceTree = "<group>"; };
 		CF1CD6F11FB8C9F80058EEBB /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		CF2B9D131FC74F0A00121BE6 /* VideoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoCell.h; sourceTree = "<group>"; };
+		CF2B9D141FC74F0A00121BE6 /* VideoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoCell.m; sourceTree = "<group>"; };
+		CF2B9D181FC985D800121BE6 /* libUMessage_Sdk_1.5.0a.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMessage_Sdk_1.5.0a.a; sourceTree = "<group>"; };
+		CF2B9D191FC985D800121BE6 /* UMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMessage.h; sourceTree = "<group>"; };
+		CF2B9D1B1FC985FD00121BE6 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		CF2EAE531F9D0FC000F35974 /* BottomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BottomView.h; sourceTree = "<group>"; };
 		CF2EAE541F9D0FC000F35974 /* BottomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BottomView.m; sourceTree = "<group>"; };
 		CF2EAE5F1F9E71A400F35974 /* ScheduleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScheduleView.h; sourceTree = "<group>"; };
@@ -468,6 +475,7 @@
 				CF7B7ECA1FAE61BF003FC2D6 /* libz.tbd in Frameworks */,
 				CF7B7EC81FAE61B9003FC2D6 /* libsqlite3.0.tbd in Frameworks */,
 				CF7B7EC61FAE61AA003FC2D6 /* SystemConfiguration.framework in Frameworks */,
+				CF2B9D1A1FC985D800121BE6 /* libUMessage_Sdk_1.5.0a.a in Frameworks */,
 				CF7B7EC41FAE61A1003FC2D6 /* CoreTelephony.framework in Frameworks */,
 				CF7B7EC11FAE612E003FC2D6 /* libWeChatSDK.a in Frameworks */,
 				C58EEBC53BCADD2B05F513F8 /* libPods-gogo.a in Frameworks */,
@@ -481,6 +489,7 @@
 		0B3F5C946CD226272B2A24DA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CF2B9D1B1FC985FD00121BE6 /* UserNotifications.framework */,
 				CF1CD6F11FB8C9F80058EEBB /* Accelerate.framework */,
 				CF4855751FB2BBD60018502A /* libstdc++.tbd */,
 				CF4855731FB2BBBD0018502A /* libiconv.tbd */,
@@ -528,6 +537,8 @@
 				CFCB0F171F71088F0087ACC7 /* HomeView.m */,
 				CF0BEDD31F9BB96E005275EE /* NewsCell.h */,
 				CF0BEDD41F9BB96E005275EE /* NewsCell.m */,
+				CF2B9D131FC74F0A00121BE6 /* VideoCell.h */,
+				CF2B9D141FC74F0A00121BE6 /* VideoCell.m */,
 			);
 			name = home;
 			sourceTree = "<group>";
@@ -574,6 +585,15 @@
 				CF2EAEDF1FA4E76400F35974 /* MineCell.m */,
 			);
 			name = mine;
+			sourceTree = "<group>";
+		};
+		CF2B9D171FC985D800121BE6 /* UMessage_Sdk_1.5.0a */ = {
+			isa = PBXGroup;
+			children = (
+				CF2B9D181FC985D800121BE6 /* libUMessage_Sdk_1.5.0a.a */,
+				CF2B9D191FC985D800121BE6 /* UMessage.h */,
+			);
+			path = UMessage_Sdk_1.5.0a;
 			sourceTree = "<group>";
 		};
 		CF2EAE5E1F9E719100F35974 /* schedule */ = {
@@ -787,6 +807,7 @@
 				CFCB0F0B1F7105360087ACC7 /* view */,
 				CF7214E41F6678E4002F3634 /* AppDelegate.h */,
 				CF7214E51F6678E4002F3634 /* AppDelegate.m */,
+				CF2B9D171FC985D800121BE6 /* UMessage_Sdk_1.5.0a */,
 				CF7214E11F6678E4002F3634 /* Supporting Files */,
 			);
 			path = gogo;
@@ -1179,6 +1200,9 @@
 						DevelopmentTeam = AB86U4DT8H;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -1362,6 +1386,7 @@
 				CF7B7EAB1FACEC0F003FC2D6 /* NewsDetailModel.m in Sources */,
 				CF2EAE761F9FC7C800F35974 /* TeamModel.m in Sources */,
 				CF2EAEB71FA26C5800F35974 /* MemberModel.m in Sources */,
+				CF2B9D151FC74F0A00121BE6 /* VideoCell.m in Sources */,
 				CFBFE5251FA64CD000500B1B /* LivePage.m in Sources */,
 				CFCB0F0C1F7105360087ACC7 /* BaseViewController.m in Sources */,
 				CF48557F1FB2ECEF0018502A /* Province.m in Sources */,
@@ -1554,6 +1579,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/gogo/wechat",
+					"$(PROJECT_DIR)/gogo/UMessage_Sdk_1.5.0a",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
@@ -1616,6 +1642,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/gogo/wechat",
+					"$(PROJECT_DIR)/gogo/UMessage_Sdk_1.5.0a",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
