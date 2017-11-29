@@ -52,6 +52,7 @@
 #define API_UPLOAD_HEAD @"https://gogo.scrats.cn/api/file/qiniu_token"
 #define API_UPLOAD_USERINFO @"https://gogo.scrats.cn/api/core/user"
 #define API_QINIU @"https://gogo.scrats.cn/api/file/qiniu_token"
+#define API_GETTYPE @"https://gogo.scrats.cn/api/core/news/type"
 
 //notification
 #define NOTIFY_WECAHT_CALLBACK @"notify_wechat_callback"

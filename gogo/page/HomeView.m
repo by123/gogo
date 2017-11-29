@@ -208,6 +208,27 @@
     }];
 }
 
+-(void)requestType{
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
+    [ByNetUtil get:API_GETTYPE parameters:dic success:^(RespondModel *respondModel) {
+        if(respondModel.code == 200){
+            id data = respondModel.data;
+            NSMutableArray *datas = [NewsModel mj_objectArrayWithKeyValuesArray:data];
+            NSMutableArray *titles = [[NSMutableArray alloc]init];
+            NSMutableArray *images = [[NSMutableArray alloc]init];
+            if(!IS_NS_COLLECTION_EMPTY(datas)){
+                for(NewsModel *model in datas){
+                    [titles addObject:model.title];
+                    [images addObject:model.cover];
+                }
+                [_cycleScrollView setImagesGroup:images titles:titles];
+            }
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
 // 当前播放的
 - (void)playerView:(RHPlayerView *)playView didPlayVideo:(RHVideoModel *)videoModel index:(NSInteger)index statu:(int)statu{
   

@@ -14,7 +14,6 @@
 
 @property (strong, nonatomic) UILabel *statuLabel;
 @property (strong, nonatomic) UILabel *coinLabel;
-@property (strong, nonatomic) UILabel *coinUnitLabel;
 @property (strong, nonatomic) UILabel *resultLabel;
 @property (strong, nonatomic) ItemView  *timeView;
 @property (strong, nonatomic) ItemView  *teamView;
@@ -51,14 +50,9 @@
     
     _coinLabel = [[UILabel alloc]init];
     _coinLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:48]];
-    _coinLabel.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualHeight:67],[PUtil getActualWidth:132],  [PUtil getActualHeight:67]);
+    _coinLabel.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualHeight:67],ScreenWidth -[PUtil getActualWidth:30],  [PUtil getActualHeight:67]);
     [self.contentView addSubview:_coinLabel];
     
-    _coinUnitLabel = [[UILabel alloc]init];
-    _coinUnitLabel.text = @"竞猜币";
-    _coinUnitLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:24]];
-    _coinUnitLabel.frame = CGRectMake([PUtil getActualWidth:162], [PUtil getActualHeight:73],[PUtil getActualWidth:80],  [PUtil getActualHeight:67]);
-    [self.contentView addSubview:_coinUnitLabel];
     
     _resultLabel = [[UILabel alloc]init];
     _resultLabel.text = @"竞猜币";
@@ -100,7 +94,6 @@
 -(void)setData : (GuessHistoryModel *)model{
     if([model.status isEqualToString:APPLY]){
         _coinLabel.hidden = YES;
-        _coinUnitLabel.hidden = YES;
         _resultLabel.text = @"-";
         _resultLabel.textColor = c08_text;
         [_resultView setContent:@"比赛未完成"];
@@ -108,7 +101,6 @@
     }else if([model.status isEqualToString:WIN]){
         _statuLabel.hidden = YES;
         _coinLabel.textColor = c01_blue;
-        _coinUnitLabel.textColor = c01_blue;
         int result = [model.coin intValue] * [model.odds intValue];
         _coinLabel.text = [NSString stringWithFormat:@"+ %d",result];
         _resultLabel.text = @"WIN";
@@ -118,7 +110,6 @@
     }else if([model.status isEqualToString:LOSE]){
         _statuLabel.hidden = YES;
         _coinLabel.textColor = c02_red;
-        _coinUnitLabel.textColor = c02_red;
         _coinLabel.text = [NSString stringWithFormat:@"- %@",model.coin];
         _resultLabel.text = @"LOSE";
         _resultLabel.textColor = c02_red;
@@ -143,6 +134,15 @@
     
     NSString *cathecticStr = [NSString stringWithFormat:@"%@竞猜币 / 赔率%@",model.coin,model.odds];
     [_cathecticView setContent:cathecticStr];
+    
+
+    NSMutableAttributedString * noteStr = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@竞猜币",_coinLabel.text]];
+    NSRange redRangeTwo = NSMakeRange(noteStr.length - 3, 3);
+    [noteStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:[PUtil getActualHeight:24]] range:redRangeTwo];
+    [_coinLabel setAttributedText:noteStr];
+    [_coinLabel sizeToFit];
+    
+
     
 }
 
