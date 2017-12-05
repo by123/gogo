@@ -19,6 +19,8 @@
 @property (copy,nonatomic) NSString *cover;
 @property (copy, nonatomic) NSString *comment_count;
 @property (copy, nonatomic) NSString *video;
+@property (assign, nonatomic) long like_count;
+@property (assign, nonatomic) bool is_like;
 @property (assign,nonatomic) Boolean isPlay;
 
 

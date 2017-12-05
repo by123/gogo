@@ -21,6 +21,8 @@
 @property (copy, nonatomic) NSString *url;
 @property (copy, nonatomic) NSString *body;
 @property (copy, nonatomic) NSString *video;
+@property (assign, nonatomic) long like_count;
+@property (assign, nonatomic) bool is_like;
 
 
 @end

@@ -17,6 +17,7 @@
 #import "CommentListModel.h"
 #import "RHPlayerView.h"
 #import "RHVideoModel.h"
+#import "RespondModel.h"
 
 #define CommentCellHeight [PUtil getActualHeight:180]
 #define REREQUESTSIZE 10
@@ -66,7 +67,12 @@
 
 
 -(void)initView{
-    _barView = [[BarView alloc]initWithTitle:model.title page:self delegate:self];
+    _barView = [[BarView alloc]initWithTitle:model.title page:self delegate:self like:YES];
+    if(model.is_like){
+        [_barView setLike:YES];
+    }else{
+        [_barView setLike:NO];
+    }
     [self.view addSubview:_barView];
     
     _scrollerView = [[TouchScrollView alloc]initWithParentView:self.view];
@@ -98,14 +104,15 @@
         [_webView loadHTMLString:htmlStr baseURL:nil];
         [_scrollerView addSubview:_webView];
     }else{
+        NSString *vedioId = [NSString stringWithFormat:@"%ld",model.news_id];
         _playView = [[RHPlayerView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenWidth * ScreenWidth / ScreenHeight) currentVC:self parentView : _scrollerView];
         _playView.delegate = self;
         NSMutableArray *dataArr = [[NSMutableArray alloc]init];
-        RHVideoModel *videoModel = [[RHVideoModel alloc] initWithVideoId:@"1" title:@"" url:model.video currentTime:0];
+        RHVideoModel *videoModel = [[RHVideoModel alloc] initWithVideoId:vedioId title:@"" url:model.video currentTime:0];
         [dataArr addObject:videoModel];
-        [_playView setVideoModels:dataArr playVideoId:@""];
+        [_playView setVideoModels:dataArr playVideoId:vedioId];
         [_scrollerView addSubview:_playView];
-        [_playView playVideoWithVideoId:@"1"];
+        [_playView playVideoWithVideoId:vedioId];
         [self initComment];
         [self requestNew];
     }
@@ -352,7 +359,7 @@
 }
 
 // 当前播放的
-- (void)playerView:(RHPlayerView *)playView didPlayVideo:(RHVideoModel *)videoModel index:(NSInteger)index {
+- (void)playerView:(RHPlayerView *)playView didPlayVideo:(RHVideoModel *)videoModel index:(NSInteger)index{
     
 }
 // 当前播放结束的
@@ -360,7 +367,7 @@
     
     
 }
-// 当前正在播放的  会调用多次  更新当前播放时间
+// 当前正在播放的,会调用多次,更新当前播放时间
 - (void)playerView:(RHPlayerView *)playView didPlayVideo:(RHVideoModel *)videoModel playTime:(NSTimeInterval)playTime {
     
 
@@ -374,5 +381,43 @@
     }
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+
+-(void)onLikeClick{
+    if(model.is_like){
+        [self doUnlike];
+    }else{
+        [self doLike];
+    }
+}
+
+
+-(void)doLike{
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
+    dic[@"news_id"] = @(_news_id);
+    [ByNetUtil post:API_NEWS_LIKE parameters:dic success:^(RespondModel *respondModel) {
+        if(respondModel.code == 200){
+            [_barView setLike:YES];
+            model.is_like = true;
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
+
+-(void)doUnlike{
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
+    dic[@"news_id"] = @(_news_id);
+    [ByNetUtil post:API_NEWS_UNLIKE parameters:dic success:^(RespondModel *respondModel) {
+        if(respondModel.code == 200){
+            [_barView setLike:NO];
+            model.is_like = false;
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
 
 @end

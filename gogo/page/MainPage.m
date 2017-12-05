@@ -28,6 +28,7 @@
 #import "UserModel.h"
 #import "AccountManager.h"
 #import "SettingPage.h"
+#import <AVKit/AVKit.h>
 
 #define TitleHeight [PUtil getActualHeight:88]
 
@@ -36,6 +37,7 @@
 @property (strong, nonatomic) UILabel *mTitleLabel;
 @property (strong, nonatomic) UIView  *mBodyView;
 @property (strong, nonatomic) MineView *mineView;
+@property (strong, nonatomic) HomeView *homeView;
 
 @end
 
@@ -49,10 +51,48 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initView];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(appBecomeActive:)
+                                                 name:UIApplicationDidBecomeActiveNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(appWillResignActive:)
+                                                 name:UIApplicationWillResignActiveNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoPlayEnd) name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
+}
+
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidBecomeActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillResignActiveNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [self getUserInfo];
+}
+
+
+//切换到后台
+- (void)appWillResignActive:(NSNotification *)notification{
+    if(_homeView){
+        [_homeView appWillResignActive];
+    }
+}
+
+//切换回前台
+- (void)appBecomeActive:(NSNotification *)notification{
+    
+}
+
+//播放结束
+- (void)videoPlayEnd{
+    if(_homeView){
+        [_homeView videoPlayEnd];
+    }
 }
 
 -(void)initView{
@@ -90,6 +130,10 @@
 
 
 -(void)OnTabSelected:(NSInteger)index{
+    if(_homeView){
+        [_homeView restore];
+    }
+    [self removeBodySubView];
     _mTitleLabel.text = [titles objectAtIndex:index];
     switch (index) {
         case 0:
@@ -107,6 +151,7 @@
         default:
             break;
     }
+
 }
 
 
@@ -119,16 +164,14 @@
 
 #pragma mark 添加首页
 -(void)addHomePage{
-    [self removeBodySubView];
-    HomeView *homeView = [[HomeView alloc]initWithFrame:CGRectMake(0, 0,ScreenWidth, _mBodyView.mj_h)];
-    homeView.handleDelegate = self;
-    homeView.vc = self;
-    [_mBodyView addSubview:homeView];
+    _homeView = [[HomeView alloc]initWithFrame:CGRectMake(0, 0,ScreenWidth, _mBodyView.mj_h)];
+    _homeView.handleDelegate = self;
+    _homeView.vc = self;
+    [_mBodyView addSubview:_homeView];
 }
 
 #pragma mark 添加赛事
 -(void)addGamePage{
-    [self removeBodySubView];
     GamePage *gamepage = [[GamePage alloc]init];
     gamepage.handleDelegate = self;
     [_mBodyView addSubview:gamepage.view];
@@ -136,7 +179,6 @@
 
 #pragma mark 添加商城
 -(void)addMallPage{
-    [self removeBodySubView];
     MallPage *mallpage = [[MallPage alloc]init];
     mallpage.handleDelegate = self;
     [_mBodyView addSubview:mallpage.view];
@@ -144,7 +186,6 @@
 
 #pragma mark 添加我的
 -(void)addMinePage{
-    [self removeBodySubView];
     _mineView = [[MineView alloc]initWithFrame:CGRectMake(0, 0,ScreenWidth, _mBodyView.mj_h)];
     _mineView.handleDelegate = self;
     [_mBodyView addSubview:_mineView];

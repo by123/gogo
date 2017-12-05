@@ -16,4 +16,10 @@
 
 @property (strong, nonatomic) BaseViewController *vc;
 
+-(void)appWillResignActive;
+
+-(void)videoPlayEnd;
+
+-(void)restore;
+
 @end

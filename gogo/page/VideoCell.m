@@ -7,28 +7,29 @@
 //
 
 #import "VideoCell.h"
-#import "RHPlayerView.h"
-#import "RHVideoModel.h"
+#import "ByVideoView.h"
 
-@interface VideoCell()
+@interface VideoCell()<ByVideoViewDelegate>
 
 @property (strong ,nonatomic) UILabel *mTitleLabel;
 @property (strong, nonatomic) UIImageView *mTypeImage;
 @property (strong ,nonatomic) UILabel *mTypeLabel;
 @property (strong, nonatomic) UIImageView *mCommentImage;
 @property (strong ,nonatomic) UILabel *mCommentLabel;
+@property (strong, nonatomic) UIImageView *mZanImage;
+@property (strong ,nonatomic) UILabel *mZanLabel;
 @property (strong ,nonatomic) UIImageView *mImageView;
 @property (strong ,nonatomic) UIView  *lineView;
-@property (strong, nonatomic) RHPlayerView *playView;
+@property (strong, nonatomic) ByVideoView *playView;
 
 @end
 
 @implementation VideoCell{
     BaseViewController *vc;
-    id<RHPlayerViewDelegate> _delegate;
+    id<VideoCellDelegate> _delegate;
 }
 
--(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier controller:(BaseViewController *)controller delegate : (id<RHPlayerViewDelegate>)delegate{
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier controller:(BaseViewController *)controller delegate : (id<VideoCellDelegate>)delegate{
     if(self == [super initWithStyle:style reuseIdentifier:reuseIdentifier]){
         vc = controller;
         _delegate = delegate;
@@ -61,50 +62,73 @@
     
     _mCommentImage = [[UIImageView alloc]init];
     _mCommentImage.image = [UIImage imageNamed:@"ic_comment_12"];
-    _mCommentImage.frame = CGRectMake([PUtil getActualWidth:440], [PUtil getActualHeight:560], [PUtil getActualWidth:24], [PUtil getActualWidth:24]);
+    _mCommentImage.frame = CGRectMake([PUtil getActualWidth:570], [PUtil getActualHeight:560], [PUtil getActualWidth:24], [PUtil getActualWidth:24]);
     [self.contentView addSubview:_mCommentImage];
     
     _mCommentLabel = [[UILabel alloc]init];
-    _mCommentLabel.frame = CGRectMake([PUtil getActualWidth:472], [PUtil getActualHeight:555], [PUtil getActualWidth:60], [PUtil getActualHeight:33]);
+    _mCommentLabel.frame = CGRectMake([PUtil getActualWidth:602], [PUtil getActualHeight:555], [PUtil getActualWidth:60], [PUtil getActualHeight:33]);
     _mCommentLabel.textColor = c09_tips;
     _mCommentLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:24]];
     [self.contentView addSubview:_mCommentLabel];
     
-    _playView = [[RHPlayerView alloc]initWithFrame:CGRectMake(0, [PUtil getActualHeight:105], ScreenWidth, ScreenWidth * ScreenWidth / ScreenHeight) currentVC:vc parentView : self.contentView];
-    _playView.delegate = _delegate;
-    [self.contentView addSubview:_playView];
+    _mZanImage = [[UIImageView alloc]init];
+    _mZanImage.image = [UIImage imageNamed:@"ic_zan_normal"];
+    _mZanImage.frame = CGRectMake([PUtil getActualWidth:650], [PUtil getActualHeight:560], [PUtil getActualWidth:24], [PUtil getActualWidth:24]);
+    [self.contentView addSubview:_mZanImage];
+    
+    _mZanLabel = [[UILabel alloc]init];
+    _mZanLabel.frame = CGRectMake([PUtil getActualWidth:682], [PUtil getActualHeight:555], [PUtil getActualWidth:60], [PUtil getActualHeight:33]);
+    _mZanLabel.textColor = c09_tips;
+    _mZanLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:24]];
+    [self.contentView addSubview:_mZanLabel];
     
     _lineView = [[UIView alloc]init];
     _lineView.backgroundColor = c05_divider;
     _lineView.frame = CGRectMake([PUtil getActualWidth:30],  [PUtil getActualHeight:600]-1, ScreenWidth - ([PUtil getActualWidth:30]*2), 1);
     [self.contentView addSubview:_lineView];
+ 
+    _playView = [[ByVideoView alloc]initWithFrame:CGRectMake(0, [PUtil getActualHeight:105], ScreenWidth, ScreenWidth * ScreenWidth / ScreenHeight)];
+    _playView.delegate = self;
+    [self.contentView addSubview:_playView];
+    
 }
+
 
 
 -(void)setData : (NewsModel *)model{
     _mTitleLabel.text = model.title;
     _mTypeLabel.text = model.tp;
     _mCommentLabel.text = model.comment_count;
-    
-    NSMutableArray *dataArr = [[NSMutableArray alloc]init];
-    NSString *vedioId = [NSString stringWithFormat:@"%ld",model.news_id];
-    RHVideoModel *videoModel = [[RHVideoModel alloc] initWithVideoId:vedioId title:@"" url:model.video currentTime:0];
-    [dataArr addObject:videoModel];
-    [_playView setVideoModels:dataArr playVideoId:vedioId];
+    _mZanLabel.text = [NSString stringWithFormat:@"%ld",model.like_count];
+    if(model.is_like){
+        [_mZanImage setImage:[UIImage imageNamed:@"ic_zan_select"]];
+    }else{
+        [_mZanImage setImage:[UIImage imageNamed:@"ic_zan_normal"]];
+    }
+    [_playView setButtonTag:model.news_id];
+    [_playView setPreImageUrl:model.cover];
+    [_playView setUrl:model.video];
     if(!model.isPlay){
         [_playView pause];
+    }else{
+        [_playView play];
     }
-//    [_playView playVideoWithVideoId:vedioId];
-    
 }
+
+
+
+-(void)OnPlayClick:(NSInteger)tag{
+    if(_delegate){
+        [_delegate OnPlayClick:tag];
+    }
+}
+
 
 +(NSString *)identify{
     return @"VideoCell";
 }
 
--(void)setVedioPause{
-    [_playView pause];
-}
+
 
 
 @end

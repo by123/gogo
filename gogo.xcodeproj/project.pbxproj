@@ -120,6 +120,10 @@
 		CFADF8581FBA1B3100A7501E /* RHVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CFADF8461FBA1B3000A7501E /* RHVideoModel.m */; };
 		CFADF85D1FBA943300A7501E /* WechatPayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CFADF85C1FBA943300A7501E /* WechatPayModel.m */; };
 		CFADF8741FBB65A900A7501E /* UploadImageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CFADF8731FBB65A900A7501E /* UploadImageUtil.m */; };
+		CFB13C881FD332D400AD66D3 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CFB13C871FD332D400AD66D3 /* libbz2.tbd */; };
+		CFB13C8A1FD332E600AD66D3 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CFB13C891FD332E600AD66D3 /* libstdc++.6.0.9.tbd */; };
+		CFB13C8D1FD3548500AD66D3 /* ByVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB13C8C1FD3548500AD66D3 /* ByVideoView.m */; };
+		CFB13C931FD56C1E00AD66D3 /* PlayButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB13C921FD56C1E00AD66D3 /* PlayButton.m */; };
 		CFBFE4E31FA534E000500B1B /* GoodsView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBFE4E21FA534E000500B1B /* GoodsView.m */; };
 		CFBFE4E71FA5363A00500B1B /* GoodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBFE4E61FA5363A00500B1B /* GoodsCell.m */; };
 		CFBFE4F41FA5B31E00500B1B /* SCDCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBFE4F31FA5B31E00500B1B /* SCDCommentView.m */; };
@@ -375,6 +379,17 @@
 		CFADF85C1FBA943300A7501E /* WechatPayModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WechatPayModel.m; sourceTree = "<group>"; };
 		CFADF8721FBB65A900A7501E /* UploadImageUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UploadImageUtil.h; sourceTree = "<group>"; };
 		CFADF8731FBB65A900A7501E /* UploadImageUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UploadImageUtil.m; sourceTree = "<group>"; };
+		CFB13C7D1FD3315E00AD66D3 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		CFB13C7F1FD3317700AD66D3 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		CFB13C811FD3319700AD66D3 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		CFB13C831FD331A200AD66D3 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		CFB13C851FD331BF00AD66D3 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		CFB13C871FD332D400AD66D3 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
+		CFB13C891FD332E600AD66D3 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
+		CFB13C8B1FD3548500AD66D3 /* ByVideoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ByVideoView.h; sourceTree = "<group>"; };
+		CFB13C8C1FD3548500AD66D3 /* ByVideoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ByVideoView.m; sourceTree = "<group>"; };
+		CFB13C911FD56C1E00AD66D3 /* PlayButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayButton.h; sourceTree = "<group>"; };
+		CFB13C921FD56C1E00AD66D3 /* PlayButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayButton.m; sourceTree = "<group>"; };
 		CFBFE4E11FA534E000500B1B /* GoodsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsView.h; sourceTree = "<group>"; };
 		CFBFE4E21FA534E000500B1B /* GoodsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsView.m; sourceTree = "<group>"; };
 		CFBFE4E51FA5363A00500B1B /* GoodsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsCell.h; sourceTree = "<group>"; };
@@ -475,9 +490,11 @@
 				CF7B7ECA1FAE61BF003FC2D6 /* libz.tbd in Frameworks */,
 				CF7B7EC81FAE61B9003FC2D6 /* libsqlite3.0.tbd in Frameworks */,
 				CF7B7EC61FAE61AA003FC2D6 /* SystemConfiguration.framework in Frameworks */,
+				CFB13C881FD332D400AD66D3 /* libbz2.tbd in Frameworks */,
 				CF2B9D1A1FC985D800121BE6 /* libUMessage_Sdk_1.5.0a.a in Frameworks */,
 				CF7B7EC41FAE61A1003FC2D6 /* CoreTelephony.framework in Frameworks */,
 				CF7B7EC11FAE612E003FC2D6 /* libWeChatSDK.a in Frameworks */,
+				CFB13C8A1FD332E600AD66D3 /* libstdc++.6.0.9.tbd in Frameworks */,
 				C58EEBC53BCADD2B05F513F8 /* libPods-gogo.a in Frameworks */,
 				CF4855761FB2BBD60018502A /* libstdc++.tbd in Frameworks */,
 			);
@@ -489,6 +506,13 @@
 		0B3F5C946CD226272B2A24DA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CFB13C891FD332E600AD66D3 /* libstdc++.6.0.9.tbd */,
+				CFB13C871FD332D400AD66D3 /* libbz2.tbd */,
+				CFB13C851FD331BF00AD66D3 /* CoreAudio.framework */,
+				CFB13C831FD331A200AD66D3 /* CoreVideo.framework */,
+				CFB13C811FD3319700AD66D3 /* CoreMedia.framework */,
+				CFB13C7F1FD3317700AD66D3 /* VideoToolbox.framework */,
+				CFB13C7D1FD3315E00AD66D3 /* AudioToolbox.framework */,
 				CF2B9D1B1FC985FD00121BE6 /* UserNotifications.framework */,
 				CF1CD6F11FB8C9F80058EEBB /* Accelerate.framework */,
 				CF4855751FB2BBD60018502A /* libstdc++.tbd */,
@@ -1111,6 +1135,10 @@
 				CFBFE5151FA5CD8600500B1B /* GuessButton.m */,
 				CF1CD6EE1FB8B8920058EEBB /* TitleButton.h */,
 				CF1CD6EF1FB8B8920058EEBB /* TitleButton.m */,
+				CFB13C8B1FD3548500AD66D3 /* ByVideoView.h */,
+				CFB13C8C1FD3548500AD66D3 /* ByVideoView.m */,
+				CFB13C911FD56C1E00AD66D3 /* PlayButton.h */,
+				CFB13C921FD56C1E00AD66D3 /* PlayButton.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1262,9 +1290,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-gogo/Pods-gogo-resources.sh",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1277,13 +1308,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-gogo-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DFC7ED37DE13103FBF307719 /* [CP] Embed Pods Frameworks */ = {
@@ -1345,6 +1379,7 @@
 				CF4855811FB2ECEF0018502A /* City.m in Sources */,
 				CF2EAE911FA119AA00F35974 /* InsetTextField.m in Sources */,
 				CF2EAEE81FA4FF6200F35974 /* AddressPage.m in Sources */,
+				CFB13C8D1FD3548500AD66D3 /* ByVideoView.m in Sources */,
 				CF48559D1FB384100018502A /* GoodDetailModel.m in Sources */,
 				CFADF8511FBA1B3100A7501E /* RHFullViewController.m in Sources */,
 				CFF037831FC6EDC1002C2358 /* FeedbackPage.m in Sources */,
@@ -1377,6 +1412,7 @@
 				CF2EAE701F9FC45300F35974 /* ScheduleContentCell.m in Sources */,
 				CFD14E6A1FB215B100A28982 /* PayModel.m in Sources */,
 				CFADF8531FBA1B3100A7501E /* RHPlayerLayerView.m in Sources */,
+				CFB13C931FD56C1E00AD66D3 /* PlayButton.m in Sources */,
 				CFCB0F491F711E6F0087ACC7 /* SDCollectionViewCell.m in Sources */,
 				CF2EAE6D1F9FC44300F35974 /* ScheduleTitleCell.m in Sources */,
 				CF2EAEF41FA500A400F35974 /* AboutPage.m in Sources */,
@@ -1556,6 +1592,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = gogo/gogo.entitlements;
 				DEVELOPMENT_TEAM = AB86U4DT8H;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/gogo/alipay",
@@ -1619,6 +1656,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = gogo/gogo.entitlements;
 				DEVELOPMENT_TEAM = AB86U4DT8H;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/gogo/alipay",

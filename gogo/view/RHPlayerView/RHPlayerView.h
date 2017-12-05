@@ -47,6 +47,10 @@
 - (void)playVideoWithVideoId:(NSString *)videoId;
 
 /**
+  播放
+ */
+- (void)play;
+/**
  暂停
  */
 - (void)pause;

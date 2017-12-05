@@ -80,7 +80,7 @@
 - (void)setCoverImage:(NSString *)imageUrl {
     
     _coverImageView.hidden = NO;
-    [_coverImageView sd_setImageWithURL:[NSURL URLWithString:imageUrl] placeholderImage:[UIImage imageNamed:@""]];
+    [_coverImageView sd_setImageWithURL:[NSURL URLWithString:imageUrl]];
 }
 
 // 设置要播放的视频列表和要播放的视频
@@ -104,13 +104,12 @@
         self.videoModel = self.videoArr.firstObject;
     }
     _titleView.title = self.videoModel.title;
-    _isFirstPlay = YES;
+//    _isFirstPlay = YES;
 }
+
 // 点击目录要播放的视频id
 - (void)playVideoWithVideoId:(NSString *)videoId {
-    
     if (![self.delegate respondsToSelector:@selector(playerViewShouldPlay)]) {
-        
         return;
     }
     [self.delegate playerViewShouldPlay];
@@ -139,6 +138,14 @@
         [self replaceCurrentPlayerItemWithVideoModel:self.videoModel];
         [self addToolViewTimer];
     }
+}
+
+// 播放
+-(void)play{
+    [self.player play];
+    self.link.paused = NO;
+    _toolView.playSwitch.selected = YES;
+    [self removeToolViewTimer];
 }
 // 暂停
 - (void)pause {
@@ -787,5 +794,20 @@
     }
     return _titleView;
 }
+
+////获取视频第一帧（卡顿，不建议使用)
+//-(UIImage *) getVideoPreViewImage:(NSURL *)url{
+//    AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:url options:nil];
+//    AVAssetImageGenerator *assetGen = [[AVAssetImageGenerator alloc] initWithAsset:asset];
+//
+//    assetGen.appliesPreferredTrackTransform = YES;
+//    CMTime time = CMTimeMakeWithSeconds(1.0, 300);
+//    NSError *error = nil;
+//    CMTime actualTime;
+//    CGImageRef image = [assetGen copyCGImageAtTime:time actualTime:&actualTime error:&error];
+//    UIImage *videoImage = [[UIImage alloc] initWithCGImage:image];
+//    CGImageRelease(image);
+//    return videoImage;
+//}
 
 @end

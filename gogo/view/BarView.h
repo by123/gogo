@@ -13,6 +13,8 @@
 
 @optional -(void)onBackClick;
 
+@optional -(void)onLikeClick;
+
 @end
 
 @interface BarView : UIView
@@ -20,5 +22,9 @@
 -(instancetype)initWithTitle:(NSString *)title page : (BaseViewController *)cPage;
 
 -(instancetype)initWithTitle:(NSString *)title page : (BaseViewController *)cPage delegate : (id<BarViewDelegate>)delegate;
+
+-(instancetype)initWithTitle:(NSString *)title page : (BaseViewController *)cPage delegate : (id<BarViewDelegate>)delegate like : (Boolean)needLike;
+
+-(void)setLike : (Boolean)isLike;
 
 @end

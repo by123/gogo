@@ -13,6 +13,8 @@
 @property (strong ,nonatomic) UILabel *mTitleLabel;
 @property (strong, nonatomic) UIImageView *mTypeImage;
 @property (strong ,nonatomic) UILabel *mTypeLabel;
+@property (strong, nonatomic) UIImageView *mZanImage;
+@property (strong ,nonatomic) UILabel *mZanLabel;
 @property (strong, nonatomic) UIImageView *mCommentImage;
 @property (strong ,nonatomic) UILabel *mCommentLabel;
 @property (strong ,nonatomic) UIImageView *mImageView;
@@ -53,14 +55,26 @@
     
     _mCommentImage = [[UIImageView alloc]init];
     _mCommentImage.image = [UIImage imageNamed:@"ic_comment_12"];
-    _mCommentImage.frame = CGRectMake([PUtil getActualWidth:440], [PUtil getActualHeight:120], [PUtil getActualWidth:24], [PUtil getActualWidth:24]);
+    _mCommentImage.frame = CGRectMake([PUtil getActualWidth:360], [PUtil getActualHeight:120], [PUtil getActualWidth:24], [PUtil getActualWidth:24]);
     [self.contentView addSubview:_mCommentImage];
     
     _mCommentLabel = [[UILabel alloc]init];
-    _mCommentLabel.frame = CGRectMake([PUtil getActualWidth:472], [PUtil getActualHeight:115], [PUtil getActualWidth:60], [PUtil getActualHeight:33]);
+    _mCommentLabel.frame = CGRectMake([PUtil getActualWidth:392], [PUtil getActualHeight:115], [PUtil getActualWidth:60], [PUtil getActualHeight:33]);
     _mCommentLabel.textColor = c09_tips;
     _mCommentLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:24]];
     [self.contentView addSubview:_mCommentLabel];
+    
+    _mZanImage = [[UIImageView alloc]init];
+    _mZanImage.image = [UIImage imageNamed:@"ic_zan_normal"];
+    _mZanImage.frame = CGRectMake([PUtil getActualWidth:440], [PUtil getActualHeight:120], [PUtil getActualWidth:24], [PUtil getActualWidth:24]);
+    [self.contentView addSubview:_mZanImage];
+    
+    _mZanLabel = [[UILabel alloc]init];
+    _mZanLabel.frame = CGRectMake([PUtil getActualWidth:472], [PUtil getActualHeight:115], [PUtil getActualWidth:60], [PUtil getActualHeight:33]);
+    _mZanLabel.textColor = c09_tips;
+    _mZanLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:24]];
+    [self.contentView addSubview:_mZanLabel];
+    
     
     _mImageView = [[UIImageView alloc]init];
     _mImageView.frame = CGRectMake([PUtil getActualWidth:536],  [PUtil getActualHeight:24], [PUtil getActualWidth:184], [PUtil getActualHeight:124]);
@@ -78,7 +92,13 @@
     _mTypeLabel.text = model.tp;
     [_mImageView sd_setImageWithURL:[NSURL URLWithString:model.cover]];
     _mCommentLabel.text = model.comment_count;
-    
+    _mZanLabel.text = [NSString stringWithFormat:@"%ld",model.like_count];
+    if(model.is_like){
+        [_mZanImage setImage:[UIImage imageNamed:@"ic_zan_select"]];
+    }else{
+        [_mZanImage setImage:[UIImage imageNamed:@"ic_zan_normal"]];
+    }
+
 }
 
 +(NSString *)identify{

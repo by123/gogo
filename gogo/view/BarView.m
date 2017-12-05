@@ -12,10 +12,10 @@
 @interface BarView()
 
 @property (strong , nonatomic) UIButton *backView;
-
 @property (strong, nonatomic) UILabel *titleLabel;
-
+@property (strong, nonatomic) UIButton *zanImageView;
 @property (weak, nonatomic) id<BarViewDelegate> delegate;
+@property (assign, nonatomic) Boolean needLike;
 
 @end
 
@@ -40,6 +40,18 @@
     return self;
 }
 
+-(instancetype)initWithTitle:(NSString *)title page : (BaseViewController *)cPage delegate : (id<BarViewDelegate>)delegate like : (Boolean)needLike{
+    if(self == [super init]){
+        currentPage = cPage;
+        _delegate = delegate;
+        _needLike = needLike;
+        [self initView : title];
+    }
+    return self;
+}
+
+
+
 -(void)initView : (NSString *)title{
 
     self.backgroundColor = c07_bar;
@@ -59,6 +71,15 @@
     [_backView setImage:[UIImage imageNamed:@"ic_back_24"] forState:UIControlStateNormal];
     [_backView addTarget:self action:@selector(onBackPage) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_backView];
+    
+    
+    if(_needLike){
+        _zanImageView = [[UIButton alloc]init];
+        _zanImageView.frame = CGRectMake(ScreenWidth -  [PUtil getActualHeight:68], [PUtil getActualHeight:20], [PUtil getActualHeight:48], [PUtil getActualHeight:48]);
+        [_zanImageView addTarget:self action:@selector(doLike) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:_zanImageView];
+    }
+
 }
 
 -(void)onBackPage{
@@ -70,5 +91,22 @@
         }
     }
 }
+
+-(void)setLike : (Boolean)isLike{
+    if(_zanImageView){
+        if(isLike){
+            [_zanImageView setImage:[UIImage imageNamed:@"ic_zan_select"] forState:UIControlStateNormal];
+        }else{
+            [_zanImageView setImage:[UIImage imageNamed:@"ic_zan_normal"] forState:UIControlStateNormal];
+        }
+    }
+}
+
+-(void)doLike{
+    if(_delegate){
+        [_delegate onLikeClick];
+    }
+}
+
 
 @end

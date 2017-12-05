@@ -53,6 +53,10 @@
 #define API_UPLOAD_USERINFO @"https://gogo.scrats.cn/api/core/user"
 #define API_QINIU @"https://gogo.scrats.cn/api/file/qiniu_token"
 #define API_GETTYPE @"https://gogo.scrats.cn/api/core/news/type"
+#define API_NEWS_LIKE @"https://gogo.scrats.cn/api/core/news/like"
+#define API_NEWS_UNLIKE @"https://gogo.scrats.cn/api/core/news/unlike"
+#define API_COMMENT_LIKE @"https://gogo.scrats.cn/api/core/comment/like"
+#define API_COMMENT_UNLIKE @"https://gogo.scrats.cn/api/core/comment/unlike"
 
 //notification
 #define NOTIFY_WECAHT_CALLBACK @"notify_wechat_callback"

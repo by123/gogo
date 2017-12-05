@@ -15,7 +15,7 @@
 #define AdViewHeight [PUtil getActualHeight:300]
 #define AdInterval 3.0f
 
-@interface HomeView ()<RHPlayerViewDelegate>
+@interface HomeView ()<VideoCellDelegate>
 
 @property (strong, nonatomic) UIScrollView *scrollerView;
 @property (strong, nonatomic) UITableView *tableView;
@@ -108,6 +108,7 @@
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self restore];
     if(_handleDelegate){
         NewsModel *model = [datas objectAtIndex:indexPath.row];
         [_handleDelegate goNewsDetailPage:model.news_id];
@@ -229,36 +230,32 @@
     }];
 }
 
-// 当前播放的
-- (void)playerView:(RHPlayerView *)playView didPlayVideo:(RHVideoModel *)videoModel index:(NSInteger)index statu:(int)statu{
-  
-    if(statu == 0){
-        return;
-    }
+
+-(void)OnPlayClick:(NSInteger)tag{
     for(NewsModel *model in datas){
         model.isPlay = NO;
     }
     for(NewsModel *model in datas){
-            if(model.news_id == [videoModel.videoId longLongValue] ){
-                model.isPlay = YES;
-            }
+        if(model.news_id == tag){
+            model.isPlay = YES;
+        }
     }
     [_tableView reloadData];
-
-}
-// 当前播放结束的
-- (void)playerView:(RHPlayerView *)playView didPlayEndVideo:(RHVideoModel *)videoModel index:(NSInteger)index {
-    
-    
-}
-// 当前正在播放的  会调用多次  更新当前播放时间
-- (void)playerView:(RHPlayerView *)playView didPlayVideo:(RHVideoModel *)videoModel playTime:(NSTimeInterval)playTime {
-    
 }
 
--(BOOL)playerViewShouldPlay{
-    return YES;
+-(void)appWillResignActive{
+    [self restore];
 }
 
 
+-(void)videoPlayEnd{
+    [self restore];
+}
+
+-(void)restore{
+    for(NewsModel *model in datas){
+        model.isPlay = NO;
+    }
+    [_tableView reloadData];
+}
 @end
