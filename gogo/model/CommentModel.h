@@ -10,12 +10,15 @@
 
 @interface CommentModel : NSObject
 
+@property (assign, nonatomic) long comment_id;
 @property (assign, nonatomic) long replay_comment_id;
 @property (copy, nonatomic) NSString *uid;
 @property (copy, nonatomic) NSString *tp;
 @property (assign, nonatomic) long target_id;
 @property (copy, nonatomic) NSString *content;
 @property (copy, nonatomic) NSString *create_ts;
+@property (assign, nonatomic) long like_count;
+@property (assign, nonatomic) bool is_like;
 
 
 @end

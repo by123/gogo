@@ -9,7 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "CommentListModel.h"
 
+@protocol CommentCellDelegate
+@optional -(void)onCommentLikeClick : (long)comment_id;
+@end
+
 @interface CommentCell : UITableViewCell
+
+@property (weak, nonatomic) id<CommentCellDelegate> delegate;
+
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier delegate : (id<CommentCellDelegate>)delegate;
 
 -(void)setData : (CommentListModel *)model;
 

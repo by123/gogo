@@ -21,7 +21,7 @@
 
 #define CommentCellHeight [PUtil getActualHeight:180]
 #define REREQUESTSIZE 10
-@interface NewsDetailPage ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,UIWebViewDelegate,RHPlayerViewDelegate,BarViewDelegate>
+@interface NewsDetailPage ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,UIWebViewDelegate,RHPlayerViewDelegate,BarViewDelegate,CommentCellDelegate,UIScrollViewDelegate>
 
 @property (strong, nonatomic) BarView *barView;
 @property (strong, nonatomic) UILabel *contentLabel;
@@ -44,6 +44,7 @@
     NSMutableArray *datas;
     Boolean webLoadFinish;
     Boolean isFirst;
+    CGFloat WebViewHeight;
 }
 
 - (void)viewDidLoad {
@@ -80,9 +81,9 @@
     _scrollerView.frame = CGRectMake(0, StatuBarHeight + _barView.mj_h, ScreenWidth, ScreenHeight - [PUtil getActualHeight:238]);
     _scrollerView.showsVerticalScrollIndicator = NO;
     _scrollerView.showsHorizontalScrollIndicator = NO;
+    _scrollerView.delegate = self;
     _scrollerView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(requestMore)];
     _scrollerView.scrollEnabled = NO;
-    
     _scrollerView.contentSize = CGSizeMake(ScreenWidth,ScreenHeight);
     MJRefreshStateHeader *header = [MJRefreshStateHeader headerWithRefreshingTarget:self refreshingAction:@selector(requestNew)];
     header.lastUpdatedTimeLabel.hidden = YES;
@@ -138,7 +139,7 @@
     _tableView.dataSource = self;
     _tableView.backgroundColor = c06_backgroud;
     _tableView.scrollEnabled = NO;
-    _tableView.userInteractionEnabled = NO;
+    _tableView.userInteractionEnabled = YES;
     [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [_scrollerView addSubview:_tableView];
     
@@ -147,7 +148,7 @@
     _commentView.frame = CGRectMake(0, ScreenHeight - [PUtil getActualHeight:110], ScreenWidth, [PUtil getActualHeight:110]);
     [self.view addSubview:_commentView];
     
-    _commentTextField = [[InsetTextField alloc]initWithFrame: CGRectMake([PUtil getActualWidth:30], [PUtil getActualHeight:15], ScreenWidth -[PUtil getActualWidth:30]*2 , [PUtil getActualHeight:80]) andInsets:UIEdgeInsetsMake(0, [PUtil getActualWidth:16], 0, [PUtil getActualWidth:16])];
+    _commentTextField = [[InsetTextField alloc]initWithFrame: CGRectMake([PUtil getActualWidth:20], [PUtil getActualHeight:15], ScreenWidth - [PUtil getActualWidth:180] , [PUtil getActualHeight:80]) andInsets:UIEdgeInsetsMake(0, [PUtil getActualWidth:16], 0, [PUtil getActualWidth:16])];
     _commentTextField.backgroundColor = c06_backgroud;
     _commentTextField.font = [UIFont systemFontOfSize:[PUtil getActualHeight:28]];
     _commentTextField.textColor = c08_text;
@@ -156,6 +157,16 @@
     _commentTextField.layer.cornerRadius = [PUtil getActualHeight:10];
     _commentTextField.delegate = self;
     [_commentView addSubview:_commentTextField];
+    
+    UIButton *sendBtn = [[UIButton alloc]init];
+    [sendBtn setTitle:@"发送" forState:UIControlStateNormal];
+    sendBtn.backgroundColor = c01_blue;
+    sendBtn.frame = CGRectMake(ScreenWidth - [PUtil getActualWidth:140], [PUtil getActualHeight:15], [PUtil getActualWidth:120], [PUtil getActualHeight:80]);
+    sendBtn.layer.cornerRadius = [PUtil getActualHeight:10];
+    sendBtn.layer.masksToBounds = YES;
+    [sendBtn addTarget:self action:@selector(addComment) forControlEvents:UIControlEventTouchUpInside];
+    [_commentView addSubview:sendBtn];
+
     
     _hintLabel = [[UILabel alloc]init];
     _hintLabel.text = @"发表评论";
@@ -187,7 +198,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     CommentCell *cell = [tableView dequeueReusableCellWithIdentifier:[CommentCell identify]];
     if(cell == nil){
-        cell = [[CommentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[CommentCell identify]];
+        cell = [[CommentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[CommentCell identify] delegate:self];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     CommentListModel *model = [datas objectAtIndex:indexPath.row];
@@ -206,11 +217,10 @@
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
-    if(!IS_NS_STRING_EMPTY(textField.text)){
-        [self addComment];
-    }
+    [self addComment];
     return YES;
 }
+
 
 - (void)keyboardWillChangeFrame:(NSNotification *)notification{
     NSDictionary *info = [notification userInfo];
@@ -283,7 +293,7 @@
     [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.webkitTextFillColor= '#FFFFFF'"];
 
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        CGFloat WebViewHeight = [webView sizeThatFits:CGSizeZero].height + [PUtil getActualWidth:20];
+        WebViewHeight = [webView sizeThatFits:CGSizeZero].height + [PUtil getActualWidth:20];
         CGRect WebViewRect = CGRectMake(0, 0, ScreenWidth, WebViewHeight);
         WebViewRect.size.height = WebViewHeight;
         _scrollerView.contentSize = CGSizeMake(ScreenWidth,CommentCellHeight* [datas count]+ [PUtil getActualHeight:88] +WebViewHeight);
@@ -335,6 +345,10 @@
 
 
 -(void)addComment{
+    if(IS_NS_STRING_EMPTY(_commentTextField.text)){
+        [DialogHelper showWarnTips:@"请输入评论内容"];
+        return;
+    }
     NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
     dic[@"content"] = _commentTextField.text;
     dic[@"tp"] = @"news";
@@ -344,6 +358,7 @@
             [DialogHelper showSuccessTips:@"发送成功!"];
             [self requestNew];
             [self requestData : YES];
+            _commentTextField.text = @"";
         }else{
             [DialogHelper showFailureAlertSheet:respondModel.msg];
         }
@@ -369,7 +384,6 @@
 }
 // 当前正在播放的,会调用多次,更新当前播放时间
 - (void)playerView:(RHPlayerView *)playView didPlayVideo:(RHVideoModel *)videoModel playTime:(NSTimeInterval)playTime {
-    
 
 }
 
@@ -384,6 +398,7 @@
 
 
 -(void)onLikeClick{
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     if(model.is_like){
         [self doUnlike];
     }else{
@@ -400,8 +415,9 @@
             [_barView setLike:YES];
             model.is_like = true;
         }
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
     } failure:^(NSError *error) {
-        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
     }];
 }
 
@@ -414,10 +430,93 @@
             [_barView setLike:NO];
             model.is_like = false;
         }
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
     } failure:^(NSError *error) {
-        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+
     }];
 }
+
+
+-(void)onCommentLikeClick:(long)comment_id{
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    for(CommentListModel *model in datas){
+        CommentModel *commentModel = [CommentModel mj_objectWithKeyValues:model.comment];
+        if(commentModel.comment_id == comment_id){
+            if(commentModel.is_like){
+                [self doCommentUnLike:comment_id];
+            }else{
+                [self doCommentLike:comment_id];
+            }
+            break;
+        }
+    }
+}
+
+-(void)doCommentLike : (long)comment_id{
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
+    dic[@"comment_id"] = @(comment_id);
+    [ByNetUtil post:API_COMMENT_LIKE parameters:dic success:^(RespondModel *respondModel) {
+        if(respondModel.code == 200){
+            [self updateCommentData:comment_id like:true];
+        }
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    } failure:^(NSError *error) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    }];
+}
+
+
+-(void)doCommentUnLike : (long)comment_id{
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
+    dic[@"comment_id"] = @(comment_id);
+    [ByNetUtil post:API_COMMENT_UNLIKE parameters:dic success:^(RespondModel *respondModel) {
+        if(respondModel.code == 200){
+            [self updateCommentData:comment_id like:false];
+        }
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    } failure:^(NSError *error) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+    }];
+}
+
+
+-(void)updateCommentData : (long)comment_id like:(bool)isLike{
+    for(CommentListModel *model in datas){
+        CommentModel *commentModel = [CommentModel mj_objectWithKeyValues:model.comment];
+        if(commentModel.comment_id == comment_id){
+            commentModel.is_like  = isLike;
+            if(isLike){
+                commentModel.like_count +=1;
+            }else{
+                commentModel.like_count -=1;
+            }
+            model.comment = commentModel;
+            break;
+        }
+    }
+    [_tableView reloadData];
+
+}
+
+
+//-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+//     CGFloat offsetY = scrollView.contentOffset.y;
+//    if(offsetY > WebViewHeight){
+//        __weak UIView *tempView = _commentView;
+//        [UIView animateWithDuration:0.3f animations:^{
+//            tempView.frame = CGRectMake(0, ScreenHeight - [PUtil getActualHeight:110], ScreenWidth, [PUtil getActualHeight:110]);
+//
+//        }];
+//    }else{
+//        __weak UIView *tempView = _commentView;
+//        [UIView animateWithDuration:0.3f animations:^{
+//            tempView.frame = CGRectMake(0, ScreenHeight, ScreenWidth, [PUtil getActualHeight:110]);
+//
+//        }];
+//    }
+//    NSLog(@"这是啥%f",offsetY);
+//}
 
 
 @end
