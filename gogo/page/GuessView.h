@@ -15,7 +15,7 @@
 
 @property (weak, nonatomic) id delegate;
 
--(instancetype)initWithDatas : (NSMutableArray *)datas end:(Boolean)isEnd;
+-(instancetype)initWithDatas : (NSMutableArray *)datas raceid:(long)raceid end:(Boolean)end;
 
 -(void)restoreItems;
 

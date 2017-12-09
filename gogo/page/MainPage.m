@@ -256,7 +256,7 @@
 }
 
 #pragma mark 跳转到竞猜
--(void)goGuessPage:(long)race_id end:(Boolean *)isEnd{
+-(void)goGuessPage:(long)race_id end:(Boolean)isEnd{
     GuessPage *page = [[GuessPage alloc]init];
     page.race_id = race_id;
     page.isEnd = isEnd;

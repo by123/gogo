@@ -11,7 +11,9 @@
 #import "TouchScrollView.h"
 #import "GuessCell.h"
 #import "BettingModel.h"
-
+#import "BettingTpModel.h"
+#import "RespondModel.h"
+#import "BettingModel.h"
 @interface GuessView()<UITableViewDataSource,UITableViewDelegate>
 
 @property (strong, nonatomic) TouchTableView *tableView;
@@ -20,25 +22,60 @@
 @end
 
 @implementation GuessView{
+    NSMutableArray *bettingModels;
     NSMutableArray *models;
-    long rid;
     Boolean end;
+    long raceID;
+    UIButton *selectBtn;
 }
 
--(instancetype)initWithDatas : (NSMutableArray *)datas end:(Boolean)isEnd{
+-(instancetype)initWithDatas : (NSMutableArray *)datas raceid:(long)raceid end:(Boolean)isEnd{
     if(self == [super init]){
         models = datas;
+        raceID = raceid;
         end = isEnd;
-        [self initView];
+        [self initTpView];
     }
     return self;
 }
 
+-(void)initTpView{
+    float width = (ScreenWidth - ([models count] + 1) *  [PUtil getActualWidth:10]) / [models count];
+    for(int i=0; i< [models count]; i++){
+        BettingTpModel *model = [models objectAtIndex:i];
+        UIButton *button = [[UIButton alloc]init];
+        button.titleLabel.font = [UIFont systemFontOfSize:12];
+        [button setTitle:model.tp_name forState:UIControlStateNormal];
+        [button setTitleColor:c08_text forState:UIControlStateNormal];
+        button.layer.masksToBounds = YES;
+        button.tag = [model.tp integerValue];
+        button.layer.borderWidth = 1;
+        button.layer.borderColor = c01_blue.CGColor;
+        if(i == 0){
+            selectBtn = button;
+            button.backgroundColor = c01_blue;
+        }else{
+            button.backgroundColor = c06_backgroud;
+        }
+        button.layer.cornerRadius = 4;
+        button.frame = CGRectMake([PUtil getActualWidth:10] + ([PUtil getActualWidth:10] + width)*i, [PUtil getActualHeight:20],width, [PUtil getActualHeight:50]);
+        [button addTarget:self action:@selector(OnSelectTp:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:button];
+    }
+    
+    if(!IS_NS_COLLECTION_EMPTY(models)){
+        BettingTpModel *model = [models objectAtIndex:0];
+        [self requestData : model.tp];
+    }
+}
+
+
+
 -(void)initView{
     int height = 0;
-    for(BettingModel *bettingModel in models){
+    for(BettingModel *bettingModel in bettingModels){
         NSMutableArray *datas = bettingModel.items;
-        NSInteger rows = [datas count] / 3;
+        NSInteger rows = ([datas count]-1) / 3;
         int per = [PUtil getActualHeight:117];
         height += [PUtil getActualHeight:206] + per * rows;
     }
@@ -46,15 +83,12 @@
     self.backgroundColor = c06_backgroud;
     _scrollerView = [[TouchScrollView alloc]initWithParentView:self];
     _scrollerView.userInteractionEnabled =YES;
-    _scrollerView.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight - [PUtil getActualHeight:539]);
+    _scrollerView.frame = CGRectMake(0, [PUtil getActualHeight:80], ScreenWidth, ScreenHeight - [PUtil getActualHeight:619]);
     _scrollerView.showsVerticalScrollIndicator = NO;
     _scrollerView.showsHorizontalScrollIndicator = NO;
     _scrollerView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(uploadMore)];
     
     _scrollerView.contentSize = CGSizeMake(ScreenWidth,  height);
-//    MJRefreshStateHeader *header = [MJRefreshStateHeader headerWithRefreshingTarget:self refreshingAction:@selector(uploadNew)];
-//    header.lastUpdatedTimeLabel.hidden = YES;
-//    _scrollerView.mj_header = header;
     [self addSubview:_scrollerView];
     
     _tableView = [[TouchTableView alloc]initWithParentView:_scrollerView];
@@ -73,15 +107,18 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [models count];
+    return [bettingModels count];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    BettingModel *bettingModel = [models objectAtIndex:indexPath.row];
+    BettingModel *bettingModel = [bettingModels objectAtIndex:indexPath.row];
     NSMutableArray *datas = [BettingItemModel mj_objectArrayWithKeyValuesArray:bettingModel.items];
-    NSInteger rows = [datas count] / 3;
-    int per = [PUtil getActualHeight:117];
-    return [PUtil getActualHeight:206] + per * rows;
+    if([datas count]>0){
+        NSInteger rows = ([datas count] -1) / 3;
+        int per = [PUtil getActualHeight:117];
+        return [PUtil getActualHeight:206] + per * rows;
+    }
+    return 0;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -90,7 +127,7 @@
         cell = [[GuessCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[GuessCell identify]];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
-    BettingModel *bettingModel = [models objectAtIndex:indexPath.row];
+    BettingModel *bettingModel = [bettingModels objectAtIndex:indexPath.row];
     if(end){
         bettingModel.betting_status = Statu_AlreadyBet;
     }else{
@@ -104,16 +141,12 @@
 {
     [_scrollerView.mj_header endRefreshing];
     [_scrollerView.mj_footer endRefreshing];
-    //    CURRENT = 0;
-    //    [self requestList : NO];
 }
 
 -(void)uploadMore
 {
     [_scrollerView.mj_header endRefreshing];
     [_scrollerView.mj_footer endRefreshing];
-    //    CURRENT += REQUEST_SIZE;
-    //    [self requestList : YES];
 }
 
 
@@ -124,13 +157,38 @@
 }
 
 -(void)restoreItems{
-    for(BettingModel *bettingModel in models){
+    for(BettingModel *bettingModel in bettingModels){
         NSMutableArray *datas = [BettingItemModel mj_objectArrayWithKeyValuesArray:bettingModel.items];
         for(BettingItemModel *itemModel in datas){
             itemModel.isSelect = NO;
         }
     }
     [_tableView reloadData];
+}
+
+
+-(void)requestData : (NSString *)type{
+    NSString *requestUrl = [NSString stringWithFormat:@"%@%ld/%@",API_GUESS_DETAIL,raceID,type];
+    [ByNetUtil get:requestUrl parameters:nil success:^(RespondModel *respondModel) {
+        if(respondModel.code == 200){
+            id data = respondModel.data;
+            bettingModels = [BettingModel mj_objectArrayWithKeyValuesArray:data];
+            [self initView];
+        }else{
+            [DialogHelper showFailureAlertSheet:respondModel.msg];
+        }
+    } failure:^(NSError *error) {
+        [DialogHelper showFailureAlertSheet:@"请求失败"];
+    }];
+}
+
+-(void)OnSelectTp:(id)sender{
+    [_scrollerView removeFromSuperview];
+    UIButton *button = sender;
+    button.backgroundColor = c01_blue;
+    selectBtn.backgroundColor = c06_backgroud;
+    selectBtn = button;
+    [self requestData:[NSString stringWithFormat:@"%d",button.tag]];
 }
 
 @end

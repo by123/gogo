@@ -50,7 +50,7 @@
     _guessLabel.text = model.title;
     NSMutableArray *datas = [BettingItemModel mj_objectArrayWithKeyValuesArray:model.items];
     if(datas != nil && [datas count] > 0){
-        NSInteger rows = [datas count] / 3;
+        NSInteger rows = ([datas count]-1) / 3;
         int per = [PUtil getActualHeight:117];
         _guessContentView.frame = CGRectMake(0, [PUtil getActualHeight:79], ScreenWidth, [PUtil getActualHeight:127] +per * rows);
         _lineView.frame = CGRectMake([PUtil getActualWidth:30],[PUtil getActualHeight:206] + (per * rows)-1, ScreenWidth - 30, 1);

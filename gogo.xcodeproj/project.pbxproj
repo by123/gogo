@@ -103,6 +103,9 @@
 		CFA43E371FDBCA8C00EF74CD /* SignView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA43E361FDBCA8C00EF74CD /* SignView.m */; };
 		CFA43E3A1FDBDDBB00EF74CD /* SoundUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA43E381FDBDDBA00EF74CD /* SoundUtil.m */; };
 		CFA43E3C1FDBDE2600EF74CD /* coin.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CFA43E3B1FDBDE2600EF74CD /* coin.mp3 */; };
+		CFA43E3F1FDBE9E700EF74CD /* GuessMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA43E3E1FDBE9E700EF74CD /* GuessMainView.m */; };
+		CFA43E421FDC637600EF74CD /* BettingTpModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA43E411FDC637600EF74CD /* BettingTpModel.m */; };
+		CFA43E461FDC64D300EF74CD /* ChatView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA43E451FDC64D300EF74CD /* ChatView.m */; };
 		CFADF8471FBA1B3100A7501E /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFADF82D1FBA1B3000A7501E /* back@2x.png */; };
 		CFADF8481FBA1B3100A7501E /* back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFADF82E1FBA1B3000A7501E /* back@3x.png */; };
 		CFADF8491FBA1B3100A7501E /* screen_full@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFADF82F1FBA1B3000A7501E /* screen_full@2x.png */; };
@@ -357,6 +360,12 @@
 		CFA43E381FDBDDBA00EF74CD /* SoundUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundUtil.m; sourceTree = "<group>"; };
 		CFA43E391FDBDDBB00EF74CD /* SoundUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundUtil.h; sourceTree = "<group>"; };
 		CFA43E3B1FDBDE2600EF74CD /* coin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = coin.mp3; sourceTree = "<group>"; };
+		CFA43E3D1FDBE9E700EF74CD /* GuessMainView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuessMainView.h; sourceTree = "<group>"; };
+		CFA43E3E1FDBE9E700EF74CD /* GuessMainView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuessMainView.m; sourceTree = "<group>"; };
+		CFA43E401FDC637600EF74CD /* BettingTpModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BettingTpModel.h; sourceTree = "<group>"; };
+		CFA43E411FDC637600EF74CD /* BettingTpModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BettingTpModel.m; sourceTree = "<group>"; };
+		CFA43E441FDC64D300EF74CD /* ChatView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatView.h; sourceTree = "<group>"; };
+		CFA43E451FDC64D300EF74CD /* ChatView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatView.m; sourceTree = "<group>"; };
 		CFADF82D1FBA1B3000A7501E /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
 		CFADF82E1FBA1B3000A7501E /* back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@3x.png"; sourceTree = "<group>"; };
 		CFADF82F1FBA1B3000A7501E /* screen_full@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen_full@2x.png"; sourceTree = "<group>"; };
@@ -872,6 +881,15 @@
 			path = wechat;
 			sourceTree = "<group>";
 		};
+		CFA43E431FDC64C400EF74CD /* chatview */ = {
+			isa = PBXGroup;
+			children = (
+				CFA43E441FDC64D300EF74CD /* ChatView.h */,
+				CFA43E451FDC64D300EF74CD /* ChatView.m */,
+			);
+			name = chatview;
+			sourceTree = "<group>";
+		};
 		CFADF82B1FBA1B3000A7501E /* RHPlayerView */ = {
 			isa = PBXGroup;
 			children = (
@@ -965,11 +983,14 @@
 		CFBFE50A1FA5C55C00500B1B /* guess */ = {
 			isa = PBXGroup;
 			children = (
+				CFA43E431FDC64C400EF74CD /* chatview */,
 				CFBFE5221FA64CBC00500B1B /* live */,
 				CFBFE50B1FA5C57000500B1B /* GuessPage.h */,
 				CFBFE50C1FA5C57000500B1B /* GuessPage.m */,
 				CFBFE51D1FA642B300500B1B /* guessview */,
 				CFBFE51E1FA642BD00500B1B /* fightingview */,
+				CFA43E3D1FDBE9E700EF74CD /* GuessMainView.h */,
+				CFA43E3E1FDBE9E700EF74CD /* GuessMainView.m */,
 			);
 			name = guess;
 			sourceTree = "<group>";
@@ -1077,6 +1098,8 @@
 				CF1CD6EC1FB6219C0058EEBB /* BettingItemModel.m */,
 				CFADF85B1FBA943300A7501E /* WechatPayModel.h */,
 				CFADF85C1FBA943300A7501E /* WechatPayModel.m */,
+				CFA43E401FDC637600EF74CD /* BettingTpModel.h */,
+				CFA43E411FDC637600EF74CD /* BettingTpModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1437,6 +1460,7 @@
 				CF7B7EAB1FACEC0F003FC2D6 /* NewsDetailModel.m in Sources */,
 				CF2EAE761F9FC7C800F35974 /* TeamModel.m in Sources */,
 				CF2EAEB71FA26C5800F35974 /* MemberModel.m in Sources */,
+				CFA43E3F1FDBE9E700EF74CD /* GuessMainView.m in Sources */,
 				CF2B9D151FC74F0A00121BE6 /* VideoCell.m in Sources */,
 				CFBFE5251FA64CD000500B1B /* LivePage.m in Sources */,
 				CFCB0F0C1F7105360087ACC7 /* BaseViewController.m in Sources */,
@@ -1445,6 +1469,7 @@
 				CF42783C1FAB9A0100C163DD /* UIView+Frame.m in Sources */,
 				CFCB0F151F7106620087ACC7 /* BySegmentView.m in Sources */,
 				CFBFE51C1FA5D22900500B1B /* GuessListModel.m in Sources */,
+				CFA43E461FDC64D300EF74CD /* ChatView.m in Sources */,
 				CFBFE50D1FA5C57000500B1B /* GuessPage.m in Sources */,
 				CF7B7EAE1FADE685003FC2D6 /* UserModel.m in Sources */,
 				CF7214E31F6678E4002F3634 /* main.m in Sources */,
@@ -1479,6 +1504,7 @@
 				CF7B7EB11FADE6D6003FC2D6 /* CommentListModel.m in Sources */,
 				CF0BEDB61F9A3759005275EE /* ColorUtil.m in Sources */,
 				CFBFE4F41FA5B31E00500B1B /* SCDCommentView.m in Sources */,
+				CFA43E421FDC637600EF74CD /* BettingTpModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

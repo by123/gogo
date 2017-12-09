@@ -79,6 +79,7 @@
 /Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/NewsDetailModel.o
 /Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/TeamModel.o
 /Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/MemberModel.o
+/Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/GuessMainView.o
 /Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/VideoCell.o
 /Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/LivePage.o
 /Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/BaseViewController.o
@@ -87,6 +88,7 @@
 /Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/UIView+Frame.o
 /Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/BySegmentView.o
 /Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/GuessListModel.o
+/Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/ChatView.o
 /Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/GuessPage.o
 /Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/UserModel.o
 /Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/main.o
@@ -121,3 +123,4 @@
 /Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/CommentListModel.o
 /Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/ColorUtil.o
 /Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/SCDCommentView.o
+/Users/by.huang/Desktop/其他项目/gogo/Build/Intermediates/gogo.build/Debug-iphoneos/gogo.build/Objects-normal/arm64/BettingTpModel.o

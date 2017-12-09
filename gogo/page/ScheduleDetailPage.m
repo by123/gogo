@@ -19,6 +19,7 @@
 @property (strong, nonatomic) BarView *barView;
 @property (strong, nonatomic) SCDCommentView *commentView;
 
+
 @end
 
 @implementation ScheduleDetailPage

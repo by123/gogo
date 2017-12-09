@@ -18,6 +18,8 @@
 #import "InsetTextField.h"
 #import "UserModel.h"
 #import "AccountManager.h"
+#import "BettingTpModel.h"
+#import "ChatView.h"
 @interface GuessPage ()
 
 @property (strong, nonatomic) UIImageView *aTeamImageView;
@@ -26,19 +28,21 @@
 @property (strong, nonatomic) UILabel *bTeamLabel;
 @property (strong, nonatomic) UILabel *timeLabel;
 @property (strong, nonatomic) UILabel *gameLabel;
+@property (strong, nonatomic) UIButton *aTeamSupportBtn;
+@property (strong, nonatomic) UIButton *bTeamSupportBtn;
 @property (strong, nonatomic) UILabel *scoreLabel;
 @property (strong, nonatomic) UIView *guessOrderView;
-//@property (strong, nonatomic) GuessView *guessView;
 @property (strong, nonatomic) UILabel *guessTitleLabel;
 @property (strong, nonatomic) UILabel *coinLabel;
 @property (strong, nonatomic) UIButton *guessBtn;
 @property (strong, nonatomic) UIButton *liveBtn;
+@property (strong, nonatomic) ChatView *chatView;
 
 @end
 
 @implementation GuessPage{
     RaceModel *raceModel;
-    NSMutableArray *bettingArray;
+    NSMutableArray *bettingTypeArray;
     NSMutableArray *buttons;
     BettingItemModel *selectModel;
     int selectCoin ;
@@ -48,7 +52,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     raceModel = [[RaceModel alloc]init];
-    bettingArray =[[NSMutableArray alloc]init];
+    bettingTypeArray = [[NSMutableArray alloc]init];
     buttons = [[NSMutableArray alloc]init];
     [self initView];
     [self requestDetail];
@@ -61,7 +65,7 @@
 
 -(void)initTopView{
     UIView *topView = [[UIView alloc]init];
-    topView.frame = CGRectMake(0, StatuBarHeight, ScreenWidth,[PUtil getActualHeight:459]-StatuBarHeight);
+    topView.frame = CGRectMake(0, StatuBarHeight, ScreenWidth,[PUtil getActualHeight:480]-StatuBarHeight);
     [self.view addSubview:topView];
     [ColorUtil setGradientColor:topView startColor:c01_blue endColor:c02_red director:Left];
     
@@ -72,7 +76,6 @@
     [topView addSubview:backView];
     
     _aTeamImageView =[[UIImageView alloc]init];
-//    _aTeamImageView.backgroundColor = c01_blue;
     _aTeamImageView.layer.masksToBounds = YES;
     _aTeamImageView.contentMode = UIViewContentModeScaleAspectFit;
     _aTeamImageView.layer.cornerRadius = [PUtil getActualHeight:20];
@@ -87,7 +90,6 @@
     [topView addSubview:_aTeamLabel];
     
     _bTeamImageView =[[UIImageView alloc]init];
-//    _bTeamImageView.backgroundColor = c01_blue;
     _bTeamImageView.layer.masksToBounds = YES;
     _bTeamImageView.contentMode = UIViewContentModeScaleAspectFit;
     _bTeamImageView.layer.cornerRadius = [PUtil getActualHeight:20];
@@ -119,72 +121,67 @@
     _timeLabel = [[UILabel alloc]init];
     _timeLabel.textColor = c09_tips;
     _timeLabel.textAlignment = NSTextAlignmentCenter;
-    _timeLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:24]];
-    _timeLabel.frame = CGRectMake(0 ,[PUtil getActualHeight:106]-StatuBarHeight, ScreenWidth, [PUtil getActualWidth:33]);
+    _timeLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:22]];
+    _timeLabel.frame = CGRectMake(0 ,[PUtil getActualHeight:120]-StatuBarHeight, ScreenWidth, [PUtil getActualWidth:33]);
     [topView addSubview:_timeLabel];
     
     _gameLabel = [[UILabel alloc]init];
-    _gameLabel.textColor = c09_tips;
+    _gameLabel.textColor = c08_text;
     _gameLabel.textAlignment = NSTextAlignmentCenter;
-    _gameLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:24]];
-    _gameLabel.frame = CGRectMake(0 ,[PUtil getActualHeight:139]-StatuBarHeight, ScreenWidth, [PUtil getActualWidth:33]);
+    _gameLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:30]];
+    _gameLabel.frame = CGRectMake(0 ,[PUtil getActualHeight:66]-StatuBarHeight, ScreenWidth, [PUtil getActualWidth:33]);
     [topView addSubview:_gameLabel];
+    
+    
+    _aTeamSupportBtn = [[UIButton alloc]init];
+    _aTeamSupportBtn.frame = CGRectMake([PUtil getActualWidth:60], [PUtil getActualHeight:370]-StatuBarHeight, (ScreenWidth - [PUtil getActualWidth:120])/2, [PUtil getActualHeight:50]);
+    _aTeamSupportBtn.backgroundColor = c01_blue;
+    _aTeamSupportBtn.titleLabel.font = [UIFont systemFontOfSize:12.0f];
+    UIBezierPath *leftMaskPath = [UIBezierPath bezierPathWithRoundedRect:_aTeamSupportBtn.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerBottomLeft cornerRadii:CGSizeMake([PUtil getActualHeight:50]/2, [PUtil getActualHeight:50]/2)];
+    CAShapeLayer *leftMaskLayer = [[CAShapeLayer alloc] init];
+    leftMaskLayer.frame = _aTeamSupportBtn.bounds;
+    leftMaskLayer.path = leftMaskPath.CGPath;
+    _aTeamSupportBtn.layer.mask = leftMaskLayer;
+    [topView addSubview:_aTeamSupportBtn];
+    
+    
+    _bTeamSupportBtn = [[UIButton alloc]init];
+    _bTeamSupportBtn.frame = CGRectMake([PUtil getActualWidth:60] + (ScreenWidth - [PUtil getActualWidth:120])/2, [PUtil getActualHeight:370]-StatuBarHeight, (ScreenWidth - [PUtil getActualWidth:120])/2, [PUtil getActualHeight:50]);
+    _bTeamSupportBtn.backgroundColor = c02_red;
+    _bTeamSupportBtn.titleLabel.font = [UIFont systemFontOfSize:12.0f];
+    UIBezierPath *rightMaskPath = [UIBezierPath bezierPathWithRoundedRect:_bTeamSupportBtn.bounds byRoundingCorners:UIRectCornerTopRight | UIRectCornerBottomRight cornerRadii:CGSizeMake([PUtil getActualHeight:50]/2, [PUtil getActualHeight:50]/2)];
+    CAShapeLayer *rightMaskLayer = [[CAShapeLayer alloc] init];
+    rightMaskLayer.frame = _bTeamSupportBtn.bounds;
+    rightMaskLayer.path = rightMaskPath.CGPath;
+    _bTeamSupportBtn.layer.mask = rightMaskLayer;
+    [topView addSubview:_bTeamSupportBtn];
     
 }
 
 -(void)initBodyView{
-    if(!IS_NS_COLLECTION_EMPTY(bettingArray)){
-        NSMutableArray *views = [[NSMutableArray alloc]init];
+    
+    NSMutableArray *viewArray = [[NSMutableArray alloc]init];
+    GuessView *guessView = [[GuessView alloc]initWithDatas:bettingTypeArray raceid:raceModel.race_id end:_isEnd];
+    guessView.delegate = self;
+    [viewArray addObject:guessView];
+    
+    _chatView = [[ChatView alloc]init];
+    [viewArray addObject:_chatView];
+    NSArray *titleArray = @[@"竞猜",@"聊天"];
+    BySegmentView *segmentView = [[BySegmentView alloc]initWithFrame:CGRectMake(0, [PUtil getActualHeight:480] - StatuBarHeight, ScreenWidth, ScreenHeight - ([PUtil getActualHeight:480] - StatuBarHeight)) andTitleArray:titleArray andShowControllerNameArray:viewArray];
+    [self.view addSubview:segmentView];
 
-
-        NSMutableArray *temps = [[NSMutableArray alloc]init];
-        for(BettingModel *model in bettingArray){
-            if (![temps containsObject:model.tp]) {
-                [temps addObject:model.tp];
-            }
-        }
-        
-        //数据集合
-        for(NSString *title in temps){
-            NSMutableArray *datas = [[NSMutableArray alloc]init];
-            for(BettingModel *model in bettingArray){
-                if([model.tp isEqualToString:title]){
-                    [datas addObject:model];
-                }
-            }
-            
-            GuessView *guessView = [[GuessView alloc]initWithDatas:datas end:_isEnd];
-            guessView.delegate = self;
-            [views addObject:guessView];
-        }
-        
-        //标题集合
-        NSMutableArray *titles = [[NSMutableArray alloc]init];
-        for(NSString *temp in temps){
-            if([temp isEqualToString:@"0"]){
-                [titles addObject:@"总局"];
-            }else{
-                [titles addObject:[NSString stringWithFormat:@"第%@局",temp]];
-            }
-        }
-        
-
-        
-        
-        BySegmentView *segmentView = [[BySegmentView alloc]initWithFrame:CGRectMake(0, [PUtil getActualHeight:459] - StatuBarHeight, ScreenWidth, ScreenHeight - ([PUtil getActualHeight:459] - StatuBarHeight)) andTitleArray:titles andShowControllerNameArray:views];
-        [self.view addSubview:segmentView];
-        [self initGuessOrderView];
-    }
-
+    [self initGuessOrderView];
     
     _liveBtn = [[UIButton alloc]init];
-    _liveBtn.frame = CGRectMake([PUtil getActualWidth:540], ScreenHeight - [PUtil getActualHeight:120],[PUtil getActualWidth:170] , [PUtil getActualHeight:72]);
-    [_liveBtn setTitle:@"看直播" forState:UIControlStateNormal];
+    _liveBtn.frame = CGRectMake([PUtil getActualWidth:590], StatuBarHeight + [PUtil getActualHeight:30],[PUtil getActualWidth:140] , [PUtil getActualHeight:60]);
+    [_liveBtn setTitle:@"直播" forState:UIControlStateNormal];
     _liveBtn.layer.masksToBounds = YES;
-    _liveBtn.layer.cornerRadius = [PUtil getActualHeight:72]/2;
+    _liveBtn.backgroundColor = c01_blue;
+    _liveBtn.titleLabel.font = [UIFont systemFontOfSize:13.0f];
+    _liveBtn.layer.cornerRadius = [PUtil getActualHeight:60]/2;
     [_liveBtn addTarget:self action:@selector(goLivePage) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_liveBtn];
-    [ColorUtil setGradientColor:_liveBtn startColor:c01_blue endColor:c02_red director:Left];
 }
 
 -(void)initGuessOrderView{
@@ -216,7 +213,7 @@
     _coinLabel.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualHeight:80], [PUtil getActualWidth:500],  [PUtil getActualHeight:28]);
     [guessContentView addSubview:_coinLabel];
     
-
+    
     int width = (ScreenWidth - [PUtil getActualWidth:120])/4;
     for(int i = 0 ; i < 4 ;i ++){
         UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake([PUtil getActualWidth:30] +( width + [PUtil getActualWidth:20])*i, [PUtil getActualHeight:140], width, [PUtil getActualHeight:60])];
@@ -266,19 +263,15 @@
     UserModel *userModel = [[AccountManager sharedAccountManager]getUserInfo];
     _coinLabel.text = [NSString stringWithFormat:@"余额：%@",userModel.coin];
     __weak UIView *tempView  = _guessOrderView;
-    __weak UIButton *tempLiveBtn = _liveBtn;
     [UIView animateWithDuration:0.3f animations:^{
         tempView.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight);
-        tempLiveBtn.frame = CGRectMake([PUtil getActualWidth:540], ScreenHeight, [PUtil getActualWidth:170] , [PUtil getActualHeight:72]);
     }];
 }
 
 -(void)CloseGuessOrderView{
     __weak UIView *tempView  = _guessOrderView;
-    __weak UIButton *tempLiveBtn = _liveBtn;
     [UIView animateWithDuration:0.3f animations:^{
         tempView.frame = CGRectMake(0, ScreenHeight, ScreenWidth, ScreenHeight);
-        tempLiveBtn.frame = CGRectMake([PUtil getActualWidth:540], ScreenHeight - [PUtil getActualHeight:120], [PUtil getActualWidth:170] , [PUtil getActualHeight:72]);
     } completion:^(BOOL finished) {
         tempView.hidden = YES;
         if(selectGuessView){
@@ -288,7 +281,7 @@
             tempBtn.backgroundColor = [UIColor clearColor];
         }
         _guessTitleLabel.text = @"竞猜0，猜中可得0竞猜币";
-
+        
     }];
 }
 
@@ -309,8 +302,8 @@
             id data = respondModel.data;
             id race = [data objectForKey:@"race"];
             raceModel = [RaceModel mj_objectWithKeyValues:race];
-            id betting = [data objectForKey:@"betting"];
-            bettingArray = [BettingModel mj_objectArrayWithKeyValuesArray:betting];
+            id betting_tps = [data objectForKey:@"betting_tps"];
+            bettingTypeArray = [BettingTpModel mj_objectArrayWithKeyValuesArray:betting_tps];
             [self updateTopView];
             
         }else{
@@ -333,6 +326,12 @@
     [_bTeamImageView sd_setImageWithURL:[NSURL URLWithString:bTeamModel.logo]];
     _timeLabel.text = [TimeUtil generateAll:raceModel.race_ts];
     _gameLabel.text = raceModel.race_name;
+    
+    [_aTeamSupportBtn setTitle:[NSString stringWithFormat:@"支持%@  50%%",aTeamModel.team_name] forState:UIControlStateNormal];
+    _aTeamSupportBtn.titleEdgeInsets = UIEdgeInsetsMake(0,-[PUtil getActualWidth:100],0,0);
+    
+    [_bTeamSupportBtn setTitle:[NSString stringWithFormat:@"支持%@  50%%",bTeamModel.team_name] forState:UIControlStateNormal];
+    _bTeamSupportBtn.titleEdgeInsets = UIEdgeInsetsMake(0,0,0,-[PUtil getActualWidth:100]);
     [self initBodyView];
 }
 
@@ -389,7 +388,7 @@
     }
     NSMutableArray *array = [[NSMutableArray alloc]init];
     [array addObject:@(selectModel.betting_item_id)];
-
+    
     NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
     dic[@"coin"] = @(selectCoin);
     dic[@"betting_item_id_list"] = array;
@@ -405,6 +404,20 @@
     } failure:^(NSError *error) {
         [DialogHelper showFailureAlertSheet:@"请求失败"];
     }];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillChangeFrameNotification object:nil];
+}
+
+- (void)keyboardWillChangeFrame:(NSNotification *)notification{
+    if(_chatView){
+        [_chatView keyboardWillChangeFrame:notification];
+    }
 }
 
 @end
