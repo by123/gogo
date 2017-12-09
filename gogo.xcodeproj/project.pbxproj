@@ -100,6 +100,9 @@
 		CF7B7ECC1FAE61C8003FC2D6 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CF7B7ECB1FAE61C8003FC2D6 /* libc++.tbd */; };
 		CF7B7ECE1FAE662C003FC2D6 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF7B7ECD1FAE662B003FC2D6 /* Security.framework */; };
 		CF7B7ED01FAE663E003FC2D6 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF7B7ECF1FAE663E003FC2D6 /* CFNetwork.framework */; };
+		CFA43E371FDBCA8C00EF74CD /* SignView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA43E361FDBCA8C00EF74CD /* SignView.m */; };
+		CFA43E3A1FDBDDBB00EF74CD /* SoundUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA43E381FDBDDBA00EF74CD /* SoundUtil.m */; };
+		CFA43E3C1FDBDE2600EF74CD /* coin.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CFA43E3B1FDBDE2600EF74CD /* coin.mp3 */; };
 		CFADF8471FBA1B3100A7501E /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFADF82D1FBA1B3000A7501E /* back@2x.png */; };
 		CFADF8481FBA1B3100A7501E /* back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFADF82E1FBA1B3000A7501E /* back@3x.png */; };
 		CFADF8491FBA1B3100A7501E /* screen_full@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFADF82F1FBA1B3000A7501E /* screen_full@2x.png */; };
@@ -349,6 +352,11 @@
 		CF7B7ECB1FAE61C8003FC2D6 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		CF7B7ECD1FAE662B003FC2D6 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		CF7B7ECF1FAE663E003FC2D6 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		CFA43E351FDBCA8C00EF74CD /* SignView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignView.h; sourceTree = "<group>"; };
+		CFA43E361FDBCA8C00EF74CD /* SignView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignView.m; sourceTree = "<group>"; };
+		CFA43E381FDBDDBA00EF74CD /* SoundUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundUtil.m; sourceTree = "<group>"; };
+		CFA43E391FDBDDBB00EF74CD /* SoundUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundUtil.h; sourceTree = "<group>"; };
+		CFA43E3B1FDBDE2600EF74CD /* coin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = coin.mp3; sourceTree = "<group>"; };
 		CFADF82D1FBA1B3000A7501E /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
 		CFADF82E1FBA1B3000A7501E /* back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@3x.png"; sourceTree = "<group>"; };
 		CFADF82F1FBA1B3000A7501E /* screen_full@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen_full@2x.png"; sourceTree = "<group>"; };
@@ -840,6 +848,7 @@
 		CF7214E11F6678E4002F3634 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CFA43E3B1FDBDE2600EF74CD /* coin.mp3 */,
 				CF7214ED1F6678E4002F3634 /* Assets.xcassets */,
 				CF7214F21F6678E4002F3634 /* Info.plist */,
 				CF7214E21F6678E4002F3634 /* main.m */,
@@ -1105,6 +1114,8 @@
 				CF7B7EB31FAE49D5003FC2D6 /* TimeUtil.m */,
 				CFADF8721FBB65A900A7501E /* UploadImageUtil.h */,
 				CFADF8731FBB65A900A7501E /* UploadImageUtil.m */,
+				CFA43E391FDBDDBB00EF74CD /* SoundUtil.h */,
+				CFA43E381FDBDDBA00EF74CD /* SoundUtil.m */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -1139,6 +1150,8 @@
 				CFB13C8C1FD3548500AD66D3 /* ByVideoView.m */,
 				CFB13C911FD56C1E00AD66D3 /* PlayButton.h */,
 				CFB13C921FD56C1E00AD66D3 /* PlayButton.m */,
+				CFA43E351FDBCA8C00EF74CD /* SignView.h */,
+				CFA43E361FDBCA8C00EF74CD /* SignView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1272,6 +1285,7 @@
 				CFADF8501FBA1B3100A7501E /* video_play@3x.png in Resources */,
 				CFADF84A1FBA1B3100A7501E /* screen_full@3x.png in Resources */,
 				CFADF84B1FBA1B3100A7501E /* screen_unfull@2x.png in Resources */,
+				CFA43E3C1FDBDE2600EF74CD /* coin.mp3 in Resources */,
 				CFADF84F1FBA1B3100A7501E /* video_play@2x.png in Resources */,
 				CFADF8491FBA1B3100A7501E /* screen_full@2x.png in Resources */,
 				CFCB0F571F7175940087ACC7 /* CombatTeams.plist in Resources */,
@@ -1419,6 +1433,7 @@
 				CF2EAE941FA11C8800F35974 /* TouchScrollView.m in Sources */,
 				CFCB0F181F71088F0087ACC7 /* HomeView.m in Sources */,
 				CFADF8521FBA1B3100A7501E /* RHPlayerFailedView.m in Sources */,
+				CFA43E371FDBCA8C00EF74CD /* SignView.m in Sources */,
 				CF7B7EAB1FACEC0F003FC2D6 /* NewsDetailModel.m in Sources */,
 				CF2EAE761F9FC7C800F35974 /* TeamModel.m in Sources */,
 				CF2EAEB71FA26C5800F35974 /* MemberModel.m in Sources */,
@@ -1426,6 +1441,7 @@
 				CFBFE5251FA64CD000500B1B /* LivePage.m in Sources */,
 				CFCB0F0C1F7105360087ACC7 /* BaseViewController.m in Sources */,
 				CF48557F1FB2ECEF0018502A /* Province.m in Sources */,
+				CFA43E3A1FDBDDBB00EF74CD /* SoundUtil.m in Sources */,
 				CF42783C1FAB9A0100C163DD /* UIView+Frame.m in Sources */,
 				CFCB0F151F7106620087ACC7 /* BySegmentView.m in Sources */,
 				CFBFE51C1FA5D22900500B1B /* GuessListModel.m in Sources */,
@@ -1591,6 +1607,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = gogo/gogo.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AB86U4DT8H;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1645,6 +1663,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.scrat.gogo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -1655,6 +1675,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = gogo/gogo.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AB86U4DT8H;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1709,6 +1731,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.scrat.gogo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};

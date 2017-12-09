@@ -29,6 +29,7 @@
 #import "AccountManager.h"
 #import "SettingPage.h"
 #import <AVKit/AVKit.h>
+#import "SignView.h"
 
 #define TitleHeight [PUtil getActualHeight:88]
 
@@ -286,5 +287,12 @@
     }];
 }
 
+
+#pragma mark 显示签到UI
+-(void)showSignView : (id<SignViewDelegate>)delegate{
+    SignView *signView =[[SignView alloc]init];
+    signView.delegate = delegate;
+    [self.view addSubview:signView];
+}
 
 @end

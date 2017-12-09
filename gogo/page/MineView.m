@@ -12,11 +12,13 @@
 #import "TouchScrollView.h"
 #import "AccountManager.h"
 #import "RespondModel.h"
+#import "SignView.h"
 
-@interface MineView ()<UITableViewDelegate,UITableViewDataSource>
+@interface MineView ()<UITableViewDelegate,UITableViewDataSource,SignViewDelegate>
 
 @property (strong, nonatomic) TouchScrollView *scrollerView;
 @property (strong, nonatomic) UIImageView *userView;
+@property (strong, nonatomic) UIButton *signBtn;
 @property (strong, nonatomic) UIImageView *headImageView;
 @property (strong, nonatomic) UILabel *nickNameLabel;
 @property (strong, nonatomic) UILabel *coinLabel;
@@ -52,17 +54,29 @@
     _userView.frame = CGRectMake(0, [PUtil getActualHeight:20], ScreenWidth, [PUtil getActualHeight:272]);
     _userView.backgroundColor = c07_bar;
     _userView.contentMode = UIViewContentModeScaleAspectFill;
-    if(!IS_NS_STRING_EMPTY(model.avatar)){
-        [_userView sd_setImageWithURL:[NSURL URLWithString:model.avatar] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-            _userView.image = [ColorUtil boxblurImage:image withBlurNumber:0.5f];
-            
-        }];
-    }
+//    if(!IS_NS_STRING_EMPTY(model.avatar)){
+//        [_userView sd_setImageWithURL:[NSURL URLWithString:model.avatar] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+//            _userView.image = [ColorUtil boxblurImage:image withBlurNumber:0.5f];
+//
+//        }];
+//    }
 
     _userView.userInteractionEnabled = YES;
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(goPersonalPage)];
     [_userView addGestureRecognizer:recognizer];
     [_scrollerView addSubview:_userView];
+    
+    
+    _signBtn = [[UIButton alloc]init];
+    _signBtn.frame = CGRectMake(ScreenWidth - [PUtil getActualWidth:220], (_userView.mj_h - [PUtil getActualHeight:80])/2, [PUtil getActualWidth:160], [PUtil getActualHeight:60]);
+    _signBtn.backgroundColor = c01_blue;
+    _signBtn.layer.masksToBounds = YES;
+    [_signBtn setTitle:@"签到" forState:UIControlStateNormal];
+    [_signBtn setTitleColor:c08_text forState:UIControlStateNormal];
+    _signBtn.layer.cornerRadius = 8;
+    _signBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    [_signBtn addTarget:self action:@selector(OnClickSign) forControlEvents:UIControlEventTouchUpInside];
+    [_userView addSubview:_signBtn];
     
     _headImageView = [[UIImageView alloc]init];
     _headImageView.frame = CGRectMake([PUtil getActualWidth:40], [PUtil getActualHeight:56], [PUtil getActualWidth:160], [PUtil getActualWidth:160]);
@@ -86,10 +100,16 @@
     coinTitleLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:28]];
     [_userView addSubview:coinTitleLabel];
 
+    
+    UIImageView *coinImageView = [[UIImageView alloc]init];
+    coinImageView.image = [UIImage imageNamed:@"ic_coin"];
+    coinImageView.frame = CGRectMake([PUtil getActualWidth:240], [PUtil getActualHeight:165], [PUtil getActualHeight:50], [PUtil getActualHeight:50]);
+    [_userView addSubview:coinImageView];
+
     _coinLabel = [[UILabel alloc]init];
     _coinLabel.text = model.coin;
     _coinLabel.textColor = c15_text3;
-    _coinLabel.frame = CGRectMake([PUtil getActualWidth:240], [PUtil getActualHeight:162], ScreenWidth - [PUtil getActualWidth:240], [PUtil getActualHeight:56]);
+    _coinLabel.frame = CGRectMake([PUtil getActualWidth:300], [PUtil getActualHeight:162], ScreenWidth - [PUtil getActualWidth:240], [PUtil getActualHeight:56]);
     _coinLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:40]];
     [_userView addSubview:_coinLabel];
     
@@ -180,6 +200,17 @@
         }];
     }
     
+}
+
+-(void)OnClickSign{
+    if(_handleDelegate){
+        [_handleDelegate showSignView:self];
+    }
+}
+
+-(void)OnSignSuccess{
+    [_signBtn setTitle:@"今日已签到" forState:UIControlStateNormal];
+    _signBtn.backgroundColor = c02_red;
 }
 
 @end

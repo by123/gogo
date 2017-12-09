@@ -7,6 +7,7 @@
 //
 
 #import "BaseViewController.h"
+#import "SignView.h"
 
 @protocol MainHandleDelegate <NSObject>
 
@@ -35,6 +36,9 @@
 @optional -(void)goGoodsDetailPage : (long)nid;
 
 @optional -(void)updateUserInfo;
+
+@optional -(void)showSignView : (id<SignViewDelegate>)delegate;
+
 
 @end
 
