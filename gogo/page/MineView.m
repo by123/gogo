@@ -18,7 +18,6 @@
 
 @property (strong, nonatomic) TouchScrollView *scrollerView;
 @property (strong, nonatomic) UIImageView *userView;
-@property (strong, nonatomic) UIButton *signBtn;
 @property (strong, nonatomic) UIImageView *headImageView;
 @property (strong, nonatomic) UILabel *nickNameLabel;
 @property (strong, nonatomic) UILabel *coinLabel;
@@ -66,17 +65,6 @@
     [_userView addGestureRecognizer:recognizer];
     [_scrollerView addSubview:_userView];
     
-    
-    _signBtn = [[UIButton alloc]init];
-    _signBtn.frame = CGRectMake(ScreenWidth - [PUtil getActualWidth:220], (_userView.mj_h - [PUtil getActualHeight:80])/2, [PUtil getActualWidth:160], [PUtil getActualHeight:60]);
-    _signBtn.backgroundColor = c01_blue;
-    _signBtn.layer.masksToBounds = YES;
-    [_signBtn setTitle:@"签到" forState:UIControlStateNormal];
-    [_signBtn setTitleColor:c08_text forState:UIControlStateNormal];
-    _signBtn.layer.cornerRadius = 8;
-    _signBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    [_signBtn addTarget:self action:@selector(OnClickSign) forControlEvents:UIControlEventTouchUpInside];
-    [_userView addSubview:_signBtn];
     
     _headImageView = [[UIImageView alloc]init];
     _headImageView.frame = CGRectMake([PUtil getActualWidth:40], [PUtil getActualHeight:56], [PUtil getActualWidth:160], [PUtil getActualWidth:160]);
@@ -200,17 +188,6 @@
         }];
     }
     
-}
-
--(void)OnClickSign{
-    if(_handleDelegate){
-        [_handleDelegate showSignView:self];
-    }
-}
-
--(void)OnSignSuccess{
-    [_signBtn setTitle:@"今日已签到" forState:UIControlStateNormal];
-    _signBtn.backgroundColor = c02_red;
 }
 
 @end

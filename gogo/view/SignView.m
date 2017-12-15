@@ -9,10 +9,11 @@
 #import "SignView.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import "SoundUtil.h"
+#import "RespondModel.h"
 
 @interface SignView()<CAAnimationDelegate>
 
-@property (strong, nonatomic) UILabel *signLabel;
+//@property (strong, nonatomic) UILabel *signLabel;
 @property (strong, nonatomic) UIImageView *coinImageView;
 @property (assign, nonatomic) SystemSoundID soundID;
 @property (strong, nonatomic) CAEmitterLayer * emitterLayer;//粒子动画
@@ -32,54 +33,81 @@
 -(void)initView{
     self.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight);
     
-    
-    int width = ScreenWidth - [PUtil getActualWidth:200];
+//    int width = ScreenWidth - [PUtil getActualWidth:200];
     int height = [PUtil getActualHeight:500];
-    UIView *contentView = [[UIView alloc]init];
-    contentView.backgroundColor = c06_backgroud;
-    contentView.frame = CGRectMake([PUtil getActualWidth:100], (ScreenHeight - height)/2, width, height);
-    contentView.layer.masksToBounds = YES;
-    contentView.layer.cornerRadius = 4;
-    [self addSubview:contentView];
-    
-    UILabel *topLabel = [[UILabel alloc]init];
-    topLabel.text = @"点击竞猜币签到";
-    topLabel.textAlignment = NSTextAlignmentCenter;
-    topLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:30]];
-    topLabel.textColor = c08_text;
-    topLabel.backgroundColor = c01_blue;
-    topLabel.frame = CGRectMake(0, 0, width, [PUtil getActualHeight:100]);
-    [contentView addSubview:topLabel];
-    
-    _signLabel = [[UILabel alloc]init];
-    _signLabel.text = @"已连续签到1天";
-    _signLabel.textAlignment = NSTextAlignmentCenter;
-    _signLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:30]];
-    _signLabel.textColor = c08_text;
-    _signLabel.backgroundColor = c02_red;
-    _signLabel.frame = CGRectMake(0, [PUtil getActualHeight:400], width, [PUtil getActualHeight:100]);
-    [contentView addSubview:_signLabel];
-    
-    
+//    UIView *contentView = [[UIView alloc]init];
+//    contentView.backgroundColor = c06_backgroud;
+//    contentView.frame = CGRectMake([PUtil getActualWidth:100], (ScreenHeight - height)/2, width, height);
+//    contentView.layer.masksToBounds = YES;
+//    contentView.layer.cornerRadius = 4;
+//    [self addSubview:contentView];
+//
+//    UILabel *topLabel = [[UILabel alloc]init];
+//    topLabel.text = @"点击竞猜币签到";
+//    topLabel.textAlignment = NSTextAlignmentCenter;
+//    topLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:30]];
+//    topLabel.textColor = c08_text;
+//    topLabel.backgroundColor = c01_blue;
+//    topLabel.frame = CGRectMake(0, 0, width, [PUtil getActualHeight:100]);
+//    [contentView addSubview:topLabel];
+//
+//    _signLabel = [[UILabel alloc]init];
+//    _signLabel.text = @"已连续签到1天";
+//    _signLabel.textAlignment = NSTextAlignmentCenter;
+//    _signLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:30]];
+//    _signLabel.textColor = c08_text;
+//    _signLabel.backgroundColor = c02_red;
+//    _signLabel.frame = CGRectMake(0, [PUtil getActualHeight:400], width, [PUtil getActualHeight:100]);
+//    [contentView addSubview:_signLabel];
+//
+//
     _coinImageView = [[UIImageView alloc]init];
     UIImage *coinImage = [UIImage imageNamed:@"ic_coin"];
     _coinImageView.userInteractionEnabled = YES;
-    _coinImageView.image = coinImage;
+//    _coinImageView.image = coinImage;
     _coinImageView.frame = CGRectMake((ScreenWidth - [PUtil getActualHeight:150])/2, (ScreenHeight - height)/2 + [PUtil getActualHeight:175], [PUtil getActualHeight:150], [PUtil getActualHeight:150]);
-    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(doSign)];
-    [_coinImageView addGestureRecognizer:recognizer];
+//    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(doSign)];
+//    [_coinImageView addGestureRecognizer:recognizer];
     [self addSubview:_coinImageView];
     
     [self initMyEmitter];
-    
+    [self doSign];
 }
 
 
 -(void)doSign{
     [self startAnimation];
     [self playSound];
+    [self doRequestSign];
 }
 
+-(void)doRequestSign{
+    [ByNetUtil get:API_SIGN parameters:nil success:^(RespondModel *model) {
+        if(model.code == 200){
+            id data = model.data;
+            id sign = [data objectForKey:@"sign_in"];
+            int day = [[sign objectForKey:@"day"] intValue];
+            NSArray *coins = [sign objectForKey:@"gift_coin"];
+            if(!IS_NS_COLLECTION_EMPTY(coins)){
+                long currentCoin = 0L;
+                if([coins count] >= day){
+                    currentCoin = [[coins objectAtIndex:day - 1] longValue];
+                }else{
+                    currentCoin = [[coins lastObject] longValue];
+                }
+                [DialogHelper showSuccessTips:[NSString stringWithFormat:@"今日签到获得%ld竞猜币",currentCoin]];
+
+            }
+            if(_delegate){
+                [_delegate OnSignSuccess];
+            }
+        }
+
+    } failure:^(NSError *error) {
+        
+    }];
+
+}
 
 - (void)startAnimation{
     CABasicAnimation * effectAnimation = [CABasicAnimation animationWithKeyPath:@"emitterCells.zanShape.birthRate"];
@@ -125,7 +153,7 @@
     //粒子速度
     cell.velocity = 300;
     //速度范围
-    cell.velocityRange = 100;
+    cell.velocityRange = 150;
     //周围发射角度
     cell.emissionRange = M_PI / 8;
     //发射的z轴方向的角度
@@ -146,9 +174,6 @@
 -(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
     if(flag){
         AudioServicesDisposeSystemSoundID(self.soundID);
-        if(_delegate){
-            [_delegate OnSignSuccess];
-        }
         [self removeFromSuperview];
     }
 }

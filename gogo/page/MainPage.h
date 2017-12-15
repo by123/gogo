@@ -37,7 +37,7 @@
 
 @optional -(void)updateUserInfo;
 
-@optional -(void)showSignView : (id<SignViewDelegate>)delegate;
+//@optional -(void)showSignView : (id<SignViewDelegate>)delegate;
 
 
 @end

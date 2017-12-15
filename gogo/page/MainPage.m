@@ -33,12 +33,13 @@
 
 #define TitleHeight [PUtil getActualHeight:88]
 
-@interface MainPage ()<BottomViewDelegate,MainHandleDelegate>
+@interface MainPage ()<BottomViewDelegate,MainHandleDelegate,SignViewDelegate>
 
 @property (strong, nonatomic) UILabel *mTitleLabel;
 @property (strong, nonatomic) UIView  *mBodyView;
 @property (strong, nonatomic) MineView *mineView;
 @property (strong, nonatomic) HomeView *homeView;
+@property (strong, nonatomic) UIButton *signBtn;
 
 @end
 
@@ -63,6 +64,7 @@
                                                object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoPlayEnd) name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
+    [self getSignStatu];
 }
 
 
@@ -114,7 +116,19 @@
     _mTitleLabel.font = [UIFont systemFontOfSize:18.0f];
     _mTitleLabel.textColor = c08_text;
     _mTitleLabel.textAlignment = NSTextAlignmentCenter;
+    
     [self.view addSubview:_mTitleLabel];
+
+    _signBtn = [[UIButton alloc]init];
+    _signBtn.frame = CGRectMake([PUtil getActualWidth:15], [PUtil getActualHeight:20]+StatuBarHeight , [PUtil getActualWidth:120], [PUtil getActualHeight:48]);
+    _signBtn.backgroundColor = c01_blue;
+    _signBtn.layer.masksToBounds = YES;
+    [_signBtn setTitle:@"签到" forState:UIControlStateNormal];
+    [_signBtn setTitleColor:c08_text forState:UIControlStateNormal];
+    _signBtn.layer.cornerRadius = 4;
+    _signBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+    [_signBtn addTarget:self action:@selector(showSignView) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_signBtn];
     
 }
 
@@ -165,6 +179,7 @@
 
 #pragma mark 添加首页
 -(void)addHomePage{
+    _signBtn.hidden = NO;
     _homeView = [[HomeView alloc]initWithFrame:CGRectMake(0, 0,ScreenWidth, _mBodyView.mj_h)];
     _homeView.handleDelegate = self;
     _homeView.vc = self;
@@ -173,6 +188,7 @@
 
 #pragma mark 添加赛事
 -(void)addGamePage{
+    _signBtn.hidden = YES;
     GamePage *gamepage = [[GamePage alloc]init];
     gamepage.handleDelegate = self;
     [_mBodyView addSubview:gamepage.view];
@@ -180,6 +196,7 @@
 
 #pragma mark 添加商城
 -(void)addMallPage{
+    _signBtn.hidden = YES;
     MallPage *mallpage = [[MallPage alloc]init];
     mallpage.handleDelegate = self;
     [_mBodyView addSubview:mallpage.view];
@@ -187,6 +204,7 @@
 
 #pragma mark 添加我的
 -(void)addMinePage{
+    _signBtn.hidden = YES;
     _mineView = [[MineView alloc]initWithFrame:CGRectMake(0, 0,ScreenWidth, _mBodyView.mj_h)];
     _mineView.handleDelegate = self;
     [_mBodyView addSubview:_mineView];
@@ -287,12 +305,32 @@
     }];
 }
 
-
 #pragma mark 显示签到UI
--(void)showSignView : (id<SignViewDelegate>)delegate{
+-(void)showSignView{
     SignView *signView =[[SignView alloc]init];
-    signView.delegate = delegate;
+    signView.delegate = self;
     [self.view addSubview:signView];
+}
+
+-(void)OnSignSuccess{
+    [_signBtn setTitle:@"今日已签到" forState:UIControlStateNormal];
+    _signBtn.backgroundColor = c02_red;
+    _signBtn.enabled = NO;
+}
+
+-(void)getSignStatu{
+    [ByNetUtil get:API_SIGN_STATU parameters:nil success:^(RespondModel *model) {
+        if(model.code == 200){
+            id data = model.data;
+            id sign = [data objectForKey:@"sign_in"];
+            bool statu = [[sign objectForKey:@"has_sign"] boolValue];
+            if(statu){
+                [self OnSignSuccess];
+            }
+        }
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 @end
