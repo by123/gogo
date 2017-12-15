@@ -14,6 +14,9 @@
 #import "RespondModel.h"
 #import "TimeUtil.h"
 #import "ScheduleItemModel.h"
+
+#define THeight [PUtil getActualHeight:86]
+#define CHeight [PUtil getActualHeight:224]
 @interface ScheduleView ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (strong, nonatomic) UITableView *tableView;
@@ -74,9 +77,9 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     ScheduleItemModel *model = [datas objectAtIndex:indexPath.row];
     if(IS_NS_STRING_EMPTY(model.score_a)){
-        return [PUtil getActualHeight:86];
+        return THeight;
     }
-    return [PUtil getActualHeight:204];
+    return CHeight;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -172,9 +175,9 @@
             int height = 0;
             for(ScheduleItemModel *model in datas){
                 if(IS_NS_STRING_EMPTY(model.score_a)){
-                    height +=[PUtil getActualHeight:86];
+                    height +=THeight;
                 }else{
-                    height +=[PUtil getActualHeight:204];
+                    height +=CHeight;
                 }
             }
             _tableView.frame = CGRectMake(0, 0, ScreenWidth, height);

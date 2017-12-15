@@ -8,6 +8,7 @@
 
 #import "ScheduleContentCell.h"
 #import "TimeUtil.h"
+#import "BettingItemModel.h"
 @interface ScheduleContentCell()
 
 @property (strong, nonatomic) UILabel *raceLabel;
@@ -19,6 +20,7 @@
 @property (strong, nonatomic) UILabel *timeLabel;
 @property (strong, nonatomic) UIButton *guessBtn;
 @property (strong, nonatomic) UIView *lineView;
+@property (strong, nonatomic) UILabel *countLabel;
 
 @end
 
@@ -47,9 +49,9 @@
 
     
     _aView = [[UIImageView alloc]init];
-    _aView.frame = CGRectMake([PUtil getActualWidth:110], [PUtil getActualHeight:77], [PUtil getActualHeight:64], [PUtil getActualHeight:64]);
+    _aView.frame = CGRectMake([PUtil getActualWidth:110], [PUtil getActualHeight:77], [PUtil getActualHeight:80], [PUtil getActualHeight:80]);
     _aView.layer.masksToBounds = YES;
-    _aView.layer.cornerRadius = [PUtil getActualHeight:60]/2;
+    _aView.layer.cornerRadius = [PUtil getActualHeight:80]/2;
     _aView.contentMode = UIViewContentModeScaleAspectFit;
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(goDetail)];
     [_aView addGestureRecognizer:recognizer];
@@ -57,11 +59,11 @@
     
     _aLabel = [[UILabel alloc]init];
     _aLabel.textColor = c08_text;
-    _aLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:20]];
+    _aLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:24]];
     [self.contentView addSubview:_aLabel];
 
     _timeView = [[UIView alloc]init];
-    _timeView.frame = CGRectMake([PUtil getActualWidth:230],  [PUtil getActualHeight:102], [PUtil getActualWidth:116], [PUtil getActualHeight:40]);
+    _timeView.frame = CGRectMake([PUtil getActualWidth:240],  [PUtil getActualHeight:100], [PUtil getActualWidth:116], [PUtil getActualHeight:40]);
     _timeView.layer.masksToBounds = YES;
     _timeView.layer.cornerRadius = [PUtil getActualHeight:40]/2;
     [self.contentView addSubview:_timeView];
@@ -69,26 +71,32 @@
 
     
     _timeLabel = [[UILabel alloc]init];
-    _timeLabel.frame = CGRectMake([PUtil getActualWidth:230],  [PUtil getActualHeight:102], [PUtil getActualWidth:116], [PUtil getActualHeight:40]);
+    _timeLabel.frame = CGRectMake([PUtil getActualWidth:240],  [PUtil getActualHeight:100], [PUtil getActualWidth:116], [PUtil getActualHeight:40]);
     _timeLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:24]];
     _timeLabel.textColor = c08_text;
     _timeLabel.textAlignment = NSTextAlignmentCenter;
-    _timeLabel.layer.masksToBounds = YES;
-    _timeLabel.layer.cornerRadius = [PUtil getActualHeight:40]/2;
     [self.contentView addSubview:_timeLabel];
-
+    
+    _countLabel = [[UILabel alloc]init];
+    _countLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:24]];
+    _countLabel.textColor = c08_text;
+    _countLabel.alpha = 0.5;
+    _countLabel.textAlignment = NSTextAlignmentCenter;
+    _countLabel.layer.masksToBounds = YES;
+    [self.contentView addSubview:_countLabel];
+    
     
     _bView = [[UIImageView alloc]init];
-    _bView.frame = CGRectMake([PUtil getActualWidth:406], [PUtil getActualHeight:77], [PUtil getActualHeight:64], [PUtil getActualHeight:64]);
+    _bView.frame = CGRectMake([PUtil getActualWidth:406], [PUtil getActualHeight:77], [PUtil getActualHeight:80], [PUtil getActualHeight:80]);
     _bView.layer.masksToBounds = YES;
-    _bView.layer.cornerRadius = [PUtil getActualHeight:60]/2;
+    _bView.layer.cornerRadius = [PUtil getActualHeight:80]/2;
     _bView.contentMode = UIViewContentModeScaleAspectFit;
     [_bView addGestureRecognizer:recognizer];
     [self.contentView addSubview:_bView];
     
     _bLabel = [[UILabel alloc]init];
     _bLabel.textColor = c08_text;
-    _bLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:20]];
+    _bLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:24]];
     [self.contentView addSubview:_bLabel];
     
     _guessBtn = [[UIButton alloc]init];
@@ -100,29 +108,33 @@
     _guessBtn.enabled = NO;
     _guessBtn.layer.cornerRadius = [PUtil getActualHeight:6];
     _guessBtn.titleLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:28]];
-    [_guessBtn addTarget:self action:@selector(goGuessPage:) forControlEvents:UIControlEventTouchUpInside];
+//    [_guessBtn addTarget:self action:@selector(goGuessPage:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:_guessBtn];
     
     _lineView = [[UIView alloc]init];
     _lineView.backgroundColor = c05_divider;
-    _lineView.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualHeight:204]-1, ScreenWidth - [PUtil getActualWidth:30], 1);
+    _lineView.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualHeight:224]-1, ScreenWidth - [PUtil getActualWidth:30], 1);
     [self.contentView addSubview:_lineView];
     
 }
 
 -(void)setData : (ScheduleItemModel *)model{
-    _timeLabel.text = [TimeUtil generateTime:model.race_ts];
+    _timeLabel.text = [NSString stringWithFormat:@"%@ : %@",model.score_a,model.score_b];
     TeamModel *aTeamModel = [TeamModel mj_objectWithKeyValues:model.team_a];
     [_aView sd_setImageWithURL:[NSURL URLWithString:aTeamModel.logo]];
     TeamModel *bTeamModel = [TeamModel mj_objectWithKeyValues:model.team_b];
     [_bView sd_setImageWithURL:[NSURL URLWithString:bTeamModel.logo]];
     _aLabel.text = aTeamModel.team_name;
-    _aLabel.frame = CGRectMake([PUtil getActualWidth:142]- _aLabel.contentSize.width/2, [PUtil getActualHeight:150], _aLabel.contentSize.width, _aLabel.contentSize.height);
+    _aLabel.frame = CGRectMake([PUtil getActualWidth:152]- _aLabel.contentSize.width/2, [PUtil getActualHeight:165], _aLabel.contentSize.width, _aLabel.contentSize.height);
 
     _bLabel.text = bTeamModel.team_name;
-    _bLabel.frame = CGRectMake([PUtil getActualWidth:438]- _bLabel.contentSize.width/2, [PUtil getActualHeight:150], _bLabel.contentSize.width, _bLabel.contentSize.height);
+    _bLabel.frame = CGRectMake([PUtil getActualWidth:448]- _bLabel.contentSize.width/2, [PUtil getActualHeight:165], _bLabel.contentSize.width, _bLabel.contentSize.height);
     
-    _raceLabel.text = model.race_name;
+    if([model.status isEqualToString:Statu_End]){
+        _raceLabel.text = [NSString stringWithFormat:@"%@ - 已结束",model.race_name];
+    }else{
+        _raceLabel.text = [NSString stringWithFormat:@"%@ - 未开始",model.race_name];
+    }
 
     
     if(model.hideLine){
@@ -136,6 +148,9 @@
         [_guessBtn setTitle:@"结果" forState:UIControlStateNormal];
         _guessBtn.backgroundColor = c01_blue;
     }
+    
+    _countLabel.text = [TimeUtil generateTime:model.race_ts];
+    _countLabel.frame = CGRectMake(_timeView.mj_x - (_countLabel.contentSize.width-_timeView.mj_w)/2, [PUtil getActualHeight:165], _countLabel.contentSize.width, _countLabel.contentSize.height);
 }
 
 -(void)setDelegate : (id<MainHandleDelegate>)delegate{
