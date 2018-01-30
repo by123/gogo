@@ -95,7 +95,7 @@
     
     if(IS_NS_STRING_EMPTY(model.video)){
         _webView = [[UIWebView alloc]init];
-        _webView.frame = CGRectMake(0,0, ScreenWidth,2000);
+        _webView.frame = CGRectMake([PUtil getActualWidth:20],0, ScreenWidth-[PUtil getActualWidth:40],2000);
         _webView.allowsInlineMediaPlayback = YES;
         _webView.backgroundColor = c06_backgroud;
         _webView.scalesPageToFit = YES;
@@ -329,9 +329,11 @@
     [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.webkitTextSizeAdjust= '250%'"];
     [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.webkitTextFillColor= '#FFFFFF'"];
 
+
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        WebViewHeight = [webView sizeThatFits:CGSizeZero].height + [PUtil getActualWidth:20];
-        CGRect WebViewRect = CGRectMake(0, _topView.height, ScreenWidth, WebViewHeight);
+        WebViewHeight = [webView sizeThatFits:webView.frame.size].height + [PUtil getActualWidth:20];
+//        WebViewHeight = [webView sizeThatFits:CGSizeZero].height + [PUtil getActualWidth:20];
+        CGRect WebViewRect = CGRectMake([PUtil getActualWidth:20], _topView.height, ScreenWidth-[PUtil getActualWidth:40], WebViewHeight);
         WebViewRect.size.height = WebViewHeight;
         _scrollerView.contentSize = CGSizeMake(ScreenWidth,_topView.height+CommentCellHeight* [datas count]+ [PUtil getActualHeight:88] +WebViewHeight);
         _webView.frame = WebViewRect;
