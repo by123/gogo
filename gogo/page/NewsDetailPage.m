@@ -18,12 +18,14 @@
 #import "RHPlayerView.h"
 #import "RHVideoModel.h"
 #import "RespondModel.h"
+#import "TimeUtil.h"
 
 #define CommentCellHeight [PUtil getActualHeight:180]
 #define REREQUESTSIZE 10
 @interface NewsDetailPage ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,UIWebViewDelegate,RHPlayerViewDelegate,BarViewDelegate,CommentCellDelegate,UIScrollViewDelegate>
 
 @property (strong, nonatomic) BarView *barView;
+@property (strong, nonatomic) UIView *topView;
 @property (strong, nonatomic) UILabel *contentLabel;
 @property (strong, nonatomic) UIImageView *imageView;
 @property (strong, nonatomic) UIWebView *webView;
@@ -62,13 +64,12 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillChangeFrameNotification object:nil];
     if(_playView){
         [_playView stop];
-        NSLog(@"by666暂停了");
     }
 }
 
 
 -(void)initView{
-    _barView = [[BarView alloc]initWithTitle:model.title page:self delegate:self like:YES];
+    _barView = [[BarView alloc]initWithTitle:model.tp page:self delegate:self like:YES];
     if(model.is_like){
         [_barView setLike:YES];
     }else{
@@ -89,6 +90,8 @@
     header.lastUpdatedTimeLabel.hidden = YES;
     _scrollerView.mj_header = header;
     [self.view addSubview:_scrollerView];
+    
+    [self initTopView];
     
     if(IS_NS_STRING_EMPTY(model.video)){
         _webView = [[UIWebView alloc]init];
@@ -119,6 +122,40 @@
     }
     
     
+}
+
+-(void)initTopView{
+    
+    _topView = [[UIView alloc]init];
+    [_scrollerView addSubview:_topView];
+    
+    UILabel *titleLabel = [[UILabel alloc]init];
+    titleLabel.text = model.title;
+    titleLabel.textColor = c08_text;
+    titleLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:48]];
+    titleLabel.numberOfLines = 0;
+    titleLabel.lineBreakMode = NSLineBreakByCharWrapping;
+    CGSize titleSize = [titleLabel.text boundingRectWithSize:CGSizeMake( ScreenWidth - [PUtil getActualWidth:30]*2, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:[PUtil getActualHeight:48]]} context:nil].size;
+    titleLabel.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualHeight:30] , ScreenWidth - [PUtil getActualWidth:30]*2, titleSize.height);
+    [_topView addSubview:titleLabel];
+    
+    UILabel *typeLabel = [[UILabel alloc]init];
+    typeLabel.text = model.tp;
+    typeLabel.textColor = c08_text;
+    typeLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:20]];
+    typeLabel.alpha = 0.25f;
+    typeLabel.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualHeight:50] + titleSize.height, typeLabel.contentSize.width, typeLabel.contentSize.height);
+    [_topView addSubview:typeLabel];
+    
+    UILabel *timeLabel = [[UILabel alloc]init];
+    timeLabel.text = [TimeUtil generateAll:model.news_ts];
+    timeLabel.textColor = c08_text;
+    timeLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:20]];
+    timeLabel.alpha = 0.25f;
+    timeLabel.frame = CGRectMake(ScreenWidth - [PUtil getActualWidth:30] - timeLabel.contentSize.width, [PUtil getActualHeight:50] + titleSize.height, timeLabel.contentSize.width, timeLabel.contentSize.height);
+    [_topView addSubview:timeLabel];
+
+    _topView.frame = CGRectMake(0,0, ScreenWidth, titleSize.height + [PUtil getActualHeight:70] + typeLabel.contentSize.height);
 }
 
 -(void)initComment{
@@ -294,9 +331,9 @@
 
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         WebViewHeight = [webView sizeThatFits:CGSizeZero].height + [PUtil getActualWidth:20];
-        CGRect WebViewRect = CGRectMake(0, 0, ScreenWidth, WebViewHeight);
+        CGRect WebViewRect = CGRectMake(0, _topView.height, ScreenWidth, WebViewHeight);
         WebViewRect.size.height = WebViewHeight;
-        _scrollerView.contentSize = CGSizeMake(ScreenWidth,CommentCellHeight* [datas count]+ [PUtil getActualHeight:88] +WebViewHeight);
+        _scrollerView.contentSize = CGSizeMake(ScreenWidth,_topView.height+CommentCellHeight* [datas count]+ [PUtil getActualHeight:88] +WebViewHeight);
         _webView.frame = WebViewRect;
         _webScrollView.contentSize = CGSizeMake(ScreenWidth, WebViewHeight);
         
@@ -330,9 +367,9 @@
             }
             _tableView.frame = CGRectMake(0, _commentTitleView.mj_y+_commentTitleView.mj_h, ScreenWidth, [datas count] *CommentCellHeight);
             if(IS_NS_STRING_EMPTY(model.video)){
-                _scrollerView.contentSize = CGSizeMake(ScreenWidth, CommentCellHeight* [datas count]+_webView.mj_h +[PUtil getActualHeight:88]);
+                _scrollerView.contentSize = CGSizeMake(ScreenWidth, _topView.height+CommentCellHeight* [datas count]+_webView.mj_h +[PUtil getActualHeight:88]);
             }else{
-                _scrollerView.contentSize = CGSizeMake(ScreenWidth, CommentCellHeight* [datas count]+ScreenWidth *ScreenWidth / ScreenHeight +[PUtil getActualHeight:88]);
+                _scrollerView.contentSize = CGSizeMake(ScreenWidth, _topView.height+CommentCellHeight* [datas count]+ScreenWidth *ScreenWidth / ScreenHeight +[PUtil getActualHeight:88]);
             }
             [_tableView reloadData];
         }else{
