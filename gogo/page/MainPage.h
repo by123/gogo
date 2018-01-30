@@ -37,6 +37,8 @@
 
 @optional -(void)updateUserInfo;
 
+@optional -(void)goGamePage;
+
 //@optional -(void)showSignView : (id<SignViewDelegate>)delegate;
 
 

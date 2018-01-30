@@ -63,6 +63,7 @@
 		CF2EAF071FA514F800F35974 /* GuessHistoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAF061FA514F800F35974 /* GuessHistoryModel.m */; };
 		CF2EAF0A1FA5154600F35974 /* GuessHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAF091FA5154600F35974 /* GuessHistoryCell.m */; };
 		CF2EAF0D1FA5231300F35974 /* ItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAF0C1FA5231300F35974 /* ItemView.m */; };
+		CF303D85201AF29B0095EAA9 /* CompetitionView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF303D84201AF29B0095EAA9 /* CompetitionView.m */; };
 		CF4278201FAB95FA00C163DD /* RespondModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF42781F1FAB95FA00C163DD /* RespondModel.m */; };
 		CF4278261FAB98A400C163DD /* DialogHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4278241FAB98A400C163DD /* DialogHelper.m */; };
 		CF4278291FAB98D800C163DD /* IDSAlertSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4278281FAB98D800C163DD /* IDSAlertSheet.m */; };
@@ -173,6 +174,7 @@
 		CFD14E7B1FB219E400A28982 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CFD14E791FB219E400A28982 /* AlipaySDK.bundle */; };
 		CFF0377F1FC6EB4B002C2358 /* SettingPage.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF0377E1FC6EB4B002C2358 /* SettingPage.m */; };
 		CFF037831FC6EDC1002C2358 /* FeedbackPage.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF037821FC6EDC1002C2358 /* FeedbackPage.m */; };
+		CFFF1EA81FE459510062BBDD /* ImageBuuton.m in Sources */ = {isa = PBXBuildFile; fileRef = CFFF1EA71FE459510062BBDD /* ImageBuuton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -291,6 +293,8 @@
 		CF2EAF091FA5154600F35974 /* GuessHistoryCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuessHistoryCell.m; sourceTree = "<group>"; };
 		CF2EAF0B1FA5231300F35974 /* ItemView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemView.h; sourceTree = "<group>"; };
 		CF2EAF0C1FA5231300F35974 /* ItemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemView.m; sourceTree = "<group>"; };
+		CF303D83201AF29B0095EAA9 /* CompetitionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompetitionView.h; sourceTree = "<group>"; };
+		CF303D84201AF29B0095EAA9 /* CompetitionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CompetitionView.m; sourceTree = "<group>"; };
 		CF42781E1FAB95FA00C163DD /* RespondModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RespondModel.h; sourceTree = "<group>"; };
 		CF42781F1FAB95FA00C163DD /* RespondModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RespondModel.m; sourceTree = "<group>"; };
 		CF4278241FAB98A400C163DD /* DialogHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DialogHelper.m; sourceTree = "<group>"; };
@@ -484,6 +488,8 @@
 		CFF0377E1FC6EB4B002C2358 /* SettingPage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingPage.m; sourceTree = "<group>"; };
 		CFF037811FC6EDC1002C2358 /* FeedbackPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedbackPage.h; sourceTree = "<group>"; };
 		CFF037821FC6EDC1002C2358 /* FeedbackPage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedbackPage.m; sourceTree = "<group>"; };
+		CFFF1EA61FE459510062BBDD /* ImageBuuton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageBuuton.h; sourceTree = "<group>"; };
+		CFFF1EA71FE459510062BBDD /* ImageBuuton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageBuuton.m; sourceTree = "<group>"; };
 		FC91EBAA0A903D9AA36FDE62 /* Pods-gogo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gogo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-gogo/Pods-gogo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1175,6 +1181,10 @@
 				CFB13C921FD56C1E00AD66D3 /* PlayButton.m */,
 				CFA43E351FDBCA8C00EF74CD /* SignView.h */,
 				CFA43E361FDBCA8C00EF74CD /* SignView.m */,
+				CFFF1EA61FE459510062BBDD /* ImageBuuton.h */,
+				CFFF1EA71FE459510062BBDD /* ImageBuuton.m */,
+				CF303D83201AF29B0095EAA9 /* CompetitionView.h */,
+				CF303D84201AF29B0095EAA9 /* CompetitionView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1461,6 +1471,7 @@
 				CF2EAE761F9FC7C800F35974 /* TeamModel.m in Sources */,
 				CF2EAEB71FA26C5800F35974 /* MemberModel.m in Sources */,
 				CFA43E3F1FDBE9E700EF74CD /* GuessMainView.m in Sources */,
+				CF303D85201AF29B0095EAA9 /* CompetitionView.m in Sources */,
 				CF2B9D151FC74F0A00121BE6 /* VideoCell.m in Sources */,
 				CFBFE5251FA64CD000500B1B /* LivePage.m in Sources */,
 				CFCB0F0C1F7105360087ACC7 /* BaseViewController.m in Sources */,
@@ -1483,6 +1494,7 @@
 				CF0BEDC51F9BA8EE005275EE /* MainPage.m in Sources */,
 				CF2EAEEC1FA4FFBC00F35974 /* GuessHistoryPage.m in Sources */,
 				CF2EAEFE1FA5075300F35974 /* PayCell.m in Sources */,
+				CFFF1EA81FE459510062BBDD /* ImageBuuton.m in Sources */,
 				CFCB0F0D1F7105360087ACC7 /* Constant.m in Sources */,
 				CF2EAE8E1FA10D9200F35974 /* CommentModel.m in Sources */,
 				CFCB0F4E1F711E6F0087ACC7 /* TAPageControl.m in Sources */,

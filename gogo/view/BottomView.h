@@ -18,4 +18,5 @@
 
 -(instancetype)initWithTitles:(NSArray *)titles images : (NSArray *)images delegate:(id<BottomViewDelegate>)delegate;
 
+-(void)gameClick;
 @end

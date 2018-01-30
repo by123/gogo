@@ -11,15 +11,17 @@
 #import "RespondModel.h"
 #import "RHPlayerView.h"
 #import "VideoCell.h"
+#import "CompetitionView.h"
 
 #define AdViewHeight [PUtil getActualHeight:300]
 #define AdInterval 3.0f
 
-@interface HomeView ()<VideoCellDelegate>
+@interface HomeView ()<VideoCellDelegate,CompetitionViewDelegate>
 
 @property (strong, nonatomic) UIScrollView *scrollerView;
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) SDCycleScrollView *cycleScrollView;
+@property (strong, nonatomic) CompetitionView *competitionView;
 
 @end
 
@@ -62,8 +64,13 @@
     _cycleScrollView.autoScrollTimeInterval = AdInterval;
     [_scrollerView addSubview:_cycleScrollView];
     
+    _competitionView = [[CompetitionView alloc]initWithFrame:CGRectMake(0, AdViewHeight, ScreenWidth, [PUtil getActualHeight:232])];
+    _competitionView.delegate = self;
+    [_scrollerView addSubview:_competitionView];
+    
+    
     _tableView = [[UITableView alloc]init];
-    _tableView.frame = CGRectMake(0, AdViewHeight, ScreenWidth, [PUtil getActualHeight:172] * [datas count]);
+    _tableView.frame = CGRectMake(0, AdViewHeight+[PUtil getActualHeight:232], ScreenWidth, [PUtil getActualHeight:172] * [datas count]);
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.backgroundColor = c06_backgroud;
@@ -178,8 +185,8 @@
                     height += [PUtil getActualHeight:600];
                 }
             }
-             _tableView.frame = CGRectMake(0, AdViewHeight, ScreenWidth, height);
-            _scrollerView.contentSize = CGSizeMake(ScreenWidth, height + AdViewHeight);
+             _tableView.frame = CGRectMake(0, AdViewHeight+[PUtil getActualHeight:232], ScreenWidth, height);
+            _scrollerView.contentSize = CGSizeMake(ScreenWidth, height +[PUtil getActualHeight:232]+ AdViewHeight);
             [_tableView reloadData];
         }
     } failure:^(NSError *error) {
@@ -257,5 +264,17 @@
         model.isPlay = NO;
     }
     [_tableView reloadData];
+}
+
+-(void)goGuessPage:(long)race_id end:(Boolean)isEnd{
+    if(_handleDelegate){
+        [_handleDelegate goGuessPage:race_id end:isEnd];
+    }
+}
+
+-(void)goSchedulePage{
+    if(_handleDelegate){
+        [_handleDelegate goGamePage];
+    }
 }
 @end

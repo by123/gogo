@@ -20,6 +20,7 @@
 #import "AccountManager.h"
 #import "BettingTpModel.h"
 #import "ChatView.h"
+#import "ImageBuuton.h"
 @interface GuessPage ()
 
 @property (strong, nonatomic) UIImageView *aTeamImageView;
@@ -28,8 +29,8 @@
 @property (strong, nonatomic) UILabel *bTeamLabel;
 @property (strong, nonatomic) UILabel *timeLabel;
 @property (strong, nonatomic) UILabel *gameLabel;
-@property (strong, nonatomic) UIButton *aTeamSupportBtn;
-@property (strong, nonatomic) UIButton *bTeamSupportBtn;
+@property (strong, nonatomic) ImageBuuton *aTeamSupportBtn;
+@property (strong, nonatomic) ImageBuuton *bTeamSupportBtn;
 @property (strong, nonatomic) UILabel *scoreLabel;
 @property (strong, nonatomic) UIView *guessOrderView;
 @property (strong, nonatomic) UILabel *guessTitleLabel;
@@ -133,7 +134,8 @@
     [topView addSubview:_gameLabel];
     
     
-    _aTeamSupportBtn = [[UIButton alloc]init];
+    _aTeamSupportBtn = [[ImageBuuton alloc]initWithDirect:Direct_Left];
+    [_aTeamSupportBtn setImage:[UIImage imageNamed:@"ic_support"] forState:UIControlStateNormal];
     _aTeamSupportBtn.frame = CGRectMake([PUtil getActualWidth:60], [PUtil getActualHeight:370]-StatuBarHeight, (ScreenWidth - [PUtil getActualWidth:120])/2, [PUtil getActualHeight:50]);
     _aTeamSupportBtn.backgroundColor = c01_blue;
     _aTeamSupportBtn.titleLabel.font = [UIFont systemFontOfSize:12.0f];
@@ -145,7 +147,8 @@
     [topView addSubview:_aTeamSupportBtn];
     
     
-    _bTeamSupportBtn = [[UIButton alloc]init];
+    _bTeamSupportBtn = [[ImageBuuton alloc]initWithDirect:Direct_Right];
+    [_bTeamSupportBtn setImage:[UIImage imageNamed:@"ic_support"] forState:UIControlStateNormal];
     _bTeamSupportBtn.frame = CGRectMake([PUtil getActualWidth:60] + (ScreenWidth - [PUtil getActualWidth:120])/2, [PUtil getActualHeight:370]-StatuBarHeight, (ScreenWidth - [PUtil getActualWidth:120])/2, [PUtil getActualHeight:50]);
     _bTeamSupportBtn.backgroundColor = c02_red;
     _bTeamSupportBtn.titleLabel.font = [UIFont systemFontOfSize:12.0f];
@@ -328,10 +331,10 @@
     _gameLabel.text = raceModel.race_name;
     
     [_aTeamSupportBtn setTitle:[NSString stringWithFormat:@"支持%@  50%%",aTeamModel.team_name] forState:UIControlStateNormal];
-    _aTeamSupportBtn.titleEdgeInsets = UIEdgeInsetsMake(0,-[PUtil getActualWidth:100],0,0);
+//    _aTeamSupportBtn.titleEdgeInsets = UIEdgeInsetsMake(0,-[PUtil getActualWidth:100],0,0);
     
     [_bTeamSupportBtn setTitle:[NSString stringWithFormat:@"支持%@  50%%",bTeamModel.team_name] forState:UIControlStateNormal];
-    _bTeamSupportBtn.titleEdgeInsets = UIEdgeInsetsMake(0,0,0,-[PUtil getActualWidth:100]);
+//    _bTeamSupportBtn.titleEdgeInsets = UIEdgeInsetsMake(0,0,00]);
     [self initBodyView];
 }
 

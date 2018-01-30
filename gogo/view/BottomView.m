@@ -19,11 +19,13 @@
 @implementation BottomView{
     UIButton *selectButton;
     NSArray *imagesArray;
+    NSMutableArray *buttons;
 }
 
 -(instancetype)initWithTitles:(NSArray *)titles images : (NSArray *)images delegate:(id<BottomViewDelegate>)delegate{
     if(self == [super init]){
         self.delegate = delegate;
+        buttons = [[NSMutableArray alloc]init];
         [self initView : titles images:images];
     }
     return self;
@@ -54,6 +56,7 @@
                 [button setTitleColor:c10_icon forState:UIControlStateNormal];
             }
             [button addTarget:self action:@selector(OnButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+            [buttons addObject:button];
             [self addSubview:button];
         }
     }
@@ -72,6 +75,11 @@
             [self.delegate OnTabSelected:button.tag];
         }
     }
+}
+
+-(void)gameClick{
+    UIButton *button = [buttons objectAtIndex:1];
+    [self OnButtonClick:button];
 }
 
 @end

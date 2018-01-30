@@ -40,6 +40,7 @@
 @property (strong, nonatomic) MineView *mineView;
 @property (strong, nonatomic) HomeView *homeView;
 @property (strong, nonatomic) UIButton *signBtn;
+@property (strong, nonatomic) BottomView *bottomView;
 
 @end
 
@@ -139,8 +140,8 @@
 }
 
 -(void)initBottom{
-    BottomView *bottomView = [[BottomView alloc]initWithTitles:titles images:images delegate:self];
-    [self.view addSubview:bottomView];
+    _bottomView = [[BottomView alloc]initWithTitles:titles images:images delegate:self];
+    [self.view addSubview:_bottomView];
 }
 
 
@@ -331,6 +332,12 @@
     } failure:^(NSError *error) {
         
     }];
+}
+
+-(void)goGamePage{
+    if(_bottomView){
+        [_bottomView gameClick];
+    }
 }
 
 @end

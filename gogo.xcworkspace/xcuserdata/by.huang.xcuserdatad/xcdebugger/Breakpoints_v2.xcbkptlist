@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "gogo/page/MainPage.m"
-            timestampString = "535058359.699713"
+            timestampString = "539021705.142121"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "-videoPlayEnd"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,7 +74,7 @@
                   moduleName = "gogo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/by.huang/Desktop/%E5%85%B6%E4%BB%96%E9%A1%B9%E7%9B%AE/gogo/gogo/page/NewsDetailPage.m"
-                  timestampString = "535057515.942241"
+                  timestampString = "539021207.0696549"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "413"
@@ -89,7 +89,7 @@
                   moduleName = "gogo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/by.huang/Desktop/%E5%85%B6%E4%BB%96%E9%A1%B9%E7%9B%AE/gogo/gogo/page/NewsDetailPage.m"
-                  timestampString = "535057515.944416"
+                  timestampString = "539021207.080497"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "414"
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "gogo/page/GuessPage.m"
-            timestampString = "534542471.440628"
+            timestampString = "538985805.685119"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
             landmarkName = "-initBodyView"
             landmarkType = "7">
          </BreakpointContent>
@@ -186,7 +186,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "gogo/view/SignView.m"
-            timestampString = "535058359.699893"
+            timestampString = "535060250.424207"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "91"
@@ -202,12 +202,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "gogo/page/ScheduleContentCell.m"
-            timestampString = "535058359.699949"
+            timestampString = "539021206.851329"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "133"
             endingLineNumber = "133"
             landmarkName = "-setData:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "gogo/view/CompetitionView.m"
+            timestampString = "539021705.142629"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
+            landmarkName = "-OnClickRace:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
