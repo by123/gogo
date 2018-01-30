@@ -8,10 +8,11 @@
 
 #import "BaseViewController.h"
 #import "SignView.h"
+#import "NewsModel.h"
 
 @protocol MainHandleDelegate <NSObject>
 
-@optional -(void)goNewsDetailPage : (long)nid;
+@optional -(void)goNewsDetailPage : (NewsModel *)model;
 
 @optional -(void)goScheduleDetailPage : (long)nid;
 

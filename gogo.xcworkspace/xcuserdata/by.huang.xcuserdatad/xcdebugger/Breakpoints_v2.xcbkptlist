@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "gogo/page/MainPage.m"
-            timestampString = "539023706.018425"
+            timestampString = "539026837.855922"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "97"
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "gogo/page/NewsDetailPage.m"
-            timestampString = "539023706.018628"
+            timestampString = "539026837.856068"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "452"
-            endingLineNumber = "452"
+            startingLineNumber = "503"
+            endingLineNumber = "503"
             landmarkName = "-doLike"
             landmarkType = "7">
             <Locations>
@@ -74,12 +74,12 @@
                   moduleName = "gogo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/by.huang/Desktop/%E5%85%B6%E4%BB%96%E9%A1%B9%E7%9B%AE/gogo/gogo/page/NewsDetailPage.m"
-                  timestampString = "539021207.0696549"
+                  timestampString = "539026838.001394"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "413"
-                  endingLineNumber = "413"
-                  offsetFromSymbolStart = "256">
+                  startingLineNumber = "503"
+                  endingLineNumber = "503"
+                  offsetFromSymbolStart = "292">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -89,11 +89,11 @@
                   moduleName = "gogo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/by.huang/Desktop/%E5%85%B6%E4%BB%96%E9%A1%B9%E7%9B%AE/gogo/gogo/page/NewsDetailPage.m"
-                  timestampString = "539021207.080497"
+                  timestampString = "539026838.003337"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "414"
-                  endingLineNumber = "414"
+                  startingLineNumber = "504"
+                  endingLineNumber = "504"
                   offsetFromSymbolStart = "56">
                </Location>
             </Locations>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "gogo/page/NewsDetailPage.m"
-            timestampString = "539023706.019691"
+            timestampString = "539026837.8565741"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "441"
-            endingLineNumber = "441"
+            startingLineNumber = "492"
+            endingLineNumber = "492"
             landmarkName = "-onLikeClick"
             landmarkType = "7">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "gogo/page/NewsDetailPage.m"
-            timestampString = "539023706.020138"
+            timestampString = "539026837.856986"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "526"
-            endingLineNumber = "526"
+            startingLineNumber = "577"
+            endingLineNumber = "577"
             landmarkName = "-updateCommentData:like:"
             landmarkType = "7">
          </BreakpointContent>
@@ -218,12 +218,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "gogo/view/CompetitionView.m"
-            timestampString = "539023706.020609"
+            timestampString = "539026837.8576339"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "144"
             endingLineNumber = "144"
             landmarkName = "-OnClickRace:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "gogo/page/HomeView.m"
+            timestampString = "539026837.857776"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "-cycleScrollView:didSelectItemAtIndex:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

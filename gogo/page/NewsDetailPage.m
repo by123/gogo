@@ -19,9 +19,12 @@
 #import "RHVideoModel.h"
 #import "RespondModel.h"
 #import "TimeUtil.h"
+#import "NewsCell.h"
 
 #define CommentCellHeight [PUtil getActualHeight:180]
+#define MoreCellHeight [PUtil getActualHeight:172]
 #define REREQUESTSIZE 10
+#define TitleHeight [PUtil getActualHeight:88]
 @interface NewsDetailPage ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,UIWebViewDelegate,RHPlayerViewDelegate,BarViewDelegate,CommentCellDelegate,UIScrollViewDelegate>
 
 @property (strong, nonatomic) BarView *barView;
@@ -29,6 +32,8 @@
 @property (strong, nonatomic) UILabel *contentLabel;
 @property (strong, nonatomic) UIImageView *imageView;
 @property (strong, nonatomic) UIWebView *webView;
+@property (strong, nonatomic) TitleView *moreTitleView;
+@property (strong, nonatomic) UITableView *moreTableView;
 @property (strong, nonatomic) TitleView *commentTitleView;
 @property (strong, nonatomic) TouchScrollView *scrollerView;
 @property (strong, nonatomic) UITableView *tableView;
@@ -53,6 +58,8 @@
     [super viewDidLoad];
     datas = [[NSMutableArray alloc]init];
     index = 0;
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+
     [self requestData : NO];
 }
 
@@ -109,7 +116,7 @@
         [_scrollerView addSubview:_webView];
     }else{
         NSString *vedioId = [NSString stringWithFormat:@"%ld",model.news_id];
-        _playView = [[RHPlayerView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenWidth * ScreenWidth / ScreenHeight) currentVC:self parentView : _scrollerView];
+        _playView = [[RHPlayerView alloc]initWithFrame:CGRectMake(0, _topView.height, ScreenWidth, ScreenWidth * ScreenWidth / ScreenHeight) currentVC:self parentView : _scrollerView];
         _playView.delegate = self;
         NSMutableArray *dataArr = [[NSMutableArray alloc]init];
         RHVideoModel *videoModel = [[RHVideoModel alloc] initWithVideoId:vedioId title:@"" url:model.video currentTime:0];
@@ -117,11 +124,12 @@
         [_playView setVideoModels:dataArr playVideoId:vedioId];
         [_scrollerView addSubview:_playView];
         [_playView playVideoWithVideoId:vedioId];
+        [self initMore];
         [self initComment];
         [self requestNew];
     }
     
-    
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 
 -(void)initTopView{
@@ -158,14 +166,32 @@
     _topView.frame = CGRectMake(0,0, ScreenWidth, titleSize.height + [PUtil getActualHeight:70] + typeLabel.contentSize.height);
 }
 
--(void)initComment{
+
+-(void)initMore{
     int height = 0;
     if(IS_NS_STRING_EMPTY(model.video)){
-        height = _webView.mj_h + _webView.mj_y;
+        height = WebViewHeight+_topView.height;
     }else{
-        height = ScreenWidth * ScreenWidth /ScreenHeight;
+        height = ScreenWidth * ScreenWidth /ScreenHeight + _topView.height;
     }
+    _moreTitleView = [[TitleView alloc]initWithTitle:height title:@"更多文章"];
+    [_scrollerView addSubview:_moreTitleView];
     
+    _moreTableView = [[UITableView alloc]init];
+    _moreTableView.frame = CGRectMake(0, _moreTitleView.mj_y+_moreTitleView.mj_h, ScreenWidth,  MoreCellHeight * 3);
+    _moreTableView.delegate = self;
+    _moreTableView.dataSource = self;
+    _moreTableView.backgroundColor = c06_backgroud;
+    _moreTableView.scrollEnabled = NO;
+    _moreTableView.userInteractionEnabled = YES;
+    [_moreTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [_scrollerView addSubview:_moreTableView];
+    
+}
+
+-(void)initComment{
+    int height = _moreTableView.mj_h + _moreTableView.mj_y;
+
     _commentTitleView = [[TitleView alloc]initWithTitle:height title:@"评论（0）"];
     [_commentTitleView setTitle:[NSString stringWithFormat:@"评论（%d）",model.comment_count]];
     [_scrollerView addSubview:_commentTitleView];
@@ -223,24 +249,47 @@
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [datas count];
+    if(tableView == _tableView){
+        return [datas count];
+    }
+    return 3;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return CommentCellHeight;
+    if(tableView == _tableView){
+        return CommentCellHeight;
+    }
+    return MoreCellHeight;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(tableView == _moreTableView){
+        NewsDetailPage *page = [[NewsDetailPage alloc]init];
+        page.newsModel = _newsModel;
+        [self pushPage:page];
+    }
 }
 
 
-
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    CommentCell *cell = [tableView dequeueReusableCellWithIdentifier:[CommentCell identify]];
-    if(cell == nil){
-        cell = [[CommentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[CommentCell identify] delegate:self];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    if(tableView == _tableView){
+        CommentCell *cell = [tableView dequeueReusableCellWithIdentifier:[CommentCell identify]];
+        if(cell == nil){
+            cell = [[CommentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[CommentCell identify] delegate:self];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
+        CommentListModel *model = [datas objectAtIndex:indexPath.row];
+        [cell setData:model];
+        return cell;
+    }else{
+        NewsCell *cell =  [tableView dequeueReusableCellWithIdentifier:[NewsCell identify]];
+        if(cell == nil){
+            cell = [[NewsCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NewsCell identify]];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
+        [cell setData:_newsModel];
+        return cell;
     }
-    CommentListModel *model = [datas objectAtIndex:indexPath.row];
-    [cell setData:model];
-    return cell;
 }
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
@@ -294,7 +343,7 @@
 }
 
 -(void)requestData : (Boolean)updateComment{
-    NSString *urlStr = [NSString stringWithFormat:@"%@%ld",API_NEWS_DETAIL,_news_id];
+    NSString *urlStr = [NSString stringWithFormat:@"%@%ld",API_NEWS_DETAIL,_newsModel.news_id];
     [ByNetUtil get:urlStr parameters:nil success:^(RespondModel *respondModel) {
         if(respondModel.code == 200){
             id data = respondModel.data;
@@ -335,11 +384,13 @@
 //        WebViewHeight = [webView sizeThatFits:CGSizeZero].height + [PUtil getActualWidth:20];
         CGRect WebViewRect = CGRectMake([PUtil getActualWidth:20], _topView.height, ScreenWidth-[PUtil getActualWidth:40], WebViewHeight);
         WebViewRect.size.height = WebViewHeight;
-        _scrollerView.contentSize = CGSizeMake(ScreenWidth,_topView.height+CommentCellHeight* [datas count]+ [PUtil getActualHeight:88] +WebViewHeight);
+        _scrollerView.contentSize = CGSizeMake(ScreenWidth,_topView.height+CommentCellHeight* [datas count]+ TitleHeight +WebViewHeight);
         _webView.frame = WebViewRect;
         _webScrollView.contentSize = CGSizeMake(ScreenWidth, WebViewHeight);
         
         _webView.hidden = NO;
+        
+        [self initMore];
         [self initComment];
         [self requestNew];
     });
@@ -351,7 +402,7 @@
     NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
     dic[@"index"] = @(index);
     dic[@"size"] = @(REREQUESTSIZE);
-    dic[@"target_id"] = [NSString stringWithFormat:@"%ld",_news_id];
+    dic[@"target_id"] = [NSString stringWithFormat:@"%ld",_newsModel.news_id];
     dic[@"tp"] = @"news";
     [ByNetUtil get:API_COMMENT parameters:dic success:^(RespondModel *respondModel) {
         if(respondModel.code == 200){
@@ -369,9 +420,9 @@
             }
             _tableView.frame = CGRectMake(0, _commentTitleView.mj_y+_commentTitleView.mj_h, ScreenWidth, [datas count] *CommentCellHeight);
             if(IS_NS_STRING_EMPTY(model.video)){
-                _scrollerView.contentSize = CGSizeMake(ScreenWidth, _topView.height+CommentCellHeight* [datas count]+_webView.mj_h +[PUtil getActualHeight:88]);
+                _scrollerView.contentSize = CGSizeMake(ScreenWidth, _topView.height + WebViewHeight + MoreCellHeight * 3+CommentCellHeight* [datas count] +TitleHeight*2);
             }else{
-                _scrollerView.contentSize = CGSizeMake(ScreenWidth, _topView.height+CommentCellHeight* [datas count]+ScreenWidth *ScreenWidth / ScreenHeight +[PUtil getActualHeight:88]);
+                _scrollerView.contentSize = CGSizeMake(ScreenWidth, _topView.height + MoreCellHeight* 3+CommentCellHeight* [datas count]+ScreenWidth *ScreenWidth / ScreenHeight +TitleHeight*2);
             }
             [_tableView reloadData];
         }else{
@@ -391,7 +442,7 @@
     NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
     dic[@"content"] = _commentTextField.text;
     dic[@"tp"] = @"news";
-    dic[@"target_id"] = [NSString stringWithFormat:@"%ld",_news_id];
+    dic[@"target_id"] = [NSString stringWithFormat:@"%ld",_newsModel.news_id];
     [ByNetUtil post:API_ADDCOMMENT parameters:dic success:^(RespondModel *respondModel) {
         if(respondModel.code == 200){
             [DialogHelper showSuccessTips:@"发送成功!"];
@@ -448,7 +499,7 @@
 
 -(void)doLike{
     NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
-    dic[@"news_id"] = @(_news_id);
+    dic[@"news_id"] = @(_newsModel.news_id);
     [ByNetUtil post:API_NEWS_LIKE parameters:dic success:^(RespondModel *respondModel) {
         if(respondModel.code == 200){
             [_barView setLike:YES];
@@ -463,7 +514,7 @@
 
 -(void)doUnlike{
     NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
-    dic[@"news_id"] = @(_news_id);
+    dic[@"news_id"] = @(_newsModel.news_id);
     [ByNetUtil post:API_NEWS_UNLIKE parameters:dic success:^(RespondModel *respondModel) {
         if(respondModel.code == 200){
             [_barView setLike:NO];

@@ -90,7 +90,7 @@
 {
     if(_handleDelegate){
         NewsModel *model = [datas objectAtIndex:index];
-        [_handleDelegate goNewsDetailPage:model.news_id];
+        [_handleDelegate goNewsDetailPage:model];
     }
 }
 
@@ -118,7 +118,7 @@
     [self restore];
     if(_handleDelegate){
         NewsModel *model = [datas objectAtIndex:indexPath.row];
-        [_handleDelegate goNewsDetailPage:model.news_id];
+        [_handleDelegate goNewsDetailPage:model];
     }
 }
 

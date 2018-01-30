@@ -7,9 +7,10 @@
 //
 
 #import "BaseViewController.h"
+#import "NewsModel.h"
 
 @interface NewsDetailPage : BaseViewController
 
-@property (assign, nonatomic)long news_id;
+@property (strong, nonatomic)NewsModel *newsModel;
 
 @end
