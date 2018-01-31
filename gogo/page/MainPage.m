@@ -190,9 +190,9 @@
 #pragma mark 添加赛事
 -(void)addGamePage{
     _signBtn.hidden = YES;
-    GamePage *gamepage = [[GamePage alloc]init];
+    GamePage *gamepage  = [[GamePage alloc]initWithFrame:CGRectMake(0, 0,ScreenWidth, _mBodyView.mj_h)];
     gamepage.handleDelegate = self;
-    [_mBodyView addSubview:gamepage.view];
+    [_mBodyView addSubview:gamepage];
 }
 
 #pragma mark 添加商城

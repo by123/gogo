@@ -64,6 +64,8 @@
 		CF2EAF0A1FA5154600F35974 /* GuessHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAF091FA5154600F35974 /* GuessHistoryCell.m */; };
 		CF2EAF0D1FA5231300F35974 /* ItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAF0C1FA5231300F35974 /* ItemView.m */; };
 		CF303D85201AF29B0095EAA9 /* CompetitionView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF303D84201AF29B0095EAA9 /* CompetitionView.m */; };
+		CF303D892021C9B70095EAA9 /* GameScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF303D882021C9B70095EAA9 /* GameScrollView.m */; };
+		CF303D8C2021F1080095EAA9 /* GameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF303D8B2021F1080095EAA9 /* GameCell.m */; };
 		CF4278201FAB95FA00C163DD /* RespondModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF42781F1FAB95FA00C163DD /* RespondModel.m */; };
 		CF4278261FAB98A400C163DD /* DialogHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4278241FAB98A400C163DD /* DialogHelper.m */; };
 		CF4278291FAB98D800C163DD /* IDSAlertSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4278281FAB98D800C163DD /* IDSAlertSheet.m */; };
@@ -295,6 +297,10 @@
 		CF2EAF0C1FA5231300F35974 /* ItemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemView.m; sourceTree = "<group>"; };
 		CF303D83201AF29B0095EAA9 /* CompetitionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CompetitionView.h; sourceTree = "<group>"; };
 		CF303D84201AF29B0095EAA9 /* CompetitionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CompetitionView.m; sourceTree = "<group>"; };
+		CF303D872021C9B70095EAA9 /* GameScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameScrollView.h; sourceTree = "<group>"; };
+		CF303D882021C9B70095EAA9 /* GameScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameScrollView.m; sourceTree = "<group>"; };
+		CF303D8A2021F1080095EAA9 /* GameCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameCell.h; sourceTree = "<group>"; };
+		CF303D8B2021F1080095EAA9 /* GameCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameCell.m; sourceTree = "<group>"; };
 		CF42781E1FAB95FA00C163DD /* RespondModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RespondModel.h; sourceTree = "<group>"; };
 		CF42781F1FAB95FA00C163DD /* RespondModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RespondModel.m; sourceTree = "<group>"; };
 		CF4278241FAB98A400C163DD /* DialogHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DialogHelper.m; sourceTree = "<group>"; };
@@ -600,6 +606,8 @@
 				CF2EAE951FA1200100F35974 /* scheduledetail */,
 				CF2EAE621F9E71C100F35974 /* corps */,
 				CF2EAE5E1F9E719100F35974 /* schedule */,
+				CF303D8A2021F1080095EAA9 /* GameCell.h */,
+				CF303D8B2021F1080095EAA9 /* GameCell.m */,
 			);
 			name = game;
 			sourceTree = "<group>";
@@ -1185,6 +1193,8 @@
 				CFFF1EA71FE459510062BBDD /* ImageBuuton.m */,
 				CF303D83201AF29B0095EAA9 /* CompetitionView.h */,
 				CF303D84201AF29B0095EAA9 /* CompetitionView.m */,
+				CF303D872021C9B70095EAA9 /* GameScrollView.h */,
+				CF303D882021C9B70095EAA9 /* GameScrollView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1430,6 +1440,7 @@
 				CF48559D1FB384100018502A /* GoodDetailModel.m in Sources */,
 				CFADF8511FBA1B3100A7501E /* RHFullViewController.m in Sources */,
 				CFF037831FC6EDC1002C2358 /* FeedbackPage.m in Sources */,
+				CF303D8C2021F1080095EAA9 /* GameCell.m in Sources */,
 				CF2EAEC11FA30ACF00F35974 /* GamePage.m in Sources */,
 				CF4855AA1FB39C720018502A /* AddressModel.m in Sources */,
 				CF2EAE651F9E71D800F35974 /* CorpsView.m in Sources */,
@@ -1509,6 +1520,7 @@
 				CFBFE4F71FA5B33100500B1B /* SCDHistoryView.m in Sources */,
 				CFBFE5031FA5BA5C00500B1B /* SCDHistoryModel.m in Sources */,
 				CF2EAE821FA1012800F35974 /* NewsDetailPage.m in Sources */,
+				CF303D892021C9B70095EAA9 /* GameScrollView.m in Sources */,
 				CF4278291FAB98D800C163DD /* IDSAlertSheet.m in Sources */,
 				CF42783A1FAB9A0100C163DD /* UILabel+ContentSize.m in Sources */,
 				CFCB0F4F1F711E6F0087ACC7 /* UIView+SDExtension.m in Sources */,

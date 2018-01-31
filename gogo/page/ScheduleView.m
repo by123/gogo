@@ -44,7 +44,7 @@
 -(void)initView{
     
     _scrollerView = [[UIScrollView alloc]init];
-    _scrollerView.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight - StatuBarHeight - [PUtil getActualHeight:188]);
+    _scrollerView.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight - StatuBarHeight - [PUtil getActualHeight:88]);
     _scrollerView.showsVerticalScrollIndicator = NO;
     _scrollerView.showsHorizontalScrollIndicator = NO;
     _scrollerView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(uploadMore)];
@@ -56,7 +56,7 @@
     
 
     _tableView = [[UITableView alloc]init];
-    _tableView.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight - StatuBarHeight - [PUtil getActualHeight:188]);
+    _tableView.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight - StatuBarHeight - [PUtil getActualHeight:88]);
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.backgroundColor = c06_backgroud;

@@ -9,7 +9,7 @@
 #import "BaseViewController.h"
 #import "MainPage.h"
 
-@interface GamePage : BaseViewController
+@interface GamePage : UIView
 
 @property (weak, nonatomic) id<MainHandleDelegate> handleDelegate;
 
