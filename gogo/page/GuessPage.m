@@ -21,7 +21,9 @@
 #import "BettingTpModel.h"
 #import "ChatView.h"
 #import "ImageBuuton.h"
-@interface GuessPage ()
+#import "WXApi.h"
+#import "WXApiObject.h"
+@interface GuessPage ()<BySegmentViewDelegate>
 
 @property (strong, nonatomic) UIImageView *aTeamImageView;
 @property (strong, nonatomic) UILabel *aTeamLabel;
@@ -48,6 +50,7 @@
     BettingItemModel *selectModel;
     int selectCoin ;
     GuessView *selectGuessView;
+    NSInteger mCurrentIndex;
 }
 
 - (void)viewDidLoad {
@@ -172,13 +175,14 @@
     [viewArray addObject:_chatView];
     NSArray *titleArray = @[@"竞猜",@"聊天"];
     BySegmentView *segmentView = [[BySegmentView alloc]initWithFrame:CGRectMake(0, [PUtil getActualHeight:480] - StatuBarHeight, ScreenWidth, ScreenHeight - ([PUtil getActualHeight:480] - StatuBarHeight)) andTitleArray:titleArray andShowControllerNameArray:viewArray];
+    segmentView.delegate = self;
     [self.view addSubview:segmentView];
 
     [self initGuessOrderView];
     
     _liveBtn = [[UIButton alloc]init];
     _liveBtn.frame = CGRectMake([PUtil getActualWidth:590], StatuBarHeight + [PUtil getActualHeight:30],[PUtil getActualWidth:140] , [PUtil getActualHeight:60]);
-    [_liveBtn setTitle:@"直播" forState:UIControlStateNormal];
+    [_liveBtn setTitle:@"分享" forState:UIControlStateNormal];
     _liveBtn.layer.masksToBounds = YES;
     _liveBtn.backgroundColor = c01_blue;
     _liveBtn.titleLabel.font = [UIFont systemFontOfSize:13.0f];
@@ -186,6 +190,7 @@
     [_liveBtn addTarget:self action:@selector(goLivePage) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_liveBtn];
 }
+
 
 -(void)initGuessOrderView{
     _guessOrderView = [[UIView alloc]initWithFrame:CGRectMake(0, ScreenHeight, ScreenWidth, ScreenHeight)];
@@ -259,6 +264,14 @@
     
 }
 
+-(void)didSelectIndex:(NSInteger)index{
+    mCurrentIndex = index;
+    if(index == 0){
+        [_liveBtn setTitle:@"分享" forState:UIControlStateNormal];
+    }else{
+        [_liveBtn setTitle:@"直播" forState:UIControlStateNormal];
+    }
+}
 -(void)OpenGuessOrderView:(BettingItemModel *)model guessView:(GuessView *)guessView{
     selectModel = model;
     selectGuessView = guessView;
@@ -293,8 +306,53 @@
 }
 
 -(void)goLivePage{
-    LivePage *page = [[LivePage alloc]init];
-    [self pushPage:page];
+    if(mCurrentIndex == 0){
+        
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"分享"
+                                                                       message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+        
+        UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel
+                                                             handler:^(UIAlertAction * action) {
+
+                                                             }];
+        UIAlertAction* sceneAction = [UIAlertAction actionWithTitle:@"分享给微信好友" style:UIAlertActionStyleDefault
+                                                             handler:^(UIAlertAction * action) {
+                                                                 [self doShare : WXSceneSession];
+                                                             }];
+        UIAlertAction* timelineAction = [UIAlertAction actionWithTitle:@"分享到朋友圈" style:UIAlertActionStyleDefault
+                                                           handler:^(UIAlertAction * action) {
+                                                               [self doShare : WXSceneTimeline];
+
+                                                           }];
+        [alert addAction:sceneAction];
+        [alert addAction:timelineAction];
+        [alert addAction:cancelAction];
+        [self presentViewController:alert animated:YES completion:nil];
+        
+    
+   
+    }else{
+        LivePage *page = [[LivePage alloc]init];
+        [self pushPage:page];
+    }
+}
+
+-(void)doShare : (int)scene{
+    WXMediaMessage *message = [WXMediaMessage message];
+    message.title = @"gogo电竞";
+    message.description = @"快来一起参加王者荣耀竞猜吧！";
+    [message setThumbImage:[UIImage imageNamed:@"etc_logo_200"]];
+    
+    WXWebpageObject *webpageObject = [WXWebpageObject object];
+    webpageObject.webpageUrl = @"http://www.scrats.cn/";
+    message.mediaObject = webpageObject;
+    
+    SendMessageToWXReq *req = [[SendMessageToWXReq alloc]init];
+    req.bText = NO;
+    req.message = message;
+    req.scene = scene;
+    [WXApi sendReq:req];
+    
 }
 
 -(void)requestDetail{

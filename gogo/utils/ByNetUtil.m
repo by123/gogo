@@ -36,6 +36,12 @@
         if (success){
             [UIApplication sharedApplication].networkActivityIndicatorVisible=NO;
             RespondModel *model = [RespondModel mj_objectWithKeyValues:responseObject];
+//            if(model.code == 498){
+//                [self refreshToken:^(id data) {
+//                    [self get:url parameters:parameters success:success failure:failure];
+//                }];
+//                return;
+//            }
             success(model);
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -98,12 +104,12 @@
     [request addValue:APPKEY forHTTPHeaderField:@"app_key"];
     [request addValue:account.uid forHTTPHeaderField:@"uid"];
     [request addValue:account.access_token forHTTPHeaderField:@"access_token"];
-
+    
     NSData *body  =[content dataUsingEncoding:NSUTF8StringEncoding];
     [request setHTTPBody:body];
     
     [[manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id _Nullable responseObject, NSError * _Nullable error)
-    {
+      {
           if(error){
               if (failure){
                   failure(error);
@@ -114,14 +120,14 @@
                   success(model);
               }
           }
-        [UIApplication sharedApplication].networkActivityIndicatorVisible=NO;
-
+          [UIApplication sharedApplication].networkActivityIndicatorVisible=NO;
+          
       }] resume];
 }
 
 
 +(void)download : (NSString *)url callback : (ByDownloadCallback) callback{
-
+    
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     
@@ -138,22 +144,26 @@
 }
 
 +(void)refreshToken : (RefreshCompelete)compelete{
-    Account *account = [[AccountManager sharedAccountManager]getAccount];
-    NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
-    dic[@"refresh_token"]=account.refresh_token;
-    [self post:API_REFRESH_TOKEN parameters:dic success:^(RespondModel *respondModel) {
-        if(respondModel.code == 200){
-            id data = respondModel.data;
-            LoginModel *model = [LoginModel mj_objectWithKeyValues:data];
-            account.uid = model.uid;
-            account.access_token = model.access_token;
-            account.refresh_token = model.refresh_token;
-            [[AccountManager sharedAccountManager] saveAccount:account];
-            compelete(account);
-        }
-    } failure:^(NSError *error) {
-        
-    }];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        Account *account = [[AccountManager sharedAccountManager]getAccount];
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
+        dic[@"refresh_token"]=account.refresh_token ;
+        [self post:API_REFRESH_TOKEN parameters:dic success:^(RespondModel *respondModel) {
+            if(respondModel.code == 200){
+                id data = respondModel.data;
+                LoginModel *model = [LoginModel mj_objectWithKeyValues:data];
+                account.uid = model.uid;
+                account.access_token = model.access_token;
+                account.refresh_token = model.refresh_token;
+                [[AccountManager sharedAccountManager] saveAccount:account];
+                compelete(account);
+            }
+        } failure:^(NSError *error) {
+            
+        }];
+    });
 }
+
 
 @end
