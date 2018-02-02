@@ -20,6 +20,7 @@
 #import "RespondModel.h"
 #import "TimeUtil.h"
 #import "NewsCell.h"
+#import "OkAlertView.h"
 
 #define CommentCellHeight [PUtil getActualHeight:180]
 #define MoreCellHeight [PUtil getActualHeight:172]
@@ -506,9 +507,13 @@
         if(respondModel.code == 200){
             [_barView setLike:YES];
             model.is_like = true;
+            [DialogHelper showSuccessTips:@"点赞成功"];
+        }else{
+            [DialogHelper showFailureAlertSheet:@"点赞失败"];
         }
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     } failure:^(NSError *error) {
+        [DialogHelper showFailureAlertSheet:@"点赞失败"];
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     }];
 }
@@ -521,11 +526,14 @@
         if(respondModel.code == 200){
             [_barView setLike:NO];
             model.is_like = false;
+            [DialogHelper showSuccessTips:@"取消点赞成功"];
+        }else{
+            [DialogHelper showFailureAlertSheet:@"取消点赞失败"];
         }
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     } failure:^(NSError *error) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
-
+        [DialogHelper showFailureAlertSheet:@"取消点赞失败"];
     }];
 }
 
@@ -551,10 +559,14 @@
     [ByNetUtil post:API_COMMENT_LIKE parameters:dic success:^(RespondModel *respondModel) {
         if(respondModel.code == 200){
             [self updateCommentData:comment_id like:true];
+            [DialogHelper showSuccessTips:@"点赞成功"];
+        }else{
+            [DialogHelper showFailureAlertSheet:@"点赞失败"];
         }
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     } failure:^(NSError *error) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [DialogHelper showFailureAlertSheet:@"点赞失败"];
     }];
 }
 
@@ -565,9 +577,13 @@
     [ByNetUtil post:API_COMMENT_UNLIKE parameters:dic success:^(RespondModel *respondModel) {
         if(respondModel.code == 200){
             [self updateCommentData:comment_id like:false];
+            [DialogHelper showSuccessTips:@"取消点赞成功"];
+        }else{
+            [DialogHelper showFailureAlertSheet:@"取消点赞失败"];
         }
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     } failure:^(NSError *error) {
+        [DialogHelper showFailureAlertSheet:@"取消点赞失败"];
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     }];
 }
