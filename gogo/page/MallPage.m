@@ -37,6 +37,11 @@
     
     BySegmentView *segmentView = [[BySegmentView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - (StatuBarHeight + [PUtil getActualHeight:188])) andTitleArray:@[@"热门商品", @"虚拟物品",@"游戏周边",@"现金红包",@"电竞装备"] andShowControllerNameArray:views];
     [self.view addSubview:segmentView];
+    
+    UIView *lineView = [[UIView alloc]init];
+    lineView.backgroundColor = c05_divider;
+    lineView.frame = CGRectMake(0, 0, ScreenHeight, 1);
+    [self.view addSubview:lineView];
 }
 
 
