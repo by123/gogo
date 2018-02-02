@@ -62,6 +62,7 @@
 #define API_COMMENT_UNLIKE @"https://gogo.scrats.cn/api/core/comment/unlike"
 #define API_SIGN_STATU @"https://gogo.scrats.cn/api/core/coin"
 #define API_SIGN @"https://gogo.scrats.cn/api//core/sign_in"
+#define API_NEWS_COMMOND @"https://gogo.scrats.cn/api/core/news/recommend"
 
 
 //notification

@@ -49,6 +49,7 @@
     NewsDetailModel *model;
     int index;
     NSMutableArray *datas;
+    NSMutableArray *commandDatas;
     Boolean webLoadFinish;
     Boolean isFirst;
     CGFloat WebViewHeight;
@@ -57,6 +58,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     datas = [[NSMutableArray alloc]init];
+    commandDatas = [[NSMutableArray alloc]init];
     index = 0;
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 
@@ -124,9 +126,7 @@
         [_playView setVideoModels:dataArr playVideoId:vedioId];
         [_scrollerView addSubview:_playView];
         [_playView playVideoWithVideoId:vedioId];
-        [self initMore];
-        [self initComment];
-        [self requestNew];
+        [self requestCommandList];
     }
     
     [MBProgressHUD hideHUDForView:self.view animated:YES];
@@ -178,7 +178,7 @@
     [_scrollerView addSubview:_moreTitleView];
     
     _moreTableView = [[UITableView alloc]init];
-    _moreTableView.frame = CGRectMake(0, _moreTitleView.mj_y+_moreTitleView.mj_h, ScreenWidth,  MoreCellHeight * 3);
+    _moreTableView.frame = CGRectMake(0, _moreTitleView.mj_y+_moreTitleView.mj_h, ScreenWidth,  MoreCellHeight * [commandDatas count]);
     _moreTableView.delegate = self;
     _moreTableView.dataSource = self;
     _moreTableView.backgroundColor = c06_backgroud;
@@ -186,6 +186,9 @@
     _moreTableView.userInteractionEnabled = YES;
     [_moreTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [_scrollerView addSubview:_moreTableView];
+    
+    [self initComment];
+    [self requestNew];
     
 }
 
@@ -252,7 +255,7 @@
     if(tableView == _tableView){
         return [datas count];
     }
-    return 3;
+    return [commandDatas count];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -265,7 +268,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if(tableView == _moreTableView){
         NewsDetailPage *page = [[NewsDetailPage alloc]init];
-        page.newsModel = _newsModel;
+        page.newsModel = [commandDatas objectAtIndex:indexPath.row];
         [self pushPage:page];
     }
 }
@@ -287,7 +290,8 @@
             cell = [[NewsCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NewsCell identify]];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
-        [cell setData:_newsModel];
+        NewsModel *model = [commandDatas objectAtIndex:indexPath.row];
+        [cell setData:model];
         return cell;
     }
 }
@@ -390,9 +394,7 @@
         
         _webView.hidden = NO;
         
-        [self initMore];
-        [self initComment];
-        [self requestNew];
+        [self requestCommandList];
     });
 
 
@@ -420,9 +422,9 @@
             }
             _tableView.frame = CGRectMake(0, _commentTitleView.mj_y+_commentTitleView.mj_h, ScreenWidth, [datas count] *CommentCellHeight);
             if(IS_NS_STRING_EMPTY(model.video)){
-                _scrollerView.contentSize = CGSizeMake(ScreenWidth, _topView.height + WebViewHeight + MoreCellHeight * 3+CommentCellHeight* [datas count] +TitleHeight*2);
+                _scrollerView.contentSize = CGSizeMake(ScreenWidth, _topView.height + WebViewHeight + MoreCellHeight * [commandDatas count]+CommentCellHeight* [datas count] +TitleHeight*2);
             }else{
-                _scrollerView.contentSize = CGSizeMake(ScreenWidth, _topView.height + MoreCellHeight* 3+CommentCellHeight* [datas count]+ScreenWidth *ScreenWidth / ScreenHeight +TitleHeight*2);
+                _scrollerView.contentSize = CGSizeMake(ScreenWidth, _topView.height + MoreCellHeight* [commandDatas count]+CommentCellHeight* [datas count]+ScreenWidth *ScreenWidth / ScreenHeight +TitleHeight*2);
             }
             [_tableView reloadData];
         }else{
@@ -589,6 +591,18 @@
 
 }
 
+
+-(void)requestCommandList{
+    NSString *urlStr = [NSString stringWithFormat:@"%@/%@/%ld",API_NEWS_COMMOND,@"wangzhe",model.news_id];
+    [ByNetUtil get:urlStr parameters:nil success:^(RespondModel *respondModel) {
+        id items = [respondModel.data objectForKey:@"items"];
+        commandDatas = [NewsModel mj_objectArrayWithKeyValuesArray:items];
+        [self initMore];
+        [_moreTableView reloadData];
+    } failure:^(NSError *error) {
+        
+    }];
+}
 
 //-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
 //     CGFloat offsetY = scrollView.contentOffset.y;
