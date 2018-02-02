@@ -7,6 +7,8 @@
 //
 
 #import "BaseViewController.h"
+#import "LoginPage.h"
+#import "RespondModel.h"
 
 @interface BaseViewController ()
 
@@ -52,6 +54,21 @@
     [self.navigationController pushViewController:targetPage animated:YES];
 }
 
+
+-(void)goLoginPage{
+    [DialogHelper showSuccessTips:@"正在重新登录，请稍后"];
+    [ByNetUtil refreshToken:^(id data) {
+        RespondModel *model = data;
+        if(model.code == 404){
+            [DialogHelper showSuccessTips:@"登录失败，请重新登录"];
+            LoginPage *page = [[LoginPage alloc]init];
+            [self pushPage:page];
+        }else{
+            [DialogHelper showSuccessTips:@"登录成功!"];
+        }
+    }];
+
+}
 
 
 

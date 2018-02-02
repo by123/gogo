@@ -8,6 +8,7 @@
 
 #import "DialogHelper.h"
 #import "IDSAlertSheet.h"
+#import "LoginPage.h"
 
 @implementation DialogHelper
 
@@ -79,5 +80,7 @@
     IDSAlertSheet *dialog = [[IDSAlertSheet alloc] initWithTitle:tips];
     [dialog showWithUIColor:WarnColor];
 }
+
+
 
 @end

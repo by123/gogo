@@ -157,8 +157,8 @@
                 account.access_token = model.access_token;
                 account.refresh_token = model.refresh_token;
                 [[AccountManager sharedAccountManager] saveAccount:account];
-                compelete(account);
             }
+            compelete(respondModel);
         } failure:^(NSError *error) {
             
         }];

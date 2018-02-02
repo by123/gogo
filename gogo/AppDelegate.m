@@ -45,6 +45,10 @@
     [self initWechat];
     [self initUmeng];
     [self initUmengPush : launchOptions];
+    
+//    Account *accout = [[AccountManager sharedAccountManager] getAccount];
+//    accout.access_token = @"123456";
+//    [[AccountManager sharedAccountManager]saveAccount:accout];
     return YES;
 }
 
@@ -102,7 +106,11 @@
     }else if ([url.host isEqualToString:@"safepay"]) {
         //跳转支付宝钱包进行支付，处理支付结果
         [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
-            NSLog(@"result = %@",resultDic);
+            if([[resultDic objectForKey:@"resultStatus"] isEqualToString:@"9000"]){
+                [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFY_ALIPAY_PAY_SUCCESS object:nil];
+            }else{
+                [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFY_ALIPAY_PAY_FAIL object:nil];
+            }
         }];
     }else if([url.host isEqualToString:@"pay"]){
         return  [WXApi handleOpenURL:url delegate:self];
@@ -126,7 +134,12 @@
     if ([url.host isEqualToString:@"safepay"]) {
         //跳转支付宝钱包进行支付，处理支付结果
         [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
-            NSLog(@"result = %@",resultDic);
+            if([[resultDic objectForKey:@"resultStatus"] isEqualToString:@"9000"]){
+                [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFY_ALIPAY_PAY_SUCCESS object:nil];
+            }else{
+                [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFY_ALIPAY_PAY_FAIL object:nil];
+            }
+            
         }];
     }
     return YES;
@@ -148,22 +161,16 @@
         
         [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFY_WECAHT_CALLBACK object:nil];
     }
-    if([resp isKindOfClass:[PayResp class]]){        
-        //支付返回结果，实际支付结果需要去微信服务器端查询
-        NSString *strMsg;
+    if([resp isKindOfClass:[PayResp class]]){
         switch (resp.errCode) {
             case WXSuccess:
-                strMsg = @"支付结果：成功！";
-                NSLog(@"支付成功－PaySuccess，retcode = %d", resp.errCode);
+                [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFY_WECAHT_PAY_SUCCESS object:nil];
                 break;
-                
             default:
-                strMsg = [NSString stringWithFormat:@"支付结果：失败！retcode = %d, retstr = %@", resp.errCode,resp.errStr];
-                NSLog(@"错误，retcode = %d, retstr = %@", resp.errCode,resp.errStr);
+                [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFY_WECAHT_PAY_FAIL object:nil];
                 break;
         }
     }
-    
 }
 
 

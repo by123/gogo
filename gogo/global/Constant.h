@@ -10,6 +10,9 @@
 
 @interface Constant : NSObject
 
+#define CODE_SUCCESS 200
+#define CODE_TOKEN_INVAILD 498
+
 //请求头
 #define CHANNELCODE @"000001"
 #define PT @"IOS"
@@ -63,5 +66,9 @@
 
 //notification
 #define NOTIFY_WECAHT_CALLBACK @"notify_wechat_callback"
+#define NOTIFY_WECAHT_PAY_SUCCESS @"notify_wechat_pay_success"
+#define NOTIFY_WECAHT_PAY_FAIL @"notify_wechat_pay_fail"
+#define NOTIFY_ALIPAY_PAY_SUCCESS @"notify_alipay_pay_success"
+#define NOTIFY_ALIPAY_PAY_FAIL @"notify_alipay_pay_fail"
 
 @end

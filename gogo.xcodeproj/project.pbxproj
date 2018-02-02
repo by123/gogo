@@ -67,6 +67,7 @@
 		CF303D892021C9B70095EAA9 /* GameScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF303D882021C9B70095EAA9 /* GameScrollView.m */; };
 		CF303D8C2021F1080095EAA9 /* GameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF303D8B2021F1080095EAA9 /* GameCell.m */; };
 		CF303D8F202255990095EAA9 /* ShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF303D8E202255990095EAA9 /* ShareView.m */; };
+		CF303D922024F3550095EAA9 /* OkAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF303D912024F3550095EAA9 /* OkAlertView.m */; };
 		CF4278201FAB95FA00C163DD /* RespondModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF42781F1FAB95FA00C163DD /* RespondModel.m */; };
 		CF4278261FAB98A400C163DD /* DialogHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4278241FAB98A400C163DD /* DialogHelper.m */; };
 		CF4278291FAB98D800C163DD /* IDSAlertSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4278281FAB98D800C163DD /* IDSAlertSheet.m */; };
@@ -304,6 +305,8 @@
 		CF303D8B2021F1080095EAA9 /* GameCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameCell.m; sourceTree = "<group>"; };
 		CF303D8D202255990095EAA9 /* ShareView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareView.h; sourceTree = "<group>"; };
 		CF303D8E202255990095EAA9 /* ShareView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareView.m; sourceTree = "<group>"; };
+		CF303D902024F3550095EAA9 /* OkAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OkAlertView.h; sourceTree = "<group>"; };
+		CF303D912024F3550095EAA9 /* OkAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OkAlertView.m; sourceTree = "<group>"; };
 		CF42781E1FAB95FA00C163DD /* RespondModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RespondModel.h; sourceTree = "<group>"; };
 		CF42781F1FAB95FA00C163DD /* RespondModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RespondModel.m; sourceTree = "<group>"; };
 		CF4278241FAB98A400C163DD /* DialogHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DialogHelper.m; sourceTree = "<group>"; };
@@ -1200,6 +1203,8 @@
 				CF303D882021C9B70095EAA9 /* GameScrollView.m */,
 				CF303D8D202255990095EAA9 /* ShareView.h */,
 				CF303D8E202255990095EAA9 /* ShareView.m */,
+				CF303D902024F3550095EAA9 /* OkAlertView.h */,
+				CF303D912024F3550095EAA9 /* OkAlertView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1446,6 +1451,7 @@
 				CFADF8511FBA1B3100A7501E /* RHFullViewController.m in Sources */,
 				CFF037831FC6EDC1002C2358 /* FeedbackPage.m in Sources */,
 				CF303D8C2021F1080095EAA9 /* GameCell.m in Sources */,
+				CF303D922024F3550095EAA9 /* OkAlertView.m in Sources */,
 				CF2EAEC11FA30ACF00F35974 /* GamePage.m in Sources */,
 				CF4855AA1FB39C720018502A /* AddressModel.m in Sources */,
 				CF2EAE651F9E71D800F35974 /* CorpsView.m in Sources */,

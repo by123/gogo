@@ -19,4 +19,6 @@
 
 -(void)setRedBlueStatuBar;
 
+-(void)goLoginPage;
+
 @end

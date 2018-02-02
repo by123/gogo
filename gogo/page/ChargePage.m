@@ -17,6 +17,7 @@
 #import<CommonCrypto/CommonDigest.h>
 #import <CommonCrypto/CommonDigest.h>
 #import <CommonCrypto/CommonHMAC.h>
+#import "OkAlertView.h"
 
 @interface ChargePage ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -42,6 +43,22 @@
     payImages = @[@"ic_wxpay_29",@"ic_alipay_29"];
     [self initView];
     [self requestPayList];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(OnWechatPaySuccess) name:NOTIFY_WECAHT_PAY_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(OnWechatPayFail) name:NOTIFY_WECAHT_PAY_FAIL object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(OnAlipayPaySuccess) name:NOTIFY_ALIPAY_PAY_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(OnAliPayPayFail) name:NOTIFY_ALIPAY_PAY_FAIL object:nil];
+
+
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:NOTIFY_WECAHT_PAY_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:NOTIFY_WECAHT_PAY_FAIL object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:NOTIFY_ALIPAY_PAY_SUCCESS object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:NOTIFY_ALIPAY_PAY_FAIL object:nil];
 }
 
 -(void)initView{
@@ -183,7 +200,7 @@
     PayModel *model = [priceArray objectAtIndex:priceSelect];
     NSString *requestUrl = [NSString stringWithFormat:@"%@/%ld",API_WECAHT_PAY,model.coin_plan_id];
     [ByNetUtil post:requestUrl parameters:nil success:^(RespondModel *respondModel) {
-        if(respondModel.code == 200){
+        if(respondModel.code == CODE_SUCCESS){
             id data = respondModel.data;
             WechatPayModel *payModel = [WechatPayModel mj_objectWithKeyValues:data];
             PayReq *request = [[PayReq alloc]init];
@@ -195,6 +212,8 @@
             request.package = payModel.package;
             request.sign = payModel.sign;
             [WXApi sendReq:request];
+        }else if(respondModel.code == CODE_TOKEN_INVAILD){
+            [self goLoginPage];
         }else{
             [DialogHelper showFailureAlertSheet:respondModel.msg];
         }
@@ -210,7 +229,11 @@
         if(respondModel.code == 200){
             id data = respondModel.data;
             [[AlipaySDK defaultService]payOrder:data fromScheme:@"gogo" callback:^(NSDictionary *resultDic) {
-                NSLog(@"reslut = %@",resultDic);
+                if([[resultDic objectForKey:@"resultStatus"] isEqualToString:@"9000"]){
+                    [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFY_ALIPAY_PAY_SUCCESS object:nil];
+                }else{
+                    [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFY_ALIPAY_PAY_FAIL object:nil];
+                }
             }];
         }else{
             [DialogHelper showFailureAlertSheet:respondModel.msg];
@@ -222,6 +245,28 @@
 }
 
 
+-(void)OnWechatPaySuccess{
+    PayModel *model = [priceArray objectAtIndex:priceSelect];
+    OkAlertView *alertView = [[OkAlertView alloc]initWithTitle:@"支付结果" content:[NSString stringWithFormat:@"充值成功！获得%ld竞猜币",model.coin_count]];
+    [self.view addSubview:alertView];
+}
+
+-(void)OnWechatPayFail{
+    OkAlertView *alertView = [[OkAlertView alloc]initWithTitle:@"支付结果" content:@"充值失败！请重试"];
+    [self.view addSubview:alertView];
+}
+
+
+-(void)OnAlipayPaySuccess{
+    PayModel *model = [priceArray objectAtIndex:priceSelect];
+    OkAlertView *alertView = [[OkAlertView alloc]initWithTitle:@"支付结果" content:[NSString stringWithFormat:@"充值成功！获得%ld竞猜币",model.coin_count]];
+    [self.view addSubview:alertView];
+}
+
+-(void)OnAliPayPayFail{
+    OkAlertView *alertView = [[OkAlertView alloc]initWithTitle:@"支付结果" content:@"充值失败！请重试"];
+    [self.view addSubview:alertView];
+}
 
 
 @end

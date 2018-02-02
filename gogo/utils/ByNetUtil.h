@@ -24,5 +24,7 @@ typedef void(^RefreshCompelete)(id data);
 
 +(void)download : (NSString *)url callback : (ByDownloadCallback) callback;
 
++(void)refreshToken : (RefreshCompelete)compelete;
+
 @end
 
