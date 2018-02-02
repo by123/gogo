@@ -10,6 +10,7 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import "SoundUtil.h"
 #import "RespondModel.h"
+#import "OkAlertView.h"
 
 @interface SignView()<CAAnimationDelegate>
 
@@ -95,7 +96,8 @@
                 }else{
                     currentCoin = [[coins lastObject] longValue];
                 }
-                [DialogHelper showSuccessTips:[NSString stringWithFormat:@"今日签到获得%ld竞猜币",currentCoin]];
+                OkAlertView *okAlertView = [[OkAlertView alloc]initWithTitle:@"签到结果" content:[NSString stringWithFormat:@"今日签到成功，获得%ld竞猜币",currentCoin]];
+                [self addSubview:okAlertView];
 
             }
             if(_delegate){

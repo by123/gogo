@@ -184,6 +184,10 @@
 }
 
 -(void)OnGetVerify{
+    if(IS_NS_STRING_EMPTY(_mPhoneText.text) || _mPhoneText.text.length != 11){
+        [DialogHelper showWarnTips:@"请输入正确的手机号"];
+        return;
+    }
     time = 59;
     [self handleTimer];
     timer = [NSTimer scheduledTimerWithTimeInterval:(1.0) target:self selector:@selector(handleTimer) userInfo:nil repeats:YES];
