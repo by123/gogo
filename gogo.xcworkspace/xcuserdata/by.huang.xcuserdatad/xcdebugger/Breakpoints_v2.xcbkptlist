@@ -74,11 +74,11 @@
                   moduleName = "gogo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/by.huang/Desktop/%E5%85%B6%E4%BB%96%E9%A1%B9%E7%9B%AE/gogo/gogo/page/NewsDetailPage.m"
-                  timestampString = "539295843.28283"
+                  timestampString = "539372697.521554"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "500"
-                  endingLineNumber = "500"
+                  startingLineNumber = "506"
+                  endingLineNumber = "506"
                   offsetFromSymbolStart = "292">
                </Location>
                <Location
@@ -89,11 +89,11 @@
                   moduleName = "gogo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/by.huang/Desktop/%E5%85%B6%E4%BB%96%E9%A1%B9%E7%9B%AE/gogo/gogo/page/NewsDetailPage.m"
-                  timestampString = "539295843.286679"
+                  timestampString = "539372697.523464"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "501"
-                  endingLineNumber = "501"
+                  startingLineNumber = "507"
+                  endingLineNumber = "507"
                   offsetFromSymbolStart = "56">
                </Location>
             </Locations>
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "gogo/page/GamePage.m"
-            timestampString = "539292963.845571"
+            timestampString = "539373156.389185"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
             landmarkName = "-requestList:"
             landmarkType = "7">
          </BreakpointContent>
@@ -250,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "gogo/page/GamePage.m"
-            timestampString = "539292963.845737"
+            timestampString = "539373156.389528"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "224"
-            endingLineNumber = "224"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
             landmarkName = "-requestList:"
             landmarkType = "7">
          </BreakpointContent>
@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "gogo/view/GameScrollView.m"
-            timestampString = "539292963.8459001"
+            timestampString = "539373156.389748"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
             landmarkName = "-scrollViewDidEndDecelerating:"
             landmarkType = "7">
          </BreakpointContent>
@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "gogo/page/GamePage.m"
-            timestampString = "539292963.8460129"
+            timestampString = "539373156.389792"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "201"
-            endingLineNumber = "201"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
             landmarkName = "-requestList:"
             landmarkType = "7">
          </BreakpointContent>
@@ -410,7 +410,7 @@
                   moduleName = "gogo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/by.huang/Desktop/%E5%85%B6%E4%BB%96%E9%A1%B9%E7%9B%AE/gogo/gogo/page/ChargePage.m"
-                  timestampString = "539295843.412241"
+                  timestampString = "539372697.598249"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "231"
@@ -425,7 +425,7 @@
                   moduleName = "gogo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/by.huang/Desktop/%E5%85%B6%E4%BB%96%E9%A1%B9%E7%9B%AE/gogo/gogo/page/ChargePage.m"
-                  timestampString = "539295843.41557"
+                  timestampString = "539372697.60014"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "232"
@@ -544,6 +544,22 @@
             startingLineNumber = "614"
             endingLineNumber = "614"
             landmarkName = "-requestCommandList"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "gogo/page/GamePage.m"
+            timestampString = "539373156.390168"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "280"
+            endingLineNumber = "280"
+            landmarkName = "-requestHotRaces"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

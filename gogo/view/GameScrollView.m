@@ -27,25 +27,16 @@
     UIView *mCurrentPointView;
 }
 
--(instancetype)initWithData:(NSMutableArray *)datas{
+-(instancetype)init{
     if(self == [super init]){
-        mDatas = datas;
         [self initView];
     }
     return self;
 }
 
--(void)initView{
-    self.frame = CGRectMake(0, 0, ScreenWidth, GameScrollViewHeight);
-    _scrollView = [[TouchScrollView alloc]initWithParentView:self];
-    _scrollView.delegate = self;
-    _scrollView.frame = CGRectMake(0, 0, ScreenWidth, ScrollViewHeight);
-    _scrollView.pagingEnabled = YES;
-    _scrollView.showsHorizontalScrollIndicator = NO;
-    _scrollView.showsVerticalScrollIndicator = NO;
+-(void)updateDatas:(NSMutableArray *)datas{
+    mDatas = datas;
     _scrollView.contentSize = CGSizeMake(ScreenWidth * [mDatas count], ScrollViewHeight);
-    [self addSubview:_scrollView];
-    
     for(int i=0 ; i< [mDatas count] ; i++){
         ScheduleItemModel *model = [mDatas objectAtIndex:i];
         UIButton *button = [self buildView:model index:i];
@@ -77,6 +68,17 @@
             mCurrentPointView = pointView;
         }
     }
+}
+-(void)initView{
+    self.frame = CGRectMake(0, 0, ScreenWidth, GameScrollViewHeight);
+    _scrollView = [[TouchScrollView alloc]initWithParentView:self];
+    _scrollView.delegate = self;
+    _scrollView.frame = CGRectMake(0, 0, ScreenWidth, ScrollViewHeight);
+    _scrollView.pagingEnabled = YES;
+    _scrollView.showsHorizontalScrollIndicator = NO;
+    _scrollView.showsVerticalScrollIndicator = NO;
+    _scrollView.contentSize = CGSizeMake(ScreenWidth, ScrollViewHeight);
+    [self addSubview:_scrollView];
     
 }
 

@@ -21,7 +21,6 @@
 #import "TouchScrollView.h"
 #import "GameScrollView.h"
 
-#define TopHeight [PUtil getActualHeight:418]
 #define GameCellHeight [PUtil getActualHeight:222]
 
 @interface GamePage  ()<UITableViewDelegate,UITableViewDataSource,GameScrollViewDelegate>
@@ -32,23 +31,28 @@
 @property (strong, nonatomic) UIView *timelineView;
 @property (strong, nonatomic) UIView *lineView;
 @property (strong, nonatomic) UIView *selectPointView;
+@property (strong, nonatomic) GameScrollView *gameScrollView;
+
 
 @end
 
 @implementation GamePage{
     int index;
     NSMutableArray *datas;
-    Boolean isStart;
     NSInteger itemPosition;
+    NSMutableArray *hotDatas;
+    int TopHeight;
 }
 
 
 -(instancetype)initWithFrame:(CGRect)frame{
     if(self == [super initWithFrame:frame]){
         index = 0;
+        TopHeight =  [PUtil getActualHeight:418];
         datas = [[NSMutableArray alloc]init];
+        hotDatas = [[NSMutableArray alloc]init];
         [self initView];
-        [self requestList:NO];
+        [self requestHotRaces];
     }
     return self;
 }
@@ -91,30 +95,25 @@
     hotLabel.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualHeight:30],hotLabel.contentSize.width, hotLabel.contentSize.height);
     hotLabel.textColor = c09_tips;
     hotLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:28]];
-    [_scrollerView addSubview:hotLabel];
+    [self addSubview:hotLabel];
     
     _topView = [[UIView alloc]init];
     _topView.frame = CGRectMake(0, [PUtil getActualHeight:86], ScreenWidth, TopHeight);
-    [_scrollerView addSubview:_topView];
+    [self addSubview:_topView];
     
-    NSMutableArray *arrays = [[NSMutableArray alloc]init];
-    for(int i =0 ; i< [datas count]; i++){
-        ScheduleItemModel *model = [datas objectAtIndex:i];
-        if(!IS_NS_STRING_EMPTY(model.score_a)){
-            [arrays addObject:[datas objectAtIndex:i]];
-        }
-    }
+    _gameScrollView = [[GameScrollView alloc]init];
+    _gameScrollView.gameScrollViewDelegate = self;
+    [_topView addSubview:_gameScrollView];
     
-    GameScrollView *gameScrollView = [[GameScrollView alloc]initWithData:arrays];
-    gameScrollView.gameScrollViewDelegate = self;
-    [_topView addSubview:gameScrollView];
-    
+}
+
+-(void)initRaceLabel{
     UILabel *raceLabel = [[UILabel alloc]init];
     raceLabel.text = @"最近比赛";
-    raceLabel.frame = CGRectMake([PUtil getActualWidth:30], TopHeight,raceLabel.contentSize.width, raceLabel.contentSize.height);
+    raceLabel.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualHeight:10]+TopHeight,raceLabel.contentSize.width, raceLabel.contentSize.height);
     raceLabel.textColor = c09_tips;
     raceLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:28]];
-    [_scrollerView addSubview:raceLabel];
+    [self addSubview:raceLabel];
 }
 
 -(void)OnItemClick:(ScheduleItemModel *)model{
@@ -223,15 +222,12 @@
             }
          
             long height = GameCellHeight * [datas count];
-            _tableView.frame = CGRectMake(0, TopHeight+[PUtil getActualHeight:46], ScreenWidth, height);
-            _scrollerView.contentSize =CGSizeMake(ScreenWidth,height+TopHeight+[PUtil getActualHeight:46]);
+            _scrollerView.frame = CGRectMake(0, TopHeight+[PUtil getActualHeight:56], ScreenWidth, ScreenHeight - StatuBarHeight - [PUtil getActualHeight:88]-( TopHeight+[PUtil getActualHeight:56]));
+            _tableView.frame = CGRectMake(0, 0, ScreenWidth, height);
+            _scrollerView.contentSize =CGSizeMake(ScreenWidth,height);
             [_tableView reloadData];
-            if(!isStart){
-                isStart = YES;
-                [self initTopView];
-            }
-            
             [self updateTimelineView];
+//            [self test];
         }else{
             [DialogHelper showFailureAlertSheet:respondModel.msg];
         }
@@ -276,6 +272,26 @@
 }
 
 
+-(void)requestHotRaces{
+    [ByNetUtil get:API_HOT_RACES parameters:nil success:^(RespondModel *respondModel) {
+        if(respondModel.code == 200){
+            id data = respondModel.data;
+            hotDatas = [ScheduleModel mj_objectArrayWithKeyValuesArray:data];
+            if(IS_NS_COLLECTION_EMPTY(hotDatas)){
+                TopHeight = 0;
+            }else{
+                [self initTopView];
+                [_gameScrollView updateDatas:hotDatas];
+            }
+            [self initRaceLabel];
+            [self requestList:NO];
+        }
+           
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
 //删除战队详情模块
 //-(void)initTab{
 //    NSMutableArray *views = [[NSMutableArray alloc]init];
@@ -293,6 +309,18 @@
 //}
 
 
+-(void)test{
+        NSMutableArray *arrays = [[NSMutableArray alloc]init];
+        for(int i =0 ; i< [datas count]; i++){
+            ScheduleItemModel *model = [datas objectAtIndex:i];
+            if(!IS_NS_STRING_EMPTY(model.score_a)){
+                [arrays addObject:[datas objectAtIndex:i]];
+            }
+        }
+
+        [self initTopView];
+        [_gameScrollView updateDatas:arrays];
+}
 
 
 @end

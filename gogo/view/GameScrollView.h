@@ -18,8 +18,8 @@
 
 @interface GameScrollView : UIView
 
--(instancetype)initWithData:(NSMutableArray *)datas;
-
 @property (weak, nonatomic) id<GameScrollViewDelegate> gameScrollViewDelegate;
+
+-(void)updateDatas:(NSMutableArray *)datas;
 
 @end
