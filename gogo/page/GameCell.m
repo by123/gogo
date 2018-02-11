@@ -118,13 +118,16 @@
     TeamModel *aTeamModel = [TeamModel mj_objectWithKeyValues:model.team_a];
     [_aImageView sd_setImageWithURL:[NSURL URLWithString:aTeamModel.logo]];
     _aLabel.text = aTeamModel.team_name;
-    _aLabel.frame = CGRectMake([PUtil getActualWidth:78], [PUtil getActualHeight:114],_aLabel.contentSize.width, [PUtil getActualHeight:88]);
+     CGSize aSize = [_aLabel.text boundingRectWithSize:CGSizeMake(ScreenWidth, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:[PUtil getActualHeight:28]]} context:nil].size;
+    _aLabel.frame = CGRectMake([PUtil getActualWidth:78], [PUtil getActualHeight:114],aSize.width, [PUtil getActualHeight:88]);
 
     
     TeamModel *bTeamModel = [TeamModel mj_objectWithKeyValues:model.team_b];
     [_bImageView sd_setImageWithURL:[NSURL URLWithString:bTeamModel.logo]];
     _bLabel.text = bTeamModel.team_name;
-    _bLabel.frame = CGRectMake(ScreenWidth - [PUtil getActualWidth:158] - _bLabel.contentSize.width, [PUtil getActualHeight:114],_bLabel.contentSize.width, [PUtil getActualHeight:88]);
+    CGSize bSize = [_bLabel.text boundingRectWithSize:CGSizeMake(ScreenWidth, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:[PUtil getActualHeight:28]]} context:nil].size;
+
+    _bLabel.frame = CGRectMake(ScreenWidth - [PUtil getActualWidth:158] - bSize.width, [PUtil getActualHeight:114],bSize.width, [PUtil getActualHeight:88]);
     
     _scoreLabel.text = [NSString stringWithFormat:@"%@ : %@",model.score_a,model.score_b];
 

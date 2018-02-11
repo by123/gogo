@@ -184,9 +184,9 @@
 -(void)requestList2 : (Boolean)isRequestMore{
     NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
     dic[@"index"] = index;
-    NSString *sort = @"asc";
+    NSString *sort = @"desc";
     if(isRequestMore){
-        sort = @"desc";
+        sort = @"asc";
     }
     dic[@"sort"] = sort;
     [ByNetUtil get:API_RACE2 parameters:dic success:^(RespondModel *respondModel) {
@@ -195,10 +195,16 @@
             index = [data objectForKey:@"index"];
             id items = [data objectForKey:@"items"];
             NSMutableArray *tempDatas = [ScheduleItemModel mj_objectArrayWithKeyValuesArray:items];
-         
             if(isRequestMore){
+                if([tempDatas count] == 0){
+                    [_scrollerView.mj_footer endRefreshingWithNoMoreData];
+                }
                 [datas addObjectsFromArray:tempDatas];
             }else{
+                if([tempDatas count] == 0){
+                    [_scrollerView.mj_header endRefreshing];
+                    [DialogHelper showWarnTips:@"已是最新数据"];
+                }
                 [tempDatas addObjectsFromArray:datas];
                 datas = tempDatas;
             }
