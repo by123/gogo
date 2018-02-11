@@ -29,11 +29,11 @@
 #import "AccountManager.h"
 #import "SettingPage.h"
 #import <AVKit/AVKit.h>
-#import "SignView.h"
+#import "SignView2.h"
 
 #define TitleHeight [PUtil getActualHeight:88]
 
-@interface MainPage ()<BottomViewDelegate,MainHandleDelegate,SignViewDelegate>
+@interface MainPage ()<BottomViewDelegate,MainHandleDelegate,SignView2Delegate>
 
 @property (strong, nonatomic) UILabel *mTitleLabel;
 @property (strong, nonatomic) UIView  *mBodyView;
@@ -48,7 +48,7 @@
 {
     NSArray * titles;
     NSArray * images;
-
+    
 }
 
 
@@ -66,7 +66,7 @@
                                                object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoPlayEnd) name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
-    [self getSignStatu];
+//    [self getSignStatu];
 }
 
 
@@ -120,18 +120,25 @@
     _mTitleLabel.textAlignment = NSTextAlignmentCenter;
     
     [self.view addSubview:_mTitleLabel];
-
+    
     _signBtn = [[UIButton alloc]init];
-    _signBtn.frame = CGRectMake([PUtil getActualWidth:15], [PUtil getActualHeight:20]+StatuBarHeight , [PUtil getActualWidth:120], [PUtil getActualHeight:48]);
-    _signBtn.backgroundColor = c01_blue;
-    _signBtn.layer.masksToBounds = YES;
-    [_signBtn setTitle:@"签到" forState:UIControlStateNormal];
-    [_signBtn setTitleColor:c08_text forState:UIControlStateNormal];
-    _signBtn.layer.cornerRadius = 4;
-    _signBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+    _signBtn.frame = CGRectMake(0, StatuBarHeight , [PUtil getActualWidth:150], TitleHeight);
     [_signBtn addTarget:self action:@selector(showSignView) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_signBtn];
     
+    UIImageView *signImageView = [[UIImageView alloc]init];
+    UIImage *signImage = [UIImage imageNamed:@"ic_checkin_16"];
+    signImageView.image = signImage;
+    signImageView.frame = CGRectMake([PUtil getActualWidth:21], (TitleHeight-signImage.size.height)/2, signImage.size.width, signImage.size.height);
+    [_signBtn addSubview:signImageView];
+    
+    UILabel *signLabel = [[UILabel alloc]init];
+    signLabel.text = @"签到";
+    signLabel.textColor = c09_tips;
+    signLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:30]];
+    signLabel.textAlignment = NSTextAlignmentCenter;
+    signLabel.frame = CGRectMake([PUtil getActualWidth:62], 0, signLabel.contentSize.width, TitleHeight);
+    [_signBtn addSubview:signLabel];
 }
 
 -(void)initBody{
@@ -168,7 +175,7 @@
         default:
             break;
     }
-
+    
 }
 
 
@@ -301,7 +308,7 @@
             if(_mineView){
                 [_mineView updateUserInfo];
             }
-       }
+        }
     } failure:^(NSError *error) {
         
     }];
@@ -309,9 +316,12 @@
 
 #pragma mark 显示签到UI
 -(void)showSignView{
-    SignView *signView =[[SignView alloc]init];
-    signView.delegate = self;
-    [self.view addSubview:signView];
+    NSLog(@"点击签到");
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self doRequestSign];
+//    SignView *signView =[[SignView alloc]init];
+//    signView.delegate = self;
+//    [self.view addSubview:signView];
 }
 
 -(void)OnSignSuccess{
@@ -341,4 +351,38 @@
     }
 }
 
+-(void)doRequestSign{
+    int tempCoins = [[[AccountManager sharedAccountManager]getUserInfo].coin intValue];
+    [ByNetUtil get:API_SIGN parameters:nil success:^(RespondModel *model) {
+        if(model.code == 200){
+            id data = model.data;
+            id sign = [data objectForKey:@"sign_in"];
+            long coins = [[data objectForKey:@"coin"] longValue];
+//            bool statu = [[sign objectForKey:@"has_sign"] boolValue];
+            if((coins-tempCoins) == 0){
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                [DialogHelper showFailureAlertSheet:@"您今天已经签过到了哦！"];
+                return;
+            }
+            int day = [[sign objectForKey:@"day"] intValue];
+            SignView2 *signView = [[SignView2 alloc]initWithCoin:coins-tempCoins withDay:day];
+            signView.delegate = self;
+            [self.view addSubview:signView];
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            return;
+            
+        }
+        [DialogHelper showFailureAlertSheet:model.msg];
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+    } failure:^(NSError *error) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [DialogHelper showFailureAlertSheet:@"签到失败，请重试"];
+    }];
+    
+}
+
+-(void)OnGuessClicked{
+    [self goGamePage];
+}
 @end

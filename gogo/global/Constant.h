@@ -15,7 +15,7 @@
 
 //请求头
 #define CHANNELCODE @"000001"
-#define PT @"IOS"
+#define PT @"app"
 #define APPKEY @"test_key"
 #define APPSECRET @"test_secret"
 #define WECHAT_APPID @"wx3349545f4d083130"
@@ -33,6 +33,7 @@
 #define API_COMMENT @"https://gogo.scrats.cn/api/core/comments"
 #define API_ADDCOMMENT @"https://gogo.scrats.cn/api/core/comment"
 #define API_RACE @"https://gogo.scrats.cn/api/core/races"
+#define API_RACE2 @"https://gogo.scrats.cn/api/core/races2"
 #define API_TEAMLIST @"https://gogo.scrats.cn/api/core/teams"
 #define API_TEAMDETAIL @"https://gogo.scrats.cn/api/core/team/"
 #define API_PAYLIST @"https://gogo.scrats.cn/api/core/coin/plans"

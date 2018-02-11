@@ -37,7 +37,7 @@
 @end
 
 @implementation GamePage{
-    int index;
+    NSString *index;
     NSMutableArray *datas;
     NSInteger itemPosition;
     NSMutableArray *hotDatas;
@@ -47,7 +47,7 @@
 
 -(instancetype)initWithFrame:(CGRect)frame{
     if(self == [super initWithFrame:frame]){
-        index = 0;
+        index = @"0";
         TopHeight =  [PUtil getActualHeight:418];
         datas = [[NSMutableArray alloc]init];
         hotDatas = [[NSMutableArray alloc]init];
@@ -169,73 +169,109 @@
 {
     [_scrollerView.mj_header endRefreshing];
     [_scrollerView.mj_footer endRefreshing];
-    index = 0;
-    [self requestList : NO];
+    //    index = 0;
+    [self requestList2 : NO];
 }
 
 -(void)uploadMore
 {
     [_scrollerView.mj_header endRefreshing];
     [_scrollerView.mj_footer endRefreshing];
-    [self requestList : YES];
+    [self requestList2 : YES];
     
 }
 
-
--(void)requestList : (Boolean)isReuqestMore{
+-(void)requestList2 : (Boolean)isRequestMore{
     NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
-    dic[@"index"] = @(index);
-    [ByNetUtil get:API_RACE parameters:dic success:^(RespondModel *respondModel) {
+    dic[@"index"] = index;
+    NSString *sort = @"asc";
+    if(isRequestMore){
+        sort = @"desc";
+    }
+    dic[@"sort"] = sort;
+    [ByNetUtil get:API_RACE2 parameters:dic success:^(RespondModel *respondModel) {
         if(respondModel.code == 200){
             id data = respondModel.data;
-            index = [[data objectForKey:@"index"] intValue];
-            if(index == -1){
-                [_scrollerView.mj_footer endRefreshingWithNoMoreData];
-                return ;
-            }
+            index = [data objectForKey:@"index"];
             id items = [data objectForKey:@"items"];
-            NSMutableArray *tempDatas = [ScheduleModel mj_objectArrayWithKeyValuesArray:items];
-            NSMutableArray *addDatas = [[NSMutableArray alloc]init];
-            for(ScheduleModel *model in tempDatas){
-                if(model.dt != 0){
-//                    ScheduleItemModel *titleModel = [[ScheduleItemModel alloc]init];
-//                    titleModel.create_ts = [NSString stringWithFormat:@"%ld",model.dt];
-//                    [addDatas addObject:titleModel];
-                    NSMutableArray *contentItems =model.items;
-                    if(!IS_NS_COLLECTION_EMPTY(contentItems)){
-                        for(int i = 0 ; i < [contentItems count];i++){
-                            id contentItem = [contentItems objectAtIndex:i];
-                            ScheduleItemModel *contentModel  = [ScheduleItemModel mj_objectWithKeyValues:contentItem];
-                            if(i == [contentItems count]-1){
-                                contentModel.hideLine = YES;
-                            }
-                            [addDatas addObject:contentModel];
-                        }
-                    }
-                }
+            NSMutableArray *tempDatas = [ScheduleItemModel mj_objectArrayWithKeyValuesArray:items];
+         
+            if(isRequestMore){
+                [datas addObjectsFromArray:tempDatas];
+            }else{
+                [tempDatas addObjectsFromArray:datas];
+                datas = tempDatas;
             }
             
-            if(isReuqestMore){
-                [datas addObjectsFromArray:addDatas];
-            }else{
-                datas = addDatas;
-            }
-         
             long height = GameCellHeight * [datas count];
             _scrollerView.frame = CGRectMake(0, TopHeight+[PUtil getActualHeight:56], ScreenWidth, ScreenHeight - StatuBarHeight - [PUtil getActualHeight:88]-( TopHeight+[PUtil getActualHeight:56]));
             _tableView.frame = CGRectMake(0, 0, ScreenWidth, height);
             _scrollerView.contentSize =CGSizeMake(ScreenWidth,height);
             [_tableView reloadData];
             [self updateTimelineView];
-//            [self test];
         }else{
             [DialogHelper showFailureAlertSheet:respondModel.msg];
         }
     } failure:^(NSError *error) {
         [DialogHelper showFailureAlertSheet:@"请求失败"];
-        
     }];
+    
 }
+
+//-(void)requestList : (Boolean)isReuqestMore{
+//    NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
+//    dic[@"index"] = @(index);
+//    [ByNetUtil get:API_RACE2 parameters:dic success:^(RespondModel *respondModel) {
+//        if(respondModel.code == 200){
+//            id data = respondModel.data;
+//            index = [data objectForKey:@"index"];
+//            if(index == -1){
+//                [_scrollerView.mj_footer endRefreshingWithNoMoreData];
+//                return ;
+//            }
+//            id items = [data objectForKey:@"items"];
+//            NSMutableArray *tempDatas = [ScheduleModel mj_objectArrayWithKeyValuesArray:items];
+//            NSMutableArray *addDatas = [[NSMutableArray alloc]init];
+//            for(ScheduleModel *model in tempDatas){
+//                if(model.dt != 0){
+////                    ScheduleItemModel *titleModel = [[ScheduleItemModel alloc]init];
+////                    titleModel.create_ts = [NSString stringWithFormat:@"%ld",model.dt];
+////                    [addDatas addObject:titleModel];
+//                    NSMutableArray *contentItems =model.items;
+//                    if(!IS_NS_COLLECTION_EMPTY(contentItems)){
+//                        for(int i = 0 ; i < [contentItems count];i++){
+//                            id contentItem = [contentItems objectAtIndex:i];
+//                            ScheduleItemModel *contentModel  = [ScheduleItemModel mj_objectWithKeyValues:contentItem];
+//                            if(i == [contentItems count]-1){
+//                                contentModel.hideLine = YES;
+//                            }
+//                            [addDatas addObject:contentModel];
+//                        }
+//                    }
+//                }
+//            }
+//
+//            if(isReuqestMore){
+//                [datas addObjectsFromArray:addDatas];
+//            }else{
+//                datas = addDatas;
+//            }
+//
+//            long height = GameCellHeight * [datas count];
+//            _scrollerView.frame = CGRectMake(0, TopHeight+[PUtil getActualHeight:56], ScreenWidth, ScreenHeight - StatuBarHeight - [PUtil getActualHeight:88]-( TopHeight+[PUtil getActualHeight:56]));
+//            _tableView.frame = CGRectMake(0, 0, ScreenWidth, height);
+//            _scrollerView.contentSize =CGSizeMake(ScreenWidth,height);
+//            [_tableView reloadData];
+//            [self updateTimelineView];
+////            [self test];
+//        }else{
+//            [DialogHelper showFailureAlertSheet:respondModel.msg];
+//        }
+//    } failure:^(NSError *error) {
+//        [DialogHelper showFailureAlertSheet:@"请求失败"];
+//
+//    }];
+//}
 
 -(void)updateTimelineView{
     long height = GameCellHeight * [datas count] - [PUtil getActualHeight:20];
@@ -268,7 +304,7 @@
     _selectPointView.layer.borderWidth = [PUtil getActualWidth:2];
     _selectPointView.layer.borderColor = [c08_text CGColor];
     [_timelineView addSubview:_selectPointView];
-
+    
 }
 
 
@@ -276,7 +312,7 @@
     [ByNetUtil get:API_HOT_RACES parameters:nil success:^(RespondModel *respondModel) {
         if(respondModel.code == 200){
             id data = respondModel.data;
-            hotDatas = [ScheduleModel mj_objectArrayWithKeyValuesArray:data];
+            hotDatas = [ScheduleItemModel mj_objectArrayWithKeyValuesArray:data];
             if(IS_NS_COLLECTION_EMPTY(hotDatas)){
                 TopHeight = 0;
             }else{
@@ -284,9 +320,9 @@
                 [_gameScrollView updateDatas:hotDatas];
             }
             [self initRaceLabel];
-            [self requestList:NO];
+            [self requestList2:YES];
         }
-           
+        
     } failure:^(NSError *error) {
         
     }];
@@ -310,16 +346,16 @@
 
 
 -(void)test{
-        NSMutableArray *arrays = [[NSMutableArray alloc]init];
-        for(int i =0 ; i< [datas count]; i++){
-            ScheduleItemModel *model = [datas objectAtIndex:i];
-            if(!IS_NS_STRING_EMPTY(model.score_a)){
-                [arrays addObject:[datas objectAtIndex:i]];
-            }
+    NSMutableArray *arrays = [[NSMutableArray alloc]init];
+    for(int i =0 ; i< [datas count]; i++){
+        ScheduleItemModel *model = [datas objectAtIndex:i];
+        if(!IS_NS_STRING_EMPTY(model.score_a)){
+            [arrays addObject:[datas objectAtIndex:i]];
         }
-
-        [self initTopView];
-        [_gameScrollView updateDatas:arrays];
+    }
+    
+    [self initTopView];
+    [_gameScrollView updateDatas:arrays];
 }
 
 

@@ -17,6 +17,7 @@
 #import <QiniuSDK.h>
 #import "UMessage.h"
 #import <UserNotifications/UserNotifications.h>
+#import "RespondModel.h"
 
 
 
@@ -34,6 +35,8 @@
     if([[AccountManager sharedAccountManager]isLogin]){
         MainPage *page = [[MainPage alloc]init];
         controller = [[UINavigationController alloc]initWithRootViewController:page];
+        [self updateUserInfo];
+        
     }else{
         loginPage = [[LoginPage alloc]init];
         controller = [[UINavigationController alloc]initWithRootViewController:loginPage];
@@ -46,9 +49,13 @@
     [self initUmeng];
     [self initUmengPush : launchOptions];
     
-//    Account *accout = [[AccountManager sharedAccountManager] getAccount];
-//    accout.access_token = @"123456";
-//    [[AccountManager sharedAccountManager]saveAccount:accout];
+    Account *accout = [[AccountManager sharedAccountManager] getAccount];
+    accout.access_token = @"123456";
+    [[AccountManager sharedAccountManager]saveAccount:accout];
+    
+    [ByNetUtil refreshToken:^(id data) {
+        
+    }];
     return YES;
 }
 
@@ -240,6 +247,18 @@
     }else{
         //应用处于后台时的本地推送接受
     }
+}
+
+-(void)updateUserInfo{
+    [ByNetUtil get:API_USERINFO parameters:nil success:^(RespondModel *respondModel) {
+        if(respondModel.code == 200){
+            id data = respondModel.data;
+            UserModel *userModel = [UserModel mj_objectWithKeyValues:data];
+            [[AccountManager sharedAccountManager]saveUserInfo:userModel];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 

@@ -92,6 +92,8 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>gogo</string>
+				<string>tencent1106448485</string>
+				<string>wx3349545f4d083130</string>
 			</array>
 		</dict>
 	</array>
