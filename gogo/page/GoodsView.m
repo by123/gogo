@@ -78,6 +78,7 @@
     if(_handleDelegate){
         GoodsModel *model = [datas objectAtIndex:indexPath.row];
         [_handleDelegate goGoodsDetailPage:model.goods_id];
+        [UMUtil clickEvent:EVENT_GOODS];
     }
 }
 

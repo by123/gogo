@@ -23,7 +23,9 @@
 #import "ImageBuuton.h"
 #import "WXApi.h"
 #import "WXApiObject.h"
-@interface GuessPage ()<BySegmentViewDelegate>
+#import "NormalAlertView.h"
+#import "ChargePage.h"
+@interface GuessPage ()<BySegmentViewDelegate,NormalAlertViewDelegate>
 
 @property (strong, nonatomic) UIImageView *aTeamImageView;
 @property (strong, nonatomic) UILabel *aTeamLabel;
@@ -40,6 +42,11 @@
 @property (strong, nonatomic) UIButton *guessBtn;
 @property (strong, nonatomic) UIButton *liveBtn;
 @property (strong, nonatomic) ChatView *chatView;
+@property (strong, nonatomic) InsetTextField *coinTextField;
+@property (strong, nonatomic) UIView *guessContentView;
+@property (strong, nonatomic) UIButton *addBtn;
+@property (strong, nonatomic) UIButton *reduceBtn;
+@property (strong, nonatomic) NormalAlertView *normalAlertView;
 
 @end
 
@@ -48,7 +55,6 @@
     NSMutableArray *bettingTypeArray;
     NSMutableArray *buttons;
     BettingItemModel *selectModel;
-    int selectCoin ;
     GuessView *selectGuessView;
     NSInteger mCurrentIndex;
 }
@@ -177,7 +183,7 @@
     BySegmentView *segmentView = [[BySegmentView alloc]initWithFrame:CGRectMake(0, [PUtil getActualHeight:480] - StatuBarHeight, ScreenWidth, ScreenHeight - ([PUtil getActualHeight:480] - StatuBarHeight)) andTitleArray:titleArray andShowControllerNameArray:viewArray];
     segmentView.delegate = self;
     [self.view addSubview:segmentView];
-
+    
     [self initGuessOrderView];
     
     _liveBtn = [[UIButton alloc]init];
@@ -196,35 +202,65 @@
     _guessOrderView = [[UIView alloc]initWithFrame:CGRectMake(0, ScreenHeight, ScreenWidth, ScreenHeight)];
     [self.view addSubview:_guessOrderView];
     
-    UIView *guessContentView = [[UIView alloc]initWithFrame:CGRectMake(0, ScreenHeight- [PUtil getActualHeight:360], ScreenWidth, [PUtil getActualHeight:360])];
-    guessContentView.backgroundColor = c07_bar;
-    [_guessOrderView addSubview:guessContentView];
+    _guessContentView = [[UIView alloc]initWithFrame:CGRectMake(0, ScreenHeight- [PUtil getActualHeight:440], ScreenWidth, [PUtil getActualHeight:440])];
+    _guessContentView.backgroundColor = c07_bar;
+    [_guessOrderView addSubview:_guessContentView];
     _guessOrderView.hidden = YES;
     
     UIButton *closeBtn = [[UIButton alloc]init];
     [closeBtn setImage:[UIImage imageNamed:@"ic_close"] forState:UIControlStateNormal];
     closeBtn.frame = CGRectMake(ScreenWidth - [PUtil getActualWidth:70], [PUtil getActualHeight:30], [PUtil getActualWidth:40], [PUtil getActualWidth:40]);
     [closeBtn addTarget:self action:@selector(CloseGuessOrderView) forControlEvents:UIControlEventTouchUpInside];
-    [guessContentView addSubview:closeBtn];
+    [_guessContentView addSubview:closeBtn];
     
     _guessTitleLabel = [[UILabel alloc]init];
     _guessTitleLabel.text = @"竞猜0，猜中可得0竞猜币";
     _guessTitleLabel.textColor = c08_text;
     _guessTitleLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:24]];
     _guessTitleLabel.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualHeight:30], [PUtil getActualWidth:500],  [PUtil getActualHeight:28]);
-    [guessContentView addSubview:_guessTitleLabel];
+    [_guessContentView addSubview:_guessTitleLabel];
     
     _coinLabel = [[UILabel alloc]init];
     _coinLabel.text = @"余额：123123";
     _coinLabel.textColor = c03_yellow;
     _coinLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:24]];
     _coinLabel.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualHeight:80], [PUtil getActualWidth:500],  [PUtil getActualHeight:28]);
-    [guessContentView addSubview:_coinLabel];
+    [_guessContentView addSubview:_coinLabel];
     
+    int controlBtnWidth = [PUtil getActualWidth:115];
+    _reduceBtn = [[UIButton alloc]init];
+    _reduceBtn.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualHeight:140], controlBtnWidth,  [PUtil getActualHeight:60]);
+    _reduceBtn.backgroundColor = c01_blue;
+    [_reduceBtn setTitle:@"-10" forState:UIControlStateNormal];
+    [_reduceBtn setTitleColor:c08_text forState:UIControlStateNormal];
+    _reduceBtn.layer.cornerRadius = [PUtil getActualHeight:10];
+    [_reduceBtn addTarget:self action:@selector(onClickReduceBtn) forControlEvents:UIControlEventTouchUpInside];
+    [_guessContentView addSubview:_reduceBtn];
+    
+    _addBtn = [[UIButton alloc]init];
+    _addBtn.frame = CGRectMake(ScreenWidth - [PUtil getActualWidth:30] - controlBtnWidth,[PUtil getActualHeight:140] , controlBtnWidth,  [PUtil getActualHeight:60]);
+    _addBtn.backgroundColor = c01_blue;
+    _addBtn.layer.cornerRadius = [PUtil getActualHeight:10];
+    [_addBtn setTitle:@"+10" forState:UIControlStateNormal];
+    [_addBtn setTitleColor:c08_text forState:UIControlStateNormal];
+    [_addBtn addTarget:self action:@selector(onClickAddBtn) forControlEvents:UIControlEventTouchUpInside];
+    [_guessContentView addSubview:_addBtn];
+    
+    _coinTextField = [[InsetTextField alloc]initWithFrame: CGRectMake([PUtil getActualWidth:160], [PUtil getActualHeight:140], ScreenWidth - [PUtil getActualWidth:320], [PUtil getActualHeight:60]) andInsets:UIEdgeInsetsMake(0, [PUtil getActualWidth:16], 0, [PUtil getActualWidth:16]) hint:@"竞猜金额为10的整数倍"];
+    _coinTextField.font = [UIFont systemFontOfSize:[PUtil getActualHeight:28]];
+    _coinTextField.textColor = c08_text;
+    _coinTextField.returnKeyType = UIReturnKeyDone;
+    _coinTextField.keyboardType = UIKeyboardTypeNumberPad;
+    _coinTextField.layer.masksToBounds = YES;
+    _coinTextField.layer.borderColor = c01_blue.CGColor;
+    _coinTextField.layer.borderWidth = 1;
+    _coinTextField.layer.cornerRadius = [PUtil getActualHeight:10];
+    [_guessContentView addSubview:_coinTextField];
+    [_coinTextField check];
     
     int width = (ScreenWidth - [PUtil getActualWidth:120])/4;
     for(int i = 0 ; i < 4 ;i ++){
-        UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake([PUtil getActualWidth:30] +( width + [PUtil getActualWidth:20])*i, [PUtil getActualHeight:140], width, [PUtil getActualHeight:60])];
+        UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake([PUtil getActualWidth:30] +( width + [PUtil getActualWidth:20])*i, [PUtil getActualHeight:220], width, [PUtil getActualHeight:60])];
         button.tag = i;
         NSString *title;
         switch (i) {
@@ -250,16 +286,16 @@
         button.layer.borderColor = c01_blue.CGColor;
         [button addTarget:self action:@selector(OnGuessBtnSelect:) forControlEvents:UIControlEventTouchUpInside];
         [buttons addObject:button];
-        [guessContentView addSubview:button];
+        [_guessContentView addSubview:button];
     }
     
     _guessBtn  = [[UIButton alloc]init];
-    _guessBtn.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualHeight:230],ScreenWidth - [PUtil getActualWidth:30]*2 , [PUtil getActualHeight:110]);
+    _guessBtn.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualHeight:310],ScreenWidth - [PUtil getActualWidth:30]*2 , [PUtil getActualHeight:110]);
     [_guessBtn setTitle:@"立即竞猜" forState:UIControlStateNormal];
     _guessBtn.layer.masksToBounds = YES;
     _guessBtn.layer.cornerRadius = [PUtil getActualHeight:10];
     [_guessBtn addTarget:self action:@selector(requestGuess) forControlEvents:UIControlEventTouchUpInside];
-    [guessContentView addSubview:_guessBtn];
+    [_guessContentView addSubview:_guessBtn];
     [ColorUtil setGradientColor:_guessBtn startColor:c01_blue endColor:c02_red director:Left];
     
 }
@@ -268,8 +304,10 @@
     mCurrentIndex = index;
     if(index == 0){
         [_liveBtn setTitle:@"分享" forState:UIControlStateNormal];
+        [UMUtil clickEvent:EVENT_GAME_TAB_GUESS];
     }else{
         [_liveBtn setTitle:@"直播" forState:UIControlStateNormal];
+        [UMUtil clickEvent:EVENT_GAME_TAB_CHAT];
     }
 }
 -(void)OpenGuessOrderView:(BettingItemModel *)model guessView:(GuessView *)guessView{
@@ -285,6 +323,7 @@
 }
 
 -(void)CloseGuessOrderView{
+    [_coinTextField resignFirstResponder];
     __weak UIView *tempView  = _guessOrderView;
     [UIView animateWithDuration:0.3f animations:^{
         tempView.frame = CGRectMake(0, ScreenHeight, ScreenWidth, ScreenHeight);
@@ -299,6 +338,7 @@
         _guessTitleLabel.text = @"竞猜0，猜中可得0竞猜币";
         
     }];
+    [UMUtil clickEvent:EVENT_GAME_CLOSE_GUESS];
 }
 
 -(void)onBackPage{
@@ -313,31 +353,36 @@
         
         UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel
                                                              handler:^(UIAlertAction * action) {
-
+                                                                 [UMUtil clickEvent:EVENT_GAME_SHARE_CANCEL];
                                                              }];
         UIAlertAction* sceneAction = [UIAlertAction actionWithTitle:@"分享给微信好友" style:UIAlertActionStyleDefault
-                                                             handler:^(UIAlertAction * action) {
-                                                                 [self doShare : WXSceneSession];
-                                                             }];
+                                                            handler:^(UIAlertAction * action) {
+                                                                [UMUtil clickEvent:EVENT_GAME_SHARE_FRIEND];
+                                                                [self doShare : WXSceneSession];
+                                                            }];
         UIAlertAction* timelineAction = [UIAlertAction actionWithTitle:@"分享到朋友圈" style:UIAlertActionStyleDefault
-                                                           handler:^(UIAlertAction * action) {
-                                                               [self doShare : WXSceneTimeline];
-
-                                                           }];
+                                                               handler:^(UIAlertAction * action) {
+                                                                   [UMUtil clickEvent:EVENT_GAME_SHARE_TIMELINE];
+                                                                   [self doShare : WXSceneTimeline];
+                                                                   
+                                                               }];
         [alert addAction:sceneAction];
         [alert addAction:timelineAction];
         [alert addAction:cancelAction];
         [self presentViewController:alert animated:YES completion:nil];
         
-    
-   
+        
+        
     }else{
         LivePage *page = [[LivePage alloc]init];
         [self pushPage:page];
+        [UMUtil clickEvent:EVENT_GAME_LIVE];
+
     }
 }
 
 -(void)doShare : (int)scene{
+    [UMUtil clickEvent:EVENT_GAME_SHARE];
     WXMediaMessage *message = [WXMediaMessage message];
     message.title = @"gogo电竞";
     message.description = @"快来一起参加王者荣耀竞猜吧！";
@@ -389,10 +434,10 @@
     _gameLabel.text = raceModel.race_name;
     
     [_aTeamSupportBtn setTitle:[NSString stringWithFormat:@"支持%@  50%%",aTeamModel.team_name] forState:UIControlStateNormal];
-//    _aTeamSupportBtn.titleEdgeInsets = UIEdgeInsetsMake(0,-[PUtil getActualWidth:100],0,0);
+    //    _aTeamSupportBtn.titleEdgeInsets = UIEdgeInsetsMake(0,-[PUtil getActualWidth:100],0,0);
     
     [_bTeamSupportBtn setTitle:[NSString stringWithFormat:@"支持%@  50%%",bTeamModel.team_name] forState:UIControlStateNormal];
-//    _bTeamSupportBtn.titleEdgeInsets = UIEdgeInsetsMake(0,0,00]);
+    //    _bTeamSupportBtn.titleEdgeInsets = UIEdgeInsetsMake(0,0,00]);
     [self initBodyView];
 }
 
@@ -416,11 +461,12 @@
         default:
             break;
     }
+    _coinTextField.text =[NSString stringWithFormat:@"%d",coin];
+    [_coinTextField check];
     if([userModel.coin intValue] < coin){
         [DialogHelper showFailureAlertSheet:@"余额不足"];
         return;
     }
-    selectCoin = coin;
     for(UIButton *tempBtn in buttons){
         tempBtn.backgroundColor = [UIColor clearColor];
     }
@@ -443,15 +489,34 @@
 
 //立即竞猜
 -(void)requestGuess{
-    if(selectCoin == 0){
-        [DialogHelper showWarnTips:@"请选择一个金额"];
+    
+    [UMUtil clickEvent:EVENT_GAME_GUESS];
+    if(IS_NS_STRING_EMPTY(_coinTextField.text)){
+        [DialogHelper showWarnTips:@"请输入竞猜金额"];
         return;
     }
+    NSString *coinStr = _coinTextField.text;
+    int coin = [coinStr intValue];
+    if(coin % 10 != 0){
+        [DialogHelper showWarnTips:@"竞猜金额必须为10的整数倍"];
+        return;
+    }
+    
+    UserModel *userModel = [[AccountManager sharedAccountManager]getUserInfo];
+    if([userModel.coin intValue] < coin){
+        [_coinTextField resignFirstResponder];
+        _normalAlertView = [[NormalAlertView alloc]initWithTitle:@"投注失败，余额不足" content:@"是否去购买礼物?"];
+        _normalAlertView.delegate = self;
+        [self.view addSubview:_normalAlertView];
+        return;
+    }
+    
     NSMutableArray *array = [[NSMutableArray alloc]init];
     [array addObject:@(selectModel.betting_item_id)];
     
+    NSLog(@"竞猜%@",coinStr);
     NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
-    dic[@"coin"] = @(selectCoin);
+    dic[@"coin"] = coinStr;
     dic[@"betting_item_id_list"] = array;
     
     [ByNetUtil post:API_GUESS content:dic.mj_JSONString success:^(RespondModel *respondModel) {
@@ -469,16 +534,80 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(textFieldTextDidChange:)
+                                                name:UITextFieldTextDidChangeNotification
+                                              object:_coinTextField];
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillChangeFrameNotification object:nil];
+    [[NSNotificationCenter defaultCenter]removeObserver:self
+                                                   name:UITextFieldTextDidChangeNotification object:nil];
 }
 
 - (void)keyboardWillChangeFrame:(NSNotification *)notification{
     if(_chatView){
         [_chatView keyboardWillChangeFrame:notification];
     }
+    if(_coinTextField){
+        [_coinTextField check];
+        NSDictionary *info = [notification userInfo];
+        CGFloat duration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
+        CGRect beginKeyboardRect = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
+        CGRect endKeyboardRect = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+        CGFloat yOffset = endKeyboardRect.origin.y - beginKeyboardRect.origin.y;
+        CGRect rect = _guessContentView.frame;
+        rect.origin.y += yOffset;
+        __weak UIView *view = _guessContentView;
+        [UIView animateWithDuration:duration animations:^{
+            view.frame = rect;
+        }];
+    }
+}
+
+
+#pragma mark 竞猜币-10
+-(void)onClickReduceBtn{
+    int coin = [_coinTextField.text intValue];
+    coin -=10;
+    if(coin >= 0){
+        _coinTextField.text = [NSString stringWithFormat:@"%d",coin];
+    }else{
+        return;
+    }
+    [_coinTextField check];
+    _guessTitleLabel.text = [NSString stringWithFormat:@"竞猜%d， 猜中可得%.f竞猜币",coin,coin *  [selectModel.odds floatValue]];
+}
+
+#pragma mark 竞猜币+10
+-(void)onClickAddBtn{
+    int coin = [_coinTextField.text intValue];
+    coin +=10;
+    _coinTextField.text = [NSString stringWithFormat:@"%d",coin];
+    [_coinTextField check];
+    _guessTitleLabel.text = [NSString stringWithFormat:@"竞猜%d， 猜中可得%.f竞猜币",coin,coin *  [selectModel.odds floatValue]];
+}
+
+#pragma mark 监听输入变化
+-(void)textFieldTextDidChange:(NSNotification *)notification{
+    UITextField *textfield=[notification object];
+    int coin = [textfield.text intValue];
+    _guessTitleLabel.text = [NSString stringWithFormat:@"竞猜%d， 猜中可得%.f竞猜币",coin,coin *  [selectModel.odds floatValue]];
+    for(UIButton *tempBtn in buttons){
+        tempBtn.backgroundColor = [UIColor clearColor];
+    }
+}
+
+#pragma mark 跳转到充值
+-(void)OnOkBtnClick{
+    if(_normalAlertView){
+        [_normalAlertView removeFromSuperview];
+    }
+    ChargePage *page = [[ChargePage alloc]init];
+    [self pushPage:page];
+    [UMUtil clickEvent:EVENT_GAME_CONFIRM_NOMONEY];
+    
 }
 
 @end

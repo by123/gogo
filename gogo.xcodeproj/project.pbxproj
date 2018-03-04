@@ -78,6 +78,7 @@
 		CF42783B1FAB9A0100C163DD /* UILabel+StringFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4278361FAB9A0100C163DD /* UILabel+StringFrame.m */; };
 		CF42783C1FAB9A0100C163DD /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4278381FAB9A0100C163DD /* UIView+Frame.m */; };
 		CF42783F1FAB9B3A00C163DD /* LoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF42783E1FAB9B3A00C163DD /* LoginModel.m */; };
+		CF43F551204C7085004DB534 /* UMUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CF43F550204C7085004DB534 /* UMUtil.m */; };
 		CF4855721FB2BB300018502A /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4855711FB2BB300018502A /* TencentOpenAPI.framework */; };
 		CF4855741FB2BBBD0018502A /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4855731FB2BBBD0018502A /* libiconv.tbd */; };
 		CF4855761FB2BBD60018502A /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4855751FB2BBD60018502A /* libstdc++.tbd */; };
@@ -112,6 +113,7 @@
 		CFA43E3F1FDBE9E700EF74CD /* GuessMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA43E3E1FDBE9E700EF74CD /* GuessMainView.m */; };
 		CFA43E421FDC637600EF74CD /* BettingTpModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA43E411FDC637600EF74CD /* BettingTpModel.m */; };
 		CFA43E461FDC64D300EF74CD /* ChatView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA43E451FDC64D300EF74CD /* ChatView.m */; };
+		CFA66936204811D500EDCCCE /* NormalAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA66935204811D500EDCCCE /* NormalAlertView.m */; };
 		CFADF8471FBA1B3100A7501E /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFADF82D1FBA1B3000A7501E /* back@2x.png */; };
 		CFADF8481FBA1B3100A7501E /* back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFADF82E1FBA1B3000A7501E /* back@3x.png */; };
 		CFADF8491FBA1B3100A7501E /* screen_full@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CFADF82F1FBA1B3000A7501E /* screen_full@2x.png */; };
@@ -328,6 +330,8 @@
 		CF4278381FAB9A0100C163DD /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		CF42783D1FAB9B3A00C163DD /* LoginModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginModel.h; sourceTree = "<group>"; };
 		CF42783E1FAB9B3A00C163DD /* LoginModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginModel.m; sourceTree = "<group>"; };
+		CF43F54F204C7085004DB534 /* UMUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMUtil.h; sourceTree = "<group>"; };
+		CF43F550204C7085004DB534 /* UMUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMUtil.m; sourceTree = "<group>"; };
 		CF4855711FB2BB300018502A /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
 		CF4855731FB2BBBD0018502A /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		CF4855751FB2BBD60018502A /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
@@ -385,6 +389,8 @@
 		CFA43E411FDC637600EF74CD /* BettingTpModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BettingTpModel.m; sourceTree = "<group>"; };
 		CFA43E441FDC64D300EF74CD /* ChatView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatView.h; sourceTree = "<group>"; };
 		CFA43E451FDC64D300EF74CD /* ChatView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatView.m; sourceTree = "<group>"; };
+		CFA66934204811D500EDCCCE /* NormalAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NormalAlertView.h; sourceTree = "<group>"; };
+		CFA66935204811D500EDCCCE /* NormalAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NormalAlertView.m; sourceTree = "<group>"; };
 		CFADF82D1FBA1B3000A7501E /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
 		CFADF82E1FBA1B3000A7501E /* back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@3x.png"; sourceTree = "<group>"; };
 		CFADF82F1FBA1B3000A7501E /* screen_full@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screen_full@2x.png"; sourceTree = "<group>"; };
@@ -1162,6 +1168,8 @@
 				CFADF8731FBB65A900A7501E /* UploadImageUtil.m */,
 				CFA43E391FDBDDBB00EF74CD /* SoundUtil.h */,
 				CFA43E381FDBDDBA00EF74CD /* SoundUtil.m */,
+				CF43F54F204C7085004DB534 /* UMUtil.h */,
+				CF43F550204C7085004DB534 /* UMUtil.m */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -1210,6 +1218,8 @@
 				CF076C6A203041FD00609D08 /* SignView.m */,
 				CF076C6C2030A89000609D08 /* SignView2.h */,
 				CF076C6D2030A89000609D08 /* SignView2.m */,
+				CFA66934204811D500EDCCCE /* NormalAlertView.h */,
+				CFA66935204811D500EDCCCE /* NormalAlertView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1482,6 +1492,7 @@
 				CF2EAF0A1FA5154600F35974 /* GuessHistoryCell.m in Sources */,
 				CF42783F1FAB9B3A00C163DD /* LoginModel.m in Sources */,
 				CFADF8561FBA1B3100A7501E /* RHPlayerView.m in Sources */,
+				CFA66936204811D500EDCCCE /* NormalAlertView.m in Sources */,
 				CFBFE4FD1FA5B36500500B1B /* SCDIntroduceView.m in Sources */,
 				CF0BEDB91F9B2F78005275EE /* PUtil.m in Sources */,
 				CF076C6E2030A89000609D08 /* SignView2.m in Sources */,
@@ -1523,6 +1534,7 @@
 				CF0BEDC51F9BA8EE005275EE /* MainPage.m in Sources */,
 				CF2EAEEC1FA4FFBC00F35974 /* GuessHistoryPage.m in Sources */,
 				CF2EAEFE1FA5075300F35974 /* PayCell.m in Sources */,
+				CF43F551204C7085004DB534 /* UMUtil.m in Sources */,
 				CFFF1EA81FE459510062BBDD /* ImageBuuton.m in Sources */,
 				CFCB0F0D1F7105360087ACC7 /* Constant.m in Sources */,
 				CF2EAE8E1FA10D9200F35974 /* CommentModel.m in Sources */,

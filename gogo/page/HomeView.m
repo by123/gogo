@@ -91,6 +91,7 @@
     if(_handleDelegate){
         NewsModel *model = [datas objectAtIndex:index];
         [_handleDelegate goNewsDetailPage:model];
+        [UMUtil clickEvent:EVENT_AD];
     }
 }
 
@@ -119,6 +120,7 @@
     if(_handleDelegate){
         NewsModel *model = [datas objectAtIndex:indexPath.row];
         [_handleDelegate goNewsDetailPage:model];
+        [UMUtil clickEvent:EVENT_DETAIL];
     }
 }
 

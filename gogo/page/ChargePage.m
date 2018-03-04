@@ -46,6 +46,7 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(OnWechatPaySuccess) name:NOTIFY_WECAHT_PAY_SUCCESS object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(OnWechatPayFail) name:NOTIFY_WECAHT_PAY_FAIL object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(OnAlipayPaySuccess) name:NOTIFY_ALIPAY_PAY_SUCCESS object:nil];
@@ -55,6 +56,7 @@
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter]removeObserver:self name:NOTIFY_WECAHT_PAY_SUCCESS object:nil];
     [[NSNotificationCenter defaultCenter]removeObserver:self name:NOTIFY_WECAHT_PAY_FAIL object:nil];
     [[NSNotificationCenter defaultCenter]removeObserver:self name:NOTIFY_ALIPAY_PAY_SUCCESS object:nil];

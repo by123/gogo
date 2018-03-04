@@ -271,6 +271,7 @@
         NewsDetailPage *page = [[NewsDetailPage alloc]init];
         page.newsModel = [commandDatas objectAtIndex:indexPath.row];
         [self pushPage:page];
+        [UMUtil clickEvent:EVENT_DETAIL_MORE];
     }
 }
 
@@ -458,6 +459,7 @@
     } failure:^(NSError *error) {
         [DialogHelper showFailureAlertSheet:@"评论失败"];
     }];
+    [UMUtil clickEvent:EVENT_COMMENT];
 
 }
 
@@ -516,6 +518,7 @@
         [DialogHelper showFailureAlertSheet:@"点赞失败"];
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     }];
+    [UMUtil clickEvent:EVENT_DETAIL_PRAISE];
 }
 
 
@@ -535,6 +538,8 @@
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         [DialogHelper showFailureAlertSheet:@"取消点赞失败"];
     }];
+    
+    [UMUtil clickEvent:EVENT_DETAIL_CANCEL_PRAISE];
 }
 
 
@@ -568,6 +573,8 @@
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         [DialogHelper showFailureAlertSheet:@"点赞失败"];
     }];
+    [UMUtil clickEvent:EVENT_COMMENT_PRAISE];
+
 }
 
 
@@ -586,6 +593,8 @@
         [DialogHelper showFailureAlertSheet:@"取消点赞失败"];
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     }];
+    [UMUtil clickEvent:EVENT_COMMENT_CANCEL_PRAISE];
+
 }
 
 

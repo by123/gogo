@@ -153,6 +153,7 @@
 -(void)onClick:(BettingItemModel *)model{
     if(_delegate){
         [_delegate OpenGuessOrderView:model guessView:self];
+        [UMUtil clickEvent:EVENT_GAME_GUESS_SELECT];
     }
 }
 

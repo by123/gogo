@@ -10,7 +10,7 @@
 #import "BySegmentView.h"
 #import "GoodsView.h"
 
-@interface MallPage ()
+@interface MallPage ()<BySegmentViewDelegate>
 
 @end
 
@@ -36,6 +36,7 @@
 
     
     BySegmentView *segmentView = [[BySegmentView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - (StatuBarHeight + [PUtil getActualHeight:188])) andTitleArray:@[@"热门商品", @"虚拟物品",@"游戏周边",@"现金红包",@"电竞装备"] andShowControllerNameArray:views];
+    segmentView.delegate = self;
     [self.view addSubview:segmentView];
     
     UIView *lineView = [[UIView alloc]init];
@@ -44,5 +45,27 @@
     [self.view addSubview:lineView];
 }
 
+-(void)didSelectIndex:(NSInteger)index{
+    switch (index) {
+        case 0:
+            [UMUtil clickEvent:EVENT_TAB_HOT];
+            break;
+        case 1:
+            [UMUtil clickEvent:EVENT_TAB_VIRTUAL];
+            break;
+        case 2:
+            [UMUtil clickEvent:EVENT_TAB_GAME];
+            break;
+        case 3:
+            [UMUtil clickEvent:EVENT_TAB_CASH];
+            break;
+        case 4:
+            [UMUtil clickEvent:EVENT_TAB_EQUIPMENT];
+            break;
+            
+        default:
+            break;
+    }
+}
 
 @end

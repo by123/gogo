@@ -151,18 +151,23 @@
         switch (index) {
             case 0:
                 [_handleDelegate goChargePage];
+                [UMUtil clickEvent:EVENT_CHARGE];
                 break;
             case 1:
                 [_handleDelegate goAddressPage];
+                [UMUtil clickEvent:EVENT_ADDRESS];
                 break;
             case 2:
                 [_handleDelegate goHistoryPage];
+                [UMUtil clickEvent:EVENT_GUESS_HISTORY];
                 break;
             case 3:
                 [_handleDelegate goExchangePage];
+                [UMUtil clickEvent:EVENT_EXCHANGE_HISTORY];
                 break;
             case 4:
                 [_handleDelegate goSettingPage];
+                [UMUtil clickEvent:EVENT_SETTING];
                 break;
             default:
                 break;

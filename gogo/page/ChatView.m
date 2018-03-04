@@ -128,7 +128,7 @@
 
 
 -(void)sendChat{
-    
+    [UMUtil clickEvent:EVENT_GAME_SEND_CHAT];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

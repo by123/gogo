@@ -93,11 +93,13 @@
 -(void)goAboutPage{
     AboutPage *page = [[AboutPage alloc]init];
     [self pushPage:page];
+    [UMUtil clickEvent:EVENT_ABOUT];
 }
 
 -(void)goFeedbackPage{
     FeedbackPage *page= [[FeedbackPage alloc]init];
     [self pushPage:page];
+    [UMUtil clickEvent:EVENT_ADVICE];
 }
 
 

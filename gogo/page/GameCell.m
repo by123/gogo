@@ -106,8 +106,8 @@
     _scoreLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:34]];
     _scoreLabel.frame = CGRectMake(0, [PUtil getActualHeight:114], ScreenWidth - [PUtil getActualWidth:80], [PUtil getActualHeight:88]);
     [bodyView addSubview:_scoreLabel];
-
-
+    
+    
 }
 
 -(void)setData : (ScheduleItemModel *)model{
@@ -118,19 +118,26 @@
     TeamModel *aTeamModel = [TeamModel mj_objectWithKeyValues:model.team_a];
     [_aImageView sd_setImageWithURL:[NSURL URLWithString:aTeamModel.logo]];
     _aLabel.text = aTeamModel.team_name;
-     CGSize aSize = [_aLabel.text boundingRectWithSize:CGSizeMake(ScreenWidth, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:[PUtil getActualHeight:28]]} context:nil].size;
+    CGSize aSize = [_aLabel.text boundingRectWithSize:CGSizeMake(ScreenWidth, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:[PUtil getActualHeight:28]]} context:nil].size;
     _aLabel.frame = CGRectMake([PUtil getActualWidth:78], [PUtil getActualHeight:114],aSize.width, [PUtil getActualHeight:88]);
-
+    
     
     TeamModel *bTeamModel = [TeamModel mj_objectWithKeyValues:model.team_b];
     [_bImageView sd_setImageWithURL:[NSURL URLWithString:bTeamModel.logo]];
     _bLabel.text = bTeamModel.team_name;
     CGSize bSize = [_bLabel.text boundingRectWithSize:CGSizeMake(ScreenWidth, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:[PUtil getActualHeight:28]]} context:nil].size;
-
+    
     _bLabel.frame = CGRectMake(ScreenWidth - [PUtil getActualWidth:158] - bSize.width, [PUtil getActualHeight:114],bSize.width, [PUtil getActualHeight:88]);
     
     _scoreLabel.text = [NSString stringWithFormat:@"%@ : %@",model.score_a,model.score_b];
-
+    
+    if([model.status isEqualToString:Statu_End]){
+        _guessLabel.text = @"看结果";
+    }else{
+        _guessLabel.text = @"去竞猜";
+    }
+    
+    
 }
 
 +(NSString *)identify{

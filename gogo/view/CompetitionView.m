@@ -132,6 +132,7 @@
 -(void)OnClickMore{
     if(_delegate){
         [_delegate goSchedulePage];
+        [UMUtil clickEvent:EVENT_HOME_MORE];
     }
 }
 
@@ -150,6 +151,7 @@
                 }else{
                     [_delegate goGuessPage:model.race_id end:NO];
                 }
+                [UMUtil clickEvent:EVENT_HOME_GAME];
             }
         }
     }

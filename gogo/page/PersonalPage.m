@@ -135,6 +135,7 @@
 
 //
 -(void)selectImage{
+    [UMUtil clickEvent:EVENT_HEAD];
     UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
     imagePickerController.delegate = self;
     imagePickerController.allowsEditing = YES;
@@ -189,6 +190,8 @@
 }
 
 -(void)selectNickName{
+    [UMUtil clickEvent:EVENT_NICKNAME];
+
     UIAlertController * alertController = [UIAlertController alertControllerWithTitle: @"修改昵称"
                                                                               message: nil
                                                                        preferredStyle:UIAlertControllerStyleAlert];
@@ -218,6 +221,9 @@
 
 //
 -(void)selectGender{
+    
+    [UMUtil clickEvent:EVENT_GENDER];
+
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"选取性别" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *maleAction = [UIAlertAction actionWithTitle:@"男" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         _genderLabel.text = @"男";
@@ -237,6 +243,8 @@
 }
 
 -(void)logout{
+    [UMUtil clickEvent:EVENT_LOGOUT];
+
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
     dic[@"refresh_token"] = [[AccountManager sharedAccountManager] getAccount].refresh_token;

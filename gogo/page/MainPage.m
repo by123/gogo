@@ -71,12 +71,15 @@
 
 
 -(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidBecomeActiveNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillResignActiveNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
+
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     [self getUserInfo];
 }
 
@@ -193,6 +196,7 @@
     _homeView.handleDelegate = self;
     _homeView.vc = self;
     [_mBodyView addSubview:_homeView];
+    [UMUtil clickEvent:EVENT_HOME];
 }
 
 #pragma mark 添加赛事
@@ -201,6 +205,7 @@
     GamePage *gamepage  = [[GamePage alloc]initWithFrame:CGRectMake(0, 0,ScreenWidth, _mBodyView.mj_h)];
     gamepage.handleDelegate = self;
     [_mBodyView addSubview:gamepage];
+    [UMUtil clickEvent:EVENT_GAME];
 }
 
 #pragma mark 添加商城
@@ -209,6 +214,8 @@
     MallPage *mallpage = [[MallPage alloc]init];
     mallpage.handleDelegate = self;
     [_mBodyView addSubview:mallpage.view];
+    [UMUtil clickEvent:EVENT_MALL];
+
 }
 
 #pragma mark 添加我的
@@ -217,6 +224,7 @@
     _mineView = [[MineView alloc]initWithFrame:CGRectMake(0, 0,ScreenWidth, _mBodyView.mj_h)];
     _mineView.handleDelegate = self;
     [_mBodyView addSubview:_mineView];
+    [UMUtil clickEvent:EVENT_MINE];
 }
 
 
@@ -280,6 +288,7 @@
 -(void)goPersonalPage{
     PersonalPage *page = [[PersonalPage alloc]init];
     [self pushPage:page];
+    [UMUtil clickEvent:EVENT_USERINFO];
 }
 
 #pragma mark 跳转到竞猜
@@ -317,6 +326,7 @@
 #pragma mark 显示签到UI
 -(void)showSignView{
     NSLog(@"点击签到");
+    [UMUtil clickEvent:EVENT_SIGN];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [self doRequestSign];
 //    SignView *signView =[[SignView alloc]init];
@@ -383,6 +393,7 @@
 }
 
 -(void)OnGuessClicked{
+    [UMUtil clickEvent:EVENT_SIGN_GUESS];
     [self goGamePage];
 }
 @end

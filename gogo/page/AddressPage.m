@@ -144,6 +144,7 @@
 
 
 -(void)doSave{
+    [UMUtil clickEvent:EVENT_SAVE_ADDRESS];
     if(IS_NS_STRING_EMPTY(_receiverTextField.text)){
         [DialogHelper showFailureAlertSheet:@"请填写收货人"];
         return;

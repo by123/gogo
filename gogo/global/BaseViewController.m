@@ -22,6 +22,17 @@
     [self hideNavigationBar:YES];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    NSString *className = [NSString stringWithFormat:@"%s",class_getName(self.class)];
+    [MobClick beginLogPageView:className];
+    NSLog(@"当前页面->%@",className);
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    NSString *className = [NSString stringWithFormat:@"%s",class_getName(self.class)];
+    [MobClick endLogPageView:className];
+
+}
 
 -(UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;

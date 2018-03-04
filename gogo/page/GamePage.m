@@ -123,6 +123,7 @@
         }else{
             [_handleDelegate goGuessPage:model.race_id end:NO];
         }
+        [UMUtil clickEvent:EVENT_GAME_HOT];
     }
 }
 
@@ -152,6 +153,7 @@
             }
         }
     }
+    [UMUtil clickEvent:EVENT_GAME_LASTEST];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

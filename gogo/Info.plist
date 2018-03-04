@@ -18,8 +18,19 @@
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>gogo</string>
+				<string>tencent1106448485</string>
+				<string>wx3349545f4d083130</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
-	<string>13</string>
+	<string>14</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSApplicationQueriesSchemes</key>
@@ -58,11 +69,11 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>&quot;gogo电竞&quot;需要访问您的相机</string>
+	<string>"gogo电竞"需要访问您的相机</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>&quot;gogo电竞&quot;需要为您添加图片</string>
+	<string>"gogo电竞"需要为您添加图片</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>&quot;gogo电竞&quot;需要访问您的相册</string>
+	<string>"gogo电竞"需要访问您的相册</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
@@ -86,16 +97,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>gogo</string>
-				<string>tencent1106448485</string>
-				<string>wx3349545f4d083130</string>
-			</array>
-		</dict>
-	</array>
 </dict>
 </plist>

@@ -26,6 +26,7 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <Masonry/Masonry.h>
 #import "UMMobClick/MobClick.h"
+#import "UMUtil.h"
 
 
 #ifndef PrefixHeader_pch

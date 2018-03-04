@@ -155,6 +155,7 @@
     } failure:^(NSError *error) {
         [DialogHelper showFailureAlertSheet:@"请求失败"];
     }];
+    [UMUtil clickEvent:EVENT_EXCHANGE];
 }
 
 @end
