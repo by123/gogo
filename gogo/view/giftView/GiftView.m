@@ -46,8 +46,8 @@
     
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    layout.minimumLineSpacing = [PUtil getActualWidth:20];
-    layout.minimumInteritemSpacing = [PUtil getActualWidth:20];
+//    layout.minimumLineSpacing = [PUtil getActualWidth:20];
+//    layout.minimumInteritemSpacing = [PUtil getActualWidth:20];
     [layout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
     
     _contentView = [[UIView alloc]init];

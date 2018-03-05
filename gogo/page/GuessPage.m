@@ -176,6 +176,16 @@
 
 -(void)initBodyView{
     
+    _liveBtn = [[UIButton alloc]init];
+    _liveBtn.frame = CGRectMake([PUtil getActualWidth:590], StatuBarHeight + [PUtil getActualHeight:30],[PUtil getActualWidth:140] , [PUtil getActualHeight:60]);
+    [_liveBtn setTitle:@"分享" forState:UIControlStateNormal];
+    _liveBtn.layer.masksToBounds = YES;
+    _liveBtn.backgroundColor = c01_blue;
+    _liveBtn.titleLabel.font = [UIFont systemFontOfSize:13.0f];
+    _liveBtn.layer.cornerRadius = [PUtil getActualHeight:60]/2;
+    [_liveBtn addTarget:self action:@selector(goLivePage) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_liveBtn];
+    
     NSMutableArray *viewArray = [[NSMutableArray alloc]init];
     GuessView *guessView = [[GuessView alloc]initWithDatas:bettingTypeArray raceid:raceModel.race_id end:_isEnd];
     guessView.delegate = self;
@@ -190,32 +200,27 @@
     
     [self initGuessOrderView];
     
-    _liveBtn = [[UIButton alloc]init];
-    _liveBtn.frame = CGRectMake([PUtil getActualWidth:590], StatuBarHeight + [PUtil getActualHeight:30],[PUtil getActualWidth:140] , [PUtil getActualHeight:60]);
-    [_liveBtn setTitle:@"分享" forState:UIControlStateNormal];
-    _liveBtn.layer.masksToBounds = YES;
-    _liveBtn.backgroundColor = c01_blue;
-    _liveBtn.titleLabel.font = [UIFont systemFontOfSize:13.0f];
-    _liveBtn.layer.cornerRadius = [PUtil getActualHeight:60]/2;
-    [_liveBtn addTarget:self action:@selector(goLivePage) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_liveBtn];
+    
 }
 
 
 -(void)initGuessOrderView{
-    _guessOrderView = [[UIView alloc]initWithFrame:CGRectMake(0, ScreenHeight, ScreenWidth, ScreenHeight)];
+    _guessOrderView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
+    _guessOrderView.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.75];
+    _guessOrderView.hidden = YES;
+    UITapGestureRecognizer *recongnizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(CloseGuessOrderView)];
+    [_guessOrderView addGestureRecognizer:recongnizer];
     [self.view addSubview:_guessOrderView];
     
-    _guessContentView = [[UIView alloc]initWithFrame:CGRectMake(0, ScreenHeight- [PUtil getActualHeight:440], ScreenWidth, [PUtil getActualHeight:440])];
+    _guessContentView = [[UIView alloc]initWithFrame:CGRectMake(0, ScreenHeight, ScreenWidth, [PUtil getActualHeight:440])];
     _guessContentView.backgroundColor = c07_bar;
     [_guessOrderView addSubview:_guessContentView];
-    _guessOrderView.hidden = YES;
     
-    UIButton *closeBtn = [[UIButton alloc]init];
-    [closeBtn setImage:[UIImage imageNamed:@"ic_close"] forState:UIControlStateNormal];
-    closeBtn.frame = CGRectMake(ScreenWidth - [PUtil getActualWidth:70], [PUtil getActualHeight:30], [PUtil getActualWidth:40], [PUtil getActualWidth:40]);
-    [closeBtn addTarget:self action:@selector(CloseGuessOrderView) forControlEvents:UIControlEventTouchUpInside];
-    [_guessContentView addSubview:closeBtn];
+//    UIButton *closeBtn = [[UIButton alloc]init];
+//    [closeBtn setImage:[UIImage imageNamed:@"ic_close"] forState:UIControlStateNormal];
+//    closeBtn.frame = CGRectMake(ScreenWidth - [PUtil getActualWidth:70], [PUtil getActualHeight:30], [PUtil getActualWidth:40], [PUtil getActualWidth:40]);
+//    [closeBtn addTarget:self action:@selector(CloseGuessOrderView) forControlEvents:UIControlEventTouchUpInside];
+//    [_guessContentView addSubview:closeBtn];
     
     _guessTitleLabel = [[UILabel alloc]init];
     _guessTitleLabel.text = @"竞猜0，猜中可得0竞猜币";
@@ -320,19 +325,19 @@
     _guessOrderView.hidden = NO;
     UserModel *userModel = [[AccountManager sharedAccountManager]getUserInfo];
     _coinLabel.text = [NSString stringWithFormat:@"余额：%@",userModel.coin];
-    __weak UIView *tempView  = _guessOrderView;
+    __weak UIView *tempView  = _guessContentView;
     [UIView animateWithDuration:0.3f animations:^{
-        tempView.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight);
+        tempView.frame = CGRectMake(0,  ScreenHeight- [PUtil getActualHeight:440], ScreenWidth, ScreenHeight);
     }];
 }
 
 -(void)CloseGuessOrderView{
     [_coinTextField resignFirstResponder];
-    __weak UIView *tempView  = _guessOrderView;
+    __weak UIView *tempView  = _guessContentView;
     [UIView animateWithDuration:0.3f animations:^{
         tempView.frame = CGRectMake(0, ScreenHeight, ScreenWidth, ScreenHeight);
     } completion:^(BOOL finished) {
-        tempView.hidden = YES;
+        _guessOrderView.hidden = YES;
         if(selectGuessView){
             [selectGuessView restoreItems];
         }
