@@ -16,7 +16,7 @@
 #import "ScheduleDetailPage.h"
 #import "CorpsDetailPage.h"
 #import "LoginPage.h"
-#import "ChargePage.h"
+#import "ChargePage2.h"
 #import "AddressPage.h"
 #import "GuessHistoryPage.h"
 #import "ExchangePage.h"
@@ -30,6 +30,7 @@
 #import "SettingPage.h"
 #import <AVKit/AVKit.h>
 #import "SignView2.h"
+#import "GiftModel.h"
 
 #define TitleHeight [PUtil getActualHeight:88]
 
@@ -256,7 +257,7 @@
 
 #pragma mark 跳转到充值页
 -(void)goChargePage{
-    ChargePage *page = [[ChargePage alloc]init];
+    ChargePage2 *page = [[ChargePage2 alloc]init];
     [self pushPage:page];
 }
 
@@ -313,6 +314,10 @@
         if(respondModel.code == 200){
             id data = respondModel.data;
             UserModel *userModel = [UserModel mj_objectWithKeyValues:data];
+            for(GiftModel *temp in userModel.coin_gift){
+                GiftModel *model = [GiftModel mj_objectWithKeyValues:temp];
+                NSLog(@"%@",model.gift_name);
+            }
             [[AccountManager sharedAccountManager]saveUserInfo:userModel];
             if(_mineView){
                 [_mineView updateUserInfo];

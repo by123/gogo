@@ -79,6 +79,9 @@
 		CF42783C1FAB9A0100C163DD /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4278381FAB9A0100C163DD /* UIView+Frame.m */; };
 		CF42783F1FAB9B3A00C163DD /* LoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF42783E1FAB9B3A00C163DD /* LoginModel.m */; };
 		CF43F551204C7085004DB534 /* UMUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CF43F550204C7085004DB534 /* UMUtil.m */; };
+		CF43F554204D3160004DB534 /* GiftModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF43F553204D3160004DB534 /* GiftModel.m */; };
+		CF43F557204DC3B0004DB534 /* ChargePage2.m in Sources */ = {isa = PBXBuildFile; fileRef = CF43F556204DC3B0004DB534 /* ChargePage2.m */; };
+		CF43F55A204DC7BA004DB534 /* ChargeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF43F559204DC7BA004DB534 /* ChargeCell.m */; };
 		CF4855721FB2BB300018502A /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4855711FB2BB300018502A /* TencentOpenAPI.framework */; };
 		CF4855741FB2BBBD0018502A /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4855731FB2BBBD0018502A /* libiconv.tbd */; };
 		CF4855761FB2BBD60018502A /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4855751FB2BBD60018502A /* libstdc++.tbd */; };
@@ -332,6 +335,12 @@
 		CF42783E1FAB9B3A00C163DD /* LoginModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginModel.m; sourceTree = "<group>"; };
 		CF43F54F204C7085004DB534 /* UMUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UMUtil.h; sourceTree = "<group>"; };
 		CF43F550204C7085004DB534 /* UMUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UMUtil.m; sourceTree = "<group>"; };
+		CF43F552204D3160004DB534 /* GiftModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GiftModel.h; sourceTree = "<group>"; };
+		CF43F553204D3160004DB534 /* GiftModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GiftModel.m; sourceTree = "<group>"; };
+		CF43F555204DC3B0004DB534 /* ChargePage2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChargePage2.h; sourceTree = "<group>"; };
+		CF43F556204DC3B0004DB534 /* ChargePage2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChargePage2.m; sourceTree = "<group>"; };
+		CF43F558204DC7BA004DB534 /* ChargeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChargeCell.h; sourceTree = "<group>"; };
+		CF43F559204DC7BA004DB534 /* ChargeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChargeCell.m; sourceTree = "<group>"; };
 		CF4855711FB2BB300018502A /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
 		CF4855731FB2BBBD0018502A /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		CF4855751FB2BBD60018502A /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
@@ -740,12 +749,11 @@
 		CF2EAEE41FA4FEDF00F35974 /* charge */ = {
 			isa = PBXGroup;
 			children = (
-				CF2EAEE11FA4FEDB00F35974 /* ChargePage.h */,
-				CF2EAEE21FA4FEDB00F35974 /* ChargePage.m */,
-				CF2EAEF91FA5070E00F35974 /* PriceCell.h */,
-				CF2EAEFA1FA5070E00F35974 /* PriceCell.m */,
-				CF2EAEFC1FA5075300F35974 /* PayCell.h */,
-				CF2EAEFD1FA5075300F35974 /* PayCell.m */,
+				CF43F55B204DC7C1004DB534 /* deprecated */,
+				CF43F555204DC3B0004DB534 /* ChargePage2.h */,
+				CF43F556204DC3B0004DB534 /* ChargePage2.m */,
+				CF43F558204DC7BA004DB534 /* ChargeCell.h */,
+				CF43F559204DC7BA004DB534 /* ChargeCell.m */,
 			);
 			name = charge;
 			sourceTree = "<group>";
@@ -812,6 +820,19 @@
 				CF4278381FAB9A0100C163DD /* UIView+Frame.m */,
 			);
 			path = extra;
+			sourceTree = "<group>";
+		};
+		CF43F55B204DC7C1004DB534 /* deprecated */ = {
+			isa = PBXGroup;
+			children = (
+				CF2EAEE11FA4FEDB00F35974 /* ChargePage.h */,
+				CF2EAEE21FA4FEDB00F35974 /* ChargePage.m */,
+				CF2EAEF91FA5070E00F35974 /* PriceCell.h */,
+				CF2EAEFA1FA5070E00F35974 /* PriceCell.m */,
+				CF2EAEFC1FA5075300F35974 /* PayCell.h */,
+				CF2EAEFD1FA5075300F35974 /* PayCell.m */,
+			);
+			name = deprecated;
 			sourceTree = "<group>";
 		};
 		CF4855701FB2BB1A0018502A /* qq */ = {
@@ -1129,6 +1150,8 @@
 				CFADF85C1FBA943300A7501E /* WechatPayModel.m */,
 				CFA43E401FDC637600EF74CD /* BettingTpModel.h */,
 				CFA43E411FDC637600EF74CD /* BettingTpModel.m */,
+				CF43F552204D3160004DB534 /* GiftModel.h */,
+				CF43F553204D3160004DB534 /* GiftModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1473,6 +1496,7 @@
 				CFCB0F0F1F7105360087ACC7 /* ByNetUtil.m in Sources */,
 				CFBFE5091FA5C48E00500B1B /* TouchTableView.m in Sources */,
 				CF1CD6E71FB61CA20058EEBB /* RaceModel.m in Sources */,
+				CF43F55A204DC7BA004DB534 /* ChargeCell.m in Sources */,
 				CF076C6B203041FD00609D08 /* SignView.m in Sources */,
 				CF2EAEF01FA5007300F35974 /* ExchangePage.m in Sources */,
 				CF2EAEA91FA2575300F35974 /* CorpsDetailPage.m in Sources */,
@@ -1490,6 +1514,7 @@
 				CFD14E651FB055BA00A28982 /* ScheduleItemModel.m in Sources */,
 				CFBFE5101FA5CC1300500B1B /* GuessView.m in Sources */,
 				CF2EAF0A1FA5154600F35974 /* GuessHistoryCell.m in Sources */,
+				CF43F557204DC3B0004DB534 /* ChargePage2.m in Sources */,
 				CF42783F1FAB9B3A00C163DD /* LoginModel.m in Sources */,
 				CFADF8561FBA1B3100A7501E /* RHPlayerView.m in Sources */,
 				CFA66936204811D500EDCCCE /* NormalAlertView.m in Sources */,
@@ -1529,6 +1554,7 @@
 				CFADF8571FBA1B3100A7501E /* RHProgressSlider.m in Sources */,
 				CF2EAEFB1FA5070E00F35974 /* PriceCell.m in Sources */,
 				CFADF8581FBA1B3100A7501E /* RHVideoModel.m in Sources */,
+				CF43F554204D3160004DB534 /* GiftModel.m in Sources */,
 				CFCB0F4D1F711E6F0087ACC7 /* TADotView.m in Sources */,
 				CF4855801FB2ECEF0018502A /* AddressPickerView.m in Sources */,
 				CF0BEDC51F9BA8EE005275EE /* MainPage.m in Sources */,

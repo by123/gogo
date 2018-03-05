@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+NS_CLASS_DEPRECATED_IOS(2_0, 9_0, "PayCell is Deprecated") __TVOS_PROHIBITED
 @interface PayCell : UITableViewCell
 
 -(void)setData : (NSString *)title hideline : (Boolean)hideline image:(NSString *)image;

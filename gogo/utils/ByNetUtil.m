@@ -145,7 +145,7 @@
 
 +(void)refreshToken : (RefreshCompelete)compelete{
     
-    dispatch_async(dispatch_get_main_queue(), ^{
+//    dispatch_async(dispatch_get_main_queue(), ^{
         Account *account = [[AccountManager sharedAccountManager]getAccount];
         NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
         dic[@"refresh_token"]=account.refresh_token ;
@@ -162,7 +162,7 @@
         } failure:^(NSError *error) {
             
         }];
-    });
+//    });
 }
 
 

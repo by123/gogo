@@ -50,26 +50,13 @@
     [self initUmengPush : launchOptions];
     [UMUtil clickEvent:EVENT_LAUNCH];
     
-    Account *accout = [[AccountManager sharedAccountManager] getAccount];
-    accout.access_token = @"123456";
-    [[AccountManager sharedAccountManager]saveAccount:accout];
+//    Account *accout = [[AccountManager sharedAccountManager] getAccount];
+//    accout.access_token = @"123456";
+//    [[AccountManager sharedAccountManager]saveAccount:accout];
     
     [ByNetUtil refreshToken:^(id data) {
-        
     }];
     
-    
-    Class cls = NSClassFromString(@"UMANUtil");
-    SEL deviceIDSelector = @selector(openUDIDString);
-    NSString *deviceID = nil;
-    if(cls && [cls respondsToSelector:deviceIDSelector]){
-        deviceID = [cls performSelector:deviceIDSelector];
-    }
-    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:@{@"oid" : deviceID}
-                                                       options:NSJSONWritingPrettyPrinted
-                                                         error:nil];
-    
-    NSLog(@"%@", [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding]);
     
     return YES;
 }

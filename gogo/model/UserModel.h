@@ -15,5 +15,6 @@
 @property (copy, nonatomic) NSString *uid;
 @property (copy, nonatomic) NSString *avatar;
 @property (copy, nonatomic) NSString *coin;
+@property (strong, nonatomic) NSMutableArray *coin_gift;
 
 @end

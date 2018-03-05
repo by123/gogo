@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "PayModel.h"
 
+NS_CLASS_DEPRECATED_IOS(2_0, 9_0, "PriceCell is Deprecated") __TVOS_PROHIBITED
 @interface PriceCell : UITableViewCell
 
 -(void)setData : (PayModel *)model hideline : (Boolean)hideline;

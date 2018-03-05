@@ -66,7 +66,7 @@
 -(void)initView{
     _barView = [[BarView alloc]initWithTitle:@"充值" page:self];
     [self.view addSubview:_barView];
-    
+
     int height = _barView.mj_h+_barView.mj_y;
     UILabel *priceTitle = [[UILabel alloc]init];
     priceTitle.text = @"请选择充值的数量";

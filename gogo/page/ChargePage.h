@@ -8,6 +8,7 @@
 
 #import "BaseViewController.h"
 
+NS_CLASS_DEPRECATED_IOS(2_0, 9_0, "ChargePage is Deprecated") __TVOS_PROHIBITED
 @interface ChargePage : BaseViewController
 
 @end

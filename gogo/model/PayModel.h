@@ -13,5 +13,7 @@
 @property (assign, nonatomic) long coin_plan_id;
 @property (assign, nonatomic) long fee;
 @property (assign, nonatomic) long coin_count;
+@property (copy, nonatomic) NSString* gift_name;
+@property (assign, nonatomic) long gift_count;
 
 @end
