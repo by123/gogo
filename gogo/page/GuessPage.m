@@ -24,8 +24,9 @@
 #import "WXApi.h"
 #import "WXApiObject.h"
 #import "NormalAlertView.h"
-#import "ChargePage.h"
-@interface GuessPage ()<BySegmentViewDelegate,NormalAlertViewDelegate>
+#import "ChargePage2.h"
+#import "GiftView.h"
+@interface GuessPage ()<BySegmentViewDelegate,NormalAlertViewDelegate,GiftViewDelegate>
 
 @property (strong, nonatomic) UIImageView *aTeamImageView;
 @property (strong, nonatomic) UILabel *aTeamLabel;
@@ -47,6 +48,7 @@
 @property (strong, nonatomic) UIButton *addBtn;
 @property (strong, nonatomic) UIButton *reduceBtn;
 @property (strong, nonatomic) NormalAlertView *normalAlertView;
+@property (strong, nonatomic) GiftView *giftView;
 
 @end
 
@@ -153,6 +155,7 @@
     leftMaskLayer.frame = _aTeamSupportBtn.bounds;
     leftMaskLayer.path = leftMaskPath.CGPath;
     _aTeamSupportBtn.layer.mask = leftMaskLayer;
+    [_aTeamSupportBtn addTarget:self action:@selector(OnSupportA) forControlEvents:UIControlEventTouchUpInside];
     [topView addSubview:_aTeamSupportBtn];
     
     
@@ -166,6 +169,7 @@
     rightMaskLayer.frame = _bTeamSupportBtn.bounds;
     rightMaskLayer.path = rightMaskPath.CGPath;
     _bTeamSupportBtn.layer.mask = rightMaskLayer;
+    [_bTeamSupportBtn addTarget:self action:@selector(OnSupportB) forControlEvents:UIControlEventTouchUpInside];
     [topView addSubview:_bTeamSupportBtn];
     
 }
@@ -505,7 +509,7 @@
     UserModel *userModel = [[AccountManager sharedAccountManager]getUserInfo];
     if([userModel.coin intValue] < coin){
         [_coinTextField resignFirstResponder];
-        _normalAlertView = [[NormalAlertView alloc]initWithTitle:@"投注失败，余额不足" content:@"是否去购买礼物?"];
+        _normalAlertView = [[NormalAlertView alloc]initWithTitle:@"投注失败，竞猜币不足" content:@"是否去购买礼物?"];
         _normalAlertView.delegate = self;
         [self.view addSubview:_normalAlertView];
         return;
@@ -604,10 +608,34 @@
     if(_normalAlertView){
         [_normalAlertView removeFromSuperview];
     }
-    ChargePage *page = [[ChargePage alloc]init];
+    ChargePage2 *page = [[ChargePage2 alloc]init];
     [self pushPage:page];
     [UMUtil clickEvent:EVENT_GAME_CONFIRM_NOMONEY];
     
+}
+
+#pragma mark 支持A队
+-(void)OnSupportA{
+    [self showGiftView:raceModel.team_a];
+}
+
+#pragma mark 支持B队
+-(void)OnSupportB{
+    [self showGiftView:raceModel.team_b];
+}
+
+#pragma mark 打开赠送礼物页面
+-(void)showGiftView : (TeamModel *)teamModel{
+    _giftView = [[GiftView alloc]initWithModel:teamModel raceId:raceModel.race_id];
+    _giftView.delegate = self;
+    [self.view addSubview:_giftView];
+    [_giftView show];
+}
+
+#pragma mark 礼物数量不足，跳转充值
+-(void)goChargePage{
+    ChargePage2 *page = [[ChargePage2 alloc]init];
+    [self pushPage:page];
 }
 
 @end

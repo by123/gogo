@@ -82,6 +82,8 @@
 		CF43F554204D3160004DB534 /* GiftModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF43F553204D3160004DB534 /* GiftModel.m */; };
 		CF43F557204DC3B0004DB534 /* ChargePage2.m in Sources */ = {isa = PBXBuildFile; fileRef = CF43F556204DC3B0004DB534 /* ChargePage2.m */; };
 		CF43F55A204DC7BA004DB534 /* ChargeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF43F559204DC7BA004DB534 /* ChargeCell.m */; };
+		CF43F55E204DD33D004DB534 /* GiftView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF43F55D204DD33D004DB534 /* GiftView.m */; };
+		CF43F562204DD6F8004DB534 /* GiftCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF43F561204DD6F8004DB534 /* GiftCell.m */; };
 		CF4855721FB2BB300018502A /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4855711FB2BB300018502A /* TencentOpenAPI.framework */; };
 		CF4855741FB2BBBD0018502A /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4855731FB2BBBD0018502A /* libiconv.tbd */; };
 		CF4855761FB2BBD60018502A /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4855751FB2BBD60018502A /* libstdc++.tbd */; };
@@ -341,6 +343,10 @@
 		CF43F556204DC3B0004DB534 /* ChargePage2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChargePage2.m; sourceTree = "<group>"; };
 		CF43F558204DC7BA004DB534 /* ChargeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChargeCell.h; sourceTree = "<group>"; };
 		CF43F559204DC7BA004DB534 /* ChargeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChargeCell.m; sourceTree = "<group>"; };
+		CF43F55C204DD33D004DB534 /* GiftView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GiftView.h; sourceTree = "<group>"; };
+		CF43F55D204DD33D004DB534 /* GiftView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GiftView.m; sourceTree = "<group>"; };
+		CF43F560204DD6F8004DB534 /* GiftCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GiftCell.h; sourceTree = "<group>"; };
+		CF43F561204DD6F8004DB534 /* GiftCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GiftCell.m; sourceTree = "<group>"; };
 		CF4855711FB2BB300018502A /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
 		CF4855731FB2BBBD0018502A /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		CF4855751FB2BBD60018502A /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
@@ -835,6 +841,17 @@
 			name = deprecated;
 			sourceTree = "<group>";
 		};
+		CF43F55F204DD6D7004DB534 /* giftView */ = {
+			isa = PBXGroup;
+			children = (
+				CF43F55C204DD33D004DB534 /* GiftView.h */,
+				CF43F55D204DD33D004DB534 /* GiftView.m */,
+				CF43F560204DD6F8004DB534 /* GiftCell.h */,
+				CF43F561204DD6F8004DB534 /* GiftCell.m */,
+			);
+			path = giftView;
+			sourceTree = "<group>";
+		};
 		CF4855701FB2BB1A0018502A /* qq */ = {
 			isa = PBXGroup;
 			children = (
@@ -1200,6 +1217,7 @@
 		CFCB0F0B1F7105360087ACC7 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				CF43F55F204DD6D7004DB534 /* giftView */,
 				CFADF82B1FBA1B3000A7501E /* RHPlayerView */,
 				CF4855771FB2ECA90018502A /* addresspicker */,
 				CFCB0F3A1F711E6F0087ACC7 /* SDCycleScrollView */,
@@ -1452,6 +1470,7 @@
 				CFADF8541FBA1B3100A7501E /* RHPlayerTitleView.m in Sources */,
 				CF2EAE731F9FC47600F35974 /* ScheduleModel.m in Sources */,
 				CF4855A41FB397A80018502A /* ExchangeOrderModel.m in Sources */,
+				CF43F55E204DD33D004DB534 /* GiftView.m in Sources */,
 				CFCB0F4A1F711E6F0087ACC7 /* SDCycleScrollView.m in Sources */,
 				CFBFE5191FA5D21000500B1B /* GuessModel.m in Sources */,
 				CF2EAE8B1FA10D6200F35974 /* CommentCell.m in Sources */,
@@ -1557,6 +1576,7 @@
 				CF43F554204D3160004DB534 /* GiftModel.m in Sources */,
 				CFCB0F4D1F711E6F0087ACC7 /* TADotView.m in Sources */,
 				CF4855801FB2ECEF0018502A /* AddressPickerView.m in Sources */,
+				CF43F562204DD6F8004DB534 /* GiftCell.m in Sources */,
 				CF0BEDC51F9BA8EE005275EE /* MainPage.m in Sources */,
 				CF2EAEEC1FA4FFBC00F35974 /* GuessHistoryPage.m in Sources */,
 				CF2EAEFE1FA5075300F35974 /* PayCell.m in Sources */,

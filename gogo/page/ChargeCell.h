@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "PayModel.h"
 
-@interface ChargeCell : UICollectionViewCell
 
+@interface ChargeCell : UICollectionViewCell
 
 +(NSString *)identify;
 

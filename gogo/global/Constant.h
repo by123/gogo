@@ -65,6 +65,7 @@
 #define API_SIGN @"https://gogo.scrats.cn/api//core/sign_in"
 #define API_NEWS_COMMOND @"https://gogo.scrats.cn/api/core/news/recommend"
 #define API_HOT_RACES @"https://gogo.scrats.cn/api/core/races/hot"
+#define API_GIFT @"https://gogo.scrats.cn/api/core/race2/coin_gift"
 
 //notification
 #define NOTIFY_WECAHT_CALLBACK @"notify_wechat_callback"
