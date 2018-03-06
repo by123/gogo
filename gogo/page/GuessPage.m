@@ -26,6 +26,7 @@
 #import "NormalAlertView.h"
 #import "ChargePage2.h"
 #import "GiftView.h"
+#import "GiftModel.h"
 @interface GuessPage ()<BySegmentViewDelegate,NormalAlertViewDelegate,GiftViewDelegate>
 
 @property (strong, nonatomic) UIImageView *aTeamImageView;
@@ -59,6 +60,7 @@
     BettingItemModel *selectModel;
     GuessView *selectGuessView;
     NSInteger mCurrentIndex;
+    Boolean hasLoad;
 }
 
 - (void)viewDidLoad {
@@ -216,11 +218,11 @@
     _guessContentView.backgroundColor = c07_bar;
     [_guessOrderView addSubview:_guessContentView];
     
-//    UIButton *closeBtn = [[UIButton alloc]init];
-//    [closeBtn setImage:[UIImage imageNamed:@"ic_close"] forState:UIControlStateNormal];
-//    closeBtn.frame = CGRectMake(ScreenWidth - [PUtil getActualWidth:70], [PUtil getActualHeight:30], [PUtil getActualWidth:40], [PUtil getActualWidth:40]);
-//    [closeBtn addTarget:self action:@selector(CloseGuessOrderView) forControlEvents:UIControlEventTouchUpInside];
-//    [_guessContentView addSubview:closeBtn];
+    //    UIButton *closeBtn = [[UIButton alloc]init];
+    //    [closeBtn setImage:[UIImage imageNamed:@"ic_close"] forState:UIControlStateNormal];
+    //    closeBtn.frame = CGRectMake(ScreenWidth - [PUtil getActualWidth:70], [PUtil getActualHeight:30], [PUtil getActualWidth:40], [PUtil getActualWidth:40]);
+    //    [closeBtn addTarget:self action:@selector(CloseGuessOrderView) forControlEvents:UIControlEventTouchUpInside];
+    //    [_guessContentView addSubview:closeBtn];
     
     _guessTitleLabel = [[UILabel alloc]init];
     _guessTitleLabel.text = @"竞猜0，猜中可得0竞猜币";
@@ -387,7 +389,7 @@
         LivePage *page = [[LivePage alloc]init];
         [self pushPage:page];
         [UMUtil clickEvent:EVENT_GAME_LIVE];
-
+        
     }
 }
 
@@ -420,8 +422,12 @@
             raceModel = [RaceModel mj_objectWithKeyValues:race];
             id betting_tps = [data objectForKey:@"betting_tps"];
             bettingTypeArray = [BettingTpModel mj_objectArrayWithKeyValuesArray:betting_tps];
-            [self updateTopView];
-            
+            if(hasLoad){
+                [self updateSupportBtn];
+            }else{
+                [self updateTopView];
+                hasLoad = YES;
+            }
         }else{
             [DialogHelper showFailureAlertSheet:respondModel.msg];
         }
@@ -443,12 +449,43 @@
     _timeLabel.text = [TimeUtil generateAll:raceModel.race_ts];
     _gameLabel.text = raceModel.race_name;
     
-    [_aTeamSupportBtn setTitle:[NSString stringWithFormat:@"支持%@  50%%",aTeamModel.team_name] forState:UIControlStateNormal];
-    //    _aTeamSupportBtn.titleEdgeInsets = UIEdgeInsetsMake(0,-[PUtil getActualWidth:100],0,0);
-    
-    [_bTeamSupportBtn setTitle:[NSString stringWithFormat:@"支持%@  50%%",bTeamModel.team_name] forState:UIControlStateNormal];
-    //    _bTeamSupportBtn.titleEdgeInsets = UIEdgeInsetsMake(0,0,00]);
+    [self updateSupportBtn];
     [self initBodyView];
+}
+
+-(void)updateSupportBtn{
+    int aGiftCount = [self getGiftCount:raceModel.team_a_gift];
+    int bGiftCount = [self getGiftCount:raceModel.team_b_gift];
+    float percent = ((float)aGiftCount / (float)(aGiftCount + bGiftCount)) * 100;
+    if(aGiftCount + bGiftCount == 0){
+        percent = 50;
+    }
+    [_aTeamSupportBtn setTitle:[NSString stringWithFormat:@"%.2f%@",percent,@"%"] forState:UIControlStateNormal];
+    [_bTeamSupportBtn setTitle:[NSString stringWithFormat:@"%.2f%@",100-percent,@"%"] forState:UIControlStateNormal];
+}
+
+-(int)getGiftCount:(NSMutableArray *)datas{
+    int count = 0;
+    for(id aGiftModel in datas){
+        GiftModel *giftModel = [GiftModel mj_objectWithKeyValues:aGiftModel];
+        switch (giftModel.coin_plan_id) {
+            case 1:
+                count +=giftModel.total_gift*6;
+                break;
+            case 2:
+                count +=giftModel.total_gift*30;
+                break;
+            case 3:
+                count +=giftModel.total_gift*68;
+                break;
+            case 4:
+                count +=giftModel.total_gift*128;
+                break;
+            default:
+                break;
+        }
+    }
+    return count;
 }
 
 -(void)OnGuessBtnSelect : (id)sender{
@@ -647,6 +684,11 @@
 -(void)goChargePage{
     ChargePage2 *page = [[ChargePage2 alloc]init];
     [self pushPage:page];
+}
+
+#pragma mark 赠送礼物成功
+-(void)sendGiftSuccess{
+    [self requestDetail];
 }
 
 @end

@@ -145,6 +145,9 @@
     [ByNetUtil post:API_GIFT parameters:dic success:^(RespondModel *respondModel) {
         if(respondModel.code == 200){
             [self getUserInfo];
+            if(_delegate && [_delegate respondsToSelector:@selector(sendGiftSuccess)]){
+                [_delegate sendGiftSuccess];
+            }
         }else{
             [DialogHelper showFailureAlertSheet:respondModel.msg];
         }
@@ -156,6 +159,7 @@
 }
 
 -(void)getUserInfo{
+    [datas removeAllObjects];
     [ByNetUtil get:API_USERINFO parameters:nil success:^(RespondModel *respondModel) {
         if(respondModel.code == 200){
             id data = respondModel.data;
@@ -178,5 +182,6 @@
         [_delegate goChargePage];
     }
 }
+
 
 @end

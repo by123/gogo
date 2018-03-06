@@ -25,6 +25,9 @@
 @property (copy, nonatomic) NSString *race_name;
 @property (copy, nonatomic) NSString *start_ts;
 @property (copy, nonatomic) NSString *end_ts;
+@property (strong, nonatomic) NSMutableArray *team_a_gift;
+@property (strong, nonatomic) NSMutableArray *team_b_gift;
+
 
 
 @end

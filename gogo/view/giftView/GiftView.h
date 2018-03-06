@@ -13,7 +13,9 @@
 
 @protocol GiftViewDelegate
 
-@optional -(void)goChargePage;
+@optional
+-(void)goChargePage;
+-(void)sendGiftSuccess;
 
 @end
 
