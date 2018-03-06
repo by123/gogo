@@ -45,7 +45,7 @@
 }
 
 -(void)setData : (GiftModel *)giftModel{
-    _showImg.image = [UIImage imageNamed:giftModel.imageRes];
+    [_showImg sd_setImageWithURL:[NSURL URLWithString:giftModel.gift_icon]];
     _countLabel.text = [NSString stringWithFormat:@"%@:%ld",giftModel.gift_name,giftModel.total_gift];
     
 }

@@ -95,9 +95,7 @@
     cell.backgroundColor = c01_blue;
     cell.layer.masksToBounds = YES;
     cell.layer.cornerRadius = [PUtil getActualHeight:10];
-    PayModel *model = [datas objectAtIndex:indexPath.row];
-    model.imageRes = [NSString stringWithFormat:@"ic_gift%ld",indexPath.row+1];
-    [cell setData:model];
+    [cell setData:[datas objectAtIndex:indexPath.row]];
     return cell;
 }
 
@@ -195,24 +193,24 @@
 
 -(void)OnWechatPaySuccess{
     PayModel *model = [datas objectAtIndex:priceSelect];
-    OkAlertView *alertView = [[OkAlertView alloc]initWithTitle:@"支付结果" content:[NSString stringWithFormat:@"充值成功！获得%ld竞猜币",model.coin_count]];
+    OkAlertView *alertView = [[OkAlertView alloc]initWithTitle:@"支付结果" content:[NSString stringWithFormat:@"获得%@ x1(赠送%ld竞猜币)",model.gift_name,model.coin_count]];
     [self.view addSubview:alertView];
 }
 
 -(void)OnWechatPayFail{
-    OkAlertView *alertView = [[OkAlertView alloc]initWithTitle:@"支付结果" content:@"充值失败！请重试"];
+    OkAlertView *alertView = [[OkAlertView alloc]initWithTitle:@"支付结果" content:@"购买礼物失败！请重试"];
     [self.view addSubview:alertView];
 }
 
 
 -(void)OnAlipayPaySuccess{
     PayModel *model = [datas objectAtIndex:priceSelect];
-    OkAlertView *alertView = [[OkAlertView alloc]initWithTitle:@"支付结果" content:[NSString stringWithFormat:@"充值成功！获得%ld竞猜币",model.coin_count]];
+    OkAlertView *alertView = [[OkAlertView alloc]initWithTitle:@"支付结果" content:[NSString stringWithFormat:@"获得%@ x1(赠送%ld竞猜币)",model.gift_name,model.coin_count]];
     [self.view addSubview:alertView];
 }
 
 -(void)OnAliPayPayFail{
-    OkAlertView *alertView = [[OkAlertView alloc]initWithTitle:@"支付结果" content:@"充值失败！请重试"];
+    OkAlertView *alertView = [[OkAlertView alloc]initWithTitle:@"支付结果" content:@"购买礼物失败！请重试"];
     [self.view addSubview:alertView];
 }
 

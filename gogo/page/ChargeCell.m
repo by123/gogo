@@ -63,7 +63,7 @@
 
 -(void)setData : (PayModel *)payModel{
     
-    _showImg.image = [UIImage imageNamed:payModel.imageRes];
+    [_showImg sd_setImageWithURL:[NSURL URLWithString:payModel.gift_icon]];
     _giftNameLabel.text = [NSString stringWithFormat:@"%@ x%ld",payModel.gift_name,payModel.gift_count];
     _giftNameLabel.frame = CGRectMake([PUtil getActualWidth:15], [PUtil getActualWidth:15],_giftNameLabel.contentSize.width,_giftNameLabel.contentSize.height);
     

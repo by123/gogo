@@ -163,7 +163,6 @@
             for(int i = 0; i < [userModel.coin_gift count] ; i ++){
                 id data = [userModel.coin_gift objectAtIndex:i];
                 GiftModel *model = [GiftModel mj_objectWithKeyValues:data];
-                model.imageRes = [NSString stringWithFormat:@"ic_gift%d",i+1];
                 [datas addObject:model];
             }
             [_collectionView reloadData];

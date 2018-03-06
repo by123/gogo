@@ -15,6 +15,6 @@
 @property (assign, nonatomic) long coin_count;
 @property (copy, nonatomic) NSString* gift_name;
 @property (assign, nonatomic) long gift_count;
-@property (copy, nonatomic) NSString *imageRes;
+@property (copy, nonatomic) NSString *gift_icon;
 
 @end
