@@ -255,7 +255,8 @@
     [_addBtn addTarget:self action:@selector(onClickAddBtn) forControlEvents:UIControlEventTouchUpInside];
     [_guessContentView addSubview:_addBtn];
     
-    _coinTextField = [[InsetTextField alloc]initWithFrame: CGRectMake([PUtil getActualWidth:160], [PUtil getActualHeight:140], ScreenWidth - [PUtil getActualWidth:320], [PUtil getActualHeight:60]) andInsets:UIEdgeInsetsMake(0, [PUtil getActualWidth:16], 0, [PUtil getActualWidth:16]) hint:@"竞猜金额为10的整数倍"];
+    _coinTextField = [[InsetTextField alloc]initWithFrame: CGRectMake([PUtil getActualWidth:160], [PUtil getActualHeight:140], ScreenWidth - [PUtil getActualWidth:320], [PUtil getActualHeight:60]) andInsets:UIEdgeInsetsMake(0, [PUtil getActualWidth:16], 0, [PUtil getActualWidth:16]) hint:@""];
+    _coinTextField.text = @"10";
     _coinTextField.font = [UIFont systemFontOfSize:[PUtil getActualHeight:28]];
     _coinTextField.textColor = c08_text;
     _coinTextField.returnKeyType = UIReturnKeyDone;
@@ -506,8 +507,13 @@
     }
     NSString *coinStr = _coinTextField.text;
     int coin = [coinStr intValue];
-    if(coin % 10 != 0){
-        [DialogHelper showWarnTips:@"竞猜金额必须为10的整数倍"];
+    if(coin < 10){
+        [DialogHelper showWarnTips:@"投注金额必须大于10"];
+        return;
+    }
+    
+    if(coin > 100000){
+        [DialogHelper showWarnTips:@"最大投注额为100000"];
         return;
     }
     

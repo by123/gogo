@@ -144,7 +144,7 @@
     dic[@"team_id"] = @(teamModel.team_id);
     [ByNetUtil post:API_GIFT parameters:dic success:^(RespondModel *respondModel) {
         if(respondModel.code == 200){
-            
+            [self getUserInfo];
         }else{
             [DialogHelper showFailureAlertSheet:respondModel.msg];
         }
@@ -160,13 +160,14 @@
         if(respondModel.code == 200){
             id data = respondModel.data;
             UserModel *userModel = [UserModel mj_objectWithKeyValues:data];
-            for(GiftModel *temp in userModel.coin_gift){
-                GiftModel *model = [GiftModel mj_objectWithKeyValues:temp];
+            for(int i = 0; i < [userModel.coin_gift count] ; i ++){
+                id data = [userModel.coin_gift objectAtIndex:i];
+                GiftModel *model = [GiftModel mj_objectWithKeyValues:data];
+                model.imageRes = [NSString stringWithFormat:@"ic_gift%d",i+1];
                 [datas addObject:model];
             }
             [_collectionView reloadData];
             [[AccountManager sharedAccountManager]saveUserInfo:userModel];
-            
         }
     } failure:^(NSError *error) {
         

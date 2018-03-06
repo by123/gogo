@@ -13,5 +13,6 @@
 @property(assign, nonatomic)long total_gift;
 @property(assign, nonatomic)long coin_plan_id;
 @property(copy, nonatomic)NSString *gift_name;
+@property(copy, nonatomic)NSString *imageRes;
 
 @end

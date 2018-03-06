@@ -32,7 +32,6 @@
     _showImg.layer.masksToBounds = YES;
     _showImg.layer.cornerRadius = [PUtil getActualWidth:10];
     _showImg.contentMode = UIViewContentModeScaleAspectFit;
-    _showImg.image = [UIImage imageNamed:@"ic_gift"];
     [self.contentView addSubview:_showImg];
     
     UIView *view = [[UIView alloc]init];
@@ -63,6 +62,8 @@
 }
 
 -(void)setData : (PayModel *)payModel{
+    
+    _showImg.image = [UIImage imageNamed:payModel.imageRes];
     _giftNameLabel.text = [NSString stringWithFormat:@"%@ x%ld",payModel.gift_name,payModel.gift_count];
     _giftNameLabel.frame = CGRectMake([PUtil getActualWidth:15], [PUtil getActualWidth:15],_giftNameLabel.contentSize.width,_giftNameLabel.contentSize.height);
     

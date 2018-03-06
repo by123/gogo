@@ -95,7 +95,9 @@
     cell.backgroundColor = c01_blue;
     cell.layer.masksToBounds = YES;
     cell.layer.cornerRadius = [PUtil getActualHeight:10];
-    [cell setData:[datas objectAtIndex:indexPath.row]];
+    PayModel *model = [datas objectAtIndex:indexPath.row];
+    model.imageRes = [NSString stringWithFormat:@"ic_gift%ld",indexPath.row+1];
+    [cell setData:model];
     return cell;
 }
 

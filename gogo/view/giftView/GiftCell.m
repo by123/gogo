@@ -31,7 +31,6 @@
     _showImg.layer.masksToBounds = YES;
     _showImg.layer.cornerRadius = [PUtil getActualWidth:10];
     _showImg.contentMode = UIViewContentModeScaleAspectFit;
-    _showImg.image = [UIImage imageNamed:@"ic_gift"];
     [self.contentView addSubview:_showImg];
     
     _countLabel = [[UILabel alloc]init];
@@ -46,7 +45,7 @@
 }
 
 -(void)setData : (GiftModel *)giftModel{
-    
+    _showImg.image = [UIImage imageNamed:giftModel.imageRes];
     _countLabel.text = [NSString stringWithFormat:@"%@:%ld",giftModel.gift_name,giftModel.total_gift];
     
 }
