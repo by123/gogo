@@ -23,6 +23,7 @@
     return self;
 }
 
+
 -(void)initView:(int)height title:(NSString *)title{
     self.frame = CGRectMake(0, height, ScreenWidth, [PUtil getActualHeight:88]);
     self.backgroundColor = c07_bar;

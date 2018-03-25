@@ -17,6 +17,8 @@
 #import <CommonCrypto/CommonHMAC.h>
 #import "OkAlertView.h"
 #import "ChargeCell.h"
+
+
 @interface ChargePage2 ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (strong, nonatomic) BarView *barView;

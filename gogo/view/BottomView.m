@@ -22,6 +22,7 @@
     NSMutableArray *buttons;
 }
 
+
 -(instancetype)initWithTitles:(NSArray *)titles images : (NSArray *)images delegate:(id<BottomViewDelegate>)delegate{
     if(self == [super init]){
         self.delegate = delegate;

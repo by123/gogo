@@ -10,6 +10,8 @@
 #import "TouchTableView.h"
 #import "TouchScrollView.h"
 #import "InsetTextField.h"
+#import "BySocket.h"
+#import "ChatViewCell.h"
 @interface ChatView()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
 
 @property (strong, nonatomic) TouchTableView *tableView;
@@ -18,16 +20,25 @@
 @property (strong, nonatomic) InsetTextField *commentTextField;
 @property (strong, nonatomic) UILabel *hintLabel;
 
+
 @end
 @implementation ChatView{
     int height;
+    NSMutableArray *datas;
+    NSString *_index;
 }
 
--(instancetype)init{
+-(instancetype)initWithRoomId:(NSString *)roomId{
     if(self == [super init]){
+        _roomId = roomId;
+        datas = [[NSMutableArray alloc]init];
         [self initView];
     }
     return self;
+}
+
+-(void)setIndex:(NSString *)index{
+    _index = index;
 }
 
 -(void)initView{
@@ -38,8 +49,10 @@
     _scrollerView.frame = CGRectMake(0, 0, ScreenWidth,height );
     _scrollerView.showsVerticalScrollIndicator = NO;
     _scrollerView.showsHorizontalScrollIndicator = NO;
-    _scrollerView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(uploadMore)];
-    
+
+    MJRefreshStateHeader *header = [MJRefreshStateHeader headerWithRefreshingTarget:self refreshingAction:@selector(uploadNew)];
+    header.lastUpdatedTimeLabel.hidden = YES;
+    _scrollerView.mj_header = header;
     _scrollerView.contentSize = CGSizeMake(ScreenWidth,  2000);
     [self addSubview:_scrollerView];
     
@@ -54,7 +67,6 @@
 
     [self initCommentView];
 }
-
 
 -(void)initCommentView{
     _commentView  = [[UIView alloc]init];
@@ -129,6 +141,13 @@
 
 -(void)sendChat{
     [UMUtil clickEvent:EVENT_GAME_SEND_CHAT];
+    NSString *msg = _commentTextField.text;
+    if(!IS_NS_STRING_EMPTY(msg)){
+        [[BySocket sharedBySocket]sendMsg:_roomId msg:msg];
+        _commentTextField.text = @"";
+    }else{
+        [DialogHelper showFailureAlertSheet:@"请输入聊天内容"];
+    }
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -136,34 +155,64 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 5;
+    return [datas count];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    return [PUtil getActualHeight:30];
+    return [PUtil getActualHeight:50];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell =  [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"chat"];
-    [cell setBackgroundColor:[UIColor clearColor]];
-    cell.textLabel.text = @"hello world";
-    cell.textLabel.textColor = c08_text;
+    ChatViewCell *cell =  [tableView dequeueReusableCellWithIdentifier:[ChatViewCell identify]];
+    if(cell == nil){
+        cell = [[ChatViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[ChatViewCell identify]];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.backgroundColor = c06_backgroud;
+    }
+    _scrollerView.contentSize = CGSizeMake(ScreenWidth,  ([PUtil getActualHeight:50] * [datas count])+[PUtil getActualHeight:160]);
+    if(!IS_NS_COLLECTION_EMPTY(datas)){
+        MessageTextModel *model = [datas objectAtIndex:indexPath.row];
+        [cell updateData:model];
+    }
+    [_scrollerView.mj_header endRefreshing];
     return cell;
 }
-
+    
+    
 -(void)uploadNew
 {
-    [_scrollerView.mj_header endRefreshing];
-    [_scrollerView.mj_footer endRefreshing];
+    [ByLog print:@"这是啥" content:_index];
+    [[BySocket sharedBySocket] queryMsg:_roomId index:_index size:10];
 }
 
--(void)uploadMore
-{
-    [_scrollerView.mj_header endRefreshing];
-    [_scrollerView.mj_footer endRefreshing];
-}
 
+    
+-(void)addMessage:(MessageTextModel *)model{
+    _index = model.chat_id;
+    [ByLog print:@"当前msgid" content:_index];
+    [datas addObject:model];
+    [_tableView reloadData];
+    if([datas count]>0){
+        CGPoint point = CGPointMake(_scrollerView.contentOffset.x, _scrollerView.contentOffset.y+[PUtil getActualHeight:50]);
+        [_scrollerView setContentOffset:point animated:YES];
+    }
+  
+}
+    
+-(void)addHistoryMessage : (NSMutableArray *)models{
+    if(!IS_NS_COLLECTION_EMPTY(models)){
+        NSMutableArray *temps =  [[models reverseObjectEnumerator] allObjects];
+        MessageTextModel *firstModel = [temps objectAtIndex:0];
+        _index = firstModel.chat_id;
+        [ByLog print:@"当前msgid" content:_index];
+        [temps addObjectsFromArray:datas];
+        [datas removeAllObjects];
+        [datas addObjectsFromArray:temps];
+        [_tableView reloadData];
+    }
+
+}
 
 
 

@@ -7,11 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MessageTextModel.h"
 
 @interface ChatView : UIView
+    
+@property (copy,nonatomic) NSString *roomId;
+    
+-(instancetype)initWithRoomId:(NSString *)roomId;
 
--(instancetype)init;
+-(void)setIndex:(NSString *)index;
 
 - (void)keyboardWillChangeFrame:(NSNotification *)notification;
 
+-(void)addMessage:(MessageTextModel *)model;
+    
+-(void)addHistoryMessage : (NSMutableArray *)models;
+    
 @end

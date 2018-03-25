@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "gogo/page/GuessPage.m"
-            timestampString = "542051086.88359"
+            filePath = "gogo/page/ChatView.m"
+            timestampString = "543657576.7749619"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "452"
-            endingLineNumber = "452"
-            landmarkName = "-updateTopView"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
+            landmarkName = "-uploadNew"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "gogo/page/GuessPage.m"
-            timestampString = "542051086.8842371"
+            filePath = "gogo/utils/socket/BySocket.m"
+            timestampString = "543657576.775288"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "457"
-            endingLineNumber = "457"
-            landmarkName = "-updateSupportBtn"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "-queryMsg:index:size:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

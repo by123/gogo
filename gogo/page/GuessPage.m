@@ -27,7 +27,10 @@
 #import "ChargePage2.h"
 #import "GiftView.h"
 #import "GiftModel.h"
-@interface GuessPage ()<BySegmentViewDelegate,NormalAlertViewDelegate,GiftViewDelegate>
+#import "BySocket.h"
+#import "MessageRespondModel.h"
+
+@interface GuessPage ()<BySegmentViewDelegate,NormalAlertViewDelegate,GiftViewDelegate,BySocketDelegate>
 
 @property (strong, nonatomic) UIImageView *aTeamImageView;
 @property (strong, nonatomic) UILabel *aTeamLabel;
@@ -193,13 +196,14 @@
     guessView.delegate = self;
     [viewArray addObject:guessView];
     
-    _chatView = [[ChatView alloc]init];
+    _chatView = [[ChatView alloc]initWithRoomId:[NSString stringWithFormat:@"%ld",_race_id]];
     [viewArray addObject:_chatView];
     NSArray *titleArray = @[@"竞猜",@"聊天"];
     BySegmentView *segmentView = [[BySegmentView alloc]initWithFrame:CGRectMake(0, [PUtil getActualHeight:480] - StatuBarHeight, ScreenWidth, ScreenHeight - ([PUtil getActualHeight:480] - StatuBarHeight)) andTitleArray:titleArray andShowControllerNameArray:viewArray];
     segmentView.delegate = self;
     [self.view addSubview:segmentView];
     
+    [self initSocket];
     [self initGuessOrderView];
     
     
@@ -311,6 +315,8 @@
     [ColorUtil setGradientColor:_guessBtn startColor:c01_blue endColor:c02_red director:Left];
     
 }
+    
+
 
 -(void)didSelectIndex:(NSInteger)index{
     mCurrentIndex = index;
@@ -354,6 +360,7 @@
 }
 
 -(void)onBackPage{
+    [[BySocket sharedBySocket]disconnect];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -691,4 +698,76 @@
     [self requestDetail];
 }
 
+    
+#pragma mark 聊天部分
+-(void)initSocket{
+    BySocket *socket =  [BySocket sharedBySocket];
+    [socket initWithUrl:@"http://gogo.scrats.cn"];
+    socket.socketDelegate = self;
+    [socket connect];
+}
+
+-(void)OnReceiveMsgCallback:(MessageRespondModel *)model{
+    switch (model.type) {
+        case MY_JOIN:
+            [self handleMyJoin:model];
+            break;
+        case OTHER_JOIN:
+            [self handleOtherJoin:model];
+            break;
+        case LEAVE:
+            [self handleLeave:model];
+            break;
+        case MSG:
+            [self handleMsg:model];
+            break;
+        case HISTORY:
+            [self handleHistoryMsg:model];
+            break;
+        default:
+            break;
+    }
+}
+    
+-(void)handleMyJoin:(MessageRespondModel *)respondModel{
+    MessageModel *model = [MessageRespondModel parseMessage:respondModel];
+    [_chatView setIndex:model.msg_index];
+    [ByLog print:@"当前msgid" content: model.msg_index];
+    [ByLog print:@"自己加入房间"];
+}
+    
+-(void)handleOtherJoin:(MessageRespondModel *)respondModel{
+    [ByLog print:@"别人加入房间"];
+}
+    
+-(void)handleLeave:(MessageRespondModel *)respondModel{
+    [ByLog print:@"离开房间"];
+}
+    
+-(void)handleMsg:(MessageRespondModel *)respondModel{
+    [ByLog print:@"收到消息"];
+    MessageTextModel *model = [MessageRespondModel parseTextMessage:respondModel];
+    [_chatView addMessage:model];
+//    [[BySocket sharedBySocket] queryMsg:@"123" index:@"10" size:5];
+}
+    
+-(void)handleHistoryMsg:(MessageRespondModel *)respondModel{
+    [ByLog print:@"收到历史消息"];
+    NSMutableArray *datas = [MessageRespondModel parseHistoryMessage:respondModel];
+    for(id data in datas){
+        MessageTextModel *model = [MessageTextModel mj_objectWithKeyValues:data];
+        [ByLog print:model.chat_id content:model.msg];
+    }
+    [_chatView addHistoryMessage:datas];
+}
+    
+    
+-(void)OnSocketConnectStatu:(Boolean)statu{
+    if(statu){
+        [[BySocket sharedBySocket]joinRoom:[NSString stringWithFormat:@"%ld",_race_id]];
+    }else{
+        [DialogHelper showFailureAlertSheet:@"连接超时，请重新进入房间"];
+    }
+}
+    
 @end

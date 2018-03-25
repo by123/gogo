@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C58EEBC53BCADD2B05F513F8 /* libPods-gogo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D175D84B34404FAC68D418 /* libPods-gogo.a */; };
+		B3524240150986CAC4E322A8 /* Pods_gogo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 208AF62BB36B32F3B22B52AF /* Pods_gogo.framework */; };
 		CF076C6B203041FD00609D08 /* SignView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF076C6A203041FD00609D08 /* SignView.m */; };
 		CF076C6E2030A89000609D08 /* SignView2.m in Sources */ = {isa = PBXBuildFile; fileRef = CF076C6D2030A89000609D08 /* SignView2.m */; };
 		CF0BEDB31F9A3636005275EE /* LoginPage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0BEDB21F9A3636005275EE /* LoginPage.m */; };
@@ -23,6 +23,7 @@
 		CF1CD6EA1FB620060058EEBB /* BettingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1CD6E91FB620060058EEBB /* BettingModel.m */; };
 		CF1CD6ED1FB6219C0058EEBB /* BettingItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1CD6EC1FB6219C0058EEBB /* BettingItemModel.m */; };
 		CF1CD6F01FB8B8920058EEBB /* TitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1CD6EF1FB8B8920058EEBB /* TitleButton.m */; };
+		CF1E50F22052511B004E3E40 /* TestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF1E50F12052511B004E3E40 /* TestView.xib */; };
 		CF2B9D151FC74F0A00121BE6 /* VideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2B9D141FC74F0A00121BE6 /* VideoCell.m */; };
 		CF2B9D1A1FC985D800121BE6 /* libUMessage_Sdk_1.5.0a.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF2B9D181FC985D800121BE6 /* libUMessage_Sdk_1.5.0a.a */; };
 		CF2EAE551F9D0FC000F35974 /* BottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2EAE541F9D0FC000F35974 /* BottomView.m */; };
@@ -113,6 +114,12 @@
 		CF7B7ECC1FAE61C8003FC2D6 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CF7B7ECB1FAE61C8003FC2D6 /* libc++.tbd */; };
 		CF7B7ECE1FAE662C003FC2D6 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF7B7ECD1FAE662B003FC2D6 /* Security.framework */; };
 		CF7B7ED01FAE663E003FC2D6 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF7B7ECF1FAE663E003FC2D6 /* CFNetwork.framework */; };
+		CFA1007F206350A300197DB2 /* BySocket.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA1007E206350A300197DB2 /* BySocket.m */; };
+		CFA100822063A00A00197DB2 /* ByLog.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA100812063A00A00197DB2 /* ByLog.m */; };
+		CFA100852063C30900197DB2 /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA100842063C30900197DB2 /* MessageModel.m */; };
+		CFA1008B2066594400197DB2 /* MessageRespondModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA1008A2066594400197DB2 /* MessageRespondModel.m */; };
+		CFA1008E206664FB00197DB2 /* MessageTextModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA1008D206664FB00197DB2 /* MessageTextModel.m */; };
+		CFA100912067832A00197DB2 /* ChatViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA100902067832A00197DB2 /* ChatViewCell.m */; };
 		CFA43E3A1FDBDDBB00EF74CD /* SoundUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA43E381FDBDDBA00EF74CD /* SoundUtil.m */; };
 		CFA43E3C1FDBDE2600EF74CD /* coin.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CFA43E3B1FDBDE2600EF74CD /* coin.mp3 */; };
 		CFA43E3F1FDBE9E700EF74CD /* GuessMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA43E3E1FDBE9E700EF74CD /* GuessMainView.m */; };
@@ -190,8 +197,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		208AF62BB36B32F3B22B52AF /* Pods_gogo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_gogo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C28CEC5C40CD549BF302F04 /* Pods-gogo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gogo.release.xcconfig"; path = "Pods/Target Support Files/Pods-gogo/Pods-gogo.release.xcconfig"; sourceTree = "<group>"; };
-		B2D175D84B34404FAC68D418 /* libPods-gogo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-gogo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF076C69203041FD00609D08 /* SignView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignView.h; sourceTree = "<group>"; };
 		CF076C6A203041FD00609D08 /* SignView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignView.m; sourceTree = "<group>"; };
 		CF076C6C2030A89000609D08 /* SignView2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignView2.h; sourceTree = "<group>"; };
@@ -223,6 +230,7 @@
 		CF1CD6EE1FB8B8920058EEBB /* TitleButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleButton.h; sourceTree = "<group>"; };
 		CF1CD6EF1FB8B8920058EEBB /* TitleButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleButton.m; sourceTree = "<group>"; };
 		CF1CD6F11FB8C9F80058EEBB /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		CF1E50F12052511B004E3E40 /* TestView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestView.xib; sourceTree = "<group>"; };
 		CF2B9D131FC74F0A00121BE6 /* VideoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoCell.h; sourceTree = "<group>"; };
 		CF2B9D141FC74F0A00121BE6 /* VideoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoCell.m; sourceTree = "<group>"; };
 		CF2B9D181FC985D800121BE6 /* libUMessage_Sdk_1.5.0a.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMessage_Sdk_1.5.0a.a; sourceTree = "<group>"; };
@@ -395,6 +403,25 @@
 		CF7B7ECB1FAE61C8003FC2D6 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		CF7B7ECD1FAE662B003FC2D6 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		CF7B7ECF1FAE663E003FC2D6 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		CFA1006C2063420100197DB2 /* SocketIO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SocketIO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFA1006E2063421100197DB2 /* Starscream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Starscream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFA100702063427400197DB2 /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFA10072206342AC00197DB2 /* HappyDNS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = HappyDNS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFA10074206342B600197DB2 /* Starscream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Starscream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFA10076206342D300197DB2 /* SocketIO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SocketIO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFA100782063450C00197DB2 /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CFA1007D206350A300197DB2 /* BySocket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BySocket.h; sourceTree = "<group>"; };
+		CFA1007E206350A300197DB2 /* BySocket.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BySocket.m; sourceTree = "<group>"; };
+		CFA100802063A00A00197DB2 /* ByLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ByLog.h; sourceTree = "<group>"; };
+		CFA100812063A00A00197DB2 /* ByLog.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ByLog.m; sourceTree = "<group>"; };
+		CFA100832063C30900197DB2 /* MessageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
+		CFA100842063C30900197DB2 /* MessageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageModel.m; sourceTree = "<group>"; };
+		CFA100892066594400197DB2 /* MessageRespondModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageRespondModel.h; sourceTree = "<group>"; };
+		CFA1008A2066594400197DB2 /* MessageRespondModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageRespondModel.m; sourceTree = "<group>"; };
+		CFA1008C206664FB00197DB2 /* MessageTextModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageTextModel.h; sourceTree = "<group>"; };
+		CFA1008D206664FB00197DB2 /* MessageTextModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageTextModel.m; sourceTree = "<group>"; };
+		CFA1008F2067832A00197DB2 /* ChatViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatViewCell.h; sourceTree = "<group>"; };
+		CFA100902067832A00197DB2 /* ChatViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatViewCell.m; sourceTree = "<group>"; };
 		CFA43E381FDBDDBA00EF74CD /* SoundUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundUtil.m; sourceTree = "<group>"; };
 		CFA43E391FDBDDBB00EF74CD /* SoundUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundUtil.h; sourceTree = "<group>"; };
 		CFA43E3B1FDBDE2600EF74CD /* coin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = coin.mp3; sourceTree = "<group>"; };
@@ -554,8 +581,8 @@
 				CF7B7EC41FAE61A1003FC2D6 /* CoreTelephony.framework in Frameworks */,
 				CF7B7EC11FAE612E003FC2D6 /* libWeChatSDK.a in Frameworks */,
 				CFB13C8A1FD332E600AD66D3 /* libstdc++.6.0.9.tbd in Frameworks */,
-				C58EEBC53BCADD2B05F513F8 /* libPods-gogo.a in Frameworks */,
 				CF4855761FB2BBD60018502A /* libstdc++.tbd in Frameworks */,
+				B3524240150986CAC4E322A8 /* Pods_gogo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -565,6 +592,13 @@
 		0B3F5C946CD226272B2A24DA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CFA100782063450C00197DB2 /* AFNetworking.framework */,
+				CFA10076206342D300197DB2 /* SocketIO.framework */,
+				CFA10074206342B600197DB2 /* Starscream.framework */,
+				CFA10072206342AC00197DB2 /* HappyDNS.framework */,
+				CFA100702063427400197DB2 /* AFNetworking.framework */,
+				CFA1006E2063421100197DB2 /* Starscream.framework */,
+				CFA1006C2063420100197DB2 /* SocketIO.framework */,
 				CFB13C891FD332E600AD66D3 /* libstdc++.6.0.9.tbd */,
 				CFB13C871FD332D400AD66D3 /* libbz2.tbd */,
 				CFB13C851FD331BF00AD66D3 /* CoreAudio.framework */,
@@ -589,7 +623,7 @@
 				CF7B7EC71FAE61B9003FC2D6 /* libsqlite3.0.tbd */,
 				CF7B7EC51FAE61AA003FC2D6 /* SystemConfiguration.framework */,
 				CF7B7EC31FAE61A1003FC2D6 /* CoreTelephony.framework */,
-				B2D175D84B34404FAC68D418 /* libPods-gogo.a */,
+				208AF62BB36B32F3B22B52AF /* Pods_gogo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -917,6 +951,7 @@
 				CF7214E51F6678E4002F3634 /* AppDelegate.m */,
 				CF2B9D171FC985D800121BE6 /* UMessage_Sdk_1.5.0a */,
 				CF7214E11F6678E4002F3634 /* Supporting Files */,
+				CF1E50F12052511B004E3E40 /* TestView.xib */,
 			);
 			path = gogo;
 			sourceTree = "<group>";
@@ -948,11 +983,22 @@
 			path = wechat;
 			sourceTree = "<group>";
 		};
+		CFA1007C2063509A00197DB2 /* socket */ = {
+			isa = PBXGroup;
+			children = (
+				CFA1007D206350A300197DB2 /* BySocket.h */,
+				CFA1007E206350A300197DB2 /* BySocket.m */,
+			);
+			path = socket;
+			sourceTree = "<group>";
+		};
 		CFA43E431FDC64C400EF74CD /* chatview */ = {
 			isa = PBXGroup;
 			children = (
 				CFA43E441FDC64D300EF74CD /* ChatView.h */,
 				CFA43E451FDC64D300EF74CD /* ChatView.m */,
+				CFA1008F2067832A00197DB2 /* ChatViewCell.h */,
+				CFA100902067832A00197DB2 /* ChatViewCell.m */,
 			);
 			name = chatview;
 			sourceTree = "<group>";
@@ -1169,6 +1215,12 @@
 				CFA43E411FDC637600EF74CD /* BettingTpModel.m */,
 				CF43F552204D3160004DB534 /* GiftModel.h */,
 				CF43F553204D3160004DB534 /* GiftModel.m */,
+				CFA100892066594400197DB2 /* MessageRespondModel.h */,
+				CFA1008A2066594400197DB2 /* MessageRespondModel.m */,
+				CFA1008C206664FB00197DB2 /* MessageTextModel.h */,
+				CFA1008D206664FB00197DB2 /* MessageTextModel.m */,
+				CFA100832063C30900197DB2 /* MessageModel.h */,
+				CFA100842063C30900197DB2 /* MessageModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1190,6 +1242,7 @@
 		CFCB0F081F7105360087ACC7 /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				CFA1007C2063509A00197DB2 /* socket */,
 				CF4278301FAB9A0100C163DD /* extra */,
 				CF4278271FAB98D800C163DD /* IDSAlertSheet.h */,
 				CF4278281FAB98D800C163DD /* IDSAlertSheet.m */,
@@ -1210,6 +1263,8 @@
 				CFA43E381FDBDDBA00EF74CD /* SoundUtil.m */,
 				CF43F54F204C7085004DB534 /* UMUtil.h */,
 				CF43F550204C7085004DB534 /* UMUtil.m */,
+				CFA100802063A00A00197DB2 /* ByLog.h */,
+				CFA100812063A00A00197DB2 /* ByLog.m */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -1401,6 +1456,7 @@
 				CF4855821FB2ECEF0018502A /* address.txt in Resources */,
 				CF7B7EC21FAE612E003FC2D6 /* README.txt in Resources */,
 				CFADF8481FBA1B3100A7501E /* back@3x.png in Resources */,
+				CF1E50F22052511B004E3E40 /* TestView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1449,9 +1505,32 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-gogo/Pods-gogo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
+				"${BUILT_PRODUCTS_DIR}/HappyDNS/HappyDNS.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
+				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
+				"${BUILT_PRODUCTS_DIR}/Qiniu/Qiniu.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HappyDNS.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJExtension.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Qiniu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1483,8 +1562,11 @@
 				CFADF8741FBB65A900A7501E /* UploadImageUtil.m in Sources */,
 				CFBFE5131FA5CC6E00500B1B /* FightingView.m in Sources */,
 				CFBFE4E31FA534E000500B1B /* GoodsView.m in Sources */,
+				CFA1007F206350A300197DB2 /* BySocket.m in Sources */,
+				CFA1008E206664FB00197DB2 /* MessageTextModel.m in Sources */,
 				CF2EAEB01FA2624D00F35974 /* HistoryCell.m in Sources */,
 				CF7214E61F6678E4002F3634 /* AppDelegate.m in Sources */,
+				CFA100852063C30900197DB2 /* MessageModel.m in Sources */,
 				CF2EAEE01FA4E76400F35974 /* MineCell.m in Sources */,
 				CF0BEDD81F9BB998005275EE /* NewsModel.m in Sources */,
 				CF2EAF011FA50F2E00F35974 /* ExchangeModel.m in Sources */,
@@ -1500,6 +1582,7 @@
 				CF2EAE611F9E71A400F35974 /* ScheduleView.m in Sources */,
 				CFADF85D1FBA943300A7501E /* WechatPayModel.m in Sources */,
 				CF2EAE7A1FA0D8F500F35974 /* CorpsModel.m in Sources */,
+				CFA100912067832A00197DB2 /* ChatViewCell.m in Sources */,
 				CF4855811FB2ECEF0018502A /* City.m in Sources */,
 				CF2EAE911FA119AA00F35974 /* InsetTextField.m in Sources */,
 				CF2EAEE81FA4FF6200F35974 /* AddressPage.m in Sources */,
@@ -1576,6 +1659,7 @@
 				CF43F554204D3160004DB534 /* GiftModel.m in Sources */,
 				CFCB0F4D1F711E6F0087ACC7 /* TADotView.m in Sources */,
 				CF4855801FB2ECEF0018502A /* AddressPickerView.m in Sources */,
+				CFA1008B2066594400197DB2 /* MessageRespondModel.m in Sources */,
 				CF43F562204DD6F8004DB534 /* GiftCell.m in Sources */,
 				CF0BEDC51F9BA8EE005275EE /* MainPage.m in Sources */,
 				CF2EAEEC1FA4FFBC00F35974 /* GuessHistoryPage.m in Sources */,
@@ -1589,6 +1673,7 @@
 				CFBFE5161FA5CD8600500B1B /* GuessButton.m in Sources */,
 				CF1CD6F01FB8B8920058EEBB /* TitleButton.m in Sources */,
 				CF4278201FAB95FA00C163DD /* RespondModel.m in Sources */,
+				CFA100822063A00A00197DB2 /* ByLog.m in Sources */,
 				CF4278261FAB98A400C163DD /* DialogHelper.m in Sources */,
 				CF2EAE551F9D0FC000F35974 /* BottomView.m in Sources */,
 				CF2EAEAD1FA2619100F35974 /* HistoryModel.m in Sources */,
@@ -1735,6 +1820,7 @@
 				CODE_SIGN_ENTITLEMENTS = gogo/gogo.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = AB86U4DT8H;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1766,12 +1852,6 @@
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
-					"-l\"AFNetworking\"",
-					"-l\"FMDB\"",
-					"-l\"MBProgressHUD\"",
-					"-l\"MJExtension\"",
-					"-l\"MJRefresh\"",
-					"-l\"SDWebImage\"",
 					"-l\"sqlite3\"",
 					"-framework",
 					"\"CoreGraphics\"",
@@ -1791,6 +1871,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.0;
+				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Debug;
 		};
@@ -1803,6 +1885,7 @@
 				CODE_SIGN_ENTITLEMENTS = gogo/gogo.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = AB86U4DT8H;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1834,12 +1917,6 @@
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
-					"-l\"AFNetworking\"",
-					"-l\"FMDB\"",
-					"-l\"MBProgressHUD\"",
-					"-l\"MJExtension\"",
-					"-l\"MJRefresh\"",
-					"-l\"SDWebImage\"",
 					"-l\"sqlite3\"",
 					"-framework",
 					"\"CoreGraphics\"",
@@ -1859,6 +1936,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.0;
+				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Release;
 		};
