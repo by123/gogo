@@ -83,10 +83,10 @@
     self.backgroundColor = c06_backgroud;
     _scrollerView = [[TouchScrollView alloc]initWithParentView:self];
     _scrollerView.userInteractionEnabled =YES;
-    _scrollerView.frame = CGRectMake(0, [PUtil getActualHeight:80], ScreenWidth, ScreenHeight - [PUtil getActualHeight:619]);
+    _scrollerView.frame = CGRectMake(0, [PUtil getActualHeight:80], ScreenWidth, ScreenHeight - [PUtil getActualHeight:400]-StatuBarHeight - [PUtil getActualHeight:80]-[PUtil getActualHeight:88]);
     _scrollerView.showsVerticalScrollIndicator = NO;
     _scrollerView.showsHorizontalScrollIndicator = NO;
-    _scrollerView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(uploadMore)];
+//    _scrollerView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(uploadMore)];
     
     _scrollerView.contentSize = CGSizeMake(ScreenWidth,  height);
     [self addSubview:_scrollerView];

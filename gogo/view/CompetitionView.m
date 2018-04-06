@@ -56,7 +56,7 @@
     
     _lineHorView = [[UIView alloc]init];
     _lineHorView.backgroundColor = c05_divider;
-    _lineHorView.frame = CGRectMake(ScreenWidth/2-1,  [PUtil getActualWidth:70], 1, [PUtil getActualHeight:162]);
+    _lineHorView.frame = CGRectMake(ScreenWidth/2-1,  [PUtil getActualHeight:70], 1, [PUtil getActualHeight:162]);
     [self addSubview:_lineHorView];
     
     int imageWidth = [PUtil getActualWidth:48];
@@ -101,7 +101,11 @@
             
             UILabel *dataLabel = [[UILabel alloc]init];
             dataLabel.textColor =c01_blue;
-            dataLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:20]];
+            if(IS_IPHONE_X){
+                dataLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:18]];
+            }else{
+                dataLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:20]];
+            }
             [raceBtn addSubview:dataLabel];
             
             //data

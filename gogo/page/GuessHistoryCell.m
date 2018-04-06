@@ -45,7 +45,7 @@
     _statuLabel.text = @"比赛未完成";
     _statuLabel.textColor = c08_text;
     _statuLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:48]];
-    _statuLabel.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualHeight:67],[PUtil getActualWidth:260],  [PUtil getActualHeight:67]);
+    _statuLabel.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualHeight:67],ScreenWidth - [PUtil getActualWidth:30],  [PUtil getActualHeight:67]);
     [self.contentView addSubview:_statuLabel];
     
     _coinLabel = [[UILabel alloc]init];

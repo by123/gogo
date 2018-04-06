@@ -42,7 +42,7 @@
 }
 
 -(void)initView{
-    height = ScreenHeight - ([PUtil getActualHeight:480] - StatuBarHeight) - [PUtil getActualHeight:88];
+    height = ScreenHeight - [PUtil getActualHeight:400] - StatuBarHeight - [PUtil getActualHeight:88];
     self.backgroundColor = c06_backgroud;
     _scrollerView = [[TouchScrollView alloc]initWithParentView:self];
     _scrollerView.userInteractionEnabled =YES;

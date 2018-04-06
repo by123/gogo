@@ -41,6 +41,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setStatuBarBackgroud:[ColorUtil colorWithHexString:@"#120e1e"]];
     [self initView];
     
 }
@@ -59,7 +60,11 @@
     _mLogoImage = [[UIImageView alloc]init];
     UIImage *image = [UIImage imageNamed:@"etc_logo_200"];
     _mLogoImage.image = image;
-    _mLogoImage.frame = CGRectMake([PUtil getActualWidth:255], [PUtil getActualHeight:190], [PUtil getActualWidth:240], [PUtil getActualWidth:240]);
+    if(IS_IPHONE_X){
+        _mLogoImage.frame = CGRectMake((ScreenWidth - [PUtil getActualWidth:320])/2, [PUtil getActualHeight:190], [PUtil getActualWidth:320], [PUtil getActualWidth:320]);
+    }else{
+         _mLogoImage.frame = CGRectMake([PUtil getActualWidth:255], [PUtil getActualHeight:190], [PUtil getActualWidth:240], [PUtil getActualWidth:240]);
+    }
     _mLogoImage.layer.masksToBounds = YES;
     _mLogoImage.layer.cornerRadius =  [PUtil getActualWidth:40]/2;
     [self.view addSubview:_mLogoImage];
@@ -75,7 +80,11 @@
     [self.view addSubview:phoneView];
     
     _mPhoneLabel = [[UILabel alloc]init];
-    _mPhoneLabel.frame = CGRectMake([PUtil getActualWidth:119], [PUtil getActualHeight:578], [PUtil getActualWidth:120], [PUtil getActualHeight:48]);
+    if(IS_IPHONE_X){
+       _mPhoneLabel.frame = CGRectMake([PUtil getActualWidth:119], [PUtil getActualHeight:578], [PUtil getActualWidth:200], [PUtil getActualHeight:48]);
+    }else{
+       _mPhoneLabel.frame = CGRectMake([PUtil getActualWidth:119], [PUtil getActualHeight:578], [PUtil getActualWidth:120], [PUtil getActualHeight:48]);
+    }
     _mPhoneLabel.text = @"手机号";
     _mPhoneLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:34]];
     _mPhoneLabel.alpha = 0.5;
@@ -109,7 +118,11 @@
 
     
     _mVerifyLabel = [[UILabel alloc]init];
-    _mVerifyLabel.frame = CGRectMake([PUtil getActualWidth:119], [PUtil getActualHeight:708], [PUtil getActualWidth:120], [PUtil getActualHeight:48]);
+    if(IS_IPHONE_X){
+        _mVerifyLabel.frame = CGRectMake([PUtil getActualWidth:119], [PUtil getActualHeight:708], [PUtil getActualWidth:200], [PUtil getActualHeight:48]);
+    }else{
+        _mVerifyLabel.frame = CGRectMake([PUtil getActualWidth:119], [PUtil getActualHeight:708], [PUtil getActualWidth:120], [PUtil getActualHeight:48]);
+    }
     _mVerifyLabel.text = @"验证码";
     _mVerifyLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:34]];
     _mVerifyLabel.alpha = 0.5;
@@ -124,7 +137,7 @@
     [self.view addSubview:_mVerifyText];
     
     _mLoginBtn = [[UIButton alloc]init];
-    _mLoginBtn.frame = CGRectMake([PUtil getActualWidth:89], [PUtil getActualWidth:812], [PUtil getActualWidth:572], [PUtil getActualHeight:100]);
+    _mLoginBtn.frame = CGRectMake([PUtil getActualWidth:89], [PUtil getActualHeight:812], [PUtil getActualWidth:572], [PUtil getActualHeight:100]);
     [_mLoginBtn setTitle:@"登录" forState:UIControlStateNormal];
     _mLoginBtn.layer.masksToBounds = YES;
     _mLoginBtn.layer.cornerRadius = [PUtil getActualHeight:100]/2;
@@ -142,13 +155,13 @@
     [self.view addSubview:_mThirdText];
     
     _mWechatBtn = [[UIButton alloc]init];
-    _mWechatBtn.frame = CGRectMake([PUtil getActualWidth:246], [PUtil getActualWidth:1126], [PUtil getActualWidth:99], [PUtil getActualHeight:99]);
+    _mWechatBtn.frame = CGRectMake([PUtil getActualWidth:246], [PUtil getActualHeight:1126], [PUtil getActualWidth:99], [PUtil getActualHeight:99]);
     [_mWechatBtn setImage:[UIImage imageNamed:@"ic_wx_50"] forState:UIControlStateNormal];
     [_mWechatBtn addTarget:self action:@selector(onWechatLogin) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_mWechatBtn];
     
     _mQQBtn = [[UIButton alloc]init];
-    _mQQBtn.frame = CGRectMake([PUtil getActualWidth:405], [PUtil getActualWidth:1126], [PUtil getActualWidth:99], [PUtil getActualHeight:99]);
+    _mQQBtn.frame = CGRectMake([PUtil getActualWidth:405], [PUtil getActualHeight:1126], [PUtil getActualWidth:99], [PUtil getActualHeight:99]);
     [_mQQBtn setImage:[UIImage imageNamed:@"ic_qq_50"] forState:UIControlStateNormal];
     [_mQQBtn addTarget:self action:@selector(onQQLogin) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_mQQBtn];

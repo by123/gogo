@@ -109,19 +109,19 @@
         if(respondModel.code == 200){
             id data = respondModel.data;
             id items = [data objectForKey:@"items"];
-            index = [[data objectForKey:@"index"] intValue];
+            self->index = [[data objectForKey:@"index"] intValue];
             NSMutableArray *tempModel  = [GuessHistoryModel mj_objectArrayWithKeyValuesArray:items];
             if(IS_NS_COLLECTION_EMPTY(tempModel)){
-                [_scrollerView.mj_footer endRefreshingWithNoMoreData];
+                [self->_scrollerView.mj_footer endRefreshingWithNoMoreData];
             }
             if(isRequestMore){
-                [models addObjectsFromArray:tempModel];
+                [self->models addObjectsFromArray:tempModel];
             }else{
-                models = tempModel;
+                self->models = tempModel;
             }
-            [_tableView reloadData];
-            _tableView.frame = CGRectMake(0,  0, ScreenWidth, [models count] * [PUtil getActualHeight:580]);
-            _scrollerView.contentSize = CGSizeMake(ScreenWidth, [models count] * [PUtil getActualHeight:580]);
+            [self->_tableView reloadData];
+            _tableView.frame = CGRectMake(0,  0, ScreenWidth, [self->models count] * [PUtil getActualHeight:580]);
+            _scrollerView.contentSize = CGSizeMake(ScreenWidth, [self->models count] * [PUtil getActualHeight:580]);
 
         }else{
             [DialogHelper showFailureAlertSheet:respondModel.msg];

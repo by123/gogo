@@ -30,6 +30,8 @@
 #import "BySocket.h"
 #import "MessageRespondModel.h"
 
+#define TopHeight [PUtil getActualHeight:400]
+
 @interface GuessPage ()<BySegmentViewDelegate,NormalAlertViewDelegate,GiftViewDelegate,BySocketDelegate>
 
 @property (strong, nonatomic) UIImageView *aTeamImageView;
@@ -82,7 +84,7 @@
 
 -(void)initTopView{
     UIView *topView = [[UIView alloc]init];
-    topView.frame = CGRectMake(0, StatuBarHeight, ScreenWidth,[PUtil getActualHeight:480]-StatuBarHeight);
+    topView.frame = CGRectMake(0, StatuBarHeight, ScreenWidth,TopHeight);
     [self.view addSubview:topView];
     [ColorUtil setGradientColor:topView startColor:c01_blue endColor:c02_red director:Left];
     
@@ -96,28 +98,28 @@
     _aTeamImageView.layer.masksToBounds = YES;
     _aTeamImageView.contentMode = UIViewContentModeScaleAspectFit;
     _aTeamImageView.layer.cornerRadius = [PUtil getActualHeight:20];
-    _aTeamImageView.frame = CGRectMake([PUtil getActualWidth:101], [PUtil getActualHeight:162]-StatuBarHeight, [PUtil getActualWidth:140], [PUtil getActualWidth:140]);
+    _aTeamImageView.frame = CGRectMake([PUtil getActualWidth:101], [PUtil getActualHeight:110], [PUtil getActualWidth:140], [PUtil getActualHeight:140]);
     [topView addSubview:_aTeamImageView];
     
     _aTeamLabel = [[UILabel alloc]init];
     _aTeamLabel.textColor = c08_text;
     _aTeamLabel.textAlignment = NSTextAlignmentCenter;
     _aTeamLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:32]];
-    _aTeamLabel.frame = CGRectMake([PUtil getActualWidth:101], [PUtil getActualHeight:318]-StatuBarHeight, [PUtil getActualWidth:140], [PUtil getActualWidth:45]);
+    _aTeamLabel.frame = CGRectMake([PUtil getActualWidth:101], [PUtil getActualHeight:260], [PUtil getActualWidth:140], [PUtil getActualHeight:45]);
     [topView addSubview:_aTeamLabel];
     
     _bTeamImageView =[[UIImageView alloc]init];
     _bTeamImageView.layer.masksToBounds = YES;
     _bTeamImageView.contentMode = UIViewContentModeScaleAspectFit;
     _bTeamImageView.layer.cornerRadius = [PUtil getActualHeight:20];
-    _bTeamImageView.frame = CGRectMake([PUtil getActualWidth:509], [PUtil getActualHeight:162]-StatuBarHeight, [PUtil getActualWidth:140], [PUtil getActualWidth:140]);
+    _bTeamImageView.frame = CGRectMake([PUtil getActualWidth:509], [PUtil getActualHeight:110], [PUtil getActualWidth:140], [PUtil getActualHeight:140]);
     [topView addSubview:_bTeamImageView];
     
     _bTeamLabel = [[UILabel alloc]init];
     _bTeamLabel.textColor = c08_text;
     _bTeamLabel.textAlignment = NSTextAlignmentCenter;
     _bTeamLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:32]];
-    _bTeamLabel.frame = CGRectMake([PUtil getActualWidth:509], [PUtil getActualHeight:318]-StatuBarHeight, [PUtil getActualWidth:140], [PUtil getActualWidth:45]);
+    _bTeamLabel.frame = CGRectMake([PUtil getActualWidth:509],  [PUtil getActualHeight:260], [PUtil getActualWidth:140], [PUtil getActualHeight:45]);
     [topView addSubview:_bTeamLabel];
     
     UILabel *vsLabel = [[UILabel alloc]init];
@@ -125,34 +127,34 @@
     vsLabel.text = @"VS";
     vsLabel.textAlignment = NSTextAlignmentCenter;
     vsLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:72]];
-    vsLabel.frame = CGRectMake(0 ,[PUtil getActualHeight:182]-StatuBarHeight, ScreenWidth, [PUtil getActualWidth:100]);
+    vsLabel.frame = CGRectMake(0 ,[PUtil getActualHeight:120], ScreenWidth, [PUtil getActualHeight:100]);
     [topView addSubview:vsLabel];
     
     _scoreLabel = [[UILabel alloc]init];
     _scoreLabel.textColor = c09_tips;
     _scoreLabel.textAlignment = NSTextAlignmentCenter;
     _scoreLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:34]];
-    _scoreLabel.frame = CGRectMake(0 ,[PUtil getActualHeight:292]-StatuBarHeight, ScreenWidth, [PUtil getActualWidth:48]);
+    _scoreLabel.frame = CGRectMake(0 ,[PUtil getActualHeight:230], ScreenWidth, [PUtil getActualWidth:48]);
     [topView addSubview:_scoreLabel];
     
     _timeLabel = [[UILabel alloc]init];
     _timeLabel.textColor = c09_tips;
     _timeLabel.textAlignment = NSTextAlignmentCenter;
     _timeLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:22]];
-    _timeLabel.frame = CGRectMake(0 ,[PUtil getActualHeight:120]-StatuBarHeight, ScreenWidth, [PUtil getActualWidth:33]);
+    _timeLabel.frame = CGRectMake(0 ,[PUtil getActualHeight:60], ScreenWidth, [PUtil getActualHeight:33]);
     [topView addSubview:_timeLabel];
     
     _gameLabel = [[UILabel alloc]init];
     _gameLabel.textColor = c08_text;
     _gameLabel.textAlignment = NSTextAlignmentCenter;
     _gameLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:30]];
-    _gameLabel.frame = CGRectMake(0 ,[PUtil getActualHeight:66]-StatuBarHeight, ScreenWidth, [PUtil getActualWidth:33]);
+    _gameLabel.frame = CGRectMake(0 ,[PUtil getActualHeight:20], ScreenWidth, [PUtil getActualHeight:33]);
     [topView addSubview:_gameLabel];
     
     
     _aTeamSupportBtn = [[ImageBuuton alloc]initWithDirect:Direct_Left];
     [_aTeamSupportBtn setImage:[UIImage imageNamed:@"ic_support"] forState:UIControlStateNormal];
-    _aTeamSupportBtn.frame = CGRectMake([PUtil getActualWidth:60], [PUtil getActualHeight:370]-StatuBarHeight, (ScreenWidth - [PUtil getActualWidth:120])/2, [PUtil getActualHeight:50]);
+    _aTeamSupportBtn.frame = CGRectMake([PUtil getActualWidth:60], [PUtil getActualHeight:330], (ScreenWidth - [PUtil getActualWidth:120])/2, [PUtil getActualHeight:50]);
     _aTeamSupportBtn.backgroundColor = c01_blue;
     _aTeamSupportBtn.titleLabel.font = [UIFont systemFontOfSize:12.0f];
     UIBezierPath *leftMaskPath = [UIBezierPath bezierPathWithRoundedRect:_aTeamSupportBtn.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerBottomLeft cornerRadii:CGSizeMake([PUtil getActualHeight:50]/2, [PUtil getActualHeight:50]/2)];
@@ -166,7 +168,7 @@
     
     _bTeamSupportBtn = [[ImageBuuton alloc]initWithDirect:Direct_Right];
     [_bTeamSupportBtn setImage:[UIImage imageNamed:@"ic_support"] forState:UIControlStateNormal];
-    _bTeamSupportBtn.frame = CGRectMake([PUtil getActualWidth:60] + (ScreenWidth - [PUtil getActualWidth:120])/2, [PUtil getActualHeight:370]-StatuBarHeight, (ScreenWidth - [PUtil getActualWidth:120])/2, [PUtil getActualHeight:50]);
+    _bTeamSupportBtn.frame = CGRectMake([PUtil getActualWidth:60] + (ScreenWidth - [PUtil getActualWidth:120])/2, [PUtil getActualHeight:330], (ScreenWidth - [PUtil getActualWidth:120])/2, [PUtil getActualHeight:50]);
     _bTeamSupportBtn.backgroundColor = c02_red;
     _bTeamSupportBtn.titleLabel.font = [UIFont systemFontOfSize:12.0f];
     UIBezierPath *rightMaskPath = [UIBezierPath bezierPathWithRoundedRect:_bTeamSupportBtn.bounds byRoundingCorners:UIRectCornerTopRight | UIRectCornerBottomRight cornerRadii:CGSizeMake([PUtil getActualHeight:50]/2, [PUtil getActualHeight:50]/2)];
@@ -199,7 +201,7 @@
     _chatView = [[ChatView alloc]initWithRoomId:[NSString stringWithFormat:@"%ld",_race_id]];
     [viewArray addObject:_chatView];
     NSArray *titleArray = @[@"竞猜",@"聊天"];
-    BySegmentView *segmentView = [[BySegmentView alloc]initWithFrame:CGRectMake(0, [PUtil getActualHeight:480] - StatuBarHeight, ScreenWidth, ScreenHeight - ([PUtil getActualHeight:480] - StatuBarHeight)) andTitleArray:titleArray andShowControllerNameArray:viewArray];
+    BySegmentView *segmentView = [[BySegmentView alloc]initWithFrame:CGRectMake(0, TopHeight+StatuBarHeight, ScreenWidth, ScreenHeight - TopHeight-StatuBarHeight) andTitleArray:titleArray andShowControllerNameArray:viewArray];
     segmentView.delegate = self;
     [self.view addSubview:segmentView];
     

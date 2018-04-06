@@ -31,7 +31,11 @@
     _titleLabel = [[UILabel alloc]init];
     _titleLabel.textColor =c08_text;
     _titleLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:34]];
-    _titleLabel.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualHeight:31],[PUtil getActualWidth:150], [PUtil getActualHeight:48]);
+    if(IS_IPHONE_X){
+           _titleLabel.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualHeight:31],[PUtil getActualWidth:200], [PUtil getActualHeight:48]);
+    }else{
+         _titleLabel.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualHeight:31],[PUtil getActualWidth:150], [PUtil getActualHeight:48]);
+    }
     [self.contentView addSubview:_titleLabel];
     
     UIImageView *arrowView = [[UIImageView alloc]init];
