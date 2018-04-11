@@ -173,23 +173,23 @@
     [ByNetUtil get:API_NEWS_LIST parameters:dic success:^(RespondModel *respondModel) {
         if(respondModel.code == 200){
             id items = [respondModel.data objectForKey:@"items"];
-            index =[respondModel.data objectForKey:@"index"] ;
+            self->index =[respondModel.data objectForKey:@"index"] ;
             NSArray *temps = [NewsModel mj_objectArrayWithKeyValuesArray:items];
             if([temps count] == 0){
-                [_scrollerView.mj_footer endRefreshingWithNoMoreData];
+                [self->_scrollerView.mj_footer endRefreshingWithNoMoreData];
             }
-            [datas addObjectsFromArray:temps];
+            [self->datas addObjectsFromArray:temps];
             int height = 0;
-            for(NewsModel *model in datas){
+            for(NewsModel *model in self->datas){
                 if(IS_NS_STRING_EMPTY(model.video)){
                     height += [PUtil getActualHeight:172];
                 }else{
                     height += [PUtil getActualHeight:600];
                 }
             }
-             _tableView.frame = CGRectMake(0, AdViewHeight+[PUtil getActualHeight:232], ScreenWidth, height);
-            _scrollerView.contentSize = CGSizeMake(ScreenWidth, height +[PUtil getActualHeight:232]+ AdViewHeight);
-            [_tableView reloadData];
+            self->_tableView.frame = CGRectMake(0, AdViewHeight+[PUtil getActualHeight:232], ScreenWidth, height);
+            self->_scrollerView.contentSize = CGSizeMake(ScreenWidth, height +[PUtil getActualHeight:232]+ AdViewHeight);
+            [self->_tableView reloadData];
         }
     } failure:^(NSError *error) {
         [DialogHelper showFailureAlertSheet:@"获取列表失败！"];
@@ -210,7 +210,7 @@
                     [titles addObject:model.title];
                     [images addObject:model.cover];
                 }
-                [_cycleScrollView setImagesGroup:images titles:titles];
+                [self->_cycleScrollView setImagesGroup:images titles:titles];
             }
         }
     } failure:^(NSError *error) {
@@ -231,7 +231,7 @@
                     [titles addObject:model.title];
                     [images addObject:model.cover];
                 }
-                [_cycleScrollView setImagesGroup:images titles:titles];
+                [self->_cycleScrollView setImagesGroup:images titles:titles];
             }
         }
     } failure:^(NSError *error) {

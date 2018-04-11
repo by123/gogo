@@ -114,7 +114,7 @@
 }
 
 -(void)initBar{
-    [self setStatuBarBackgroud:c07_bar];
+//    [self setStatuBarBackgroud:c07_bar];
     _mTitleLabel = [[UILabel alloc]init];
     _mTitleLabel.backgroundColor = c07_bar;
     _mTitleLabel.frame = CGRectMake(0, StatuBarHeight, ScreenWidth, TitleHeight);

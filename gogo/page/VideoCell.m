@@ -108,10 +108,10 @@
     [_playView setButtonTag:model.news_id];
     [_playView setPreImageUrl:model.cover];
     [_playView setUrl:model.video];
-    if(!model.isPlay){
-        [_playView pause];
-    }else{
+    if(model.isPlay){
         [_playView play];
+    }else{
+        [_playView pause];
     }
 }
 

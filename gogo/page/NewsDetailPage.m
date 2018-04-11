@@ -15,8 +15,8 @@
 #import "RespondModel.h"
 #import "NewsDetailModel.h"
 #import "CommentListModel.h"
-#import "RHPlayerView.h"
-#import "RHVideoModel.h"
+#import "YGPlayerView.h"
+#import "YGPlayInfo.h"
 #import "RespondModel.h"
 #import "TimeUtil.h"
 #import "NewsCell.h"
@@ -26,7 +26,7 @@
 #define MoreCellHeight [PUtil getActualHeight:172]
 #define REREQUESTSIZE 10
 #define TitleHeight [PUtil getActualHeight:88]
-@interface NewsDetailPage ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,UIWebViewDelegate,RHPlayerViewDelegate,BarViewDelegate,CommentCellDelegate,UIScrollViewDelegate>
+@interface NewsDetailPage ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,UIWebViewDelegate,BarViewDelegate,CommentCellDelegate,UIScrollViewDelegate>
 
 @property (strong, nonatomic) BarView *barView;
 @property (strong, nonatomic) UIView *topView;
@@ -42,7 +42,7 @@
 @property (strong, nonatomic) InsetTextField *commentTextField;
 @property (strong, nonatomic) UILabel *hintLabel;
 @property (strong, nonatomic) UIScrollView *webScrollView;
-@property (strong, nonatomic) RHPlayerView *playView;
+@property (strong, nonatomic) YGPlayerView *playView;
 
 @end
 
@@ -73,7 +73,7 @@
 -(void)viewWillDisappear:(BOOL)animated{
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillChangeFrameNotification object:nil];
     if(_playView){
-        [_playView stop];
+        [_playView resetPlayer];
     }
 }
 
@@ -118,15 +118,12 @@
         [_webView loadHTMLString:htmlStr baseURL:nil];
         [_scrollerView addSubview:_webView];
     }else{
-        NSString *vedioId = [NSString stringWithFormat:@"%ld",model.news_id];
-        _playView = [[RHPlayerView alloc]initWithFrame:CGRectMake(0, _topView.height, ScreenWidth, ScreenWidth * ScreenWidth / ScreenHeight) currentVC:self parentView : _scrollerView];
-        _playView.delegate = self;
-        NSMutableArray *dataArr = [[NSMutableArray alloc]init];
-        RHVideoModel *videoModel = [[RHVideoModel alloc] initWithVideoId:vedioId title:@"" url:model.video currentTime:0];
-        [dataArr addObject:videoModel];
-        [_playView setVideoModels:dataArr playVideoId:vedioId];
+        _playView = [[[NSBundle mainBundle] loadNibNamed:@"YGPlayerView" owner:nil options:nil] lastObject];
+        _playView.playerViewTop = _topView.height;
+        YGPlayInfo *playInfo = [[YGPlayInfo alloc]init];
+        playInfo.url = model.video;
+        [_playView playWithPlayInfo:playInfo];
         [_scrollerView addSubview:_playView];
-        [_playView playVideoWithVideoId:vedioId];
         [self requestCommandList];
     }
     
@@ -141,11 +138,11 @@
     UILabel *titleLabel = [[UILabel alloc]init];
     titleLabel.text = model.title;
     titleLabel.textColor = c08_text;
-    titleLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:48]];
+    titleLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:36]];
     titleLabel.numberOfLines = 0;
     titleLabel.lineBreakMode = NSLineBreakByCharWrapping;
-    CGSize titleSize = [titleLabel.text boundingRectWithSize:CGSizeMake( ScreenWidth - [PUtil getActualWidth:30]*2, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:[PUtil getActualHeight:48]]} context:nil].size;
-    titleLabel.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualHeight:30] , ScreenWidth - [PUtil getActualWidth:30]*2, titleSize.height);
+    CGSize titleSize = [titleLabel.text boundingRectWithSize:CGSizeMake( ScreenWidth - [PUtil getActualWidth:20]*2, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:[PUtil getActualHeight:36]]} context:nil].size;
+    titleLabel.frame = CGRectMake([PUtil getActualWidth:20], [PUtil getActualHeight:20] , ScreenWidth - [PUtil getActualWidth:20]*2, titleSize.height);
     [_topView addSubview:titleLabel];
     
     UILabel *typeLabel = [[UILabel alloc]init];
@@ -153,7 +150,7 @@
     typeLabel.textColor = c08_text;
     typeLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:20]];
     typeLabel.alpha = 0.25f;
-    typeLabel.frame = CGRectMake([PUtil getActualWidth:30], [PUtil getActualHeight:50] + titleSize.height, typeLabel.contentSize.width, typeLabel.contentSize.height);
+    typeLabel.frame = CGRectMake([PUtil getActualWidth:20], [PUtil getActualHeight:30] + titleSize.height, typeLabel.contentSize.width, typeLabel.contentSize.height);
     [_topView addSubview:typeLabel];
     
     UILabel *timeLabel = [[UILabel alloc]init];
@@ -161,10 +158,10 @@
     timeLabel.textColor = c08_text;
     timeLabel.font = [UIFont systemFontOfSize:[PUtil getActualHeight:20]];
     timeLabel.alpha = 0.25f;
-    timeLabel.frame = CGRectMake(ScreenWidth - [PUtil getActualWidth:30] - timeLabel.contentSize.width, [PUtil getActualHeight:50] + titleSize.height, timeLabel.contentSize.width, timeLabel.contentSize.height);
+    timeLabel.frame = CGRectMake(ScreenWidth - [PUtil getActualWidth:30] - timeLabel.contentSize.width, [PUtil getActualHeight:30] + titleSize.height, timeLabel.contentSize.width, timeLabel.contentSize.height);
     [_topView addSubview:timeLabel];
 
-    _topView.frame = CGRectMake(0,0, ScreenWidth, titleSize.height + [PUtil getActualHeight:70] + typeLabel.contentSize.height);
+    _topView.frame = CGRectMake(0,0, ScreenWidth, typeLabel.mj_y+typeLabel.contentSize.height);
 }
 
 
@@ -464,29 +461,28 @@
 }
 
 
--(BOOL)playerViewShouldPlay{
-    return YES;
-}
+//-(BOOL)playerViewShouldPlay{
+//    return YES;
+//}
 
-// 当前播放的
-- (void)playerView:(RHPlayerView *)playView didPlayVideo:(RHVideoModel *)videoModel index:(NSInteger)index{
-    
-}
-// 当前播放结束的
-- (void)playerView:(RHPlayerView *)playView didPlayEndVideo:(RHVideoModel *)videoModel index:(NSInteger)index {
-    
-    
-}
-// 当前正在播放的,会调用多次,更新当前播放时间
-- (void)playerView:(RHPlayerView *)playView didPlayVideo:(RHVideoModel *)videoModel playTime:(NSTimeInterval)playTime {
-
-}
+//// 当前播放的
+//- (void)playerView:(RHPlayerView *)playView didPlayVideo:(RHVideoModel *)videoModel index:(NSInteger)index{
+//
+//}
+//// 当前播放结束的
+//- (void)playerView:(RHPlayerView *)playView didPlayEndVideo:(RHVideoModel *)videoModel index:(NSInteger)index {
+//
+//
+//}
+//// 当前正在播放的,会调用多次,更新当前播放时间
+//- (void)playerView:(RHPlayerView *)playView didPlayVideo:(RHVideoModel *)videoModel playTime:(NSTimeInterval)playTime {
+//
+//}
 
 
 -(void)onBackClick{
     if(_playView){
-        [_playView removePlayer];
-        _playView = nil;
+        [_playView resetPlayer];
     }
     [self.navigationController popViewControllerAnimated:YES];
 }

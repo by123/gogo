@@ -13,5 +13,4 @@ pod 'Masonry'
 pod 'Qiniu', '~> 7.1'
 pod 'UMengAnalytics'
 pod 'Socket.IO-Client-Swift', '~> 13.1.2'
-
 end

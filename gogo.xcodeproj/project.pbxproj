@@ -191,6 +191,13 @@
 		CFD14E761FB2199F00A28982 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD14E751FB2199800A28982 /* CoreMotion.framework */; };
 		CFD14E7A1FB219E400A28982 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFD14E781FB219E400A28982 /* AlipaySDK.framework */; };
 		CFD14E7B1FB219E400A28982 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CFD14E791FB219E400A28982 /* AlipaySDK.bundle */; };
+		CFDEBEDF2078C208005D046D /* YGBrightnessAndVolumeView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDEBED52078C207005D046D /* YGBrightnessAndVolumeView.m */; };
+		CFDEBEE02078C208005D046D /* YGPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDEBED72078C208005D046D /* YGPlayerView.m */; };
+		CFDEBEE12078C208005D046D /* YGPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFDEBED82078C208005D046D /* YGPlayerView.xib */; };
+		CFDEBEE22078C208005D046D /* YGVideoTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDEBED92078C208005D046D /* YGVideoTool.m */; };
+		CFDEBEE32078C208005D046D /* YGLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDEBEDB2078C208005D046D /* YGLoadingView.m */; };
+		CFDEBEE42078C208005D046D /* YGPlayInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDEBEDE2078C208005D046D /* YGPlayInfo.m */; };
+		CFDEBEE72078C233005D046D /* NSString+Time.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDEBEE62078C233005D046D /* NSString+Time.m */; };
 		CFF0377F1FC6EB4B002C2358 /* SettingPage.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF0377E1FC6EB4B002C2358 /* SettingPage.m */; };
 		CFF037831FC6EDC1002C2358 /* FeedbackPage.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF037821FC6EDC1002C2358 /* FeedbackPage.m */; };
 		CFFF1EA81FE459510062BBDD /* ImageBuuton.m in Sources */ = {isa = PBXBuildFile; fileRef = CFFF1EA71FE459510062BBDD /* ImageBuuton.m */; };
@@ -547,6 +554,19 @@
 		CFD14E751FB2199800A28982 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		CFD14E781FB219E400A28982 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
 		CFD14E791FB219E400A28982 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
+		CFDEBED42078C207005D046D /* YGBrightnessAndVolumeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YGBrightnessAndVolumeView.h; sourceTree = "<group>"; };
+		CFDEBED52078C207005D046D /* YGBrightnessAndVolumeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YGBrightnessAndVolumeView.m; sourceTree = "<group>"; };
+		CFDEBED62078C207005D046D /* YGVideoTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YGVideoTool.h; sourceTree = "<group>"; };
+		CFDEBED72078C208005D046D /* YGPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YGPlayerView.m; sourceTree = "<group>"; };
+		CFDEBED82078C208005D046D /* YGPlayerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YGPlayerView.xib; sourceTree = "<group>"; };
+		CFDEBED92078C208005D046D /* YGVideoTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YGVideoTool.m; sourceTree = "<group>"; };
+		CFDEBEDA2078C208005D046D /* YGPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YGPlayerView.h; sourceTree = "<group>"; };
+		CFDEBEDB2078C208005D046D /* YGLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YGLoadingView.m; sourceTree = "<group>"; };
+		CFDEBEDC2078C208005D046D /* YGLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YGLoadingView.h; sourceTree = "<group>"; };
+		CFDEBEDD2078C208005D046D /* YGPlayInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YGPlayInfo.h; sourceTree = "<group>"; };
+		CFDEBEDE2078C208005D046D /* YGPlayInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YGPlayInfo.m; sourceTree = "<group>"; };
+		CFDEBEE52078C232005D046D /* NSString+Time.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Time.h"; sourceTree = "<group>"; };
+		CFDEBEE62078C233005D046D /* NSString+Time.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Time.m"; sourceTree = "<group>"; };
 		CFF0377D1FC6EB4B002C2358 /* SettingPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SettingPage.h; sourceTree = "<group>"; };
 		CFF0377E1FC6EB4B002C2358 /* SettingPage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingPage.m; sourceTree = "<group>"; };
 		CFF037811FC6EDC1002C2358 /* FeedbackPage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedbackPage.h; sourceTree = "<group>"; };
@@ -1272,6 +1292,7 @@
 		CFCB0F0B1F7105360087ACC7 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				CFDEBEC12078C185005D046D /* YGPlayerView */,
 				CF43F55F204DD6D7004DB534 /* giftView */,
 				CFADF82B1FBA1B3000A7501E /* RHPlayerView */,
 				CF4855771FB2ECA90018502A /* addresspicker */,
@@ -1348,6 +1369,26 @@
 				CFD14E781FB219E400A28982 /* AlipaySDK.framework */,
 			);
 			path = alipay;
+			sourceTree = "<group>";
+		};
+		CFDEBEC12078C185005D046D /* YGPlayerView */ = {
+			isa = PBXGroup;
+			children = (
+				CFDEBEE52078C232005D046D /* NSString+Time.h */,
+				CFDEBEE62078C233005D046D /* NSString+Time.m */,
+				CFDEBED42078C207005D046D /* YGBrightnessAndVolumeView.h */,
+				CFDEBED52078C207005D046D /* YGBrightnessAndVolumeView.m */,
+				CFDEBEDC2078C208005D046D /* YGLoadingView.h */,
+				CFDEBEDB2078C208005D046D /* YGLoadingView.m */,
+				CFDEBEDA2078C208005D046D /* YGPlayerView.h */,
+				CFDEBED72078C208005D046D /* YGPlayerView.m */,
+				CFDEBED82078C208005D046D /* YGPlayerView.xib */,
+				CFDEBEDD2078C208005D046D /* YGPlayInfo.h */,
+				CFDEBEDE2078C208005D046D /* YGPlayInfo.m */,
+				CFDEBED62078C207005D046D /* YGVideoTool.h */,
+				CFDEBED92078C208005D046D /* YGVideoTool.m */,
+			);
+			path = YGPlayerView;
 			sourceTree = "<group>";
 		};
 		CFF0377C1FC6EB36002C2358 /* setting */ = {
@@ -1439,6 +1480,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFD14E7B1FB219E400A28982 /* AlipaySDK.bundle in Resources */,
+				CFDEBEE12078C208005D046D /* YGPlayerView.xib in Resources */,
 				CFADF84C1FBA1B3100A7501E /* screen_unfull@3x.png in Resources */,
 				CFADF8471FBA1B3100A7501E /* back@2x.png in Resources */,
 				CFADF84D1FBA1B3100A7501E /* video_pause@2x.png in Resources */,
@@ -1548,6 +1590,7 @@
 				CF4278391FAB9A0100C163DD /* IDSExtendedLabel.m in Sources */,
 				CFADF8541FBA1B3100A7501E /* RHPlayerTitleView.m in Sources */,
 				CF2EAE731F9FC47600F35974 /* ScheduleModel.m in Sources */,
+				CFDEBEDF2078C208005D046D /* YGBrightnessAndVolumeView.m in Sources */,
 				CF4855A41FB397A80018502A /* ExchangeOrderModel.m in Sources */,
 				CF43F55E204DD33D004DB534 /* GiftView.m in Sources */,
 				CFCB0F4A1F711E6F0087ACC7 /* SDCycleScrollView.m in Sources */,
@@ -1612,6 +1655,7 @@
 				CF2EAF041FA5109500F35974 /* ExchangeCell.m in Sources */,
 				CF0BEDBC1F9B4378005275EE /* AccountManager.m in Sources */,
 				CFCB0F4C1F711E6F0087ACC7 /* TAAnimatedDotView.m in Sources */,
+				CFDEBEE32078C208005D046D /* YGLoadingView.m in Sources */,
 				CF1CD6ED1FB6219C0058EEBB /* BettingItemModel.m in Sources */,
 				CFD14E651FB055BA00A28982 /* ScheduleItemModel.m in Sources */,
 				CFBFE5101FA5CC1300500B1B /* GuessView.m in Sources */,
@@ -1632,7 +1676,9 @@
 				CF2EAEF41FA500A400F35974 /* AboutPage.m in Sources */,
 				CF2EAE941FA11C8800F35974 /* TouchScrollView.m in Sources */,
 				CFCB0F181F71088F0087ACC7 /* HomeView.m in Sources */,
+				CFDEBEE02078C208005D046D /* YGPlayerView.m in Sources */,
 				CFADF8521FBA1B3100A7501E /* RHPlayerFailedView.m in Sources */,
+				CFDEBEE72078C233005D046D /* NSString+Time.m in Sources */,
 				CF7B7EAB1FACEC0F003FC2D6 /* NewsDetailModel.m in Sources */,
 				CF2EAE761F9FC7C800F35974 /* TeamModel.m in Sources */,
 				CF2EAEB71FA26C5800F35974 /* MemberModel.m in Sources */,
@@ -1659,6 +1705,7 @@
 				CF43F554204D3160004DB534 /* GiftModel.m in Sources */,
 				CFCB0F4D1F711E6F0087ACC7 /* TADotView.m in Sources */,
 				CF4855801FB2ECEF0018502A /* AddressPickerView.m in Sources */,
+				CFDEBEE42078C208005D046D /* YGPlayInfo.m in Sources */,
 				CFA1008B2066594400197DB2 /* MessageRespondModel.m in Sources */,
 				CF43F562204DD6F8004DB534 /* GiftCell.m in Sources */,
 				CF0BEDC51F9BA8EE005275EE /* MainPage.m in Sources */,
@@ -1676,6 +1723,7 @@
 				CFA100822063A00A00197DB2 /* ByLog.m in Sources */,
 				CF4278261FAB98A400C163DD /* DialogHelper.m in Sources */,
 				CF2EAE551F9D0FC000F35974 /* BottomView.m in Sources */,
+				CFDEBEE22078C208005D046D /* YGVideoTool.m in Sources */,
 				CF2EAEAD1FA2619100F35974 /* HistoryModel.m in Sources */,
 				CFBFE4E71FA5363A00500B1B /* GoodsCell.m in Sources */,
 				CFBFE4F71FA5B33100500B1B /* SCDHistoryView.m in Sources */,
